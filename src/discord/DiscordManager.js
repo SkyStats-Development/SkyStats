@@ -26,6 +26,7 @@ class DiscordManager {
       const client = global.client;
 
       client.login(config.discord.token);
+      
 
       client.on("ready", () =>
         Logger.successfulMessage(
