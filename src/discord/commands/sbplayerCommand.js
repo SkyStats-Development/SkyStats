@@ -3,6 +3,7 @@ const { getLatestProfile } = require('../../../API/functions/getLatestProfile');
 const { addNotation, capitalize, addCommas } = require('../../contracts/helperFunctions')
 const { getNetworth, getPrices, getItemNetworth} = require('skyhelper-networth');
 const getWeight = require('../../../API/stats/weight');
+const messages = require('../../../messages.json')
 
 
 
@@ -85,7 +86,7 @@ module.exports = {
             ],
             timestamp: new Date().toISOString(),
             footer: {
-                text: '🌹  SkyStats 🌹 ~~ Powered by SkyHelper',
+                text: `${messages.foooter.defaultbetter}`, iconURL: `${messages.footer.icon}`,
             },
         };
 

@@ -1,6 +1,7 @@
 const config = require('../../../config.json')
 const axios = require('axios')
 const { toFixed } = require('../../contracts/helperFunctions')
+const messages = require('../../../messages.json')
 const { getUUID } = require('../../contracts/API/PlayerDBAPI')
 const {getWoolWarsStar } = require(`../../../API/SkyStats-apis/API/skystats/getWWStar`)
 const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
@@ -61,7 +62,7 @@ module.exports = {
         ],
             timestamp: new Date().toISOString(),
             footer: {
-                text: `🌹  SkyStats 🌹`,
+                text: `${messages.footer.defaultbetter}` , iconURL: `${messages.footer.icon}`,
             },
         };
  

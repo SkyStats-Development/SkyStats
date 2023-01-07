@@ -1,6 +1,6 @@
 const { default: axios } = require('axios');
 const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
-
+const messages = require('../../../messages.json')
 
 
 module.exports = {
@@ -30,7 +30,7 @@ module.exports = {
             title: `Key Data`,
             description: (`Hypixel Key Entered: || ${keye} ||\nKey Owner UUID: **${owner}**\nKey Owner Username: **${username}**\nKey Limit: \`${limit}\`\nQueries in the past minute: **${queriesInPastMin}**\nTotal Queries: **${totalQueries}**`),
             timestamp: new Date().toISOString(),
-            footer: {text: `Please note, all keys are not shared with the bot and go directly to the hypixel api!`},
+            footer: {text: `${messages.footer.defaultbetter}`, iconURL: `${messages.footer.icon}`},
             };
 
 

@@ -1,6 +1,7 @@
 
 const config = require('../../../config.json')
 const ms = require('ms');
+const messages = require('../../../messages.json')
 const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
 
 module.exports = {
@@ -14,7 +15,7 @@ module.exports = {
                 `**Main Bot Name**: <@${config.discord.clientID}>\n**Bot Latency**: \`${client.ws.ping}\` ms\n**Last Heartbeat Calculated**: ${ms(Date.now() - client.ws.shards.first().lastPingTimestamp, { long: true })} ago\n**Your Tag**: ${interaction.user}\n**Your ID** ${interaction.user.id}
                 `),
             timestamp: new Date().toISOString(),
-            footer: {text: `made by /credits  | /help [command] for more information`, iconURL: 'https://i.imgur.com/FeOykcL.png'},
+            footer: {text: `${messages.footer.sogayowner}`, iconURL: `${messages.footer.icon}`},
                 };
         await interaction.reply({ embeds: [stats] })
             }

@@ -1,6 +1,7 @@
 //EZ GG WP wxkydoodle @ W4ckydoodle 4ever!!!!
 const hypixel = require('../../contracts/API/HypixelRebornAPI')
 const { addCommas } = require('../../contracts/helperFunctions')
+const messages = require('../../../messages.json')
 
 module.exports = {
     name: 'bedwars',
@@ -57,7 +58,7 @@ module.exports = {
         ],
             timestamp: new Date().toISOString(),
             footer: {
-                text: `🌹  SkyStats 🌹`,
+                text: `${messages.footer.defaultbetter}` , iconURL: `${messages.footer.icon}`,
             },
         };
  

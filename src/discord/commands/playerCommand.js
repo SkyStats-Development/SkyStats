@@ -25,6 +25,7 @@ const {
     trimEnd,
     lowerCase
 } = require('lodash');
+const messages = require('../../../messages.json')
 
 
 module.exports = {
@@ -102,7 +103,7 @@ module.exports = {
             ],
             timestamp: new Date().toISOString(),
             footer: {
-                text: `🌹  SkyStats 🌹`,
+                text: `${messages.footer.default}`, iconURL: `${messages.footer.icon}`,
             },
         };
 
