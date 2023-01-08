@@ -6,6 +6,7 @@ const {getLatestProfile} = require('../../../API/functions/getLatestProfile');
 const {addNotation,capitalize,addCommas} = require('../../contracts/helperFunctions')
 const config = require('../../../config.json');
 const { toLower } = require('lodash');
+const wait = require('node:timers/promises').setTimeout;
 
 module.exports = {
     name: 'kuudra',
@@ -21,7 +22,8 @@ module.exports = {
         
       ],
     execute: async (interaction, client, InteractionCreate) => {
-        interaction.reply({  content: "Loading Kuudra data" });
+        await interaction.deferReply();
+		await wait(100);
         const name = interaction.options.getString("name") || messages.defaultvalues.defaultname
         const profileraw = (await axios.get(`https://sky.shiiyu.moe/api/v2/profile/${name}`)).data.profiles
         let currentProfile;
