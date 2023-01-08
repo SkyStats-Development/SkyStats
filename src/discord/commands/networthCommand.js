@@ -1,8 +1,7 @@
 const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
 const { getLatestProfile } = require('../../../API/functions/getLatestProfile');
-const { addNotation, capitalize, addCommas } = require('../../contracts/helperFunctions')
-const { getNetworth, getPrices, getItemNetworth} = require('skyhelper-networth');
-const getWeight = require('../../../API/stats/weight');
+const { addNotation, addCommas } = require('../../contracts/helperFunctions')
+const { getNetworth, getPrices} = require('skyhelper-networth');
 const messages = require('../../../messages.json')
 const { default: axios } = require('axios');
 const wait = require('node:timers/promises').setTimeout;
@@ -33,60 +32,51 @@ module.exports = {
       ],
     
   
-    execute: async (interaction, client) => {
+      execute: async (interaction) => {
         await interaction.deferReply();
-		await wait(100);
+        await wait(100);
         let name = interaction.options.getString("name")
-        const uuid = getUUID(name)
-        const profileraw = (await axios.get(`https://sky.shiiyu.moe/api/v2/profile/${name}`)).data.profiles
+        const profileraw = (await axios.get(`https:sky.shiiyu.moe/api/v2/profile/${name}`)).data.profiles
         let currentProfile;
-        for (var key of Object.keys(profileraw)) {if (profileraw[key].current) currentProfile = key;}
+        for (var key of Object.keys(profileraw)) {
+            if (profileraw[key].current) currentProfile = key;
+        }
         const data = await getLatestProfile(name)
         name = data.profileData?.game_mode ? `♲ ${name}` : name
-        const profile = await getNetworth(data.profile, data.profileData?.banking?.balance, { prices });
+        const profile = await getNetworth(data.profile, data.profileData?.banking?.balance, {
+            prices
+        });
         const shortnwdes = addNotation("oneLetters", profile.networth)
-        const desnw = addNotation ("numbers",(addCommas(profile.networth))).toString().split(".")[0];
-        const desnwunsbownd = addNotation ("numbers",(addCommas(profile.unsoulboundNetworth))).toString().split(".")[0];
+        const desnw = addNotation("numbers", (addCommas(profile.networth))).toString().split(".")[0];
+        const desnwunsbownd = addNotation("numbers", (addCommas(profile.unsoulboundNetworth))).toString().split(".")[0];
         const shortnwunsobown = addNotation("oneLetters", profile.unsoulboundNetworth)
         const profilename = (data.profileData.cute_name)
-        const banku = Math.round((profile.bank)* 100)/ 100
-        const purseu = Math.round((profile.purse)* 100)/ 100
-        //sacks
+        const banku = Math.round((profile.bank) * 100) / 100
+        const purseu = Math.round((profile.purse) * 100) / 100
         const sack = (profileraw[currentProfile].data.networth.types.sacks.total)
         const essence = (profileraw[currentProfile].data.networth.types.essence.total)
-        const sacks = Math.round((sack + essence)* 100)/ 100
-        //armor
+        const sacks = Math.round((sack + essence) * 100) / 100
         const armor = (profileraw[currentProfile].data.networth.types.armor.total)
-        //equipment
         const equipment = (profileraw[currentProfile].data.networth.types.equipment.total)
-        //wardrobe
         const wardrobe = (profileraw[currentProfile].data.networth.types.wardrobe.total)
-        //inv
         const inv = (profileraw[currentProfile].data.networth.types.inventory.total)
-        //ender chest
         const ec = (profileraw[currentProfile].data.networth.types.enderchest.total)
-        //storage
         const storage = (profileraw[currentProfile].data.networth.types.storage.total)
-        //pets
         const pets = (profileraw[currentProfile].data.networth.types.pets.total)
-        //acc bag
         const acc = (profileraw[currentProfile].data.networth.types.accessories.total)
-        //personal vault
         const pv = (profileraw[currentProfile].data.networth.types.personal_vault.total)
-        //misc
         const candy = (profileraw[currentProfile].data.networth.types.candy_inventory.total)
         const potion = (profileraw[currentProfile].data.networth.types.potion_bag.total)
         const fish = (profileraw[currentProfile].data.networth.types.fishing_bag.total)
-        const misc = Math.round((candy + potion + fish)* 100)/100
+        const misc = Math.round((candy + potion + fish) * 100) / 100
 
-        //
         const embedplayer = {
             color: 0xffa600,
             title: `Networth For ${name} On ${profilename}`,
-            URL: `https://sky.shiiyu.moe/stats/${name}`,
+            URL: `https:sky.shiiyu.moe/stats/${name}`,
             description: `Networth: **${desnw} (${shortnwdes})**\nUnsoulbound Networth:** ${desnwunsbownd} (${shortnwunsobown})**`,
       thumbnail: {
-                url: `https://api.mineatar.io/body/full/${name}`,
+                url: `https:api.mineatar.io/body/full/${name}`,
             },
             fields: [
                 {

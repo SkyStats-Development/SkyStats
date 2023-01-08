@@ -21,25 +21,27 @@ module.exports = {
 
         
       ],
-    execute: async (interaction, client, InteractionCreate) => {
+      execute: async (interaction, client, InteractionCreate) => {
         await interaction.deferReply();
-		await wait(100);
+        await wait(100);
         const name = interaction.options.getString("name") || messages.defaultvalues.defaultname
         const uuid = getUUID(name)
         const profileraw = (await axios.get(`https://sky.shiiyu.moe/api/v2/profile/${name}`)).data.profiles
         let currentProfile;
-        for (var key of Object.keys(profileraw)) {if (profileraw[key].current) currentProfile = key;}
+        for (var key of Object.keys(profileraw)) {
+            if (profileraw[key].current) currentProfile = key;
+        }
         const profilename = (profileraw[currentProfile].cute_name) || `ERROR404`
-        const t1comp = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.none)   || `0`
-        const t2comp = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.hot)    || `0`
-        const t3comp = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.burning)    || `0`
-        const t4comp = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.fiery)    || `0`
-        const t5comp = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.infernal)    || `0`
-        const t1wave = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.highest_wave_none)   || `0`
-        const t2wave = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.highest_wave_hot)    || `0`
-        const t3wave = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.highest_wave_burning)    || `0`
-        const t4wave = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.highest_wave_fiery)    || `0`
-        const t5wave = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.highest_wave_infernal)    || `0`
+        const t1comp = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.none) || `0`
+        const t2comp = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.hot) || `0`
+        const t3comp = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.burning) || `0`
+        const t4comp = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.fiery) || `0`
+        const t5comp = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.infernal) || `0`
+        const t1wave = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.highest_wave_none) || `0`
+        const t2wave = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.highest_wave_hot) || `0`
+        const t3wave = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.highest_wave_burning) || `0`
+        const t4wave = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.highest_wave_fiery) || `0`
+        const t5wave = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.highest_wave_infernal) || `0`
         const pfmess = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_party_finder.group_builder.note) || `Paper`
         const pft = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_party_finder.group_builder.tier) || `basic`
         const pfreq = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_party_finder.group_builder.combat_level_required) || `0`
