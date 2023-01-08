@@ -21,8 +21,8 @@ let prices;
 ); 
 
 module.exports = {
-    name: 'skyblock',
-    description: 'Fetches skyblock data WIP',
+    name: 'networth',
+    description: 'Fetches your networth!',
     options: [
         {
             name: 'name',
