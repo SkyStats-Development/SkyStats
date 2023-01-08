@@ -80,6 +80,7 @@ module.exports = {
 
         //
         const embedplayer = {
+            color: FFA600,
             title: `Networth For ${name} On ${profilename}`,
             URL: `https://sky.shiiyu.moe/stats/${name}`,
             description: `Networth: **${desnw} (${shortnwdes})**\nUnsoulbound Networth:** ${desnwunsbownd} (${shortnwunsobown})**`,

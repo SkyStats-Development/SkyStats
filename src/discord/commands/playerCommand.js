@@ -57,6 +57,7 @@ module.exports = {
 
 
         const embeded = {
+            color: FFA600,
             title: `Showing Hypixel Stats For ${name}`,
             description: (`\n`),
             fields: [{

@@ -43,6 +43,7 @@ module.exports = {
         const pft = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_party_finder.group_builder.tier) || `basic`
         const pfreq = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_party_finder.group_builder.combat_level_required) || `0`
         const embed = {
+            color: FFA600,
             title: `Kuudra Data For ${name} On ${profilename}`,
             URL: `https://sky.shiiyu.moe/stats/${name}`,
             description: (`Party Finder Message: **${pfmess}**\nParty Finder Requirement: **${pfreq}**\nParty Finder Tier: **${toLower(pft)}**`),

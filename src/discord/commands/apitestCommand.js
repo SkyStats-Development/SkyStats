@@ -27,6 +27,7 @@ module.exports = {
         const totalQueries = (await axios.get(`https://api.hypixel.net/key?key=${key}`)).data.record.totalQueries
 
         const chat = {
+            color: FFA600,
             title: `Key Data`,
             description: (`Hypixel Key Entered: || ${keye} ||\nKey Owner UUID: **${owner}**\nKey Owner Username: **${username}**\nKey Limit: \`${limit}\`\nQueries in the past minute: **${queriesInPastMin}**\nTotal Queries: **${totalQueries}**`),
             timestamp: new Date().toISOString(),

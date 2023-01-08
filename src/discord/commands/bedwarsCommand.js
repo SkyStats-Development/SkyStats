@@ -20,6 +20,7 @@ module.exports = {
         const player = await hypixel.getPlayer(play)
 
         const embed = {
+            color: FFA600,
             title: `Bedwars Stats For ${player}`,
             description: (`\n`),
             fields: [

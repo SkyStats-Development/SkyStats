@@ -28,6 +28,7 @@ module.exports = {
         const deathss = toFixed(woolWars.wool_wars.stats.deaths) || `no deaths GG`
 
         const embed = {
+            color: FFA600,
             title: `WoolWars Stats For ${player}`,
             description: (`\n`),
             fields: [

@@ -46,6 +46,7 @@ module.exports = {
         const profilename = (data.profileData.cute_name)
 
         const embedplayer = {
+            color: FFA600,
             title: `Weight For ${name} On ${profilename}`,
             URL: `https://sky.shiiyu.moe/stats/${name}`,
             description: `\n`,
