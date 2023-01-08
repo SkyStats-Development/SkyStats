@@ -4,6 +4,7 @@ const { addNotation, capitalize, addCommas } = require('../../contracts/helperFu
 const { getNetworth, getPrices, getItemNetworth} = require('skyhelper-networth');
 const getWeight = require('../../../API/stats/weight');
 const messages = require('../../../messages.json')
+const { getUUID } = require('../../contracts/API/PlayerDBAPI')
 const wait = require('node:timers/promises').setTimeout;
 
 
@@ -35,6 +36,7 @@ module.exports = {
         await interaction.deferReply();
 		await wait(100);
         let name = interaction.options.getString("name")
+        const uuid = getUUID(name)
         const data = await getLatestProfile(name)
         name = data.profileData?.game_mode ? `♲ ${name}` : name
         const profile = await getNetworth(data.profile, data.profileData?.banking?.balance, { prices });
@@ -50,6 +52,9 @@ module.exports = {
             title: `Weight For ${name} On ${profilename}`,
             URL: `https://sky.shiiyu.moe/stats/${name}`,
             description: `\n`,
+            thumbnail: {
+                url: `https://crafatar.com/renders/body/${uuid}`,
+            },
             fields: [
                 {
                     name: 'Senither Weight',

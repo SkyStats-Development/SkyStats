@@ -1,11 +1,11 @@
 const { default: axios } = require('axios');
 const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const messages = require('../../../messages.json')
-const { getUUID } = require('../../contracts/API/PlayerDBAPI')
 const {getLatestProfile} = require('../../../API/functions/getLatestProfile');
 const {addNotation,capitalize,addCommas} = require('../../contracts/helperFunctions')
 const config = require('../../../config.json');
 const { toLower } = require('lodash');
+const { getUUID } = require('../../contracts/API/PlayerDBAPI')
 const wait = require('node:timers/promises').setTimeout;
 
 module.exports = {
@@ -25,6 +25,7 @@ module.exports = {
         await interaction.deferReply();
 		await wait(100);
         const name = interaction.options.getString("name") || messages.defaultvalues.defaultname
+        const uuid = getUUID(name)
         const profileraw = (await axios.get(`https://sky.shiiyu.moe/api/v2/profile/${name}`)).data.profiles
         let currentProfile;
         for (var key of Object.keys(profileraw)) {if (profileraw[key].current) currentProfile = key;}
@@ -47,6 +48,9 @@ module.exports = {
             title: `Kuudra Data For ${name} On ${profilename}`,
             URL: `https://sky.shiiyu.moe/stats/${name}`,
             description: (`Party Finder Message: **${pfmess}**\nParty Finder Requirement: **${pfreq}**\nParty Finder Tier: **${toLower(pft)}**`),
+            thumbnail: {
+                url: `https://crafatar.com/renders/body/${uuid}`,
+            },
             fields: [
                 {
                     name: "Kuudra Tier 1",

@@ -6,7 +6,7 @@ const getWeight = require('../../../API/stats/weight');
 const messages = require('../../../messages.json')
 const { default: axios } = require('axios');
 const wait = require('node:timers/promises').setTimeout;
-
+const { getUUID } = require('../../contracts/API/PlayerDBAPI')
 
 
 let prices;
@@ -37,6 +37,7 @@ module.exports = {
         await interaction.deferReply();
 		await wait(100);
         let name = interaction.options.getString("name")
+        const uuid = getUUID(name)
         const profileraw = (await axios.get(`https://sky.shiiyu.moe/api/v2/profile/${name}`)).data.profiles
         let currentProfile;
         for (var key of Object.keys(profileraw)) {if (profileraw[key].current) currentProfile = key;}
@@ -84,6 +85,9 @@ module.exports = {
             title: `Networth For ${name} On ${profilename}`,
             URL: `https://sky.shiiyu.moe/stats/${name}`,
             description: `Networth: **${desnw} (${shortnwdes})**\nUnsoulbound Networth:** ${desnwunsbownd} (${shortnwunsobown})**`,
+            thumbnail: {
+                url: `https://crafatar.com/renders/body/${uuid}`,
+            },
             fields: [
                 {
                     name: '<:Purse:1059997956784279562> Purse',

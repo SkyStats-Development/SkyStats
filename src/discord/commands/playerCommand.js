@@ -26,6 +26,7 @@ const {
     lowerCase
 } = require('lodash');
 const messages = require('../../../messages.json')
+const { getUUID } = require('../../contracts/API/PlayerDBAPI')
 
 
 module.exports = {
@@ -41,6 +42,7 @@ module.exports = {
 
     execute: async (interaction, client) => {
         const name = interaction.options.getString("name")
+        const uuid = getUUID(name)
         const rank = (await hypixel.getPlayer(name)).rank
         const guild = (await hypixel.getPlayer(name)).guild || `? ? ?`
         const mcversion = (await hypixel.getPlayer(name)).mcVersion || `1.8x`
@@ -60,6 +62,9 @@ module.exports = {
             color: FFA600,
             title: `Showing Hypixel Stats For ${name}`,
             description: (`\n`),
+            thumbnail: {
+                url: `https://crafatar.com/renders/body/${uuid}`,
+            },
             fields: [{
                     name: 'Rank',
                     value: `${rank}`,

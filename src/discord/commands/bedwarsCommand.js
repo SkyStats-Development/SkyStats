@@ -2,6 +2,7 @@
 const hypixel = require('../../contracts/API/HypixelRebornAPI')
 const { addCommas } = require('../../contracts/helperFunctions')
 const messages = require('../../../messages.json')
+const { getUUID } = require('../../contracts/API/PlayerDBAPI')
 
 module.exports = {
     name: 'bedwars',
@@ -18,11 +19,14 @@ module.exports = {
     execute: async (interaction, client, InteractionCreate) => {
         let play = interaction.options.getString('player')
         const player = await hypixel.getPlayer(play)
-
+        const uuid = getUUID(play)
         const embed = {
             color: FFA600,
             title: `Bedwars Stats For ${player}`,
             description: (`\n`),
+            thumbnail: {
+                url: `https://crafatar.com/renders/body/${uuid}`,
+            },
             fields: [
             {
                 name: 'Level',

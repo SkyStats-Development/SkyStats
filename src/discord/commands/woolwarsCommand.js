@@ -31,6 +31,9 @@ module.exports = {
             color: FFA600,
             title: `WoolWars Stats For ${player}`,
             description: (`\n`),
+            thumbnail: {
+                url: `https://crafatar.com/renders/body/${uuid}`,
+            },
             fields: [
             {
                 name: 'Level',
