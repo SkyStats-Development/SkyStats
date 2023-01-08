@@ -36,7 +36,7 @@ function addNotation(type, value) {
   }
 
   if (type === "oneLetters") {
-    notList = [" K", " M", " B", " T"];
+    notList = ["K", "M", "B", "T"];
   }
 
   let checkNum = 1000;
