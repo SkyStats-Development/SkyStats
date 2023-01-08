@@ -81,12 +81,12 @@ module.exports = {
 
         //
         const embedplayer = {
-            color: FFA600,
+            color: 0xffa600,
             title: `Networth For ${name} On ${profilename}`,
             URL: `https://sky.shiiyu.moe/stats/${name}`,
             description: `Networth: **${desnw} (${shortnwdes})**\nUnsoulbound Networth:** ${desnwunsbownd} (${shortnwunsobown})**`,
-            thumbnail: {
-                url: `https://crafatar.com/renders/body/${uuid}`,
+      thumbnail: {
+                url: `https://api.mineatar.io/body/full/${name}`,
             },
             fields: [
                 {

@@ -48,12 +48,12 @@ module.exports = {
         const profilename = (data.profileData.cute_name)
 
         const embedplayer = {
-            color: FFA600,
+            color: 0xffa600,
             title: `Weight For ${name} On ${profilename}`,
             URL: `https://sky.shiiyu.moe/stats/${name}`,
             description: `\n`,
-            thumbnail: {
-                url: `https://crafatar.com/renders/body/${uuid}`,
+      thumbnail: {
+                url: `https://api.mineatar.io/body/full/${name}`,
             },
             fields: [
                 {

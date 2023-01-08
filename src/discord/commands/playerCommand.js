@@ -59,11 +59,11 @@ module.exports = {
 
 
         const embeded = {
-            color: FFA600,
+            color: 0xffa600,
             title: `Showing Hypixel Stats For ${name}`,
             description: (`\n`),
-            thumbnail: {
-                url: `https://crafatar.com/renders/body/${uuid}`,
+      thumbnail: {
+                url: `https://api.mineatar.io/body/full/${name}`,
             },
             fields: [{
                     name: 'Rank',

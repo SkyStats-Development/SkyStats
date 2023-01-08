@@ -28,11 +28,11 @@ module.exports = {
         const deathss = toFixed(woolWars.wool_wars.stats.deaths) || `no deaths GG`
 
         const embed = {
-            color: FFA600,
+            color: 0xffa600,
             title: `WoolWars Stats For ${player}`,
             description: (`\n`),
-            thumbnail: {
-                url: `https://crafatar.com/renders/body/${uuid}`,
+      thumbnail: {
+                url: `https://api.mineatar.io/body/full/${player}`,
             },
             fields: [
             {

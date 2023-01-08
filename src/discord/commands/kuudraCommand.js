@@ -44,12 +44,12 @@ module.exports = {
         const pft = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_party_finder.group_builder.tier) || `basic`
         const pfreq = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_party_finder.group_builder.combat_level_required) || `0`
         const embed = {
-            color: FFA600,
+            color: 0xffa600,
             title: `Kuudra Data For ${name} On ${profilename}`,
             URL: `https://sky.shiiyu.moe/stats/${name}`,
             description: (`Party Finder Message: **${pfmess}**\nParty Finder Requirement: **${pfreq}**\nParty Finder Tier: **${toLower(pft)}**`),
-            thumbnail: {
-                url: `https://crafatar.com/renders/body/${uuid}`,
+      thumbnail: {
+                url: `https://api.mineatar.io/body/full/${name}`,
             },
             fields: [
                 {

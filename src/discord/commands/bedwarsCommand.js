@@ -21,11 +21,11 @@ module.exports = {
         const player = await hypixel.getPlayer(play)
         const uuid = getUUID(play)
         const embed = {
-            color: FFA600,
+            color: 0xffa600,
             title: `Bedwars Stats For ${player}`,
             description: (`\n`),
-            thumbnail: {
-                url: `https://crafatar.com/renders/body/${uuid}`,
+      thumbnail: {
+                url: `https://api.mineatar.io/body/full/${play}`,
             },
             fields: [
             {
