@@ -119,12 +119,12 @@ module.exports = {
                 },
                 {
                     name: `Floor 1`,
-                    value: `Kills: ${f1comp}\nHigest Score: ${f1best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f1time))}\nFastest Time S: ${(convertMsToMinutesSeconds(f1times))}\nFastest Time S+: ${(convertMsToMinutesSeconds(f1timess))}`,
+                    value: `Kills: ${f1comp}\nHighest Score: ${f1best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f1time))}\nFastest Time S: ${(convertMsToMinutesSeconds(f1times))}\nFastest Time S+: ${(convertMsToMinutesSeconds(f1timess))}`,
                     inline: true,
                 },
                 {
                     name: `Floor 2`,
-                    value: `Kills: ${f2comp}\nHigest Score: ${f2best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f2time))}\nFastest Time S: ${(convertMsToMinutesSeconds(f2times))}\n Fastest Time S+: ${(convertMsToMinutesSeconds(f2timess))}`,
+                    value: `Kills: ${f2comp}\nHighest Score: ${f2best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f2time))}\nFastest Time S: ${(convertMsToMinutesSeconds(f2times))}\n Fastest Time S+: ${(convertMsToMinutesSeconds(f2timess))}`,
                     inline: true,
                 },
                 {
@@ -134,12 +134,12 @@ module.exports = {
                 },
                 {
                     name: `Floor 3`,
-                    value: `Kills: ${f3comp}\nHigest Score: ${f3best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f3time))}\nFastest Time S: ${(convertMsToMinutesSeconds(f3times))}\nFastest Time S+: ${(convertMsToMinutesSeconds(f3timess))}`,
+                    value: `Kills: ${f3comp}\nHighest Score: ${f3best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f3time))}\nFastest Time S: ${(convertMsToMinutesSeconds(f3times))}\nFastest Time S+: ${(convertMsToMinutesSeconds(f3timess))}`,
                     inline: true,
                 },
                 {
                     name: `Floor 4`,
-                    value: `Kills: ${f4comp}\nHigest Score: ${f4best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f4time))}\nFastest Time S: ${(convertMsToMinutesSeconds(f4times))}\nFastest Time S+: ${(convertMsToMinutesSeconds(f4timess))}`,
+                    value: `Kills: ${f4comp}\nHighest Score: ${f4best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f4time))}\nFastest Time S: ${(convertMsToMinutesSeconds(f4times))}\nFastest Time S+: ${(convertMsToMinutesSeconds(f4timess))}`,
                     inline: true,
                 },
                 {
@@ -149,12 +149,12 @@ module.exports = {
                 },
                 {
                     name: `Floor 5`,
-                    value: `Kills: ${f5comp}\nHigest Score: ${f5best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f5time))}\nFastest Time S: ${(convertMsToMinutesSeconds(f5times))}\nFastest Time S+: ${(convertMsToMinutesSeconds(f5timess))}`,
+                    value: `Kills: ${f5comp}\nHighest Score: ${f5best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f5time))}\nFastest Time S: ${(convertMsToMinutesSeconds(f5times))}\nFastest Time S+: ${(convertMsToMinutesSeconds(f5timess))}`,
                     inline: true,
                 },
                 {
                     name: `Floor 6`,
-                    value: `Kills: ${f6comp}\nHigest Score: ${f6best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f6time))}\nFastest Time S: ${(convertMsToMinutesSeconds(f6times))}\nFastest Time S+: ${(convertMsToMinutesSeconds(f6timess))}`,
+                    value: `Kills: ${f6comp}\nHighest Score: ${f6best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f6time))}\nFastest Time S: ${(convertMsToMinutesSeconds(f6times))}\nFastest Time S+: ${(convertMsToMinutesSeconds(f6timess))}`,
                     inline: true,
                 },
                 {
@@ -164,7 +164,7 @@ module.exports = {
                 },
                 {
                     name: `Floor 7`,
-                    value: `Kills: ${f7comp}\nHigest Score: ${f7best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f7time))}\nFastest Time S+: ${(convertMsToMinutesSeconds(f7times))}\nFastest Time S+ ${(convertMsToMinutesSeconds(f7times))}`,
+                    value: `Kills: ${f7comp}\nHighest Score: ${f7best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f7time))}\nFastest Time S+: ${(convertMsToMinutesSeconds(f7times))}\nFastest Time S+ ${(convertMsToMinutesSeconds(f7times))}`,
                     inline: true,
                 },
             ],
