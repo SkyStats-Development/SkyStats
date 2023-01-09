@@ -36,7 +36,7 @@ module.exports = {
         await interaction.deferReply();
         await wait(100);
         let name = interaction.options.getString("name")
-        const profileraw = (await axios.get(`https:sky.shiiyu.moe/api/v2/profile/${name}`)).data.profiles
+        const profileraw = (await axios.get(`https://sky.shiiyu.moe/api/v2/profile/${name}`)).data.profiles
         let currentProfile;
         for (var key of Object.keys(profileraw)) {
             if (profileraw[key].current) currentProfile = key;
@@ -69,14 +69,18 @@ module.exports = {
         const potion = (profileraw[currentProfile].data.networth.types.potion_bag.total)
         const fish = (profileraw[currentProfile].data.networth.types.fishing_bag.total)
         const misc = Math.round((candy + potion + fish) * 100) / 100
+        const cookies = Math.round((profile.networth / 3847600) * 100) / 100
+        const value = Math.round((cookies * 2.27) * 100) /100
+        const irlnw = addNotation("numbers", (addCommas(value)))
+        const irlshort = addNotation("oneLetters", irlnw) // Irl = Short is a false statement, I am 6'1"
 
         const embedplayer = {
             color: 0xffa600,
             title: `Networth For ${name} On ${profilename}`,
-            URL: `https:sky.shiiyu.moe/stats/${name}`,
-            description: `Networth: **${desnw} (${shortnwdes})**\nUnsoulbound Networth:** ${desnwunsbownd} (${shortnwunsobown})**`,
+            URL: `https://sky.shiiyu.moe/stats/${name}`,
+            description: `Networth: **${desnw} (${shortnwdes})**\nUnsoulbound Networth:** ${desnwunsbownd} (${shortnwunsobown})**\n**IRL Value:** $${irlnw} ($${irlshort})USD (Use /irl for more info)`,
       thumbnail: {
-                url: `https:api.mineatar.io/body/full/${name}`,
+                url: `https://api.mineatar.io/body/full/${name}`,
             },
             fields: [
                 {

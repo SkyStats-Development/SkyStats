@@ -6,7 +6,7 @@
         "owner": "🌹 Axle#9171 🌹",
         "sogayowner": "🌹 Made with ❤️ by Axle#9171 🌹",
         "private": "🌹 SkyStats 🌹 ~ Private Commands",
-        "icon": "https://imgur.com/hggczHP",
+        "icon": "https://i.imgur.com/hggczHP.png",
         "discinvite": "https://discord.gg/Kuk7fUYtrT"
     },
     "commandfailed": {
@@ -22,6 +22,7 @@
     "errorcodes": {
         "error00Aa1": "? ? ? (ERROR 00Aa1 PLEASE REPORT TO DEVS)",
         "error00Ab1": "you got error code error00Ab1",
+        "error400": "Data calculation failed at SkyCrypt API, do not report to developers of SkyCrypt **(CODE 400)**",
         "error666DeAtH666": "data execution exeption error666DeAtH666 at command rout: GLOBAL",
         "error404": "Data Not Found. Report this to developers (CODE 404)",
         "error403": "Lacking Permissions. Do not report this to developers. (CODE 403)",
