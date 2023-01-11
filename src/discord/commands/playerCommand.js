@@ -36,11 +36,13 @@ module.exports = {
 		name: 'name',
 		description: 'Minecraft Username',
 		type: 3,
-		required: true
+		required: false
     }],
 	execute: async (interaction, client) => {
-		const name = interaction.options.getString("name")
-		const uuid = getUUID(name)
+        const linked = require('../../../data/discordLinked.json')
+        const uuid = linked?.[interaction?.user?.id]?.data[0]
+        let name = interaction.options.getString("name") || uuid
+        const username = (await axios.get(`https://sessionserver.mojang.com/session/minecraft/profile/${uuid}/`)).data.name || name
 		const rank = (await hypixel.getPlayer(name)).rank
 		const guild = (await hypixel.getPlayer(name)).guild || `? ? ?`
 		const mcversion = (await hypixel.getPlayer(name)).mcVersion || `1.8x`
@@ -56,7 +58,7 @@ module.exports = {
 		const karmadata = addCommas(karma)
 		const embeded = {
 			color: 0xffa600,
-			title: `Showing Hypixel Stats For ${name}`,
+			title: `Showing Hypixel Stats For ${username}`,
 			description: (`\n`),
 			thumbnail: {
 				url: `https://api.mineatar.io/body/full/${name}`,

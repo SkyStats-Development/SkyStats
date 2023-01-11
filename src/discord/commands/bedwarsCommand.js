@@ -9,23 +9,25 @@ module.exports = {
     description: 'Gets BedWars Data',
     options: [
         {
-            name: 'player',
+            name: 'name',
             description: 'Minecraft Username',
             type: 3,
-            required: true
+            required: false
         },  
       ],
 
     execute: async (interaction, client, InteractionCreate) => {
-        let play = interaction.options.getString('player')
-        const player = await hypixel.getPlayer(play)
-        const uuid = getUUID(play)
+        const linked = require('../../../data/discordLinked.json')
+        const uuid = linked?.[interaction?.user?.id]?.data[0]
+        let name = interaction.options.getString("name") || uuid
+        const username = (await axios.get(`https://sessionserver.mojang.com/session/minecraft/profile/${uuid}/`)).data.name || name
+        const player = await hypixel.getPlayer(name)
         const embed = {
             color: 0xffa600,
             title: `Bedwars Stats For ${player}`,
             description: (`\n`),
       thumbnail: {
-                url: `https://api.mineatar.io/body/full/${play}`,
+                url: `https://api.mineatar.io/body/full/${username}`,
             },
             fields: [
             {

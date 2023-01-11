@@ -27,7 +27,7 @@ module.exports = {
             name: 'name',
             description: 'Minecraft Username',
             type: 3,
-            required: true
+            required: false
         }
       ],
     
@@ -35,21 +35,18 @@ module.exports = {
     execute: async (interaction, client) => {
         await interaction.deferReply();
 		await wait(100);
-        let name = interaction.options.getString("name")
-        const uuid = getUUID(name)
+        const linked = require('../../../data/discordLinked.json')
+        const uuid = linked?.[interaction?.user?.id]?.data[0]
+        let name = interaction.options.getString("name") || uuid
+        const username = (await axios.get(`https://sessionserver.mojang.com/session/minecraft/profile/${uuid}/`)).data.name || name
         const data = await getLatestProfile(name)
         name = data.profileData?.game_mode ? `♲ ${name}` : name
-        const profile = await getNetworth(data.profile, data.profileData?.banking?.balance, { prices });
-        const shortnwdes = addNotation("oneLetters", profile.networth)
-        const desnw = addNotation ("numbers",(addCommas(profile.networth))).toString().split(".")[0];
-        const desnwunsbownd = addNotation ("numbers",(addCommas(profile.unsoulboundNetworth))).toString().split(".")[0];
-        const shortnwunsobown = addNotation("oneLetters", profile.unsoulboundNetworth)
         const profileweight = await getWeight(data.profile, data.uuid) 
         const profilename = (data.profileData.cute_name)
 
         const embedplayer = {
             color: 0xffa600,
-            title: `Weight For ${name} On ${profilename}`,
+            title: `Weight For ${username} On ${profilename}`,
             URL: `https://sky.shiiyu.moe/stats/${name}`,
             description: `\n`,
       thumbnail: {

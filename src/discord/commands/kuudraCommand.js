@@ -16,7 +16,7 @@ module.exports = {
             name: 'name',
             description: 'minecraft username',
             type: 3,
-            required: true
+            required: false
         },
 
         
@@ -24,8 +24,10 @@ module.exports = {
       execute: async (interaction, client, InteractionCreate) => {
         await interaction.deferReply();
         await wait(100);
-        const name = interaction.options.getString("name") || messages.defaultvalues.defaultname
-        const uuid = getUUID(name)
+        const linked = require('../../../data/discordLinked.json')
+        const uuid = linked?.[interaction?.user?.id]?.data[0]
+        let name = interaction.options.getString("name") || uuid
+        const username = (await axios.get(`https://sessionserver.mojang.com/session/minecraft/profile/${uuid}/`)).data.name || name
         const profileraw = (await axios.get(`https://sky.shiiyu.moe/api/v2/profile/${name}`)).data.profiles
         let currentProfile;
         for (var key of Object.keys(profileraw)) {
@@ -47,7 +49,7 @@ module.exports = {
         const pfreq = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_party_finder.group_builder.combat_level_required) || `0`
         const embed = {
             color: 0xffa600,
-            title: `Kuudra Data For ${name} On ${profilename}`,
+            title: `Kuudra Data For ${username} On ${profilename}`,
             URL: `https://sky.shiiyu.moe/stats/${name}`,
             description: (`Party Finder Message: **${pfmess}**\nParty Finder Requirement: **${pfreq}**\nParty Finder Tier: **${toLower(pft)}**`),
       thumbnail: {

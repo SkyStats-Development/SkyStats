@@ -5,7 +5,8 @@ const { getNetworth, getPrices} = require('skyhelper-networth');
 const messages = require('../../../messages.json')
 const { default: axios } = require('axios');
 const wait = require('node:timers/promises').setTimeout;
-const { getUUID } = require('../../contracts/API/PlayerDBAPI')
+const { getUUID, getUsername } = require('../../contracts/API/PlayerDBAPI');
+const hypixel = require('../../contracts/API/HypixelRebornAPI');
 
 
 let prices;
@@ -27,7 +28,7 @@ module.exports = {
             name: 'name',
             description: 'Minecraft Username',
             type: 3,
-            required: true
+            required: false
         }
       ],
     
@@ -35,7 +36,10 @@ module.exports = {
       execute: async (interaction) => {
         await interaction.deferReply();
         await wait(100);
-        let name = interaction.options.getString("name")
+        const linked = require('../../../data/discordLinked.json')
+        const uuid = linked?.[interaction?.user?.id]?.data[0]
+        let name = interaction.options.getString("name") || uuid
+        const username = (await axios.get(`https://sessionserver.mojang.com/session/minecraft/profile/${uuid}/`)).data.name || name
         const profileraw = (await axios.get(`https://sky.shiiyu.moe/api/v2/profile/${name}`)).data.profiles
         let currentProfile;
         for (var key of Object.keys(profileraw)) {
@@ -76,9 +80,9 @@ module.exports = {
 
         const embedplayer = {
             color: 0xffa600,
-            title: `Networth For ${name} On ${profilename}`,
+            title: `Networth For ${username} On ${profilename}`,
             URL: `https://sky.shiiyu.moe/stats/${name}`,
-            description: `Networth: **${desnw} (${shortnwdes})**\nUnsoulbound Networth:** ${desnwunsbownd} (${shortnwunsobown})**\n**IRL Value:** $${irlnw} ($${irlshort})USD (Use /irl for more info)`,
+            description: `Networth: **${desnw} (${shortnwdes})**\nUnsoulbound Networth:** ${desnwunsbownd} (${shortnwunsobown})**\nIRL Value: **$${irlnw} USD** (Use /irl for more info)`,
       thumbnail: {
                 url: `https://api.mineatar.io/body/full/${name}`,
             },

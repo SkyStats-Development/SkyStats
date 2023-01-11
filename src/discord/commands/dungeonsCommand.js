@@ -29,7 +29,7 @@ module.exports = {
             name: 'name',
             description: 'mc username',
             type: 3,
-            required: true
+            required: false
         },
 
         
@@ -37,7 +37,10 @@ module.exports = {
     execute: async (interaction, client, InteractionCreate) => {
         await interaction.deferReply();
         await wait(1);
-        let name = interaction.options.getString("name")
+        const linked = require('../../../data/discordLinked.json')
+        const uuid = linked?.[interaction?.user?.id]?.data[0]
+        let name = interaction.options.getString("name") || uuid
+        const username = (await axios.get(`https://sessionserver.mojang.com/session/minecraft/profile/${uuid}/`)).data.name || name
         const profileraw = (await axios.get(`https://sky.shiiyu.moe/api/v2/profile/${name}`)).data.profiles
         let currentProfile;
         for (var key of Object.keys(profileraw)) {
@@ -47,6 +50,11 @@ module.exports = {
         const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
         const profilename = (data.profileData.cute_name)
         const player = (profileraw[currentProfile])
+        //discript
+        const catalvl = (player.data.dungeons.catacombs.level.level) || `0`
+        const secrets = (player.data.dungeons.secrets_found) || `0`
+        const selectedclass = (player.data.dungeons.selected_class) || `DEFAULT`
+        const classavrg = (player.data.dungeons.class_average) || `0`
         // f0
         const f0comp = (player.data.dungeons.catacombs.floors[`0`].stats.tier_completions) || `0`
         const f0time = (player.data.dungeons.catacombs.floors[`0`].stats.fastest_time) || `0`
@@ -94,22 +102,120 @@ module.exports = {
         const f7time = (player.data.dungeons.catacombs.floors[`7`].stats.fastest_time)|| `0`
         const f7times = (player.data.dungeons.catacombs.floors[`7`].stats.fastest_time_s)|| `0`
         const f7timess = (player.data.dungeons.catacombs.floors[`7`].stats.fastest_time_s_plus)|| `0` 
-        const f7best_score = (player.data.dungeons.catacombs.floors[`7`].stats.best_score) || `0`
+        const f7best_score = (player.data.dungeons.catacombs.floors[`7`].stats.best_score) || `0`  
+        //m1
+        const m1comp = (player.data.dungeons.master_catacombs.floors[`1`].stats.tier_completions)|| `0`
+        const m1time = (player.data.dungeons.master_catacombs.floors[`1`].stats.fastest_time)|| `0`
+        const m1times = (player.data.dungeons.master_catacombs.floors[`1`].stats.fastest_time_s)|| `0`
+        const m1timess = (player.data.dungeons.master_catacombs.floors[`1`].stats.fastest_time_s_plus)|| `0` 
+        const m1best_score = (player.data.dungeons.master_catacombs.floors[`1`].stats.best_score)|| `0`
+        //m2
+        const m2comp = (player.data.dungeons.master_catacombs.floors[`2`].stats.tier_completions)|| `0`
+        const m2time = (player.data.dungeons.master_catacombs.floors[`2`].stats.fastest_time)|| `0`
+        const m2times = (player.data.dungeons.master_catacombs.floors[`2`].stats.fastest_time_s)|| `0`
+        const m2timess = (player.data.dungeons.master_catacombs.floors[`2`].stats.fastest_time_s_plus)|| `0` 
+        const m2best_score = (player.data.dungeons.master_catacombs.floors[`2`].stats.best_score)|| `0`
+        //m3
+        const m3comp = (player.data.dungeons.master_catacombs.floors[`3`].stats.tier_completions)|| `0`
+        const m3time = (player.data.dungeons.master_catacombs.floors[`3`].stats.fastest_time)|| `0`
+        const m3times = (player.data.dungeons.master_catacombs.floors[`3`].stats.fastest_time_s)|| `0`
+        const m3timess = (player.data.dungeons.master_catacombs.floors[`3`].stats.fastest_time_s_plus)|| `0` 
+        const m3best_score = (player.data.dungeons.master_catacombs.floors[`3`].stats.best_score)|| `0`
+        //m4
+        const m4comp = (player.data.dungeons.master_catacombs.floors[`4`].stats.tier_completions)|| `0`
+        const m4time = (player.data.dungeons.master_catacombs.floors[`4`].stats.fastest_time)|| `0`
+        const m4times = (player.data.dungeons.master_catacombs.floors[`4`].stats.fastest_time_s)|| `0`
+        const m4timess = (player.data.dungeons.master_catacombs.floors[`4`].stats.fastest_time_s_plus)|| `0` 
+        const m4best_score = (player.data.dungeons.master_catacombs.floors[`4`].stats.best_score)|| `0`
+        //m5
+        const m5comp = (player.data.dungeons.master_catacombs.floors[`5`].stats.tier_completions)|| `0`
+        const m5time = (player.data.dungeons.master_catacombs.floors[`5`].stats.fastest_time)|| `0`
+        const m5times = (player.data.dungeons.master_catacombs.floors[`5`].stats.fastest_time_s)|| `0`
+        const m5timess = (player.data.dungeons.master_catacombs.floors[`5`].stats.fastest_time_s_plus)|| `0` 
+        const m5best_score = (player.data.dungeons.master_catacombs.floors[`5`].stats.best_score)|| `0`
+        //m6
+        const m6comp = (player.data.dungeons.master_catacombs.floors[`6`].stats.tier_completions)|| `0`
+        const m6time = (player.data.dungeons.master_catacombs.floors[`6`].stats.fastest_time)|| `0`
+        const m6times = (player.data.dungeons.master_catacombs.floors[`6`].stats.fastest_time_s)|| `0`
+        const m6timess = (player.data.dungeons.master_catacombs.floors[`6`].stats.fastest_time_s_plus)|| `0` 
+        const m6best_score = (player.data.dungeons.master_catacombs.floors[`6`].stats.best_score)|| `0`
+        //m7
+        const m7comp = (player.data.dungeons.master_catacombs.floors[`7`].stats.tier_completions)|| `0`
+        const m7time = (player.data.dungeons.master_catacombs.floors[`7`].stats.fastest_time)|| `0`
+        const m7times = (player.data.dungeons.master_catacombs.floors[`7`].stats.fastest_time_s)|| `0`
+        const m7timess = (player.data.dungeons.master_catacombs.floors[`7`].stats.fastest_time_s_plus)|| `0` 
+        const m7best_score = (player.data.dungeons.master_catacombs.floors[`7`].stats.best_score) || `0`     
+        //Tank
+        const tanklevelWithProgresss = (player.data.dungeons.classes.tank.levelWithProgress) || `0`
+        const tanklevelp = Math.round((tanklevelWithProgresss) * 100) /100
+        const tanklevel = (player.data.dungeons.catacombs.classes.tank.level) || `0`
+        //Healer
+        const heallevelWithProgresss = (player.data.dungeons.classes.healer.levelWithProgress) || `0`
+        const heallevelp = Math.round((heallevelWithProgresss) * 100) /100
+        const heallevel = (player.data.dungeons.catacombs.classes.healer.level) || `0`
+        //Mage
+        const magelevelWithProgresss = (player.data.dungeons.classes.mage.levelWithProgress) || `0`
+        const magelevelp = Math.round((magelevelWithProgresss) * 100) /100
+        const magelevel = (player.data.dungeons.catacombs.classes.mage.level) || `0`
+        //Archer
+        const archlevelWithProgresss = (player.data.dungeons.classes.archer.levelWithProgress) || `0`
+        const archlevelp = Math.round((archlevelWithProgresss) * 100) /100
+        const archlevel = (player.data.dungeons.catacombs.classes.archer.level) || `0`
+        //Bers
+        const berslevelWithProgresss = (player.data.dungeons.classes.berserk.levelWithProgress) || `0`
+        const berslevelp = Math.round((berslevelWithProgresss) * 100) /100
+        const berslevel = (player.data.dungeons.catacombs.classes.berserk.level) || `0`
+        //bonzo
+        const bonzoT = (player.data.dungeons.boss_collections.catacombs_1.tier) || `0`
+        const bonzoK = (player.data.dungeons.boss.collections.catacombs_1.killed) || `0`
+        const bonzoD = (player.data.dungeons.boss.collections.catacombs_1.floors.catacombs_1) || `0`
+        const bonzoMM = (player.data.dungeons.boss.collections.catacombs_1.floors.master_catacombs_1) || `0`
+        //scarf
+        const scarfT = (player.data.dungeons.boss_collections.catacombs_2.tier) || `0`
+        const scarfK = (player.data.dungeons.boss.collections.catacombs_2.killed) || `0`
+        const scarfD = (player.data.dungeons.boss.collections.catacombs_2.floors.catacombs_2) || `0`
+        const scarfMM = (player.data.dungeons.boss.collections.catacombs_2.floors.master_catacombs_2) || `0`
+        //professer
+        const profT = (player.data.dungeons.boss_collections.catacombs_3.tier) || `0`
+        const profK = (player.data.dungeons.boss.collections.catacombs_3.killed) || `0`
+        const profD = (player.data.dungeons.boss.collections.catacombs_3.floors.catacombs_3) || `0`
+        const profMM = (player.data.dungeons.boss.collections.catacombs_3.floors.master_catacombs_3) || `0`
+        //thorn
+        const thornT = (player.data.dungeons.boss_collections.catacombs_4.tier) || `0`
+        const thornK = (player.data.dungeons.boss.collections.catacombs_4.killed) || `0`
+        const thornD = (player.data.dungeons.boss.collections.catacombs_4.floors.catacombs_4) || `0`
+        const thornMM = (player.data.dungeons.boss.collections.catacombs_4.floors.master_catacombs_4) || `0`
+        //livid
+        const lividT = (player.data.dungeons.boss_collections.catacombs_5.tier) || `0`
+        const lividK = (player.data.dungeons.boss.collections.catacombs_5.killed) || `0`
+        const lividD = (player.data.dungeons.boss.collections.catacombs_5.floors.catacombs_5) || `0`
+        const lividMM = (player.data.dungeons.boss.collections.catacombs_5.floors.master_catacombs_5) || `0`
+        // SADAN NON L
+        const sadanT = (player.data.dungeons.boss_collections.catacombs_6.tier) || `0`
+        const sadanK = (player.data.dungeons.boss.collections.catacombs_6.killed) || `0`
+        const sadanD = (player.data.dungeons.boss.collections.catacombs_6.floors.catacombs_6) || `0`
+        const sadanMM = (player.data.dungeons.boss.collections.catacombs_6.floors.master_catacombs_6) || `0`
+        //Necron (uwu gimme ur stick pls I need 1 more for term :( )
+        const necronT = (player.data.dungeons.boss_collections.catacombs_7.tier) || `0`
+        const necronK = (player.data.dungeons.boss.collections.catacombs_7.killed) || `0`
+        const necronD = (player.data.dungeons.boss.collections.catacombs_7.floors.catacombs_7) || `0`
+        const necronMM = (player.data.dungeons.boss.collections.catacombs_7.floors.master_catacombs_7) || `0`
+
 
 
         const chat = {
             color: 0xffa600,
-            title: `${name}'s Dungeon Stats On ${profilename}`,
+            title: `${username}'s Dungeon Stats On ${profilename}`,
             URL: `https://sky.shiiyu.moe/stats/${name}`,
-            description: (`${messages.errorcodes.error400}`),
+            description: (`<:dungeons:1062778077735829615>Catacombs Level: **${catalvl}**\n<:Iron_Chestplate:1061454825839144970>Average Class Level: **${classavrg}**\n<:CHEST:1061454902049656993Secrets Found: **${secrets}**`),
             thumbnail: {
                 url: `https://api.mineatar.io/body/full/${name}`,
             },
             timestamp: new Date().toISOString(),
             fields: [
                 {
-                    name: `Entrance`,
-                    value: `Kills: ${f0comp}\nHighest Score: ${f0best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f0time))}\nFastest Time S: ${(convertMsToMinutesSeconds(f0times))}\nFastest Time S+: ${(convertMsToMinutesSeconds(f0timess))}`,
+                    name: `<:f0:1059665198916583464> Entrance`,
+                    value: `<:bestiary_67:1062778101223936090> Kills: **${f0comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${f0best_score}**\n<:dungeons:1062778077735829615> Fastest Time: **${(convertMsToMinutesSeconds(f0time))}**\n<:s_score:1062777386124460042> Fastest Time S: **${(convertMsToMinutesSeconds(f0times))}**\n<:s_plus_score:1062777348564471869> Fastest Time S+: **${(convertMsToMinutesSeconds(f0timess))}**`,
                     inline: true,
                 },
                 {
@@ -118,28 +224,13 @@ module.exports = {
                     inline: true,
                 },
                 {
-                    name: `Floor 1`,
-                    value: `Kills: ${f1comp}\nHighest Score: ${f1best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f1time))}\nFastest Time S: ${(convertMsToMinutesSeconds(f1times))}\nFastest Time S+: ${(convertMsToMinutesSeconds(f1timess))}`,
+                    name: `<:f1:1059665222232702976> Floor 1`,
+                    value: `<:bestiary_67:1062778101223936090> Kills: **${f1comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${f1best_score}**\n<:dungeons:1062778077735829615> Fastest Time: **${(convertMsToMinutesSeconds(f1time))}**\n<:s_score:1062777386124460042> Fastest Time S: **${(convertMsToMinutesSeconds(f1times))}**\n<:s_plus_score:1062777348564471869> Fastest Time S+: **${(convertMsToMinutesSeconds(f1timess))}**`,
                     inline: true,
                 },
                 {
-                    name: `Floor 2`,
-                    value: `Kills: ${f2comp}\nHighest Score: ${f2best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f2time))}\nFastest Time S: ${(convertMsToMinutesSeconds(f2times))}\n Fastest Time S+: ${(convertMsToMinutesSeconds(f2timess))}`,
-                    inline: true,
-                },
-                {
-                    name: '\u200b',
-                    value: '\u200b',
-                    inline: true,
-                },
-                {
-                    name: `Floor 3`,
-                    value: `Kills: ${f3comp}\nHighest Score: ${f3best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f3time))}\nFastest Time S: ${(convertMsToMinutesSeconds(f3times))}\nFastest Time S+: ${(convertMsToMinutesSeconds(f3timess))}`,
-                    inline: true,
-                },
-                {
-                    name: `Floor 4`,
-                    value: `Kills: ${f4comp}\nHighest Score: ${f4best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f4time))}\nFastest Time S: ${(convertMsToMinutesSeconds(f4times))}\nFastest Time S+: ${(convertMsToMinutesSeconds(f4timess))}`,
+                    name: `<:f2:1059665244345094244> Floor 2`,
+                    value: `<:bestiary_67:1062778101223936090> Kills: **${f2comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: ${f2best_score}**\n<:dungeons:1062778077735829615> Fastest Time: ${(convertMsToMinutesSeconds(f2time))}\n<:s_score:1062777386124460042> Fastest Time S: ${(convertMsToMinutesSeconds(f2times))}\n <:s_plus_score:1062777348564471869> Fastest Time S+: ${(convertMsToMinutesSeconds(f2timess))}`,
                     inline: true,
                 },
                 {
@@ -148,13 +239,13 @@ module.exports = {
                     inline: true,
                 },
                 {
-                    name: `Floor 5`,
-                    value: `Kills: ${f5comp}\nHighest Score: ${f5best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f5time))}\nFastest Time S: ${(convertMsToMinutesSeconds(f5times))}\nFastest Time S+: ${(convertMsToMinutesSeconds(f5timess))}`,
+                    name: `<:f3:1059665271188639784> Floor 3`,
+                    value: `<:bestiary_67:1062778101223936090> Kills: **${f3comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${f3best_score}**\n<:dungeons:1062778077735829615> Fastest Time: ${(convertMsToMinutesSeconds(f3time))}\n<:s_score:1062777386124460042> Fastest Time S: ${(convertMsToMinutesSeconds(f3times))}\n<:s_plus_score:1062777348564471869> Fastest Time S+: ${(convertMsToMinutesSeconds(f3timess))}`,
                     inline: true,
                 },
                 {
-                    name: `Floor 6`,
-                    value: `Kills: ${f6comp}\nHighest Score: ${f6best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f6time))}\nFastest Time S: ${(convertMsToMinutesSeconds(f6times))}\nFastest Time S+: ${(convertMsToMinutesSeconds(f6timess))}`,
+                    name: `<:f4:1059665296656437358> Floor 4`,
+                    value: `<:bestiary_67:1062778101223936090> Kills: **${f4comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${f4best_score}**\n<:dungeons:1062778077735829615> Fastest Time: ${(convertMsToMinutesSeconds(f4time))}\n<:s_score:1062777386124460042> Fastest Time S: ${(convertMsToMinutesSeconds(f4times))}\n<:s_plus_score:1062777348564471869> Fastest Time S+: ${(convertMsToMinutesSeconds(f4timess))}`,
                     inline: true,
                 },
                 {
@@ -163,8 +254,23 @@ module.exports = {
                     inline: true,
                 },
                 {
-                    name: `Floor 7`,
-                    value: `Kills: ${f7comp}\nHighest Score: ${f7best_score}\nFastest Time: ${(convertMsToMinutesSeconds(f7time))}\nFastest Time S+: ${(convertMsToMinutesSeconds(f7times))}\nFastest Time S+ ${(convertMsToMinutesSeconds(f7times))}`,
+                    name: `<:f5:1059665323449667695> Floor 5`,
+                    value: `<:bestiary_67:1062778101223936090> Kills: **${f5comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${f5best_score}**\n<:dungeons:1062778077735829615> Fastest Time: ${(convertMsToMinutesSeconds(f5time))}\n<:s_score:1062777386124460042> Fastest Time S: ${(convertMsToMinutesSeconds(f5times))}\n<:s_plus_score:1062777348564471869> Fastest Time S+: ${(convertMsToMinutesSeconds(f5timess))}`,
+                    inline: true,
+                },
+                {
+                    name: `<:f6:1059665342231744634> Floor 6`,
+                    value: `<:bestiary_67:1062778101223936090> Kills: **${f6comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${f6best_score}**\n<:dungeons:1062778077735829615> Fastest Time: ${(convertMsToMinutesSeconds(f6time))}\n<:s_score:1062777386124460042> Fastest Time S: ${(convertMsToMinutesSeconds(f6times))}\n<:s_plus_score:1062777348564471869> Fastest Time S+: ${(convertMsToMinutesSeconds(f6timess))}`,
+                    inline: true,
+                },
+                {
+                    name: '\u200b',
+                    value: '\u200b',
+                    inline: true,
+                },
+                {
+                    name: `<:f7:1059665388570419210> Floor 7`,
+                    value: `<:bestiary_67:1062778101223936090> Kills: **${f7comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${f7best_score}**\n<:dungeons:1062778077735829615> Fastest Time: ${(convertMsToMinutesSeconds(f7time))}\n<:s_plus_score:1062777348564471869> Fastest Time S+: ${(convertMsToMinutesSeconds(f7times))}\nFastest Time S+ ${(convertMsToMinutesSeconds(f7timess))}`,
                     inline: true,
                 },
             ],
@@ -172,16 +278,16 @@ module.exports = {
             };
             const mm = {
                 color: 0xffa600,
-                title: `${name}'s Master Mode Stats On ${profilename}`,
+                title: `${username}'s Master Mode Stats On ${profilename}`,
                 URL: `https://sky.shiiyu.moe/stats/${name}`,
-                description: (`${messages.errorcodes.error400}`),
+                description: (`<:dungeons:1062778077735829615>Catacombs Level: **${catalvl}**\n<:Iron_Chestplate:1061454825839144970>Average Class Level: **${classavrg}**\n<:CHEST:1061454902049656993Secrets Found: **${secrets}**`),
                 thumbnail: {
                     url: `https://api.mineatar.io/body/full/${name}`,
                 },
                 timestamp: new Date().toISOString(),
                 fields: [
                     {
-                        name: `Entrance`,
+                        name: `<:f0:1059665198916583464> Entrance`,
                         value: `it doesnt exist!`,
                         inline: true,
                     },
@@ -191,27 +297,12 @@ module.exports = {
                         inline: true,
                     },
                     {
-                        name: `MM Floor 1`,
+                        name: `<:m1:1059664958280958037> MM Floor 1`,
                         value: `test`,
                         inline: true,
                     },
                     {
-                        name: `MM Floor 2`,
-                        value: `test`,
-                        inline: true,
-                    },
-                    {
-                        name: '\u200b',
-                        value: '\u200b',
-                        inline: true,
-                    },
-                    {
-                        name: `MM Floor 3`,
-                        value: `test`,
-                        inline: true,
-                    },
-                    {
-                        name: `MM Floor 4`,
+                        name: `<:m2:1059665011808681995> MM Floor 2`,
                         value: `test`,
                         inline: true,
                     },
@@ -221,12 +312,12 @@ module.exports = {
                         inline: true,
                     },
                     {
-                        name: `MM Floor 5`,
+                        name: `<:m3:1059665028397150268> MM Floor 3`,
                         value: `test`,
                         inline: true,
                     },
                     {
-                        name: `MM Floor 6`,
+                        name: `<:m4:1059665056423489647> MM Floor 4`,
                         value: `test`,
                         inline: true,
                     },
@@ -236,7 +327,22 @@ module.exports = {
                         inline: true,
                     },
                     {
-                        name: `MM Floor 7`,
+                        name: `<:m5:1059665078313549824> MM Floor 5`,
+                        value: `test`,
+                        inline: true,
+                    },
+                    {
+                        name: `<:m6:1059665099507376259> MM Floor 6`,
+                        value: `test`,
+                        inline: true,
+                    },
+                    {
+                        name: '\u200b',
+                        value: '\u200b',
+                        inline: true,
+                    },
+                    {
+                        name: `<:m7:1059665136878637136> MM Floor 7`,
                         value: `test`,
                         inline: true,
                     },
@@ -245,47 +351,47 @@ module.exports = {
                 };
                 const coll = {
                     color: 0xffa600,
-                    title: `${name}'s Collections Data On ${profilename}`,
+                    title: `${username}'s Collections Data On ${profilename}`,
                     URL: `https://sky.shiiyu.moe/stats/${name}`,
-                    description: (`${messages.errorcodes.error400}`),
+                    description: (`<:dungeons:1062778077735829615>Catacombs Level: **${catalvl}**\n<:Iron_Chestplate:1061454825839144970>Average Class Level: **${classavrg}**\n<:CHEST:1061454902049656993Secrets Found: **${secrets}**`),
                     thumbnail: {
                         url: `https://api.mineatar.io/body/full/${name}`,
                     },
                     timestamp: new Date().toISOString(),
                     fields: [
                         {
-                            name: `Bonzo `,
-                            value: `test`,
+                            name: `<:F1:1062782013553266748> Bonzo (${bonzoT})`,
+                            value: `<:SKULL_ITEM_1:1062777707127123998>Total Kills: **${bonzoK}**\n<:f2:1059665244345094244>Dungeon Kills: **${bonzoD}**\n<:m2:1059665011808681995>Master Mode Kills: **${bonzoMM}**`,
                             inline: true,
                         },
                         {
-                            name: 'Scarf',
-                            value: '\u200b',
+                            name: `<:F2:1062782043517358150> Scarf (${scarfT})`,
+                            value: `<:SKULL_ITEM_1:1062777707127123998>Total Kills: **${scarfK}**\n<:f2:1059665244345094244>Dungeon Kills: **${scarfD}**\n<:m2:1059665011808681995>Master Mode Kills: **${scarfMM}**`,
                             inline: true,
                         },
                         {
-                            name: `The Professor`,
-                            value: `test`,
+                            name: `<:F3:1062782093911928883> The Professor (${profT})`,
+                            value: `<:SKULL_ITEM_1:1062777707127123998>Total Kills: **${profK}**\n<:f3:1059665271188639784>Dungeon Kills: **${profD}**\n<:m3:1059665028397150268>Master Mode Kills: **${profMM}**`,
                             inline: true,
                         },
                         {
-                            name: `Thorn`,
-                            value: `test`,
+                            name: `<:F4:1062782125188841473> Thorn (${thornT})`,
+                            value: `<:SKULL_ITEM_1:1062777707127123998>Total Kills: **${thornK}**\n<:f4:1059665296656437358>Dungeon Kills: **${thornD}**\n<:m4:1059665056423489647>Master Mode Kills: **${thornMM}**`,
                             inline: true,
                         },
                         {
-                            name: `Livid`,
-                            value: '\u200b',
+                            name: `<:F5:1062782147611598928> Livid (${lividT})`,
+                            value: `<:SKULL_ITEM_1:1062777707127123998>Total Kills: **${lividK}**\n<:f5:1059665323449667695>Dungeon Kills: **${lividD}**\n<:m5:1059665078313549824>Master Mode Kills: **${lividMM}**`,
                             inline: true,
                         },
                         {
-                            name: `Sadan`,
-                            value: `test`,
+                            name: `<:F6:1062782219304837160> Sadan (${sadanT})`,
+                            value: `<:SKULL_ITEM_1:1062777707127123998>Total Kills: **${sadanK}**\n<:f6:1059665342231744634>Dungeon Kills: **${sadanD}**\n<:m6:1059665099507376259>Master Mode Kills: **${sadanMM}**`,
                             inline: true,
                         },
                         {
-                            name: `Necron`,
-                            value: `test`,
+                            name: `<:F7:1062782318781145170> Necron (${necronT})`,
+                            value: `<:SKULL_ITEM_1:1062777707127123998>Total Kills: **${necronK}**\n<:f7:1059665388570419210>Dungeon Kills: **${necronD}**\n<:m7:1059665136878637136>Master Mode Kills: **${necronMM}**`,
                             inline: true,
                         },
                     ],
@@ -293,37 +399,42 @@ module.exports = {
                     };
                     const classs = {
                         color: 0xffa600,
-                        title: `${name}'s Collections Data On ${profilename}`,
+                        title: `${username}'s Class Data On ${profilename}`,
                         URL: `https://sky.shiiyu.moe/stats/${name}`,
-                        description: (`${messages.errorcodes.error400}`),
+                        description: (`<:dungeons:1062778077735829615>Catacombs Level: **${catalvl}**\n<:Iron_Chestplate:1061454825839144970>Average Class Level: **${classavrg}**\n<:CHEST:1061454902049656993Secrets Found: **${secrets}**`),
                         thumbnail: {
                             url: `https://api.mineatar.io/body/full/${name}`,
                         },
                         timestamp: new Date().toISOString(),
                         fields: [
                             {
-                                name: `Mage`,
-                                value: `test`,
+                                name: `<:Mage_Dungeon_Orb:1062778035792793763> Mage (${magelevel})`,
+                                value: `Class Level: **${magelevelp}**`,
                                 inline: true,
                             },
                             {
-                                name: `Berserker`,
-                                value: '\u200b',
+                                name: `<:Berserk_Dungeon_Orb:1062777901948358787> Berserker (${berslevel})`,
+                                value: `Class Level: **${berslevelp}**`,
                                 inline: true,
                             },
                             {
-                                name: `Archer`,
-                                value: `test`,
+                                name: `<:Archer_Dungeon_Orb:1059665553918267442> Archer (${archlevel})`,
+                                value: `Class Level: **${archlevelp}**`,
                                 inline: true,
                             },
                             {
-                                name: `Tank`,
-                                value: `test`,
+                                name: `<:Tank_Dungeon_Orb:1062778004343881888> Tank (${tanklevel})`,
+                                value: `Class Level: **${tanklevelp}**`,
                                 inline: true,
                             },
                             {
-                                name: `Healer (uwu)`,
-                                value: '\u200b',
+                                name: `<:Healer_Dungeon_Orb:1062777963311022201> Healer (${heallevel})`,
+                                value: `Class Level: **${heallevelp}**`,
+                                inline: true,
+                            },
+                            {
+                                name: `<:dungeons:1062778077735829615>Selected Class`,
+                                value: `Class: ${selectedclass}`,
                                 inline: true,
                             },
                         ],
@@ -332,29 +443,29 @@ module.exports = {
             const mmbutton = new ActionRowBuilder()
 			.addComponents(
 				new ButtonBuilder()
-					.setCustomId('mmbut')
-					.setLabel(`Mastermode Dungeons Only`)
+					.setCustomId('mmm')
+					.setLabel(`Mastermode Catacombs`)
 					.setStyle(ButtonStyle.Danger),
 			);
             const onlydungeon = new ActionRowBuilder()
 			.addComponents(
 				new ButtonBuilder()
-					.setCustomId('onlydun')
-					.setLabel(`Normal Mode Only`)
+					.setCustomId('normal')
+					.setLabel(`Catacombs`)
 					.setStyle(ButtonStyle.Success),
 			);
             const classes = new ActionRowBuilder()
 			.addComponents(
 				new ButtonBuilder()
 					.setCustomId('class')
-					.setLabel(`Classes`)
+					.setLabel(`Dungeon Classes`)
 					.setStyle(ButtonStyle.Secondary),
 			)
             const collections = new ActionRowBuilder()
 			.addComponents(
 				new ButtonBuilder()
 					.setCustomId('collec')
-					.setLabel(`Collections`)
+					.setLabel(`Dungeon Collections`)
 					.setStyle(ButtonStyle.Secondary),
 			)
 
@@ -362,7 +473,7 @@ module.exports = {
             await interaction.editReply({  embeds: [ chat ], components: [mmbutton, onlydungeon, classes, collections]})
 
             collector.on('collect', async i => {
-                if (i.customId === 'mmbut') {
+                if (i.customId === 'mmm') {
                     await i.deferUpdate();
                     await i.editReply({ embeds: [ mm ], components: [mmbutton, onlydungeon, classes, collections] });
                 }
@@ -380,7 +491,7 @@ module.exports = {
                 }
             });
             collector.on('collect', async i => {
-                if (i.customId === 'onlydun') {
+                if (i.customId === 'normal') {
                     await i.deferUpdate();
                     await i.editReply({ embeds: [ chat ], components: [mmbutton, onlydungeon, classes, collections] });
                 }
@@ -389,4 +500,3 @@ module.exports = {
 
     }
 }
-// i.customId === 'class' &&

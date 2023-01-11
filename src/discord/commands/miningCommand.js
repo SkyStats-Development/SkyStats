@@ -17,7 +17,7 @@ module.exports = {
             name: 'name',
             description: 'mc username',
             type: 3,
-            required: true
+            required: false
         },
 
         
@@ -25,7 +25,10 @@ module.exports = {
     execute: async (interaction, client, InteractionCreate) => {
         await interaction.deferReply();
         await wait(1);
-        let name = interaction.options.getString("name")
+        const linked = require('../../../data/discordLinked.json')
+        const uuid = linked?.[interaction?.user?.id]?.data[0]
+        let name = interaction.options.getString("name") || uuid
+        const username = (await axios.get(`https://sessionserver.mojang.com/session/minecraft/profile/${uuid}/`)).data.name || name
         const profileraw = (await axios.get(`https://sky.shiiyu.moe/api/v2/profile/${name}`)).data.profiles
         let currentProfile;
         for (var key of Object.keys(profileraw)) {
@@ -46,7 +49,7 @@ module.exports = {
 
         const chat = {
             color: 0xffa600,
-            title: `${name}'s Mining Stats On ${profilename}`,
+            title: `${username}'s Mining Stats On ${profilename}`,
             URL: `https://sky.shiiyu.moe/stats/${name}`,
             description: (`${messages.errorcodes.error400}`),
             thumbnail: {
