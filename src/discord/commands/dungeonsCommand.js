@@ -230,7 +230,7 @@ module.exports = {
                 },
                 {
                     name: `<:f2:1059665244345094244> Floor 2`,
-                    value: `<:bestiary_67:1062778101223936090> Kills: **${f2comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: ${f2best_score}**\n<:dungeons:1062778077735829615> Fastest Time: ${(convertMsToMinutesSeconds(f2time))}\n<:s_score:1062777386124460042> Fastest Time S: ${(convertMsToMinutesSeconds(f2times))}\n <:s_plus_score:1062777348564471869> Fastest Time S+: ${(convertMsToMinutesSeconds(f2timess))}`,
+                    value: `<:bestiary_67:1062778101223936090> Kills: **${f2comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: ${f2best_score}**\n<:dungeons:1062778077735829615> Fastest Time: **${(convertMsToMinutesSeconds(f2time))}**\n<:s_score:1062777386124460042> Fastest Time S: **${(convertMsToMinutesSeconds(f2times))}**\n <:s_plus_score:1062777348564471869> Fastest Time S+: **${(convertMsToMinutesSeconds(f2timess))}**`,
                     inline: true,
                 },
                 {
@@ -240,12 +240,12 @@ module.exports = {
                 },
                 {
                     name: `<:f3:1059665271188639784> Floor 3`,
-                    value: `<:bestiary_67:1062778101223936090> Kills: **${f3comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${f3best_score}**\n<:dungeons:1062778077735829615> Fastest Time: ${(convertMsToMinutesSeconds(f3time))}\n<:s_score:1062777386124460042> Fastest Time S: ${(convertMsToMinutesSeconds(f3times))}\n<:s_plus_score:1062777348564471869> Fastest Time S+: ${(convertMsToMinutesSeconds(f3timess))}`,
+                    value: `<:bestiary_67:1062778101223936090> Kills: **${f3comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${f3best_score}**\n<:dungeons:1062778077735829615> Fastest Time: **${(convertMsToMinutesSeconds(f3time))}**\n<:s_score:1062777386124460042> Fastest Time S: **${(convertMsToMinutesSeconds(f3times))}**\n<:s_plus_score:1062777348564471869> Fastest Time S+: **${(convertMsToMinutesSeconds(f3timess))}**`,
                     inline: true,
                 },
                 {
                     name: `<:f4:1059665296656437358> Floor 4`,
-                    value: `<:bestiary_67:1062778101223936090> Kills: **${f4comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${f4best_score}**\n<:dungeons:1062778077735829615> Fastest Time: ${(convertMsToMinutesSeconds(f4time))}\n<:s_score:1062777386124460042> Fastest Time S: ${(convertMsToMinutesSeconds(f4times))}\n<:s_plus_score:1062777348564471869> Fastest Time S+: ${(convertMsToMinutesSeconds(f4timess))}`,
+                    value: `<:bestiary_67:1062778101223936090> Kills: **${f4comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${f4best_score}**\n<:dungeons:1062778077735829615> Fastest Time: **${(convertMsToMinutesSeconds(f4time))}**\n<:s_score:1062777386124460042> Fastest Time S: **${(convertMsToMinutesSeconds(f4times))}**\n<:s_plus_score:1062777348564471869> Fastest Time S+: **${(convertMsToMinutesSeconds(f4timess))}**`,
                     inline: true,
                 },
                 {
@@ -255,12 +255,12 @@ module.exports = {
                 },
                 {
                     name: `<:f5:1059665323449667695> Floor 5`,
-                    value: `<:bestiary_67:1062778101223936090> Kills: **${f5comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${f5best_score}**\n<:dungeons:1062778077735829615> Fastest Time: ${(convertMsToMinutesSeconds(f5time))}\n<:s_score:1062777386124460042> Fastest Time S: ${(convertMsToMinutesSeconds(f5times))}\n<:s_plus_score:1062777348564471869> Fastest Time S+: ${(convertMsToMinutesSeconds(f5timess))}`,
+                    value: `<:bestiary_67:1062778101223936090> Kills: **${f5comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${f5best_score}**\n<:dungeons:1062778077735829615> Fastest Time: **${(convertMsToMinutesSeconds(f5time))}**\n<:s_score:1062777386124460042> Fastest Time S: **${(convertMsToMinutesSeconds(f5times))}**\n<:s_plus_score:1062777348564471869> Fastest Time S+: **${(convertMsToMinutesSeconds(f5timess))}**`,
                     inline: true,
                 },
                 {
                     name: `<:f6:1059665342231744634> Floor 6`,
-                    value: `<:bestiary_67:1062778101223936090> Kills: **${f6comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${f6best_score}**\n<:dungeons:1062778077735829615> Fastest Time: ${(convertMsToMinutesSeconds(f6time))}\n<:s_score:1062777386124460042> Fastest Time S: ${(convertMsToMinutesSeconds(f6times))}\n<:s_plus_score:1062777348564471869> Fastest Time S+: ${(convertMsToMinutesSeconds(f6timess))}`,
+                    value: `<:bestiary_67:1062778101223936090> Kills: **${f6comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${f6best_score}**\n<:dungeons:1062778077735829615> Fastest Time: **${(convertMsToMinutesSeconds(f6time))}**\n<:s_score:1062777386124460042> Fastest Time S: **${(convertMsToMinutesSeconds(f6times))}**\n<:s_plus_score:1062777348564471869> Fastest Time S+: **${(convertMsToMinutesSeconds(f6timess))}**`,
                     inline: true,
                 },
                 {
@@ -270,7 +270,7 @@ module.exports = {
                 },
                 {
                     name: `<:f7:1059665388570419210> Floor 7`,
-                    value: `<:bestiary_67:1062778101223936090> Kills: **${f7comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${f7best_score}**\n<:dungeons:1062778077735829615> Fastest Time: ${(convertMsToMinutesSeconds(f7time))}\n<:s_plus_score:1062777348564471869> Fastest Time S+: ${(convertMsToMinutesSeconds(f7times))}\nFastest Time S+ ${(convertMsToMinutesSeconds(f7timess))}`,
+                    value: `<:bestiary_67:1062778101223936090> Kills: **${f7comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${f7best_score}**\n<:dungeons:1062778077735829615> Fastest Time: **${(convertMsToMinutesSeconds(f7time))}**\n<:s_plus_score:1062777348564471869> Fastest Time S+: **${(convertMsToMinutesSeconds(f7times))}**\nFastest Time S+ **${(convertMsToMinutesSeconds(f7timess))}**`,
                     inline: true,
                 },
             ],
@@ -298,12 +298,12 @@ module.exports = {
                     },
                     {
                         name: `<:m1:1059664958280958037> MM Floor 1`,
-                        value: `test`,
+                        value: `<:bestiary_67:1062778101223936090> Kills: **${m1comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${m1best_score}**\n<:dungeons:1062778077735829615> Fastest Time: **${(convertMsToMinutesSeconds(m1time))}**\n<:s_score:1062777386124460042> Fastest Time S: **${(convertMsToMinutesSeconds(m1times))}**\n<:s_plus_score:1062777348564471869> Fastest Time S+: **${(convertMsToMinutesSeconds(m1timess))}**`,
                         inline: true,
                     },
                     {
                         name: `<:m2:1059665011808681995> MM Floor 2`,
-                        value: `test`,
+                        value: `<:bestiary_67:1062778101223936090> Kills: **${m2comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${m2best_score}**\n<:dungeons:1062778077735829615> Fastest Time: **${(convertMsToMinutesSeconds(m2time))}**\n<:s_score:1062777386124460042> Fastest Time S: **${(convertMsToMinutesSeconds(m2times))}**\n<:s_plus_score:1062777348564471869> Fastest Time S+: **${(convertMsToMinutesSeconds(m2timess))}**`,
                         inline: true,
                     },
                     {
@@ -313,12 +313,12 @@ module.exports = {
                     },
                     {
                         name: `<:m3:1059665028397150268> MM Floor 3`,
-                        value: `test`,
+                        value: `<:bestiary_67:1062778101223936090> Kills: **${m3comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${m3best_score}**\n<:dungeons:1062778077735829615> Fastest Time: **${(convertMsToMinutesSeconds(m3time))}**\n<:s_score:1062777386124460042> Fastest Time S: **${(convertMsToMinutesSeconds(m3times))}**\n<:s_plus_score:1062777348564471869> Fastest Time S+: **${(convertMsToMinutesSeconds(m3timess))}**`,
                         inline: true,
                     },
                     {
                         name: `<:m4:1059665056423489647> MM Floor 4`,
-                        value: `test`,
+                        value: `<:bestiary_67:1062778101223936090> Kills: **${m4comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${m4best_score}**\n<:dungeons:1062778077735829615> Fastest Time: **${(convertMsToMinutesSeconds(m4time))}**\n<:s_score:1062777386124460042> Fastest Time S: **${(convertMsToMinutesSeconds(m4times))}**\n<:s_plus_score:1062777348564471869> Fastest Time S+: **${(convertMsToMinutesSeconds(m4timess))}**`,
                         inline: true,
                     },
                     {
@@ -328,12 +328,12 @@ module.exports = {
                     },
                     {
                         name: `<:m5:1059665078313549824> MM Floor 5`,
-                        value: `test`,
+                        value: `<:bestiary_67:1062778101223936090> Kills: **${m5comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${m5best_score}**\n<:dungeons:1062778077735829615> Fastest Time: **${(convertMsToMinutesSeconds(m5time))}**\n<:s_score:1062777386124460042> Fastest Time S: **${(convertMsToMinutesSeconds(m5times))}**\n<:s_plus_score:1062777348564471869> Fastest Time S+: **${(convertMsToMinutesSeconds(m5timess))}**`,
                         inline: true,
                     },
                     {
                         name: `<:m6:1059665099507376259> MM Floor 6`,
-                        value: `test`,
+                        value: `<:bestiary_67:1062778101223936090> Kills: **${m6comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${m6best_score}**\n<:dungeons:1062778077735829615> Fastest Time: **${(convertMsToMinutesSeconds(m6time))}**\n<:s_score:1062777386124460042> Fastest Time S: **${(convertMsToMinutesSeconds(m6times))}**\n<:s_plus_score:1062777348564471869> Fastest Time S+: **${(convertMsToMinutesSeconds(m6timess))}**`,
                         inline: true,
                     },
                     {
@@ -343,7 +343,7 @@ module.exports = {
                     },
                     {
                         name: `<:m7:1059665136878637136> MM Floor 7`,
-                        value: `test`,
+                        value: `<:bestiary_67:1062778101223936090> Kills: **${m7comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${m7best_score}**\n<:dungeons:1062778077735829615> Fastest Time: **${(convertMsToMinutesSeconds(m7time))}**\n<:s_score:1062777386124460042> Fastest Time S: **${(convertMsToMinutesSeconds(m7times))}**\n<:s_plus_score:1062777348564471869> Fastest Time S+: **${(convertMsToMinutesSeconds(m7timess))}**`,
                         inline: true,
                     },
                 ],
