@@ -148,58 +148,58 @@ module.exports = {
         //Tank
         const tanklevelWithProgresss = (player.data.dungeons.classes.tank.levelWithProgress) || `0`
         const tanklevelp = Math.round((tanklevelWithProgresss) * 100) /100
-        const tanklevel = (player.data.dungeons.catacombs.classes.tank.level) || `0`
+        const tanklevel = (player.data.dungeons.classes.tank.level) || `0`
         //Healer
         const heallevelWithProgresss = (player.data.dungeons.classes.healer.levelWithProgress) || `0`
         const heallevelp = Math.round((heallevelWithProgresss) * 100) /100
-        const heallevel = (player.data.dungeons.catacombs.classes.healer.level) || `0`
+        const heallevel = (player.data.dungeons.classes.healer.level) || `0`
         //Mage
         const magelevelWithProgresss = (player.data.dungeons.classes.mage.levelWithProgress) || `0`
         const magelevelp = Math.round((magelevelWithProgresss) * 100) /100
-        const magelevel = (player.data.dungeons.catacombs.classes.mage.level) || `0`
+        const magelevel = (player.data.dungeons.classes.mage.level) || `0`
         //Archer
         const archlevelWithProgresss = (player.data.dungeons.classes.archer.levelWithProgress) || `0`
         const archlevelp = Math.round((archlevelWithProgresss) * 100) /100
-        const archlevel = (player.data.dungeons.catacombs.classes.archer.level) || `0`
+        const archlevel = (player.data.dungeons.classes.archer.level) || `0`
         //Bers
         const berslevelWithProgresss = (player.data.dungeons.classes.berserk.levelWithProgress) || `0`
         const berslevelp = Math.round((berslevelWithProgresss) * 100) /100
-        const berslevel = (player.data.dungeons.catacombs.classes.berserk.level) || `0`
+        const berslevel = (player.data.dungeons.classes.berserk.level) || `0`
         //bonzo
         const bonzoT = (player.data.dungeons.boss_collections.catacombs_1.tier) || `0`
-        const bonzoK = (player.data.dungeons.boss.collections.catacombs_1.killed) || `0`
-        const bonzoD = (player.data.dungeons.boss.collections.catacombs_1.floors.catacombs_1) || `0`
-        const bonzoMM = (player.data.dungeons.boss.collections.catacombs_1.floors.master_catacombs_1) || `0`
+        const bonzoK = (player.data.dungeons.boss_collections.catacombs_1.killed) || `0`
+        const bonzoD = (player.data.dungeons.boss_collections.catacombs_1.floors.catacombs_1) || `0`
+        const bonzoMM = (player.data.dungeons.boss_collections.catacombs_1.floors.master_catacombs_1) || `0`
         //scarf
         const scarfT = (player.data.dungeons.boss_collections.catacombs_2.tier) || `0`
-        const scarfK = (player.data.dungeons.boss.collections.catacombs_2.killed) || `0`
-        const scarfD = (player.data.dungeons.boss.collections.catacombs_2.floors.catacombs_2) || `0`
-        const scarfMM = (player.data.dungeons.boss.collections.catacombs_2.floors.master_catacombs_2) || `0`
+        const scarfK = (player.data.dungeons.boss_collections.catacombs_2.killed) || `0`
+        const scarfD = (player.data.dungeons.boss_collections.catacombs_2.floors.catacombs_2) || `0`
+        const scarfMM = (player.data.dungeons.boss_collections.catacombs_2.floors.master_catacombs_2) || `0`
         //professer
         const profT = (player.data.dungeons.boss_collections.catacombs_3.tier) || `0`
-        const profK = (player.data.dungeons.boss.collections.catacombs_3.killed) || `0`
-        const profD = (player.data.dungeons.boss.collections.catacombs_3.floors.catacombs_3) || `0`
-        const profMM = (player.data.dungeons.boss.collections.catacombs_3.floors.master_catacombs_3) || `0`
+        const profK = (player.data.dungeons.boss_collections.catacombs_3.killed) || `0`
+        const profD = (player.data.dungeons.boss_collections.catacombs_3.floors.catacombs_3) || `0`
+        const profMM = (player.data.dungeons.boss_collections.catacombs_3.floors.master_catacombs_3) || `0`
         //thorn
         const thornT = (player.data.dungeons.boss_collections.catacombs_4.tier) || `0`
-        const thornK = (player.data.dungeons.boss.collections.catacombs_4.killed) || `0`
-        const thornD = (player.data.dungeons.boss.collections.catacombs_4.floors.catacombs_4) || `0`
-        const thornMM = (player.data.dungeons.boss.collections.catacombs_4.floors.master_catacombs_4) || `0`
+        const thornK = (player.data.dungeons.boss_collections.catacombs_4.killed) || `0`
+        const thornD = (player.data.dungeons.boss_collections.catacombs_4.floors.catacombs_4) || `0`
+        const thornMM = (player.data.dungeons.boss_collections.catacombs_4.floors.master_catacombs_4) || `0`
         //livid
         const lividT = (player.data.dungeons.boss_collections.catacombs_5.tier) || `0`
-        const lividK = (player.data.dungeons.boss.collections.catacombs_5.killed) || `0`
-        const lividD = (player.data.dungeons.boss.collections.catacombs_5.floors.catacombs_5) || `0`
-        const lividMM = (player.data.dungeons.boss.collections.catacombs_5.floors.master_catacombs_5) || `0`
+        const lividK = (player.data.dungeons.boss_collections.catacombs_5.killed) || `0`
+        const lividD = (player.data.dungeons.boss_collections.catacombs_5.floors.catacombs_5) || `0`
+        const lividMM = (player.data.dungeons.boss_collections.catacombs_5.floors.master_catacombs_5) || `0`
         // SADAN NON L
         const sadanT = (player.data.dungeons.boss_collections.catacombs_6.tier) || `0`
-        const sadanK = (player.data.dungeons.boss.collections.catacombs_6.killed) || `0`
-        const sadanD = (player.data.dungeons.boss.collections.catacombs_6.floors.catacombs_6) || `0`
-        const sadanMM = (player.data.dungeons.boss.collections.catacombs_6.floors.master_catacombs_6) || `0`
+        const sadanK = (player.data.dungeons.boss_collections.catacombs_6.killed) || `0`
+        const sadanD = (player.data.dungeons.boss_collections.catacombs_6.floors.catacombs_6) || `0`
+        const sadanMM = (player.data.dungeons.boss_collections.catacombs_6.floors.master_catacombs_6) || `0`
         //Necron (uwu gimme ur stick pls I need 1 more for term :( )
         const necronT = (player.data.dungeons.boss_collections.catacombs_7.tier) || `0`
-        const necronK = (player.data.dungeons.boss.collections.catacombs_7.killed) || `0`
-        const necronD = (player.data.dungeons.boss.collections.catacombs_7.floors.catacombs_7) || `0`
-        const necronMM = (player.data.dungeons.boss.collections.catacombs_7.floors.master_catacombs_7) || `0`
+        const necronK = (player.data.dungeons.boss_collections.catacombs_7.killed) || `0`
+        const necronD = (player.data.dungeons.boss_collections.catacombs_7.floors.catacombs_7) || `0`
+        const necronMM = (player.data.dungeons.boss_collections.catacombs_7.floors.master_catacombs_7) || `0`
 
 
 
@@ -207,7 +207,7 @@ module.exports = {
             color: 0xffa600,
             title: `${username}'s Dungeon Stats On ${profilename}`,
             URL: `https://sky.shiiyu.moe/stats/${name}`,
-            description: (`<:dungeons:1062778077735829615>Catacombs Level: **${catalvl}**\n<:Iron_Chestplate:1061454825839144970>Average Class Level: **${classavrg}**\n<:CHEST:1061454902049656993Secrets Found: **${secrets}**`),
+            description: (`<:dungeons:1062778077735829615>Catacombs Level: **${catalvl}**\n<:Iron_Chestplate:1061454825839144970>Average Class Level: **${classavrg}**\n<:CHEST:1061454902049656993>Secrets Found: **${secrets}**`),
             thumbnail: {
                 url: `https://api.mineatar.io/body/full/${name}`,
             },
@@ -230,7 +230,7 @@ module.exports = {
                 },
                 {
                     name: `<:f2:1059665244345094244> Floor 2`,
-                    value: `<:bestiary_67:1062778101223936090> Kills: **${f2comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: ${f2best_score}**\n<:dungeons:1062778077735829615> Fastest Time: **${(convertMsToMinutesSeconds(f2time))}**\n<:s_score:1062777386124460042> Fastest Time S: **${(convertMsToMinutesSeconds(f2times))}**\n <:s_plus_score:1062777348564471869> Fastest Time S+: **${(convertMsToMinutesSeconds(f2timess))}**`,
+                    value: `<:bestiary_67:1062778101223936090> Kills: **${f2comp}**\n<:NETHER_STAR:1062777758645768325> Highest Score: **${f2best_score}**\n<:dungeons:1062778077735829615> Fastest Time: **${(convertMsToMinutesSeconds(f2time))}**\n<:s_score:1062777386124460042> Fastest Time S: **${(convertMsToMinutesSeconds(f2times))}**\n <:s_plus_score:1062777348564471869> Fastest Time S+: **${(convertMsToMinutesSeconds(f2timess))}**`,
                     inline: true,
                 },
                 {
@@ -280,7 +280,7 @@ module.exports = {
                 color: 0xffa600,
                 title: `${username}'s Master Mode Stats On ${profilename}`,
                 URL: `https://sky.shiiyu.moe/stats/${name}`,
-                description: (`<:dungeons:1062778077735829615>Catacombs Level: **${catalvl}**\n<:Iron_Chestplate:1061454825839144970>Average Class Level: **${classavrg}**\n<:CHEST:1061454902049656993Secrets Found: **${secrets}**`),
+                description: (`<:dungeons:1062778077735829615>Catacombs Level: **${catalvl}**\n<:Iron_Chestplate:1061454825839144970>Average Class Level: **${classavrg}**\n<:CHEST:1061454902049656993>Secrets Found: **${secrets}**`),
                 thumbnail: {
                     url: `https://api.mineatar.io/body/full/${name}`,
                 },
@@ -353,7 +353,7 @@ module.exports = {
                     color: 0xffa600,
                     title: `${username}'s Collections Data On ${profilename}`,
                     URL: `https://sky.shiiyu.moe/stats/${name}`,
-                    description: (`<:dungeons:1062778077735829615>Catacombs Level: **${catalvl}**\n<:Iron_Chestplate:1061454825839144970>Average Class Level: **${classavrg}**\n<:CHEST:1061454902049656993Secrets Found: **${secrets}**`),
+                    description: (`<:dungeons:1062778077735829615>Catacombs Level: **${catalvl}**\n<:Iron_Chestplate:1061454825839144970>Average Class Level: **${classavrg}**\n<:CHEST:1061454902049656993>Secrets Found: **${secrets}**`),
                     thumbnail: {
                         url: `https://api.mineatar.io/body/full/${name}`,
                     },
@@ -401,7 +401,7 @@ module.exports = {
                         color: 0xffa600,
                         title: `${username}'s Class Data On ${profilename}`,
                         URL: `https://sky.shiiyu.moe/stats/${name}`,
-                        description: (`<:dungeons:1062778077735829615>Catacombs Level: **${catalvl}**\n<:Iron_Chestplate:1061454825839144970>Average Class Level: **${classavrg}**\n<:CHEST:1061454902049656993Secrets Found: **${secrets}**`),
+                        description: (`<:dungeons:1062778077735829615>Catacombs Level: **${catalvl}**\n<:Iron_Chestplate:1061454825839144970>Average Class Level: **${classavrg}**\n<:CHEST:1061454902049656993>Secrets Found: **${secrets}**`),
                         thumbnail: {
                             url: `https://api.mineatar.io/body/full/${name}`,
                         },

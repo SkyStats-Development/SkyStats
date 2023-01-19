@@ -76,7 +76,7 @@ module.exports = {
         const cookies = Math.round((profile.networth / 3847600) * 100) / 100
         const value = Math.round((cookies * 2.27) * 100) /100
         const irlnw = addNotation("numbers", (addCommas(value)))
-        const irlshort = addNotation("oneLetters", irlnw) // Irl = Short is a false statement, I am 6'1"
+        
 
         const embedplayer = {
             color: 0xffa600,
