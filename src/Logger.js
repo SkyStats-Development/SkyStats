@@ -47,6 +47,9 @@ async function broadcastMessage(message, location) {
       message
   );
 }
+async function minecraftMessage(message) {
+  return console.log(chalk.bgGreenBright.black(`[${await getCurrentTime()}] Minecraft >`) + ' ' + chalk.greenBright(message));
+}
 
 async function getCurrentTime() {
   return new Date().toLocaleTimeString([], {
@@ -61,6 +64,7 @@ module.exports = {
   successfulMessage,
   logoutMessage,
   warnMessage,
+  minecraftMessage,
   errorMessage,
   broadcastMessage,
   getCurrentTime,

@@ -50,6 +50,7 @@ module.exports = {
         const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
         const profilename = (data.profileData.cute_name)
         const player = (profileraw[currentProfile])
+        // Ill be making this better soon but for now its just a mess of code :D
         //discript
         const catalvl = (player.data.dungeons.catacombs.level.level) || `0`
         const secrets = (player.data.dungeons.secrets_found) || `0`

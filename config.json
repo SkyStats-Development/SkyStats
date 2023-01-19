@@ -5,9 +5,15 @@
     "serverID": "1058272411247714425",
     "developmentRole": "1058273514941075477"
   },
+  "minecraft": {
+    "prefix": "!",
+    "guildID": "5f6f85ba8ea8c99dcdd194d0",
+    "messageRepeatBypass": false,
+    "messageRepeatBypassLength": 24
+  },
   "api": {
     "hypixelAPI": "https://api.hypixel.net",
-    "hypixelAPIkey": "04923111-7207-44b9-ba20-028d49495c1b",
+    "hypixelAPIkey": "de29f605-0d6e-4a2e-aaf1-d2b4e4e196b3",
 
     "skyHelperAPI": "http://192.95.42.73:1924//v1",
     "skyHelperKey": "DuckySoLucky",

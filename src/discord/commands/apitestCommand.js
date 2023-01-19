@@ -19,7 +19,7 @@ module.exports = {
       ],
     execute: async (interaction, client, InteractionCreate) => {
         let key = interaction.options.getString("key")
-        
+        //NOTE: this is a test command, it will be removed in the future
         const keye = (await axios.get(`https://api.hypixel.net/key?key=${key}`)).data.record.key 
         const owner = (await axios.get(`https://api.hypixel.net/key?key=${key}`)).data.record.owner
         const limit = (await axios.get(`https://api.hypixel.net/key?key=${key}`)).data.record.limit

@@ -20,6 +20,8 @@
     "node-skycrypt": "0.0.2",
     "canvas": "^2.11.0",
     "chalk": "^4.1.0",
+    "mineflayer": "4.7.0",
+    "bad-words": "^3.0.4",
     "cheerio": "^1.0.0-rc.12",
     "cheerio-select": "2.1.0",
     "common-tags": "^1.8.2",
