@@ -18,6 +18,8 @@
     "skyHelperAPI": "http://192.95.42.73:1924//v1",
     "skyHelperKey": "DuckySoLucky",
 
+    "skyStatsAPI": "http://104.128.65.165:3000",
+
     "antiSniperAPI": "https://api.antisniper.net",
     "antiSniperKey": "3a55ea8f-9e85-4003-9912-6198122cd27f",
 
