@@ -17,7 +17,7 @@
 
 ## Support
 
-If you encounter any issues or have questions about the bot, please join our Discord support server for assistance: [Here!](https://discord.gg/DNHdpx8wwn](https://discord.gg/DNHdpx8wwn)
+If you encounter any issues or have questions about the bot, please join our Discord support server for assistance: [Discord](https://discord.gg/DNHdpx8wwn) 
 
 ## Credits
 
