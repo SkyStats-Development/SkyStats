@@ -25,33 +25,33 @@ SkyStats was greatly helped by
 
 > [AltPapier](https://github.com/Altpapier/hypixel-discord-guild-bridge "Skyhelper Developer")
 >
-> [DawJaw](https://dawjaw.net/jacobs)
+> [DawJaw](https://dawjaw.net/jacobs "Helper functions")
 >
 > [Discord.js](https://discord.js.org/ "Discord")
 >
-> [Hypixel Network API](http://api.hypixel.net/)
+> [Hypixel Network API](http://api.hypixel.net/ "For this to be possible")
 >
 > [Hypixel API Reborn](https://hypixel.stavzdev.me/#/ "Hypixel API reborn!")
 >
-> [MaroAPI](https://github.com/zt3h)
+> [MaroAPI](https://github.com/zt3h "For the concept")
 >
-> [Node.js](https://nodejs.org/)
+> [Node.js](https://nodejs.org/ "For The Framework")
 >
-> [PlayerDB API](https://playerdb.co/)
+> [PlayerDB API](https://playerdb.co/ "Used in almost all commands")
 >
-> [SkyHelper API](https://github.com/Altpapier/SkyHelperAPI)
+> [SkyHelper API](https://github.com/Altpapier/SkyHelperAPI "For api uses")
 >
-> [SkyShiiyu API](https://github.com/SkyCryptWebsite/SkyCrypt)
+> [SkyShiiyu API](https://github.com/SkyCryptWebsite/SkyCrypt "For Dungeon Data")
 >
-> [SlothPixel API](https://github.com/slothpixel)
+> [SlothPixel API](https://github.com/slothpixel "For WoolWars Data")
 >
-> [Senither](https://github.com/Senither)
+> [Senither](https://github.com/Senither "For Weight")
 >
-> [DuckySoLucky](https://https://github.com/DuckySoLucky)
+> [DuckySoLucky](https://https://github.com/DuckySoLucky "For the template")
 >
-> [Kathhund](https://https://github.com/Kathund)
+> [Kathhund](https://https://github.com/Kathund "For some bedwars fixes")
 >
-> [ThePotatoKing](https://links.sperrer.ca)
+> [ThePotatoKing](https://links.sperrer.ca "for all of my bugs")
 >
 > Pandy#0001
 
