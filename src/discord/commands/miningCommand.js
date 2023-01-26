@@ -51,7 +51,7 @@ module.exports = {
             color: 0xffa600,
             title: `${username}'s Mining Stats On ${profilename}`,
             URL: `https://sky.shiiyu.moe/stats/${name}`,
-            description: (`${messages.errorcodes.error400}`),
+            description: (``),
             thumbnail: {
                 url: `https://api.mineatar.io/body/full/${name}`,
             },

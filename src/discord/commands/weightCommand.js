@@ -6,7 +6,7 @@ const getWeight = require('../../../API/stats/weight');
 const messages = require('../../../messages.json')
 const { getUUID } = require('../../contracts/API/PlayerDBAPI')
 const wait = require('node:timers/promises').setTimeout;
-
+const axios = require('axios');
 
 let prices;
     getPrices().then((data) => { 
