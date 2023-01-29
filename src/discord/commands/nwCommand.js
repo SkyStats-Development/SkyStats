@@ -43,7 +43,7 @@ module.exports = {
         const formatted_soulbound = addNotation("numbers", (addCommas(soulbound)))
         const shortunsoulbound = addNotation("oneLetters", soulbound)
         //Cookies
-        const cookies = Math.round((networth / 3847600))
+        const cookies = Math.round((networth / 4444444)) //last updated Jan/29/2023
         const value = Math.round((cookies * 2.27))
         const irlnw = addNotation("numbers", (addCommas(value)))
         //bank
@@ -62,106 +62,127 @@ module.exports = {
         const misc = Math.round((candy_inventory + potion_bag + fishing_bag)* 100) /100
         //armor
         const armor = (networthraw.data.networth.types.armor.total) 
-        const armor1 = (networthraw.data.networth.types.armor.items[0]?.name) 
-        const armorprice1 = (networthraw.data.networth.types.armor.items[0]?.price) 
-        const armor2 = (networthraw.data.networth.types.armor.items[1]?.name) 
-        const armorprice2 = (networthraw.data.networth.types.armor.items[1]?.price)  
-        const armor3 = (networthraw.data.networth.types.armor.items[2]?.name) 
-        const armorprice3 = (networthraw.data.networth.types.armor.items[2]?.price) 
-        const armor4 = (networthraw.data.networth.types.armor.items[3]?.name) 
-        const armorprice4 = (networthraw.data.networth.types.armor.items[3]?.price) 
+        const armor1 = (networthraw.data.networth.types.armor.items[0]?.name) || `No Items Found`
+        const armorprice1 = (networthraw.data.networth.types.armor.items[0]?.price)  || ` `
+        const armor2 = (networthraw.data.networth.types.armor.items[1]?.name)  || ` `
+        const armorprice2 = (networthraw.data.networth.types.armor.items[1]?.price)   || ` `
+        const armor3 = (networthraw.data.networth.types.armor.items[2]?.name)  || ` `
+        const armorprice3 = (networthraw.data.networth.types.armor.items[2]?.price)  || ` `
+        const armor4 = (networthraw.data.networth.types.armor.items[3]?.name)  || ` `
+        const armorprice4 = (networthraw.data.networth.types.armor.items[3]?.price)  || ` `
         //equipment
         const equipment = (networthraw.data.networth.types.equipment.total) 
-        const equipment1 = (networthraw.data.networth.types.equipment.items[0]?.name)
-        const equipmentprice1 = (networthraw.data.networth.types.equipment.items[0]?.price) 
-        const equipment2 = (networthraw.data.networth.types.equipment.items[1]?.name) 
-        const equipmentprice2 = (networthraw.data.networth.types.equipment.items[1]?.price) 
-        const equipment3 = (networthraw.data.networth.types.equipment.items[2]?.name) 
-        const equipmentprice3 = (networthraw.data.networth.types.equipment.items[2]?.price) 
-        const equipment4 = (networthraw.data.networth.types.equipment.items[3]?.name)
-        const equipmentprice4 = (networthraw.data.networth.types.equipment.items[3]?.price) 
+        const equipment1 = (networthraw.data.networth.types.equipment.items[0]?.name) || `No Items Found`
+        const equipmentprice1 = (networthraw.data.networth.types.equipment.items[0]?.price)  || ` `
+        const equipment2 = (networthraw.data.networth.types.equipment.items[1]?.name)  || ` `
+        const equipmentprice2 = (networthraw.data.networth.types.equipment.items[1]?.price)  || ` `
+        const equipment3 = (networthraw.data.networth.types.equipment.items[2]?.name)  || ` `
+        const equipmentprice3 = (networthraw.data.networth.types.equipment.items[2]?.price)  || ` `
+        const equipment4 = (networthraw.data.networth.types.equipment.items[3]?.name) || ` `
+        const equipmentprice4 = (networthraw.data.networth.types.equipment.items[3]?.price)  || ` `
         //wardrobe
         const wardrobe = (networthraw.data.networth.types.wardrobe.total) 
-        const wardrobe1 = (networthraw.data.networth.types.wardrobe.items[0]?.name)
-        const wardrobeprice1 = (networthraw.data.networth.types.wardrobe.items[0]?.price)
-        const wardrobe2 = (networthraw.data.networth.types.wardrobe.items[1]?.name)
-        const wardrobeprice2 = (networthraw.data.networth.types.wardrobe.items[1]?.price)
-        const wardrobe3 = (networthraw.data.networth.types.wardrobe.items[2]?.name)
-        const wardrobeprice3 = (networthraw.data.networth.types.wardrobe.items[2]?.price)
-        const wardrobe4 = (networthraw.data.networth.types.wardrobe.items[3]?.name)
-        const wardrobeprice4 = (networthraw.data.networth.types.wardrobe.items[3]?.price)
-        const wardrobe5 = (networthraw.data.networth.types.wardrobe.items[4]?.name)
-        const wardrobeprice5 = (networthraw.data.networth.types.wardrobe.items[4]?.price)
+        const wardrobe1 = (networthraw.data.networth.types.wardrobe.items[0]?.name)|| `No Items Found`
+        const wardrobeprice1 = (networthraw.data.networth.types.wardrobe.items[0]?.price) || ` `
+        const wardrobe2 = (networthraw.data.networth.types.wardrobe.items[1]?.name) || ` `
+        const wardrobeprice2 = (networthraw.data.networth.types.wardrobe.items[1]?.price) || ` `
+        const wardrobe3 = (networthraw.data.networth.types.wardrobe.items[2]?.name) || ` `
+        const wardrobeprice3 = (networthraw.data.networth.types.wardrobe.items[2]?.price) || ` `
+        const wardrobe4 = (networthraw.data.networth.types.wardrobe.items[3]?.name) || ` `
+        const wardrobeprice4 = (networthraw.data.networth.types.wardrobe.items[3]?.price) || ` `
+        const wardrobe5 = (networthraw.data.networth.types.wardrobe.items[4]?.name) || ` `
+        const wardrobeprice5 = (networthraw.data.networth.types.wardrobe.items[4]?.price) || ` `
         //inventory 
         const inventory = (networthraw.data.networth.types.inventory.total) 
-        const inventory1 = (networthraw.data.networth.types.inventory.items[0]?.name)
-        const inventoryprice1 = (networthraw.data.networth.types.inventory.items[0]?.price)
-        const inventory2 = (networthraw.data.networth.types.inventory.items[1]?.name)
-        const inventoryprice2 = (networthraw.data.networth.types.inventory.items[1]?.price)
-        const inventory3 = (networthraw.data.networth.types.inventory.items[2]?.name)
-        const inventoryprice3 = (networthraw.data.networth.types.inventory.items[2]?.price)
-        const inventory4 = (networthraw.data.networth.types.inventory.items[3]?.name)
-        const inventoryprice4 = (networthraw.data.networth.types.inventory.items[3]?.price)
-        const inventory5 = (networthraw.data.networth.types.inventory.items[4]?.name)
-        const inventoryprice5 = (networthraw.data.networth.types.inventory.items[4]?.price)
+        const inventory1 = (networthraw.data.networth.types.inventory.items[0]?.name) || `No Items Found`
+        const invrecomb1 = (networthraw.data.networth.types.inventory.items[0]?.calculation).some((a) => a.id === "RECOMBOBULATOR_3000") 
+        const inventoryrecombobulated1 = `<:${invrecomb1}:1069185517511524362>` || ` `
+        const inventoryprice1 = (networthraw.data.networth.types.inventory.items[0]?.price) || ` `
+        const inventory2 = (networthraw.data.networth.types.inventory.items[1]?.name) || ` `
+        const invrecomb2 = (networthraw.data.networth.types.inventory.items[1]?.calculation).some((a) => a.id === "RECOMBOBULATOR_3000") 
+        const inventoryrecombobulated2 = `<:${invrecomb2}:1069185517511524362>` || ` `
+        const inventoryprice2 = (networthraw.data.networth.types.inventory.items[1]?.price) || ` `
+        const inventory3 = (networthraw.data.networth.types.inventory.items[2]?.name) || ` `
+        const invrecomb3 = (networthraw.data.networth.types.inventory.items[2]?.calculation).some((a) => a.id === "RECOMBOBULATOR_3000") 
+        const inventoryrecombobulated3 = `<:${invrecomb3}:1069185517511524362>` || ` `
+        const inventoryprice3 = (networthraw.data.networth.types.inventory.items[2]?.price) || ` `
+        const inventory4 = (networthraw.data.networth.types.inventory.items[3]?.name) || ` `
+        const invrecomb4 = (networthraw.data.networth.types.inventory.items[3]?.calculation).some((a) => a.id === "RECOMBOBULATOR_3000") 
+        const inventoryrecombobulated4 = `<:${invrecomb4}:1069185517511524362>` || ` `
+        const inventoryprice4 = (networthraw.data.networth.types.inventory.items[3]?.price) || ` `
+        const inventory5 = (networthraw.data.networth.types.inventory.items[4]?.name) || ` `
+        const invrecomb5 = (networthraw.data.networth.types.inventory.items[4]?.calculation).some((a) => a.id === "RECOMBOBULATOR_3000")
+        if (invrecomb5 === true)  return (`<:RECOMBOBULATOR_3000:1069185517511524362>`);
+        if (invrecomb5 === false) return (` `);
+        
+        console.log(invrecomb5)
+        
+        const inventoryprice5 = (networthraw.data.networth.types.inventory.items[4]?.price) || ` `
         //enderchest
         const enderchest = (networthraw.data.networth.types.enderchest.total) 
-        const enderchest1 = (networthraw.data.networth.types.enderchest.items[0]?.name)
-        const enderchestprice1 = (networthraw.data.networth.types.enderchest.items[0]?.price)
-        const enderchest2 = (networthraw.data.networth.types.enderchest.items[1]?.name)
-        const enderchestprice2 = (networthraw.data.networth.types.enderchest.items[1]?.price)
-        const enderchest3 = (networthraw.data.networth.types.enderchest.items[2]?.name)
-        const enderchestprice3 = (networthraw.data.networth.types.enderchest.items[2]?.price)
-        const enderchest4 = (networthraw.data.networth.types.enderchest.items[3]?.name)
-        const enderchestprice4 = (networthraw.data.networth.types.enderchest.items[3]?.price)
-        const enderchest5 = (networthraw.data.networth.types.enderchest.items[4]?.name)
-        const enderchestprice5 = (networthraw.data.networth.types.enderchest.items[4]?.price)
+        const enderchest1 = (networthraw.data.networth.types.enderchest.items[0]?.name) || "No Items Found"
+        const enderchestprice1 = (networthraw.data.networth.types.enderchest.items[0]?.price)  || ` `
+        const enderchest2 = (networthraw.data.networth.types.enderchest.items[1]?.name) || ` `
+        const enderchestprice2 = (networthraw.data.networth.types.enderchest.items[1]?.price) || ` `
+        const enderchest3 = (networthraw.data.networth.types.enderchest.items[2]?.name) || ` `
+        const enderchestprice3 = (networthraw.data.networth.types.enderchest.items[2]?.price) || ` `
+        const enderchest4 = (networthraw.data.networth.types.enderchest.items[3]?.name) || ` `
+        const enderchestprice4 = (networthraw.data.networth.types.enderchest.items[3]?.price) || ` `
+        const enderchest5 = (networthraw.data.networth.types.enderchest.items[4]?.name) || ` `
+        const enderchestprice5 = (networthraw.data.networth.types.enderchest.items[4]?.price) || ` `
         //storage
         const storage = (networthraw.data.networth.types.storage.total) 
-        const storage1 = (networthraw.data.networth.types.storage.items[0]?.name)
-        const storageprice1 = (networthraw.data.networth.types.storage.items[0]?.price)
-        const storage2 = (networthraw.data.networth.types.storage.items[1]?.name)
-        const storageprice2 = (networthraw.data.networth.types.storage.items[1]?.price)
-        const storage3 = (networthraw.data.networth.types.storage.items[2]?.name)
-        const storageprice3 = (networthraw.data.networth.types.storage.items[2]?.price)
-        const storage4 = (networthraw.data.networth.types.storage.items[3]?.name)
-        const storageprice4 = (networthraw.data.networth.types.storage.items[3]?.price)
-        const storage5 = (networthraw.data.networth.types.storage.items[4]?.name)
-        const storageprice5 = (networthraw.data.networth.types.storage.items[4]?.price)
+        const storage1 = (networthraw.data.networth.types.storage.items[0]?.name)  || `No Items Found`
+        const storageprice1 = (networthraw.data.networth.types.storage.items[0]?.price)  || ` `
+        const storage2 = (networthraw.data.networth.types.storage.items[1]?.name)  || ` `
+        const storageprice2 = (networthraw.data.networth.types.storage.items[1]?.price)  || ` `
+        const storage3 = (networthraw.data.networth.types.storage.items[2]?.name)  || ` `
+        const storageprice3 = (networthraw.data.networth.types.storage.items[2]?.price)  || ` `
+        const storage4 = (networthraw.data.networth.types.storage.items[3]?.name)  || ` `
+        const storageprice4 = (networthraw.data.networth.types.storage.items[3]?.price)  || ` `
+        const storage5 = (networthraw.data.networth.types.storage.items[4]?.name)  || ` `
+        const storageprice5 = (networthraw.data.networth.types.storage.items[4]?.price)  || ` `
         //pets
         const pets = (networthraw.data.networth.types.pets.total) 
-        const pets1 = (networthraw.data.networth.types.pets.items[0]?.name)
-        const petsprice1 = (networthraw.data.networth.types.pets.items[0]?.price)
-        const pets2 = (networthraw.data.networth.types.pets.items[1]?.name)
-        const petsprice2 = (networthraw.data.networth.types.pets.items[1]?.price)
-        const pets3 = (networthraw.data.networth.types.pets.items[2]?.name)
-        const petsprice3 = (networthraw.data.networth.types.pets.items[2]?.price)
-        const pets4 = (networthraw.data.networth.types.pets.items[3]?.name)
-        const petsprice4 = (networthraw.data.networth.types.pets.items[3]?.price)
-        const pets5 = (networthraw.data.networth.types.pets.items[4]?.name)
-        const petsprice5 = (networthraw.data.networth.types.pets.items[4]?.price)
+        const pets1 = (networthraw.data.networth.types.pets.items[0]?.name) || "No Items Found"
+        const petsprice1 = (networthraw.data.networth.types.pets.items[0]?.price)  || ` `
+        const pets2 = (networthraw.data.networth.types.pets.items[1]?.name)  || ` `
+        const petsprice2 = (networthraw.data.networth.types.pets.items[1]?.price)  || ` `
+        const pets3 = (networthraw.data.networth.types.pets.items[2]?.name)  || ` `
+        const petsprice3 = (networthraw.data.networth.types.pets.items[2]?.price)  || ` `
+        const pets4 = (networthraw.data.networth.types.pets.items[3]?.name)  || ` `
+        const petsprice4 = (networthraw.data.networth.types.pets.items[3]?.price)  || ` `
+        const pets5 = (networthraw.data.networth.types.pets.items[4]?.name)  || ` `
+        const petsprice5 = (networthraw.data.networth.types.pets.items[4]?.price)  || ` `
         //accessories
         const accessories = (networthraw.data.networth.types.accessories.total) 
-        const accessories1 = (networthraw.data.networth.types.accessories.items[0]?.name)
-        const accessoriesprice1 = (networthraw.data.networth.types.accessories.items[0]?.price)
-        const accessories2 = (networthraw.data.networth.types.accessories.items[1]?.name)
-        const accessoriesprice2 = (networthraw.data.networth.types.accessories.items[1]?.price)
-        const accessories3 = (networthraw.data.networth.types.accessories.items[2]?.name)
-        const accessoriesprice3 = (networthraw.data.networth.types.accessories.items[2]?.price)
-        const accessories4 = (networthraw.data.networth.types.accessories.items[3]?.name)
-        const accessoriesprice4 = (networthraw.data.networth.types.accessories.items[3]?.price)
-        const accessories5 = (networthraw.data.networth.types.accessories.items[4]?.name)
-        const accessoriesprice5 = (networthraw.data.networth.types.accessories.items[4]?.price)
+        const accessories1 = (networthraw.data.networth.types.accessories.items[0]?.name) || `No Items Found`
+        const accessoriesprice1 = (networthraw.data.networth.types.accessories.items[0]?.price)  || ` `
+        const accessories2 = (networthraw.data.networth.types.accessories.items[1]?.name)  || ` `
+        const accessoriesprice2 = (networthraw.data.networth.types.accessories.items[1]?.price)  || ` `
+        const accessories3 = (networthraw.data.networth.types.accessories.items[2]?.name)  || ` ` 
+        const accessoriesprice3 = (networthraw.data.networth.types.accessories.items[2]?.price)  || ` `
+        const accessories4 = (networthraw.data.networth.types.accessories.items[3]?.name)  || ` `
+        const accessoriesprice4 = (networthraw.data.networth.types.accessories.items[3]?.price)  || ` `
+        const accessories5 = (networthraw.data.networth.types.accessories.items[4]?.name)  || ` `
+        const accessoriesprice5 = (networthraw.data.networth.types.accessories.items[4]?.price)  || ` `
         //personal_vault
-        const personal_vault = (networthraw.data.networth.types.personal_vault.total) 
-        const personal_vault1 = (networthraw.data.networth.types.personal_vault.items[0]?.name)
-        const personal_vaultprice1 = (networthraw.data.networth.types.personal_vault.items[0]?.price)
-        const personal_vault2 = (networthraw.data.networth.types.personal_vault.items[1]?.name)
-        const personal_vaultprice2 = (networthraw.data.networth.types.personal_vault.items[1]?.price)
-        const personal_vault3 = (networthraw.data.networth.types.personal_vault.items[2]?.name)
-        const personal_vaultprice3 = (networthraw.data.networth.types.personal_vault.items[2]?.price)
-        const personal_vault4 = (networthraw.data.networth.types.personal_vault.items[3]?.name)
-        const personal_vaultprice4 = (networthraw.data.networth.types.personal_vault.items[3]?.price)
+        const personal_vault = (networthraw.data.networth.types.personal_vault.total)
+        const personal_vault1 = (networthraw.data.networth.types.personal_vault.items[0]?.name) || `No Items Found`
+        const personal_vaultprice1 = networthraw.data.networth.types.personal_vault.items[0]?.price || ` `
+        const personal_vault2 = networthraw.data.networth.types.personal_vault.items[1]?.name || ` `
+        const personal_vaultprice2 = networthraw.data.networth.types.personal_vault.items[1]?.price || ` `
+        const personal_vault3 = networthraw.data.networth.types.personal_vault.items[2]?.name || ` `
+        const personal_vaultprice3 = networthraw.data.networth.types.personal_vault.items[2]?.price || ` `
+        const personal_vault4 = networthraw.data.networth.types.personal_vault.items[3]?.name || ` `
+        const personal_vaultprice4 = networthraw.data.networth.types.personal_vault.items[3]?.price || ` `
+        const pv1 = `→ ${personal_vault1?? `No Items Found`} (**${addNotation("oneLetters",personal_vaultprice1) ?? 0}**)` 
+        const pv2 = `→ ${personal_vault2?? ``} (**${addNotation("oneLetters",personal_vaultprice2) ?? 0}**)`
+        const pv3 = `→ ${personal_vault3?? ``} (**${addNotation("oneLetters",personal_vaultprice3) ?? 0}**)`
+        const pv4 = `→ ${personal_vault4?? ``} (**${addNotation("oneLetters",personal_vaultprice4) ?? 0}**)`
+          
+
+
 
         
         const embedplayer = {
@@ -205,7 +226,7 @@ module.exports = {
                 },
                 {
                     name: `<:CHEST:1061454902049656993> Inventory  (${addNotation("oneLetters",inventory) ?? 0})`,
-                    value: `→ ${inventory1} (**${addNotation("oneLetters",inventoryprice1) ?? 0}**)\n→ ${inventory2} (**${addNotation("oneLetters",inventoryprice2) ?? 0}**)\n→ ${inventory3} (**${addNotation("oneLetters",inventoryprice3) ?? 0}**)\n→ ${inventory4} (**${addNotation("oneLetters",inventoryprice4) ?? 0}**)\n→ ${inventory5} (**${addNotation("oneLetters",inventoryprice5) ?? 0}**)`,
+                    value: `→ ${inventory1} ${inventoryrecombobulated1} (**${addNotation("oneLetters",inventoryprice1) ?? 0}**)\n→ ${inventory2} ${inventoryrecombobulated2} (**${addNotation("oneLetters",inventoryprice2) ?? 0}**)\n→ ${inventory3} ${inventoryrecombobulated3} (**${addNotation("oneLetters",inventoryprice3) ?? 0}**)\n→ ${inventory4} ${inventoryrecombobulated4} (**${addNotation("oneLetters",inventoryprice4) ?? 0}**)\n→ ${inventory5} ${invrecomb5} (**${addNotation("oneLetters",inventoryprice5) ?? 0}**)`,
                     inline: false,
                 },
                 {
@@ -230,7 +251,7 @@ module.exports = {
                 },
                 {
                     name: `<:item_2654:1061455349338615859> Personal Vault (${addNotation("oneLetters", personal_vault) ?? 0})`,
-                    value: `→ ${personal_vault1} (**${addNotation("oneLetters",personal_vaultprice1) ?? 0}**)\n→ ${personal_vault2} (**${addNotation("oneLetters",personal_vaultprice2) ?? 0}**)\n→ ${personal_vault3} (**${addNotation("oneLetters",personal_vaultprice3) ?? 0}**)\n→ ${personal_vault4} (**${addNotation("oneLetters",personal_vaultprice4) ?? 0}**)`,
+                    value: `${pv1}\n${pv2}\n${pv3}\n${pv4}`,
                     inline: false,
                 },
                 {
@@ -245,13 +266,11 @@ module.exports = {
                 text: `${messages.footer.default}`, iconURL: `${messages.footer.icon}`,
             },
         };
-
+    
         await interaction.editReply({ embeds: [embedplayer] });
-    }
+    
+        
+    
+      }};
 
     
-      }
-     
-
-
-  
