@@ -3,13 +3,11 @@
   "version": "1.0.0",
   "description": "Discord bot for displaying Skyblock stats and other hypixel related information",
   "main": "index.js",
-  "type": "module",
-  "packageManager": "pnpm@7.25.0",
   "engines": {
     "node": ">=16",
-    "npm": "forbidden, use pnpm",
+    "npm": "8.15.0",
     "pnpm": "^7.13.4",
-    "yarn": "forbidden, use pnpm"
+    "yarn": "1.22.4"
   },
   "scripts": {
     "start": "node index.js"
@@ -24,22 +22,21 @@
   "type": "git",
   "url": "git+https://github.com/AxleCat284/SkyStats.git"
 },
-
   "author": "Axle Development Team",
   "license": "MIT",
   "dependencies": {
     "discord.js": "^14.7.1",
-    "skyhelper-networth": "^1.10.0",
+    "skyhelper-networth": "^1.11.0",
     "@discordjs/opus": "^0.9.0",
     "@discordjs/builders": "^1.4.0",
     "@discordjs/rest": "^1.5.0",
     "compare-versions": "^5.0.3",
     "axios": "^1.2.3",
     "node-skycrypt": "0.0.2",
-    "bad-words": "^3.0.4",
     "canvas": "^2.11.0",
     "chalk": "^4.1.0",
     "mineflayer": "4.7.0",
+    "bad-words": "^3.0.4",
     "cheerio": "^1.0.0-rc.12",
     "cheerio-select": "2.1.0",
     "common-tags": "^1.8.2",
@@ -51,6 +48,15 @@
     "domhandler": "5.0.3",
     "entities": "4.4.0",
     "express": "^4.18.2",
+    "express-rate-limit": "^6.7.0",
+    "fetch": "^1.1.0",
+    "fs-promise": "^2.0.3",
+    "html-to-text": "^9.0.3",
+    "htmlparser2": "8.0.1",
+    "hypixel-api-reborn": "^10.0.0",
+    "imgur": "^2.2.0",
+    "json-crate": "^0.1.3",
+    "libsodium-wrappers": "^0.7.10",
     "lilyweight": "^2.7.0",
     "lodash": "^4.17.21",
     "luxon": "^3.2.1",
