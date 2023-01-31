@@ -9,10 +9,11 @@ module.exports = {
     description: 'info on how we SkyStats calculate your irl networth',
 
     execute: async (interaction, client, InteractionCreate) => {
+        const cookieprice = (await axios.get(`https://sky.shiiyu.moe/api/v2/bazaar`)).data.BOOSTER_COOKIE.sellPrice.toString().split(".")[0]
         const chat = {
             color: 0xffa600,
             title: `IRL Networth Calculation`,
-            description: (`In commands (like /networth) we provide a rough irl networth example below is the formula:\n{your networth} / 3,847,600 = {how many cookies}\n{how many cookies} x 2.27 = {your profile value}\nGem Calculation\n1 gem = 0.007USD\nBooster cookie = 325 Gems\nBooster cookie = $2.27USD\n\nIf our calculations are off please report this on our discord!\nCredits to Pandy#0001 for the calculations!`),
+            description: (`In commands (like /networth) we provide a rough irl networth example below is the formula:\n{your networth} / ${cookieprice} = {how many cookies}\n{how many cookies} x 2.27 = {your profile value}\nGem Calculation\n1 gem = 0.007USD\nBooster cookie = 325 Gems\nBooster cookie = $2.27USD\n\nIf our calculations are off please report this on our discord!\nCredits to Pandy#0001 for the calculations!`),
             thumbnail: {
                 url: `https://i.imgur.com/hggczHP.png`,
             },
