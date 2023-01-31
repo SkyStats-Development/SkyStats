@@ -43,7 +43,8 @@ module.exports = {
         const formatted_soulbound = addNotation("numbers", (addCommas(soulbound)))
         const shortunsoulbound = addNotation("oneLetters", soulbound)
         //Cookies
-        const cookies = Math.round((networth / 4444444)) //last updated Jan/29/2023
+        const cookieprice = (await axios.get(`https://sky.shiiyu.moe/api/v2/bazaar`)).data.BOOSTER_COOKIE.sellPrice.toString().split(".")[0]
+        const cookies = Math.round((networth / cookieprice)) 
         const value = Math.round((cookies * 2.27))
         const irlnw = addNotation("numbers", (addCommas(value)))
         //bank
