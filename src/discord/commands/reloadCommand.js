@@ -28,7 +28,7 @@ module.exports = {
     interaction.reply({ content: 'All commands have been reloaded!', ephemeral: true });
     console.log('All commands have been reloaded!')
 } else {
-    interaction.reply({ content: `${messages.commandfailed.serverless}`, ephemeral: true})
+    interaction.reply({ content: `You do not have permission to run this`, ephemeral: true})
     }
   }
 };

@@ -2,7 +2,6 @@
 const hypixel = require('../../contracts/API/HypixelRebornAPI')
 const { addCommas } = require('../../contracts/helperFunctions')
 const messages = require('../../../messages.json')
-const { getUUID } = require('../../contracts/API/PlayerDBAPI')
 const axios = require('axios')
 
 module.exports = {
