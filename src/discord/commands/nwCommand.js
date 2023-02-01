@@ -199,16 +199,6 @@ module.exports = {
             const enderchestrecomb5 = (networthraw.data.networth.types.enderchest.items[4]?.calculation).some((a) => a.id === "RECOMBOBULATOR_3000")
             const enderchestrecombobulated5 = enderchestrecomb5 ? "<:RECOMBOBULATOR_3000:1069185517511524362>" : "";
             //personal vault
-/*BreakPoint*/        /* 
-            const personalvaultrecomb1 = (networthraw.data.networth.types?.personal_vault?.items[0]?.calculation).some((a) => a.id === "RECOMBOBULATOR_3000") || false
-            const personalvaultrecombobulated1 = personalvaultrecomb1 ? "<:RECOMBOBULATOR_3000:1069185517511524362>" : "" || false
-            const personalvaultrecomb2 = (networthraw.data.networth.types?.personal_vault?.items[1]?.calculation).some((a) => a.id === "RECOMBOBULATOR_3000") || false
-            const personalvaultrecombobulated2 = personalvaultrecomb2 ? "<:RECOMBOBULATOR_3000:1069185517511524362>" : "" || false
-            const personalvaultrecomb3 = (networthraw.data.networth.types?.personal_vault?.items[2]?.calculation).some((a) => a.id === "RECOMBOBULATOR_3000") || false
-            const personalvaultrecombobulated3 = personalvaultrecomb3 ? "<:RECOMBOBULATOR_3000:1069185517511524362>" : "" ||false
-            const personalvaultrecomb4 = (networthraw.data.networth.types?.personal_vault?.items[3]?.calculation).some((a) => a.id === "RECOMBOBULATOR_3000") ||false
-            const personalvaultrecombobulated4 = personalvaultrecomb4 ? "<:RECOMBOBULATOR_3000:1069185517511524362>" : ""||false
-            */
             //accessories
             const accessoriesrecomb1 = (networthraw.data.networth.types.accessories.items[0]?.calculation).some((a) => a.id === "RECOMBOBULATOR_3000")
             const accessoriesrecombobulated1 = accessoriesrecomb1 ? "<:RECOMBOBULATOR_3000:1069185517511524362>" : "";
