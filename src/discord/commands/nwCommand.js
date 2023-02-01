@@ -298,7 +298,7 @@ module.exports = {
             color: 0xffa600,
             title: `Networth For ${username} On ${profilename}`,
             URL: `https://sky.shiiyu.moe/stats/${name}`,
-            description: `Networth: **${formatted_networth} (${shortnetworth})**\nUnsoulbound Networth:** ${formatted_soulbound} (${shortunsoulbound})**\nIRL Value: **$${irlnw} USD**`,
+            description: `<:Purse:1059997956784279562> Networth: **${formatted_networth} (${shortnetworth})**\n<:IRON_INGOT:1070126498616455328> Unsoulbound Networth:** ${formatted_soulbound} (${shortunsoulbound})**\n<:BOOSTER_COOKIE:1070126116846710865> IRL Value: **$${irlnw} USD**`,
             thumbnail: {
                 url: `https://api.mineatar.io/body/full/${name}`,
             },
