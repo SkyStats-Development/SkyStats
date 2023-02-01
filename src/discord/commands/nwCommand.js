@@ -199,14 +199,16 @@ module.exports = {
             const enderchestrecomb5 = (networthraw.data.networth.types.enderchest.items[4]?.calculation).some((a) => a.id === "RECOMBOBULATOR_3000")
             const enderchestrecombobulated5 = enderchestrecomb5 ? "<:RECOMBOBULATOR_3000:1069185517511524362>" : "";
             //personal vault
-            const personalvaultrecomb1 = (networthraw.data.networth.types.personal_vault.items[0]?.calculation).some((a) => a.id === "RECOMBOBULATOR_3000")
-            const personalvaultrecombobulated1 = personalvaultrecomb1 ? "<:RECOMBOBULATOR_3000:1069185517511524362>" : "";
-            const personalvaultrecomb2 = (networthraw.data.networth.types.personal_vault.items[1]?.calculation).some((a) => a.id === "RECOMBOBULATOR_3000")
-            const personalvaultrecombobulated2 = personalvaultrecomb2 ? "<:RECOMBOBULATOR_3000:1069185517511524362>" : "";
-            const personalvaultrecomb3 = (networthraw.data.networth.types.personal_vault.items[2]?.calculation).some((a) => a.id === "RECOMBOBULATOR_3000")
-            const personalvaultrecombobulated3 = personalvaultrecomb3 ? "<:RECOMBOBULATOR_3000:1069185517511524362>" : "";
-            const personalvaultrecomb4 = (networthraw.data.networth.types.personal_vault.items[3]?.calculation).some((a) => a.id === "RECOMBOBULATOR_3000")
-            const personalvaultrecombobulated4 = personalvaultrecomb4 ? "<:RECOMBOBULATOR_3000:1069185517511524362>" : "";
+/*BreakPoint*/        /* 
+            const personalvaultrecomb1 = (networthraw.data.networth.types?.personal_vault?.items[0]?.calculation).some((a) => a.id === "RECOMBOBULATOR_3000") || false
+            const personalvaultrecombobulated1 = personalvaultrecomb1 ? "<:RECOMBOBULATOR_3000:1069185517511524362>" : "" || false
+            const personalvaultrecomb2 = (networthraw.data.networth.types?.personal_vault?.items[1]?.calculation).some((a) => a.id === "RECOMBOBULATOR_3000") || false
+            const personalvaultrecombobulated2 = personalvaultrecomb2 ? "<:RECOMBOBULATOR_3000:1069185517511524362>" : "" || false
+            const personalvaultrecomb3 = (networthraw.data.networth.types?.personal_vault?.items[2]?.calculation).some((a) => a.id === "RECOMBOBULATOR_3000") || false
+            const personalvaultrecombobulated3 = personalvaultrecomb3 ? "<:RECOMBOBULATOR_3000:1069185517511524362>" : "" ||false
+            const personalvaultrecomb4 = (networthraw.data.networth.types?.personal_vault?.items[3]?.calculation).some((a) => a.id === "RECOMBOBULATOR_3000") ||false
+            const personalvaultrecombobulated4 = personalvaultrecomb4 ? "<:RECOMBOBULATOR_3000:1069185517511524362>" : ""||false
+            */
             //accessories
             const accessoriesrecomb1 = (networthraw.data.networth.types.accessories.items[0]?.calculation).some((a) => a.id === "RECOMBOBULATOR_3000")
             const accessoriesrecombobulated1 = accessoriesrecomb1 ? "<:RECOMBOBULATOR_3000:1069185517511524362>" : "";
@@ -255,10 +257,10 @@ module.exports = {
             */
         //EMBED FORMATTING STUFF 
         //personal vault
-        const pv1 = `→ ${personal_vault1?? `No Items Found`}${personalvaultrecombobulated1} (**${addNotation("oneLetters",personal_vaultprice1) ?? 0}**)` 
-        const pv2 = `→ ${personal_vault2?? ``}${personalvaultrecombobulated2} (**${addNotation("oneLetters",personal_vaultprice2) ?? 0}**)`
-        const pv3 = `→ ${personal_vault3?? ``}${personalvaultrecombobulated3} (**${addNotation("oneLetters",personal_vaultprice3) ?? 0}**)`
-        const pv4 = `→ ${personal_vault4?? ``}${personalvaultrecombobulated4} (**${addNotation("oneLetters",personal_vaultprice4) ?? 0}**)`
+        const pv1 = `→ ${personal_vault1?? `No Items Found`} (**${addNotation("oneLetters",personal_vaultprice1) ?? 0}**)` 
+        const pv2 = `→ ${personal_vault2?? ``} (**${addNotation("oneLetters",personal_vaultprice2) ?? 0}**)`
+        const pv3 = `→ ${personal_vault3?? ``} (**${addNotation("oneLetters",personal_vaultprice3) ?? 0}**)`
+        const pv4 = `→ ${personal_vault4?? ``} (**${addNotation("oneLetters",personal_vaultprice4) ?? 0}**)`
         //armor
         const ar1 = `→ ${armor1?? `No Items Found`}${armorrecombobulated1} (**${addNotation("oneLetters",armorprice1) ?? 0}**)`
         const ar2 = `→ ${armor2?? ``}${armorrecombobulated2} (**${addNotation("oneLetters",armorprice2) ?? 0}**)`
