@@ -15,24 +15,35 @@ module.exports = {
             description: 'Minecraft Username',
             type: 3,
             required: false
+        },
+        {
+            name: 'profile',
+            description: 'Profile Name',
+            type: 3,
+            required: false
         }
-      ],
+    ],
+    
 
       execute: async (interaction) => {
         try{
         await interaction.deferReply();
         //database
-        const linked = require('../../../data/discordLinked.json')
-        const uuid = linked?.[interaction?.user?.id]?.data[0]
+            const linked = require('../../../data/discordLinked.json')
+            const uuid = linked?.[interaction?.user?.id]?.data[0]
+            
         //discord
-        const name = interaction.options.getString("name") || uuid
+            const name = interaction.options.getString("name") || uuid
+            
         //name stuff
         const username = (await axios.get(`https://playerdb.co/api/player/minecraft/${name}`)).data.data.player.username
         const uuid2 = (await axios.get(`https://playerdb.co/api/player/minecraft/${name}`)).data.data.player.raw_id
         const data = await getLatestProfile(name)
-        const profilename = (data.profileData.cute_name)
-        const proflieid = (data.profileData.profile_id)
-        const networthraw = (await axios.get(`http://104.128.65.165:3000/v2/profile/${uuid2}/${proflieid}?key=${config.api.skyStatsKey}`)).data
+            const profilename = (data.profileData.cute_name)
+            const profile = interaction.options.getString("profile") || profilename
+            const proflieid = (data.profileData.profile_id)
+            const networthraw = (await axios.get(`http://104.128.65.165:3000/v2/profile/${uuid2}/${proflieid}?key=${config.api.skyStatsKey}`)).data
+            
         // all item types with their networth values :D Credits to Shiiyu and SkyCrypt for the data
         //NETWORTH
         const networth = (networthraw.data.networth.networth).toString().split(".")[0] 

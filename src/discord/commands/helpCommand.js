@@ -6,7 +6,7 @@ module.exports = {
     name: 'help',
     description: 'Shows help menu',
 
-      
+    
     execute: async (interaction, client, InteractionCreate) => {
         const embed = {
             title: `SkyStats Help Menu`,
@@ -36,7 +36,7 @@ module.exports = {
             timestamp: new Date().toISOString(),
             footer: {text: `${messages.footer.defaultbetter}`, iconURL: `${messages.footer.icon}`},
             };
-     
+    
 
             await interaction.reply({  embeds: [ embed ] })
     }
