@@ -46,6 +46,8 @@ module.exports = {
         const completionscomma = addCommas(completions)
         const pickaxe_ability = (player.data.mining.core.selected_pickaxe_ability)
         
+        
+
 
         const chat = {
             color: 0xffa600,
