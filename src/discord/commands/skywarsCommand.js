@@ -23,7 +23,7 @@ module.exports = {
     const username =
       (
         await axios.get(
-          `https://sessionserver.mojang.com/session/minecraft/profile/${uuid}/`
+          `https://sessionserver.mojang.com/session/minecraft/profile/${name}/`
         )
       ).data.name || name;
     const player = await hypixel.getPlayer(name);
