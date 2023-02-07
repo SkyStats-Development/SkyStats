@@ -40,6 +40,7 @@ module.exports = {
 		required: false
     }],
 	execute: async (interaction, client) => {
+		try {
         const linked = require('../../../data/discordLinked.json')
         const uuid = linked?.[interaction?.user?.id]?.data[0]
         let name = interaction.options.getString("name") || uuid
@@ -115,5 +116,11 @@ module.exports = {
 		await interaction.reply({
 			embeds: [embeded]
 		})
+	} 
+	catch (error) {
+		console.log(error)
+		await interaction.editReply({ content: `Error: ${error}` })
+	}
 	},
+
 };

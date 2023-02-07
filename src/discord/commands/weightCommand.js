@@ -33,6 +33,7 @@ module.exports = {
     
   
     execute: async (interaction, client) => {
+        try{
         await interaction.deferReply();
 		await wait(100);
         const linked = require('../../../data/discordLinked.json')
@@ -82,5 +83,9 @@ module.exports = {
 
     
         await interaction.editReply({ embeds: [embedplayer] });
+    }         catch (error) {
+        console.log(error)
+        await interaction.editReply({ content: `Error: ${error}` })
+    }
     },
   };
