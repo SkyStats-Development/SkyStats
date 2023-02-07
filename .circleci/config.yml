@@ -13,7 +13,7 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - node/run:
-            npm-run: main 
+            npm-run: start 
             override-ci-command: npm i 
             pkg-manager: npm 
             resource_class: large 
