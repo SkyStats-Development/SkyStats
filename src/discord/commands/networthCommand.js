@@ -8,7 +8,6 @@ const {
 } = require("discord.js");
 const { getLatestProfile } = require("../../../API/functions/getLatestProfile");
 const { addNotation, addCommas } = require("../../contracts/helperFunctions");
-//github copilot add a string option with autocomplete for profiles as an object
 const messages = require("../../../messages.json");
 const { default: axios } = require("axios");
 const config = require("../../../config.json");
