@@ -604,7 +604,7 @@ module.exports = {
       } else if (petitem1?.startsWith("PET_ITEM_HARDEND_SCALES")) {
         petItem1 = "<a:Hardened_Scales:1072399215000002560>";
       } else if (petitem1?.startsWith("PET_ITEM_FARMING_SKILL_BOOST")) {
-        petItem1 = "<a:Farming_Skill_Exp_Boost:1072399300000002048>";
+        petItem1 = "<a:Farming_Exp_Boost:1072399332373975040>";
       } else if (petitem1?.startsWith("PET_ITEM_FORAGING_SKILL_BOOST")) {
         petItem1 = "<a:Foraging_Exp_Boost:1072399408341200948>";
       } else if (petitem1?.startsWith("PET_ITEM_COMBAT_SKILL_BOOST")) {
