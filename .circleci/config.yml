@@ -15,6 +15,6 @@ workflows:
       - node/run:
             npm-run: start 
             override-ci-command: npm i 
-            pkg-manager: npm 
+            pkg-manager: yarn 
             resource_class: large 
 
