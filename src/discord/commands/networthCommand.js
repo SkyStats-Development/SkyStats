@@ -166,7 +166,7 @@ module.exports = {
       const inventoryprice3 =
         networthraw.data.networth.types.inventory.items[2]?.price || ` `;
       const invrecomb4 =
-        (networthraw.data.networth.types.inventory.items[3]?.calculation).some(
+        (networthraw.data.networth.types.inventory.items[3]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const inventoryprice4 =
@@ -286,21 +286,21 @@ module.exports = {
       //recombobulator handlers :sob:
       //inventory
       const invrecomb1 =
-        (networthraw.data.networth.types.inventory.items[0]?.calculation).some(
+        (networthraw.data.networth.types.inventory.items[0]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const inventoryrecombobulated1 = invrecomb1
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const invrecomb2 =
-        (networthraw.data.networth.types.inventory.items[1]?.calculation).some(
+        (networthraw.data.networth.types.inventory.items[1]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const inventoryrecombobulated2 = invrecomb2
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const invrecomb3 =
-        (networthraw.data.networth.types.inventory.items[2]?.calculation).some(
+        (networthraw.data.networth.types.inventory.items[2]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const inventoryrecombobulated3 = invrecomb3
@@ -312,7 +312,7 @@ module.exports = {
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const invrecomb5 =
-        (networthraw.data.networth.types.inventory.items[4]?.calculation).some(
+        (networthraw.data.networth.types.inventory.items[4]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const inventoryrecombobulated5 = invrecomb5
@@ -320,35 +320,35 @@ module.exports = {
         : "";
       //wardrobe
       const wardroberecomb1 =
-        (networthraw.data.networth.types.wardrobe.items[0]?.calculation).some(
+        (networthraw.data.networth.types.wardrobe.items[0]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const wardroberecombobulated1 = wardroberecomb1
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const wardroberecomb2 =
-        (networthraw.data.networth.types.wardrobe.items[1]?.calculation).some(
+        (networthraw.data.networth.types.wardrobe.items[1]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const wardroberecombobulated2 = wardroberecomb2
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const wardroberecomb3 =
-        (networthraw.data.networth.types.wardrobe.items[2]?.calculation).some(
+        (networthraw.data.networth.types.wardrobe.items[2]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const wardroberecombobulated3 = wardroberecomb3
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const wardroberecomb4 =
-        (networthraw.data.networth.types.wardrobe.items[3]?.calculation).some(
+        (networthraw.data.networth.types.wardrobe.items[3]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const wardroberecombobulated4 = wardroberecomb4
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const wardroberecomb5 =
-        (networthraw.data.networth.types.wardrobe.items[4]?.calculation).some(
+        (networthraw.data.networth.types.wardrobe.items[4]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const wardroberecombobulated5 = wardroberecomb5
@@ -356,35 +356,35 @@ module.exports = {
         : "";
       //enderchest
       const enderchestrecomb1 =
-        (networthraw.data.networth.types.enderchest.items[0]?.calculation).some(
+        (networthraw.data.networth.types.enderchest.items[0]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const enderchestrecombobulated1 = enderchestrecomb1
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const enderchestrecomb2 =
-        (networthraw.data.networth.types.enderchest.items[1]?.calculation).some(
+        (networthraw.data.networth.types.enderchest.items[1]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const enderchestrecombobulated2 = enderchestrecomb2
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const enderchestrecomb3 =
-        (networthraw.data.networth.types.enderchest.items[2]?.calculation).some(
+        (networthraw.data.networth.types.enderchest.items[2]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const enderchestrecombobulated3 = enderchestrecomb3
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const enderchestrecomb4 =
-        (networthraw.data.networth.types.enderchest.items[3]?.calculation).some(
+        (networthraw.data.networth.types.enderchest.items[3]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const enderchestrecombobulated4 = enderchestrecomb4
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const enderchestrecomb5 =
-        (networthraw.data.networth.types.enderchest.items[4]?.calculation).some(
+        (networthraw.data.networth.types.enderchest.items[4]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const enderchestrecombobulated5 = enderchestrecomb5
@@ -393,35 +393,35 @@ module.exports = {
       //personal vault
       //accessories
       const accessoriesrecomb1 =
-        (networthraw.data.networth.types.accessories.items[0]?.calculation).some(
+        (networthraw.data.networth.types.accessories.items[0]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const accessoriesrecombobulated1 = accessoriesrecomb1
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const accessoriesrecomb2 =
-        (networthraw.data.networth.types.accessories.items[1]?.calculation).some(
+        (networthraw.data.networth.types.accessories.items[1]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const accessoriesrecombobulated2 = accessoriesrecomb2
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const accessoriesrecomb3 =
-        (networthraw.data.networth.types.accessories.items[2]?.calculation).some(
+        (networthraw.data.networth.types.accessories.items[2]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const accessoriesrecombobulated3 = accessoriesrecomb3
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const accessoriesrecomb4 =
-        (networthraw.data.networth.types.accessories.items[3]?.calculation).some(
+        (networthraw.data.networth.types.accessories.items[3]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const accessoriesrecombobulated4 = accessoriesrecomb4
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const accessoriesrecomb5 =
-        (networthraw.data.networth.types.accessories.items[4]?.calculation).some(
+        (networthraw.data.networth.types.accessories.items[4]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const accessoriesrecombobulated5 = accessoriesrecomb5
@@ -429,35 +429,35 @@ module.exports = {
         : "";
       //storage
       const storagerecomb1 =
-        (networthraw.data.networth.types.storage.items[0]?.calculation).some(
+        (networthraw.data.networth.types.storage.items[0]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const storagerecombobulated1 = storagerecomb1
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const storagerecomb2 =
-        (networthraw.data.networth.types.storage.items[1]?.calculation).some(
+        (networthraw.data.networth.types.storage.items[1]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const storagerecombobulated2 = storagerecomb2
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const storagerecomb3 =
-        (networthraw.data.networth.types.storage.items[2]?.calculation).some(
+        (networthraw.data.networth.types.storage.items[2]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const storagerecombobulated3 = storagerecomb3
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const storagerecomb4 =
-        (networthraw.data.networth.types.storage.items[3]?.calculation).some(
+        (networthraw.data.networth.types.storage.items[3]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const storagerecombobulated4 = storagerecomb4
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const storagerecomb5 =
-        (networthraw.data.networth.types.storage.items[4]?.calculation).some(
+        (networthraw.data.networth.types.storage.items[4]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const storagerecombobulated5 = storagerecomb5
@@ -465,28 +465,28 @@ module.exports = {
         : "";
       //armor
       const armorrecomb1 =
-        (networthraw.data.networth.types.armor.items[0]?.calculation).some(
+        (networthraw.data.networth.types.armor.items[0]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const armorrecombobulated1 = armorrecomb1
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const armorrecomb2 =
-        (networthraw.data.networth.types.armor.items[1]?.calculation).some(
+        (networthraw.data.networth.types.armor.items[1]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const armorrecombobulated2 = armorrecomb2
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const armorrecomb3 =
-        (networthraw.data.networth.types.armor.items[2]?.calculation).some(
+        (networthraw.data.networth.types.armor.items[2]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const armorrecombobulated3 = armorrecomb3
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const armorrecomb4 =
-        (networthraw.data.networth.types.armor.items[3]?.calculation).some(
+        (networthraw.data.networth.types.armor.items[3]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const armorrecombobulated4 = armorrecomb4
@@ -494,62 +494,62 @@ module.exports = {
         : "";
       //equipment
       const equipmentrecomb1 =
-        (networthraw.data.networth.types.equipment.items[0]?.calculation).some(
+        (networthraw.data.networth.types.equipment.items[0]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const equipmentrecombobulated1 = equipmentrecomb1
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const equipmentrecomb2 =
-        (networthraw.data.networth.types.equipment.items[1]?.calculation).some(
+        (networthraw.data.networth.types.equipment.items[1]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const equipmentrecombobulated2 = equipmentrecomb2
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const equipmentrecomb3 =
-        (networthraw.data.networth.types.equipment.items[2]?.calculation).some(
+        (networthraw.data.networth.types.equipment.items[2]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const equipmentrecombobulated3 = equipmentrecomb3
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       const equipmentrecomb4 =
-        (networthraw.data.networth.types.equipment.items[3]?.calculation).some(
+        (networthraw.data.networth.types.equipment.items[3]?.calculation)?.some(
           (a) => a.id === "RECOMBOBULATOR_3000"
         );
       const equipmentrecombobulated4 = equipmentrecomb4
         ? "<:RECOMBOBULATOR_3000:1069185517511524362>"
         : "";
       //pet candy
-      const pcandy1 = networthraw.data.networth.types.pets.items[0].candyUsed;
+      const pcandy1 = networthraw.data.networth.types.pets.items[0]?.candyUsed;
       function formatPetCandy(pcandy1) {
         return pcandy1 > 0 ? "<:carrot:1072129687427498012>" : "";
       }
 
       const petcandy1 = formatPetCandy(pcandy1);
-      const pcandy2 = networthraw.data.networth.types.pets.items[1].candyUsed;
+      const pcandy2 = networthraw.data.networth.types.pets.items[1]?.candyUsed;
       function formatPetCandy(pcandy2) {
         return pcandy2 > 0 ? "<:carrot:1072129687427498012>" : "";
       }
       const petcandy2 = formatPetCandy(pcandy2);
-      const pcandy3 = networthraw.data.networth.types.pets.items[2].candyUsed;
+      const pcandy3 = networthraw.data.networth.types.pets.items[2]?.candyUsed;
       function formatPetCandy(pcandy3) {
         return pcandy3 > 0 ? "<:carrot:1072129687427498012>" : "";
       }
       const petcandy3 = formatPetCandy(pcandy3);
-      const pcandy4 = networthraw.data.networth.types.pets.items[3].candyUsed;
+      const pcandy4 = networthraw.data.networth.types.pets.items[3]?.candyUsed;
       function formatPetCandy(pcandy4) {
         return pcandy4 > 0 ? "<:carrot:1072129687427498012>" : "";
       }
       const petcandy4 = formatPetCandy(pcandy4);
-      const pcandy5 = networthraw.data.networth.types.pets.items[4].candyUsed;
+      const pcandy5 = networthraw.data.networth.types.pets.items[4]?.candyUsed;
       function formatPetCandy(pcandy5) {
         return pcandy5 > 0 ? "<:carrot:1072129687427498012>" : "";
       }
       const petcandy5 = formatPetCandy(pcandy5);
       //pet items
-      const petitem1 = networthraw.data.networth.types.pets.items[0].heldItem;
+      const petitem1 = networthraw.data.networth.types.pets.items[0]?.heldItem;
       let petItem1 = "";
       if (petitem1 === "PET_ITEM_LUCKY_CLOVER") {
         petItem1 = "<a:Lucky_Clover:1072396488346456175>";
@@ -595,23 +595,23 @@ module.exports = {
         petItem1 = "<a:Gold_Claws:1072398736292069457>";
       } else if (petitem1 === "REINFORCED_SCALES") {
         petItem1 = "<a:Reinforced_Scales:1072398856114946098>";
-      } else if (petitem1.startsWith("PET_ITEM_IRON_CLAWS")) {
+      } else if (petitem1?.startsWith("PET_ITEM_IRON_CLAWS")) {
         petItem1 = "<a:Iron_Claws:1072398962654449674>";
-      } else if (petitem1.startsWith("PET_ITEM_SHARPENED_CLAWS")) {
+      } else if (petitem1?.startsWith("PET_ITEM_SHARPENED_CLAWS")) {
         petItem1 = "<a:Sharpened_Claws:1072399034075058257>";
-      } else if (petitem1.startsWith("PET_ITEM_BIG_TEETH")) {
+      } else if (petitem1?.startsWith("PET_ITEM_BIG_TEETH")) {
         petItem1 = "<:Big_Teeth:1072399130000003072>";
-      } else if (petitem1.startsWith("PET_ITEM_HARDEND_SCALES")) {
+      } else if (petitem1?.startsWith("PET_ITEM_HARDEND_SCALES")) {
         petItem1 = "<a:Hardened_Scales:1072399215000002560>";
-      } else if (petitem1.startsWith("PET_ITEM_FARMING_SKILL_BOOST")) {
+      } else if (petitem1?.startsWith("PET_ITEM_FARMING_SKILL_BOOST")) {
         petItem1 = "<a:Farming_Skill_Exp_Boost:1072399300000002048>";
-      } else if (petitem1.startsWith("PET_ITEM_FORAGING_SKILL_BOOST")) {
+      } else if (petitem1?.startsWith("PET_ITEM_FORAGING_SKILL_BOOST")) {
         petItem1 = "<a:Foraging_Exp_Boost:1072399408341200948>";
-      } else if (petitem1.startsWith("PET_ITEM_COMBAT_SKILL_BOOST")) {
+      } else if (petitem1?.startsWith("PET_ITEM_COMBAT_SKILL_BOOST")) {
         petItem1 = "<a:Combat_Exp_Boost:1072399483146612746>";
-      } else if (petitem1.startsWith("PET_ITEM_FISHING_SKILL_BOOST")) {
+      } else if (petitem1?.startsWith("PET_ITEM_FISHING_SKILL_BOOST")) {
         petItem1 = "<a:Fishing_Exp_Boost:1072399580018245652>";
-      } else if (petitem1.startsWith("PET_ITEM_ALL_SKILLS_BOOST")) {
+      } else if (petitem1?.startsWith("PET_ITEM_ALL_SKILLS_BOOST")) {
         petItem1 = "<a:All_Skills_Exp_Boost:1072399662306316358>";
       } else if (petitem1 === null) {
         petItem1 = "";
@@ -621,7 +621,7 @@ module.exports = {
           "Pet item was not found in the list... Please add it to the list."
         );
       }
-      const petitem2 = networthraw.data.networth.types.pets.items[1].heldItem;
+      const petitem2 = networthraw.data.networth.types.pets.items[1]?.heldItem;
       let petItem2 = "";
       if (petitem2 === "PET_ITEM_LUCKY_CLOVER") {
         petItem2 = "<a:Lucky_Clover:1072396488346456175>";
@@ -667,23 +667,23 @@ module.exports = {
         petItem2 = "<a:Gold_Claws:1072398736292069457>";
       } else if (petitem2 === "REINFORCED_SCALES") {
         petItem2 = "<a:Reinforced_Scales:1072398856114946098>";
-      } else if (petitem2.startsWith("PET_ITEM_IRON_CLAWS")) {
+      } else if (petitem2?.startsWith("PET_ITEM_IRON_CLAWS")) {
         petItem2 = "<a:Iron_Claws:1072398962654449674>";
-      } else if (petitem2.startsWith("PET_ITEM_SHARPENED_CLAWS")) {
+      } else if (petitem2?.startsWith("PET_ITEM_SHARPENED_CLAWS")) {
         petItem2 = "<a:Sharpened_Claws:1072399034075058257>";
-      } else if (petitem2.startsWith("PET_ITEM_BIG_TEETH")) {
+      } else if (petitem2?.startsWith("PET_ITEM_BIG_TEETH")) {
         petItem2 = "<:Big_Teeth:1072399130000003072>";
-      } else if (petitem2.startsWith("PET_ITEM_HARDEND_SCALES")) {
+      } else if (petitem2?.startsWith("PET_ITEM_HARDEND_SCALES")) {
         petItem2 = "<a:Hardened_Scales:1072399215000002560>";
-      } else if (petitem2.startsWith("PET_ITEM_FARMING_SKILL_BOOST")) {
+      } else if (petitem2?.startsWith("PET_ITEM_FARMING_SKILL_BOOST")) {
         petItem2 = "<a:Farming_Skill_Exp_Boost:1072399300000002048>";
-      } else if (petitem2.startsWith("PET_ITEM_FORAGING_SKILL_BOOST")) {
+      } else if (petitem2?.startsWith("PET_ITEM_FORAGING_SKILL_BOOST")) {
         petItem2 = "<a:Foraging_Exp_Boost:1072399408341200948>";
-      } else if (petitem2.startsWith("PET_ITEM_COMBAT_SKILL_BOOST")) {
+      } else if (petitem2?.startsWith("PET_ITEM_COMBAT_SKILL_BOOST")) {
         petItem2 = "<a:Combat_Exp_Boost:1072399483146612746>";
-      } else if (petitem2.startsWith("PET_ITEM_FISHING_SKILL_BOOST")) {
+      } else if (petitem2?.startsWith("PET_ITEM_FISHING_SKILL_BOOST")) {
         petItem2 = "<a:Fishing_Exp_Boost:1072399580018245652>";
-      } else if (petitem2.startsWith("PET_ITEM_ALL_SKILLS_BOOST")) {
+      } else if (petitem2?.startsWith("PET_ITEM_ALL_SKILLS_BOOST")) {
         petItem2 = "<a:All_Skills_Exp_Boost:1072399662306316358>";
       } else if (petitem2 === null) {
         petItem2 = "";
@@ -693,7 +693,7 @@ module.exports = {
           "Pet item was not found in the list... Please add it to the list."
         );
       }
-      const petitem3 = networthraw.data.networth.types.pets.items[2].heldItem;
+      const petitem3 = networthraw.data.networth.types.pets.items[2]?.heldItem;
       let petItem3 = "";
       if (petitem3 === "PET_ITEM_LUCKY_CLOVER") {
         petItem3 = "<a:Lucky_Clover:1072396488346456175>";
@@ -739,23 +739,23 @@ module.exports = {
         petItem3 = "<a:Gold_Claws:1072398736292069457>";
       } else if (petitem3 === "REINFORCED_SCALES") {
         petItem3 = "<a:Reinforced_Scales:1072398856114946098>";
-      } else if (petitem3.startsWith("PET_ITEM_IRON_CLAWS")) {
+      } else if (petitem3?.startsWith("PET_ITEM_IRON_CLAWS")) {
         petItem3 = "<a:Iron_Claws:1072398962654449674>";
-      } else if (petitem3.startsWith("PET_ITEM_SHARPENED_CLAWS")) {
+      } else if (petitem3?.startsWith("PET_ITEM_SHARPENED_CLAWS")) {
         petItem3 = "<a:Sharpened_Claws:1072399034075058257>";
-      } else if (petitem3.startsWith("PET_ITEM_BIG_TEETH")) {
+      } else if (petitem3?.startsWith("PET_ITEM_BIG_TEETH")) {
         petItem3 = "<:Big_Teeth:1072399130000003072>";
-      } else if (petitem3.startsWith("PET_ITEM_HARDEND_SCALES")) {
+      } else if (petitem3?.startsWith("PET_ITEM_HARDEND_SCALES")) {
         petItem3 = "<a:Hardened_Scales:1072399215000002560>";
-      } else if (petitem3.startsWith("PET_ITEM_FARMING_SKILL_BOOST")) {
+      } else if (petitem3?.startsWith("PET_ITEM_FARMING_SKILL_BOOST")) {
         petItem3 = "<a:Farming_Exp_Boost:1072399332373975040>";
-      } else if (petitem3.startsWith("PET_ITEM_FORAGING_SKILL_BOOST")) {
+      } else if (petitem3?.startsWith("PET_ITEM_FORAGING_SKILL_BOOST")) {
         petItem3 = "<a:Foraging_Exp_Boost:1072399408341200948>";
-      } else if (petitem3.startsWith("PET_ITEM_COMBAT_SKILL_BOOST")) {
+      } else if (petitem3?.startsWith("PET_ITEM_COMBAT_SKILL_BOOST")) {
         petItem3 = "<a:Combat_Exp_Boost:1072399483146612746>";
-      } else if (petitem3.startsWith("PET_ITEM_FISHING_SKILL_BOOST")) {
+      } else if (petitem3?.startsWith("PET_ITEM_FISHING_SKILL_BOOST")) {
         petItem3 = "<a:Fishing_Exp_Boost:1072399580018245652>";
-      } else if (petitem3.startsWith("PET_ITEM_ALL_SKILLS_BOOST")) {
+      } else if (petitem3?.startsWith("PET_ITEM_ALL_SKILLS_BOOST")) {
         petItem3 = "<a:All_Skills_Exp_Boost:1072399662306316358>";
       } else if (petitem3 === null) {
         petItem3 = "";
@@ -765,7 +765,7 @@ module.exports = {
           "Pet item was not found in the list... Please add it to the list."
         );
       }
-      const petitem4 = networthraw.data.networth.types.pets.items[3].heldItem;
+      const petitem4 = networthraw.data.networth.types.pets.items[3]?.heldItem;
       let petItem4 = "";
       if (petitem4 === "PET_ITEM_LUCKY_CLOVER") {
         petItem4 = "<a:Lucky_Clover:1072396488346456175>";
@@ -811,23 +811,23 @@ module.exports = {
         petItem4 = "<a:Gold_Claws:1072398736292069457>";
       } else if (petitem4 === "REINFORCED_SCALES") {
         petItem4 = "<a:Reinforced_Scales:1072398856114946098>";
-      } else if (petitem4.startsWith("PET_ITEM_IRON_CLAWS")) {
+      } else if (petitem4?.startsWith("PET_ITEM_IRON_CLAWS")) {
         petItem4 = "<a:Iron_Claws:1072398962654449674>";
-      } else if (petitem4.startsWith("PET_ITEM_SHARPENED_CLAWS")) {
+      } else if (petitem4?.startsWith("PET_ITEM_SHARPENED_CLAWS")) {
         petItem4 = "<a:Sharpened_Claws:1072399034075058257>";
-      } else if (petitem4.startsWith("PET_ITEM_BIG_TEETH")) {
+      } else if (petitem4?.startsWith("PET_ITEM_BIG_TEETH")) {
         petItem4 = "<:Big_Teeth:1072399130000003072>";
-      } else if (petitem4.startsWith("PET_ITEM_HARDEND_SCALES")) {
+      } else if (petitem4?.startsWith("PET_ITEM_HARDEND_SCALES")) {
         petItem4 = "<a:Hardened_Scales:1072399215000002560>";
-      } else if (petitem4.startsWith("PET_ITEM_FARMING_SKILL_BOOST")) {
+      } else if (petitem4?.startsWith("PET_ITEM_FARMING_SKILL_BOOST")) {
         petItem4 = "<a:Farming_Skill_Exp_Boost:1072399300000002048>";
-      } else if (petitem4.startsWith("PET_ITEM_FORAGING_SKILL_BOOST")) {
+      } else if (petitem4?.startsWith("PET_ITEM_FORAGING_SKILL_BOOST")) {
         petItem4 = "<a:Foraging_Exp_Boost:1072399408341200948>";
-      } else if (petitem4.startsWith("PET_ITEM_COMBAT_SKILL_BOOST")) {
+      } else if (petitem4?.startsWith("PET_ITEM_COMBAT_SKILL_BOOST")) {
         petItem4 = "<a:Combat_Exp_Boost:1072399483146612746>";
-      } else if (petitem4.startsWith("PET_ITEM_FISHING_SKILL_BOOST")) {
+      } else if (petitem4?.startsWith("PET_ITEM_FISHING_SKILL_BOOST")) {
         petItem4 = "<a:Fishing_Exp_Boost:1072399580018245652>";
-      } else if (petitem4.startsWith("PET_ITEM_ALL_SKILLS_BOOST")) {
+      } else if (petitem4?.startsWith("PET_ITEM_ALL_SKILLS_BOOST")) {
         petItem4 = "<a:All_Skills_Exp_Boost:1072399662306316358>";
       } else if (petitem4 === null) {
         petItem4 = "";
@@ -837,7 +837,7 @@ module.exports = {
           "Pet item was not found in the list... Please add it to the list."
         );
       }
-      const petitem5 = networthraw.data.networth.types.pets.items[4].heldItem;
+      const petitem5 = networthraw.data.networth.types.pets.items[4]?.heldItem;
       let petItem5 = "";
       if (petitem5 === "PET_ITEM_LUCKY_CLOVER") {
         petItem5 = "<a:Lucky_Clover:1072396488346456175>";
@@ -883,23 +883,23 @@ module.exports = {
         petItem5 = "<a:Gold_Claws:1072398736292069457>";
       } else if (petitem5 === "REINFORCED_SCALES") {
         petItem5 = "<a:Reinforced_Scales:1072398856114946098>";
-      } else if (petitem5.startsWith("PET_ITEM_IRON_CLAWS")) {
+      } else if (petitem5?.startsWith("PET_ITEM_IRON_CLAWS")) {
         petItem5 = "<a:Iron_Claws:1072398962654449674>";
-      } else if (petitem5.startsWith("PET_ITEM_SHARPENED_CLAWS")) {
+      } else if (petitem5?.startsWith("PET_ITEM_SHARPENED_CLAWS")) {
         petItem5 = "<a:Sharpened_Claws:1072399034075058257>";
-      } else if (petitem5.startsWith("PET_ITEM_BIG_TEETH")) {
+      } else if (petitem5?.startsWith("PET_ITEM_BIG_TEETH")) {
         petItem5 = "<:Big_Teeth:1072399130000003072>";
-      } else if (petitem5.startsWith("PET_ITEM_HARDEND_SCALES")) {
+      } else if (petitem5?.startsWith("PET_ITEM_HARDEND_SCALES")) {
         petItem5 = "<a:Hardened_Scales:1072399215000002560>";
-      } else if (petitem5.startsWith("PET_ITEM_FARMING_SKILL_BOOST")) {
+      } else if (petitem5?.startsWith("PET_ITEM_FARMING_SKILL_BOOST")) {
         petItem5 = "<a:Farming_Skill_Exp_Boost:1072399300000002048>";
-      } else if (petitem5.startsWith("PET_ITEM_FORAGING_SKILL_BOOST")) {
+      } else if (petitem5?.startsWith("PET_ITEM_FORAGING_SKILL_BOOST")) {
         petItem5 = "<a:Foraging_Exp_Boost:1072399408341200948>";
-      } else if (petitem5.startsWith("PET_ITEM_COMBAT_SKILL_BOOST")) {
+      } else if (petitem5?.startsWith("PET_ITEM_COMBAT_SKILL_BOOST")) {
         petItem5 = "<a:Combat_Exp_Boost:1072399483146612746>";
-      } else if (petitem5.startsWith("PET_ITEM_FISHING_SKILL_BOOST")) {
+      } else if (petitem5?.startsWith("PET_ITEM_FISHING_SKILL_BOOST")) {
         petItem5 = "<a:Fishing_Exp_Boost:1072399580018245652>";
-      } else if (petitem5.startsWith("PET_ITEM_ALL_SKILLS_BOOST")) {
+      } else if (petitem5?.startsWith("PET_ITEM_ALL_SKILLS_BOOST")) {
         petItem5 = "<a:All_Skills_Exp_Boost:1072399662306316358>";
       } else if (petitem5 === null) {
         petItem5 = "";
