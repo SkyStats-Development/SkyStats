@@ -44,7 +44,7 @@ module.exports = {
         const profileraw = (await axios.get(`https://sky.shiiyu.moe/api/v2/profile/${name}`)).data.profiles
         let currentProfile;
         for (var key of Object.keys(profileraw)) {
-            if (profileraw[key].current) currentProfile = key;}
+            if (profileraw[key]?.current) currentProfile = key;}
         const data = await getLatestProfile(name)
         const filter = i => i.user.id === (interaction.user.id);
         const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
@@ -57,95 +57,95 @@ module.exports = {
         const selectedclass = (player.data.dungeons.selected_class) || `DEFAULT`
         const classavrg = (player.data.dungeons.class_average) || `0`
         // f0
-        const f0comp = (player.data.dungeons.catacombs.floors[`0`].stats.tier_completions) || `0`
-        const f0time = (player.data.dungeons.catacombs.floors[`0`].stats.fastest_time) || `0`
-        const f0times = (player.data.dungeons.catacombs.floors[`0`].stats.fastest_time_s)|| `0`
-        const f0timess = (player.data.dungeons.catacombs.floors[`0`].stats.fastest_time_s_plus)|| `0` 
-        const f0best_score = (player.data.dungeons.catacombs.floors[`0`].stats.best_score)|| `0`
+        const f0comp = (player.data.dungeons.catacombs.floors[`0`]?.stats?.tier_completions) || `0`
+        const f0time = (player.data.dungeons.catacombs.floors[`0`]?.stats?.fastest_time) || `0`
+        const f0times = (player.data.dungeons.catacombs.floors[`0`]?.stats?.fastest_time_s)|| `0`
+        const f0timess = (player.data.dungeons.catacombs.floors[`0`]?.stats?.fastest_time_s_plus)|| `0` 
+        const f0best_score = (player.data.dungeons.catacombs.floors[`0`]?.stats?.best_score)|| `0`
         //f1
-        const f1comp = (player.data.dungeons.catacombs.floors[`1`].stats.tier_completions)|| `0`
-        const f1time = (player.data.dungeons.catacombs.floors[`1`].stats.fastest_time)|| `0`
-        const f1times = (player.data.dungeons.catacombs.floors[`1`].stats.fastest_time_s)|| `0`
-        const f1timess = (player.data.dungeons.catacombs.floors[`1`].stats.fastest_time_s_plus)|| `0` 
-        const f1best_score = (player.data.dungeons.catacombs.floors[`1`].stats.best_score)|| `0`
+        const f1comp = (player.data.dungeons.catacombs.floors[`1`]?.stats?.tier_completions)|| `0`
+        const f1time = (player.data.dungeons.catacombs.floors[`1`]?.stats?.fastest_time)|| `0`
+        const f1times = (player.data.dungeons.catacombs.floors[`1`]?.stats?.fastest_time_s)|| `0`
+        const f1timess = (player.data.dungeons.catacombs.floors[`1`]?.stats?.fastest_time_s_plus)|| `0` 
+        const f1best_score = (player.data.dungeons.catacombs.floors[`1`]?.stats?.best_score)|| `0`
         //f2
-        const f2comp = (player.data.dungeons.catacombs.floors[`2`].stats.tier_completions)|| `0`
-        const f2time = (player.data.dungeons.catacombs.floors[`2`].stats.fastest_time)|| `0`
-        const f2times = (player.data.dungeons.catacombs.floors[`2`].stats.fastest_time_s)|| `0`
-        const f2timess = (player.data.dungeons.catacombs.floors[`2`].stats.fastest_time_s_plus)|| `0` 
-        const f2best_score = (player.data.dungeons.catacombs.floors[`2`].stats.best_score)|| `0`
+        const f2comp = (player.data.dungeons.catacombs.floors[`2`]?.stats?.tier_completions)|| `0`
+        const f2time = (player.data.dungeons.catacombs.floors[`2`]?.stats?.fastest_time)|| `0`
+        const f2times = (player.data.dungeons.catacombs.floors[`2`]?.stats?.fastest_time_s)|| `0`
+        const f2timess = (player.data.dungeons.catacombs.floors[`2`]?.stats?.fastest_time_s_plus)|| `0` 
+        const f2best_score = (player.data.dungeons.catacombs.floors[`2`]?.stats?.best_score)|| `0`
         //f3
-        const f3comp = (player.data.dungeons.catacombs.floors[`3`].stats.tier_completions)|| `0`
-        const f3time = (player.data.dungeons.catacombs.floors[`3`].stats.fastest_time)|| `0`
-        const f3times = (player.data.dungeons.catacombs.floors[`3`].stats.fastest_time_s)|| `0`
-        const f3timess = (player.data.dungeons.catacombs.floors[`3`].stats.fastest_time_s_plus)|| `0` 
-        const f3best_score = (player.data.dungeons.catacombs.floors[`3`].stats.best_score)|| `0`
+        const f3comp = (player.data.dungeons.catacombs.floors[`3`]?.stats?.tier_completions)|| `0`
+        const f3time = (player.data.dungeons.catacombs.floors[`3`]?.stats?.fastest_time)|| `0`
+        const f3times = (player.data.dungeons.catacombs.floors[`3`]?.stats?.fastest_time_s)|| `0`
+        const f3timess = (player.data.dungeons.catacombs.floors[`3`]?.stats?.fastest_time_s_plus)|| `0` 
+        const f3best_score = (player.data.dungeons.catacombs.floors[`3`]?.stats?.best_score)|| `0`
         //f4
-        const f4comp = (player.data.dungeons.catacombs.floors[`4`].stats.tier_completions)|| `0`
-        const f4time = (player.data.dungeons.catacombs.floors[`4`].stats.fastest_time)|| `0`
-        const f4times = (player.data.dungeons.catacombs.floors[`4`].stats.fastest_time_s)|| `0`
-        const f4timess = (player.data.dungeons.catacombs.floors[`4`].stats.fastest_time_s_plus)|| `0` 
-        const f4best_score = (player.data.dungeons.catacombs.floors[`4`].stats.best_score)|| `0`
+        const f4comp = (player.data.dungeons.catacombs.floors[`4`]?.stats?.tier_completions)|| `0`
+        const f4time = (player.data.dungeons.catacombs.floors[`4`]?.stats?.fastest_time)|| `0`
+        const f4times = (player.data.dungeons.catacombs.floors[`4`]?.stats?.fastest_time_s)|| `0`
+        const f4timess = (player.data.dungeons.catacombs.floors[`4`]?.stats?.fastest_time_s_plus)|| `0` 
+        const f4best_score = (player.data.dungeons.catacombs.floors[`4`]?.stats?.best_score)|| `0`
         //f5
-        const f5comp = (player.data.dungeons.catacombs.floors[`5`].stats.tier_completions)|| `0`
-        const f5time = (player.data.dungeons.catacombs.floors[`5`].stats.fastest_time)|| `0`
-        const f5times = (player.data.dungeons.catacombs.floors[`5`].stats.fastest_time_s)|| `0`
-        const f5timess = (player.data.dungeons.catacombs.floors[`5`].stats.fastest_time_s_plus)|| `0` 
-        const f5best_score = (player.data.dungeons.catacombs.floors[`5`].stats.best_score)|| `0`
+        const f5comp = (player.data.dungeons.catacombs.floors[`5`]?.stats?.tier_completions)|| `0`
+        const f5time = (player.data.dungeons.catacombs.floors[`5`]?.stats?.fastest_time)|| `0`
+        const f5times = (player.data.dungeons.catacombs.floors[`5`]?.stats?.fastest_time_s)|| `0`
+        const f5timess = (player.data.dungeons.catacombs.floors[`5`]?.stats?.fastest_time_s_plus)|| `0` 
+        const f5best_score = (player.data.dungeons.catacombs.floors[`5`]?.stats?.best_score)|| `0`
         //f6
-        const f6comp = (player.data.dungeons.catacombs.floors[`6`].stats.tier_completions)|| `0`
-        const f6time = (player.data.dungeons.catacombs.floors[`6`].stats.fastest_time)|| `0`
-        const f6times = (player.data.dungeons.catacombs.floors[`6`].stats.fastest_time_s)|| `0`
-        const f6timess = (player.data.dungeons.catacombs.floors[`6`].stats.fastest_time_s_plus)|| `0` 
-        const f6best_score = (player.data.dungeons.catacombs.floors[`6`].stats.best_score)|| `0`
+        const f6comp = (player.data.dungeons.catacombs.floors[`6`]?.stats?.tier_completions)|| `0`
+        const f6time = (player.data.dungeons.catacombs.floors[`6`]?.stats?.fastest_time)|| `0`
+        const f6times = (player.data.dungeons.catacombs.floors[`6`]?.stats?.fastest_time_s)|| `0`
+        const f6timess = (player.data.dungeons.catacombs.floors[`6`]?.stats?.fastest_time_s_plus)|| `0` 
+        const f6best_score = (player.data.dungeons.catacombs.floors[`6`]?.stats?.best_score)|| `0`
         //f7
-        const f7comp = (player.data.dungeons.catacombs.floors[`7`].stats.tier_completions)|| `0`
-        const f7time = (player.data.dungeons.catacombs.floors[`7`].stats.fastest_time)|| `0`
-        const f7times = (player.data.dungeons.catacombs.floors[`7`].stats.fastest_time_s)|| `0`
-        const f7timess = (player.data.dungeons.catacombs.floors[`7`].stats.fastest_time_s_plus)|| `0` 
-        const f7best_score = (player.data.dungeons.catacombs.floors[`7`].stats.best_score) || `0`  
+        const f7comp = (player.data.dungeons.catacombs.floors[`7`]?.stats?.tier_completions)|| `0`
+        const f7time = (player.data.dungeons.catacombs.floors[`7`]?.stats?.fastest_time)|| `0`
+        const f7times = (player.data.dungeons.catacombs.floors[`7`]?.stats?.fastest_time_s)|| `0`
+        const f7timess = (player.data.dungeons.catacombs.floors[`7`]?.stats?.fastest_time_s_plus)|| `0` 
+        const f7best_score = (player.data.dungeons.catacombs.floors[`7`]?.stats?.best_score) || `0`  
         //m1
-        const m1comp = (player.data.dungeons.master_catacombs.floors[`1`].stats.tier_completions)|| `0`
-        const m1time = (player.data.dungeons.master_catacombs.floors[`1`].stats.fastest_time)|| `0`
-        const m1times = (player.data.dungeons.master_catacombs.floors[`1`].stats.fastest_time_s)|| `0`
-        const m1timess = (player.data.dungeons.master_catacombs.floors[`1`].stats.fastest_time_s_plus)|| `0` 
-        const m1best_score = (player.data.dungeons.master_catacombs.floors[`1`].stats.best_score)|| `0`
+        const m1comp = (player.data.dungeons.master_catacombs.floors[`1`]?.stats?.tier_completions)|| `0`
+        const m1time = (player.data.dungeons.master_catacombs.floors[`1`]?.stats?.fastest_time)|| `0`
+        const m1times = (player.data.dungeons.master_catacombs.floors[`1`]?.stats?.fastest_time_s)|| `0`
+        const m1timess = (player.data.dungeons.master_catacombs.floors[`1`]?.stats?.fastest_time_s_plus)|| `0` 
+        const m1best_score = (player.data.dungeons.master_catacombs.floors[`1`]?.stats?.best_score)|| `0`
         //m2
-        const m2comp = (player.data.dungeons.master_catacombs.floors[`2`].stats.tier_completions)|| `0`
-        const m2time = (player.data.dungeons.master_catacombs.floors[`2`].stats.fastest_time)|| `0`
-        const m2times = (player.data.dungeons.master_catacombs.floors[`2`].stats.fastest_time_s)|| `0`
-        const m2timess = (player.data.dungeons.master_catacombs.floors[`2`].stats.fastest_time_s_plus)|| `0` 
-        const m2best_score = (player.data.dungeons.master_catacombs.floors[`2`].stats.best_score)|| `0`
+        const m2comp = (player.data.dungeons.master_catacombs.floors[`2`]?.stats?.tier_completions)|| `0`
+        const m2time = (player.data.dungeons.master_catacombs.floors[`2`]?.stats?.fastest_time)|| `0`
+        const m2times = (player.data.dungeons.master_catacombs.floors[`2`]?.stats?.fastest_time_s)|| `0`
+        const m2timess = (player.data.dungeons.master_catacombs.floors[`2`]?.stats?.fastest_time_s_plus)|| `0` 
+        const m2best_score = (player.data.dungeons.master_catacombs.floors[`2`]?.stats?.best_score)|| `0`
         //m3
-        const m3comp = (player.data.dungeons.master_catacombs.floors[`3`].stats.tier_completions)|| `0`
-        const m3time = (player.data.dungeons.master_catacombs.floors[`3`].stats.fastest_time)|| `0`
-        const m3times = (player.data.dungeons.master_catacombs.floors[`3`].stats.fastest_time_s)|| `0`
-        const m3timess = (player.data.dungeons.master_catacombs.floors[`3`].stats.fastest_time_s_plus)|| `0` 
-        const m3best_score = (player.data.dungeons.master_catacombs.floors[`3`].stats.best_score)|| `0`
+        const m3comp = (player.data.dungeons.master_catacombs.floors[`3`]?.stats?.tier_completions)|| `0`
+        const m3time = (player.data.dungeons.master_catacombs.floors[`3`]?.stats?.fastest_time)|| `0`
+        const m3times = (player.data.dungeons.master_catacombs.floors[`3`]?.stats?.fastest_time_s)|| `0`
+        const m3timess = (player.data.dungeons.master_catacombs.floors[`3`]?.stats?.fastest_time_s_plus)|| `0` 
+        const m3best_score = (player.data.dungeons.master_catacombs.floors[`3`]?.stats?.best_score)|| `0`
         //m4
-        const m4comp = (player.data.dungeons.master_catacombs.floors[`4`].stats.tier_completions)|| `0`
-        const m4time = (player.data.dungeons.master_catacombs.floors[`4`].stats.fastest_time)|| `0`
-        const m4times = (player.data.dungeons.master_catacombs.floors[`4`].stats.fastest_time_s)|| `0`
-        const m4timess = (player.data.dungeons.master_catacombs.floors[`4`].stats.fastest_time_s_plus)|| `0` 
-        const m4best_score = (player.data.dungeons.master_catacombs.floors[`4`].stats.best_score)|| `0`
+        const m4comp = (player.data.dungeons.master_catacombs.floors[`4`]?.stats?.tier_completions)|| `0`
+        const m4time = (player.data.dungeons.master_catacombs.floors[`4`]?.stats?.fastest_time)|| `0`
+        const m4times = (player.data.dungeons.master_catacombs.floors[`4`]?.stats?.fastest_time_s)|| `0`
+        const m4timess = (player.data.dungeons.master_catacombs.floors[`4`]?.stats?.fastest_time_s_plus)|| `0` 
+        const m4best_score = (player.data.dungeons.master_catacombs.floors[`4`]?.stats?.best_score)|| `0`
         //m5
-        const m5comp = (player.data.dungeons.master_catacombs.floors[`5`].stats.tier_completions)|| `0`
-        const m5time = (player.data.dungeons.master_catacombs.floors[`5`].stats.fastest_time)|| `0`
-        const m5times = (player.data.dungeons.master_catacombs.floors[`5`].stats.fastest_time_s)|| `0`
-        const m5timess = (player.data.dungeons.master_catacombs.floors[`5`].stats.fastest_time_s_plus)|| `0` 
-        const m5best_score = (player.data.dungeons.master_catacombs.floors[`5`].stats.best_score)|| `0`
+        const m5comp = (player.data.dungeons.master_catacombs.floors[`5`]?.stats?.tier_completions)|| `0`
+        const m5time = (player.data.dungeons.master_catacombs.floors[`5`]?.stats?.fastest_time)|| `0`
+        const m5times = (player.data.dungeons.master_catacombs.floors[`5`]?.stats?.fastest_time_s)|| `0`
+        const m5timess = (player.data.dungeons.master_catacombs.floors[`5`]?.stats?.fastest_time_s_plus)|| `0` 
+        const m5best_score = (player.data.dungeons.master_catacombs.floors[`5`]?.stats?.best_score)|| `0`
         //m6
-        const m6comp = (player.data.dungeons.master_catacombs.floors[`6`].stats.tier_completions)|| `0`
-        const m6time = (player.data.dungeons.master_catacombs.floors[`6`].stats.fastest_time)|| `0`
-        const m6times = (player.data.dungeons.master_catacombs.floors[`6`].stats.fastest_time_s)|| `0`
-        const m6timess = (player.data.dungeons.master_catacombs.floors[`6`].stats.fastest_time_s_plus)|| `0` 
-        const m6best_score = (player.data.dungeons.master_catacombs.floors[`6`].stats.best_score)|| `0`
+        const m6comp = (player.data.dungeons.master_catacombs.floors[`6`]?.stats?.tier_completions)|| `0`
+        const m6time = (player.data.dungeons.master_catacombs.floors[`6`]?.stats?.fastest_time)|| `0`
+        const m6times = (player.data.dungeons.master_catacombs.floors[`6`]?.stats?.fastest_time_s)|| `0`
+        const m6timess = (player.data.dungeons.master_catacombs.floors[`6`]?.stats?.fastest_time_s_plus)|| `0` 
+        const m6best_score = (player.data.dungeons.master_catacombs.floors[`6`]?.stats?.best_score)|| `0`
         //m7
-        const m7comp = (player.data.dungeons.master_catacombs.floors[`7`].stats.tier_completions)|| `0`
-        const m7time = (player.data.dungeons.master_catacombs.floors[`7`].stats.fastest_time)|| `0`
-        const m7times = (player.data.dungeons.master_catacombs.floors[`7`].stats.fastest_time_s)|| `0`
-        const m7timess = (player.data.dungeons.master_catacombs.floors[`7`].stats.fastest_time_s_plus)|| `0` 
-        const m7best_score = (player.data.dungeons.master_catacombs.floors[`7`].stats.best_score) || `0`     
+        const m7comp = (player.data.dungeons.master_catacombs.floors[`7`]?.stats?.tier_completions)|| `0`
+        const m7time = (player.data.dungeons.master_catacombs.floors[`7`]?.stats?.fastest_time)|| `0`
+        const m7times = (player.data.dungeons.master_catacombs.floors[`7`]?.stats?.fastest_time_s)|| `0`
+        const m7timess = (player.data.dungeons.master_catacombs.floors[`7`]?.stats?.fastest_time_s_plus)|| `0` 
+        const m7best_score = (player.data.dungeons.master_catacombs.floors[`7`]?.stats?.best_score) || `0`     
         //Tank
         const tanklevelWithProgresss = (player.data.dungeons.classes.tank.levelWithProgress) || `0`
         const tanklevelp = Math.round((tanklevelWithProgresss) * 100) /100
@@ -207,7 +207,7 @@ module.exports = {
         const chat = {
             color: 0xffa600,
             title: `${username}'s Dungeon Stats On ${profilename}`,
-            URL: `https://sky.shiiyu.moe/stats/${name}`,
+            URL: `https://sky.shiiyu.moe/stats?/${name}`,
             description: (`<:dungeons:1062778077735829615>Catacombs Level: **${catalvl}**\n<:Iron_Chestplate:1061454825839144970>Average Class Level: **${classavrg}**\n<:CHEST:1061454902049656993>Secrets Found: **${secrets}**`),
             thumbnail: {
                 url: `https://api.mineatar.io/body/full/${name}`,
@@ -280,7 +280,7 @@ module.exports = {
             const mm = {
                 color: 0xffa600,
                 title: `${username}'s Master Mode Stats On ${profilename}`,
-                URL: `https://sky.shiiyu.moe/stats/${name}`,
+                URL: `https://sky.shiiyu.moe/stats?/${name}`,
                 description: (`<:dungeons:1062778077735829615>Catacombs Level: **${catalvl}**\n<:Iron_Chestplate:1061454825839144970>Average Class Level: **${classavrg}**\n<:CHEST:1061454902049656993>Secrets Found: **${secrets}**`),
                 thumbnail: {
                     url: `https://api.mineatar.io/body/full/${name}`,
@@ -353,7 +353,7 @@ module.exports = {
                 const coll = {
                     color: 0xffa600,
                     title: `${username}'s Collections Data On ${profilename}`,
-                    URL: `https://sky.shiiyu.moe/stats/${name}`,
+                    URL: `https://sky.shiiyu.moe/stats?/${name}`,
                     description: (`<:dungeons:1062778077735829615>Catacombs Level: **${catalvl}**\n<:Iron_Chestplate:1061454825839144970>Average Class Level: **${classavrg}**\n<:CHEST:1061454902049656993>Secrets Found: **${secrets}**`),
                     thumbnail: {
                         url: `https://api.mineatar.io/body/full/${name}`,
@@ -394,14 +394,14 @@ module.exports = {
                             name: `<:F7:1062782318781145170> Necron (${necronT})`,
                             value: `<:SKULL_ITEM_1:1062777707127123998>Total Kills: **${necronK}**\n<:f7:1059665388570419210>Dungeon Kills: **${necronD}**\n<:m7:1059665136878637136>Master Mode Kills: **${necronMM}**`,
                             inline: true,
-                        },
+                      },
                     ],
                     footer: {text: `${messages.footer.defaultbetter}`, iconURL: `${messages.footer.icon}`},
                     };
                     const classs = {
                         color: 0xffa600,
                         title: `${username}'s Class Data On ${profilename}`,
-                        URL: `https://sky.shiiyu.moe/stats/${name}`,
+                        URL: `https://sky.shiiyu.moe/stats?/${name}`,
                         description: (`<:dungeons:1062778077735829615>Catacombs Level: **${catalvl}**\n<:Iron_Chestplate:1061454825839144970>Average Class Level: **${classavrg}**\n<:CHEST:1061454902049656993>Secrets Found: **${secrets}**`),
                         thumbnail: {
                             url: `https://api.mineatar.io/body/full/${name}`,
@@ -488,7 +488,7 @@ module.exports = {
             collector.on('collect', async i => {
                 if (i.customId === 'class') {
                     await i.deferUpdate();
-                    await i.editReply({ embeds: [ classs ], components: [mmbutton, onlydungeon, classes, collections] });
+                    await i.editReply({ embeds: [ classs ]? components: [mmbutton, onlydungeon, classes, collections] });
                 }
             });
             collector.on('collect', async i => {
