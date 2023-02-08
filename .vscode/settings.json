@@ -1,5 +1,8 @@
 {
     "cSpell.words": [
         "Networth"
+    ],
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "main"
     ]
 }

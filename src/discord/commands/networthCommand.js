@@ -47,7 +47,7 @@ module.exports = {
       const proflieid = data.profileData.profile_id;
       const networthraw = (
         await axios.get(
-          `http://104.128.65.165:3000/v2/profile/${uuid2}/${proflieid}?key=${config.api.skyStatsKey}`
+          `http://103.54.59.82:3000/v2/profile/${uuid2}/${proflieid}?key=${config.api.skyStatsKey}`
         )
       ).data;
 

@@ -20,19 +20,19 @@ module.exports = {
       ],
 
     execute: async (interaction, client, InteractionCreate) => {
-        let player = interaction.options.getString('player')
+        let name = interaction.options.getString('player')
         const uuid = await getUUID(player)
-        const woolWars = (await axios.get(`https://api.hypixel.net/player?key=${config.api.hypixelAPIkey}&uuid=${name}`)).data.player.stats.WoolGames
+        const woolWars = (await axios.get(`https://api.hypixel.net/player?key=${config.api.hypixelAPIkey}&uuid=${uuid}`)).data.player.stats.WoolGames
         const level = getWoolWarsStar(woolWars.progression.experience)
         const kdrw = toFixed(woolWars.wool_wars.stats.kills) || `no kills GG`
         const deathss = toFixed(woolWars.wool_wars.stats.deaths) || `no deaths GG`
 
         const embed = {
             color: 0xffa600,
-            title: `WoolWars Stats For ${player}`,
+            title: `WoolWars Stats For ${name}`,
             description: (`\n`),
       thumbnail: {
-                url: `https://api.mineatar.io/body/full/${player}`,
+                url: `https://api.mineatar.io/body/full/${name}`,
             },
             fields: [
             {

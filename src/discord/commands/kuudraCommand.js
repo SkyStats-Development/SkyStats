@@ -27,8 +27,13 @@ module.exports = {
         const linked = require('../../../data/discordLinked.json')
         const uuid = linked?.[interaction?.user?.id]?.data[0]
         let name = interaction.options.getString("name") || uuid
-        const username = (await axios.get(`https://sessionserver.mojang.com/session/minecraft/profile/${name}/`)).data.name || name
-        const profileraw = (await axios.get(`https://sky.shiiyu.moe/api/v2/profile/${name}`)).data.profiles
+        const username = (
+            await axios.get(`https://playerdb.co/api/player/minecraft/${name}`)
+          ).data.data.player.username;
+          const uuid2 = (
+            await axios.get(`https://playerdb.co/api/player/minecraft/${name}`)
+          ).data.data.player.raw_id;
+        const profileraw = (await axios.get(`https://sky.shiiyu.moe/api/v2/profile/${uuid2}`)).data.profiles
         let currentProfile;
         for (var key of Object.keys(profileraw)) {
             if (profileraw[key].current) currentProfile = key;
