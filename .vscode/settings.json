@@ -3,6 +3,7 @@
         "Networth"
     ],
     "githubPullRequests.ignoredPullRequestBranches": [
+        "main",
         "main"
     ]
 }
