@@ -11,7 +11,7 @@ const { addNotation, addCommas } = require("../../contracts/helperFunctions");
 const messages = require("../../../messages.json");
 const { default: axios } = require("axios");
 const config = require("../../../config.json");
-const { chooseFormat } = require("ytdl-core");
+
 
 module.exports = {
   name: "networth",
