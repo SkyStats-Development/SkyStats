@@ -1060,6 +1060,7 @@ module.exports = {
       }**)`;
 
       const embedplayer = {
+// https://raw.githubusercontent.com/Altpapier/SkyHelperAPI/master/License - License for SkyHelperAPI and for SkyHelper Discord Bot (I am using their old version of the networth embed)
         color: 0xffa600,
         title: `Networth For ${username} On ${profilename}`,
         URL: `https://sky.shiiyu.moe/stats/${name}`,
