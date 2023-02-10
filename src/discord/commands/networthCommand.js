@@ -1061,6 +1061,7 @@ module.exports = {
 
       const embedplayer = {
 // https://raw.githubusercontent.com/Altpapier/SkyHelperAPI/master/License - License for SkyHelperAPI and for SkyHelper Discord Bot (I am using their old version of the networth embed)
+// https://raw.githubusercontent.com/zt3h/MaroAPI/main/LICENSE - License for Maro (Skyhelper used their embed format, I used skyhelpers... its a trend bro :skull:)        
         color: 0xffa600,
         title: `Networth For ${username} On ${profilename}`,
         URL: `https://sky.shiiyu.moe/stats/${name}`,
