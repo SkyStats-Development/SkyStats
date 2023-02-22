@@ -400,7 +400,7 @@ module.exports = {
                             name: `<:F7:1062782318781145170> Necron (${necronT})`,
                             value: `<:SKULL_ITEM_1:1062777707127123998>Total Kills: **${necronK}**\n<:f7:1059665388570419210>Dungeon Kills: **${necronD}**\n<:m7:1059665136878637136>Master Mode Kills: **${necronMM}**`,
                             inline: true,
-                      },
+                        },
                     ],
                     footer: {text: `${messages.footer.defaultbetter}`, iconURL: `${messages.footer.icon}`},
                     };
