@@ -11,6 +11,8 @@ const { addNotation, addCommas } = require("../../contracts/helperFunctions");
 const messages = require("../../../messages.json");
 const { default: axios } = require("axios");
 const config = require("../../../config.json");
+const {getCookiePrice} = require('../../../API/functions/getCookie')
+const {getSkyStats} = require('../../../API/functions/getSkystats')
 
 
 module.exports = {
@@ -45,6 +47,8 @@ module.exports = {
       const data = await getLatestProfile(name);
       const profilename = data.profileData.cute_name;
       const proflieid = data.profileData.profile_id;
+      const stats = await getSkyStats(uuid2, profileId, apiKey);
+      
       const networthraw = (
         await axios.get(
           `http://103.54.59.82:3000/v2/profile/${uuid2}/${proflieid}?key=${config.api.skyStatsKey}`
@@ -65,14 +69,10 @@ module.exports = {
       const formatted_soulbound = addNotation("numbers", addCommas(soulbound));
       const shortunsoulbound = addNotation("oneLetters", soulbound);
       //Cookies
-      const cookieprice = (
-        await axios.get(`https://sky.shiiyu.moe/api/v2/bazaar`)
-      ).data.BOOSTER_COOKIE.sellPrice
-        .toString()
-        .split(".")[0];
-      const cookies = Math.round(networth / cookieprice);
-      const value = Math.round(cookies * 2.27);
-      const irlnw = addNotation("numbers", addCommas(value));
+        const cookiePrice = await getCookiePrice();
+        const cookies = Math.round(networth / cookiePrice);
+        const value = Math.round(cookies * 2.27);
+        const irlnw = addNotation('numbers', addCommas(value));
       //bank
       const banku = networthraw.data.bank.toString().split(".")[0];
       const formatted_bank = addNotation("oneLetters", banku);
