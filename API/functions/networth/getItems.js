@@ -53,7 +53,7 @@ async function getItems(uuid2, profileid) {
       const [ar1 = 'No Armor.', ar2 = '', ar3 = '', ar4 = ''] = arItems;
       const [ec1 = 'No items in enderchest.', ec2 = '', ec3 = '', ec4 = ``, ec5 = ''] = ecItems;
       const [eq1 = 'No equipment.', eq2 = '', eq3 = '', eq4 = ''] = eqItems;
-      const [pv1 = '', pv2 = '', pv3 = '', pv4 = ''] = pvItems;
+      const [pv1 = 'No items in personal vault.', pv2 = 'This may be due to API issues.', pv3 = '', pv4 = ''] = pvItems;
       const [storage1 = 'No items in storage.', storage2 = '', storage3 = '', storage4 = '', storage5 = ''] = storageitems;
       const [wd1 = 'No items in wardrobe.', wd2 = '', wd3 = '', wd4 = '', wd5 = ''] = wdItems;
 
