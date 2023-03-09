@@ -28,11 +28,11 @@ const emojis = {
   REINFORCED_SCALES: "<a:Reinforced_Scales:1072398856114946098>",
   PET_ITEM_IRON_CLAWS: "<a:Iron_Claws:1072398962654449674>",
   PET_ITEM_SHARPENED_CLAWS: "<a:Sharpened_Claws:1072399034075058257>",
-  PET_ITEM_BIG_TEETH: "<:Big_Teeth:1072399130000003072>",
-  PET_ITEM_HARDEND_SCALES: "<a:Hardened_Scales:1072399215000002560>",
-  PET_ITEM_FARMING_SKILL_BOOST: "<a:Farming_Skill_Exp_Boost:1072399300000002048>",
+  PET_ITEM_BIG_TEETH: "<:Big_Teeth:1072399115620712468>",
+  PET_ITEM_HARDEND_SCALES: "<a:Hardened_Scales:1072399214115557397>",
+  PET_ITEM_FARMING_SKILL_BOOST: "<a:Farming_Exp_Boost:1072399332373975040>",
   PET_ITEM_FORAGING_SKILL_BOOST: "<a:Foraging_Exp_Boost:1072399408341200948>",
-  PET_ITEM_COMBAT_SKILL_BOOST: "<a:Combat_Skill_Exp_Boost:1072399507693104642>",
+  PET_ITEM_COMBAT_SKILL_BOOST: "<a:Combat_Exp_Boost:1072399483146612746>",
   PET_ITEM_FISHING_SKILL_BOOST: "<a:Fishing_Exp_Boost:1072399580018245652>",
   PET_ITEM_ALL_SKILLS_BOOST: "<a:All_Skills_Exp_Boost:1072399662306316358>"
 };
@@ -50,7 +50,7 @@ async function getPets(uuid2, profileid) {
   function getPetInfo(index) {
     const { name: petName, price: petsPrice, candyUsed: petCandy, heldItem: petItem} = networthRaw.data.networth.types.pets.items[index] || {};
     const petCandyEmoji = uuid2 !== "833e1fe3ad644ae6aad9a30e04bd6417" && petCandy > 0 ? "<:carrot:1072129687427498012>" : "";
-    const petItemEmoji = petItem ? (emojis[petItem]) || "" : `` ;
+    const petItemEmoji = petItem ? (Object.keys(emojis).find(key => petItem.startsWith(key)) ? emojis[Object.keys(emojis).find(key => petItem.startsWith(key))] : "") : ""
     const petPrice = addNotation("oneLetters", petsPrice) ;
     return `→ ${index === 0 ? (petName ?? "No Items Found") : petName || ""} ${petCandyEmoji} ${petItemEmoji} (**${petPrice}**)`;
   }
