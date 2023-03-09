@@ -20,7 +20,12 @@ module.exports = {
         const linked = require('../../../data/discordLinked.json')
         const uuid = linked?.[interaction?.user?.id]?.data[0]
         let name = interaction.options.getString("name") || uuid
-        const username = (await axios.get(`https://sessionserver.mojang.com/session/minecraft/profile/${name}/`)).data.name || name
+        const username = (
+            await axios.get(`https://playerdb.co/api/player/minecraft/${name}`)
+          ).data.data.player.username;
+          const uuid2 = (
+            await axios.get(`https://playerdb.co/api/player/minecraft/${name}`)
+          ).data.data.player.raw_id;
         const player = await hypixel.getPlayer(name)
         const embed = {
             color: 0xffa600,

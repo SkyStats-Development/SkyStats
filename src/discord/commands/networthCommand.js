@@ -11,7 +11,9 @@ const { addNotation, addCommas } = require("../../contracts/helperFunctions");
 const messages = require("../../../messages.json");
 const { default: axios } = require("axios");
 const config = require("../../../config.json");
-const { chooseFormat } = require("ytdl-core");
+const {getCookiePrice} = require('../../../API/functions/getCookie')
+const {getSkyStats} = require('../../../API/functions/getSkystats')
+
 
 module.exports = {
   name: "networth",
@@ -45,9 +47,11 @@ module.exports = {
       const data = await getLatestProfile(name);
       const profilename = data.profileData.cute_name;
       const proflieid = data.profileData.profile_id;
+      const stats = await getSkyStats(uuid2, profileId, apiKey);
+      
       const networthraw = (
         await axios.get(
-          `http://104.128.65.165:3000/v2/profile/${uuid2}/${proflieid}?key=${config.api.skyStatsKey}`
+          `http://103.54.59.82:3000/v2/profile/${uuid2}/${proflieid}?key=${config.api.skyStatsKey}`
         )
       ).data;
 
@@ -65,14 +69,10 @@ module.exports = {
       const formatted_soulbound = addNotation("numbers", addCommas(soulbound));
       const shortunsoulbound = addNotation("oneLetters", soulbound);
       //Cookies
-      const cookieprice = (
-        await axios.get(`https://sky.shiiyu.moe/api/v2/bazaar`)
-      ).data.BOOSTER_COOKIE.sellPrice
-        .toString()
-        .split(".")[0];
-      const cookies = Math.round(networth / cookieprice);
-      const value = Math.round(cookies * 2.27);
-      const irlnw = addNotation("numbers", addCommas(value));
+        const cookiePrice = await getCookiePrice();
+        const cookies = Math.round(networth / cookiePrice);
+        const value = Math.round(cookies * 2.27);
+        const irlnw = addNotation('numbers', addCommas(value));
       //bank
       const banku = networthraw.data.bank.toString().split(".")[0];
       const formatted_bank = addNotation("oneLetters", banku);
@@ -1060,6 +1060,8 @@ module.exports = {
       }**)`;
 
       const embedplayer = {
+// https://raw.githubusercontent.com/Altpapier/SkyHelperAPI/master/License - License for SkyHelperAPI and for SkyHelper Discord Bot (I am using their old version of the networth embed)
+// https://raw.githubusercontent.com/zt3h/MaroAPI/main/LICENSE - License for Maro (Skyhelper used their embed format, I used skyhelpers... its a trend bro :skull:)        
         color: 0xffa600,
         title: `Networth For ${username} On ${profilename}`,
         URL: `https://sky.shiiyu.moe/stats/${name}`,
