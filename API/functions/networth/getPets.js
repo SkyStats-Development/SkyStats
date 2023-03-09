@@ -44,28 +44,24 @@ async function getPets(uuid2, profileid) {
           `http://103.54.59.82:3000/v2/profile/${uuid2}/${profileid}?key=${config.api.skyStatsKey}`
       )
   ).data;
-      
-      const petValue = networthRaw.data.networth.types.pets.total;
 
+  const petValue = networthRaw.data.networth.types.pets.total;
 
+  function getPetInfo(index) {
+    const { name: petName, price: petsPrice, candyUsed: petCandy, heldItem: petItem} = networthRaw.data.networth.types.pets.items[index] || {};
+    const petCandyEmoji = uuid2 !== "833e1fe3ad644ae6aad9a30e04bd6417" && petCandy > 0 ? "<:carrot:1072129687427498012>" : "";
+    const petItemEmoji = petItem ? (emojis[petItem]) || "" : `` ;
+    const petPrice = addNotation("oneLetters", petsPrice) ;
+    return `→ ${index === 0 ? (petName ?? "No Items Found") : petName || ""} ${petCandyEmoji} ${petItemEmoji} (**${petPrice}**)`;
+  }
 
+  const pet1 = getPetInfo(0);
+  const pet2 = getPetInfo(1);
+  const pet3 = getPetInfo(2);
+  const pet4 = getPetInfo(3);
+  const pet5 = getPetInfo(4);
 
-      function getPetInfo(index) {
-        const { name: petName, price: petsPrice, candyUsed: petCandy, heldItem: petItem} = networthRaw.data.networth.types.pets.items[index] || {};
-        const petCandyEmoji = petCandy > 0 ? "<:carrot:1072129687427498012>" : "";
-        const petItemEmoji = petItem?.startsWith(emojis[petItem]) || ""  ? emojis[petItem] : `` ;
-        const petPrice = addNotation("oneLetters", petsPrice) ;
-        return `→ ${index === 0 ? (petName ?? "No Items Found") : petName || ""} ${petCandyEmoji} ${petItemEmoji} (**${petPrice}**)`;
-      }
-      
-      const pet1 = getPetInfo(0);
-      const pet2 = getPetInfo(1);
-      const pet3 = getPetInfo(2);
-      const pet4 = getPetInfo(3);
-      const pet5 = getPetInfo(4);
-
-
-      
-return {petValue, pet1, pet2, pet3, pet4, pet5};
+  return {petValue, pet1, pet2, pet3, pet4, pet5};
 }
+
 module.exports = { getPets };
