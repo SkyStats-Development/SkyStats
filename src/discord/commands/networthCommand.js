@@ -9,25 +9,13 @@ const { getSkyStats } = require('../../../API/functions/getSkystats')
 const { getPets } = require('../../../API/functions/networth/getPets')
 const { getItems } = require('../../../API/functions/networth/getItems')
 
-
-
 const PURSE_ICON = '<:Purse:1059997956784279562>';
 const IRON_INGOT_ICON = '<:IRON_INGOT:1070126498616455328>';
 const BOOSTER_COOKIE_ICON = '<:BOOSTER_COOKIE:1070126116846710865>';
 
-async function getPetsData() {
-    try {
-      const petData = await getPets(uuid, profileId);
-      console.log(petData);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-
 
 module.exports = {
-    name: "networthm",
+    name: "networth",
     description: "Fetches your networth!",
     options: [
         {
