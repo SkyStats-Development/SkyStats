@@ -1,4 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle, SlashCommandBuilder, } = require("discord.js");
+const { EmbedBuilder, ActionRowBuilder, Events, StringSelectMenuBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle, SlashCommandBuilder, } = require("discord.js");
 const { getLatestProfile } = require("../../../API/functions/getLatestProfile");
 const { addNotation, addCommas } = require("../../contracts/helperFunctions");
 const messages = require("../../../messages.json");
@@ -8,6 +8,7 @@ const { getCookiePrice } = require('../../../API/functions/getCookie')
 const { getSkyStats } = require('../../../API/functions/getSkystats')
 const { getPets } = require('../../../API/functions/networth/getPets')
 const { getItems } = require('../../../API/functions/networth/getItems')
+const { getAllItems } = require('../../../API/functions/networth/getAllItems')
 
 const PURSE_ICON = '<:Purse:1059997956784279562>';
 const IRON_INGOT_ICON = '<:IRON_INGOT:1070126498616455328>';
@@ -43,6 +44,7 @@ module.exports = {
             const stats = await getSkyStats(uuid2, proflieid);
             const petData = await getPets(uuid2, proflieid);
             const itemsData = await getItems(uuid2, proflieid);
+            const allItemsData = await getAllItems(uuid2, proflieid);
             const {
                 networth: { formatted: networth, short: shortnetworth }, 
                 soulbound: { formatted: unsoulbound, short: shortbound }, 
@@ -65,6 +67,94 @@ module.exports = {
             const {
                 petValue, pet1, pet2, pet3, pet4, pet5
             } = petData || {};
+            const {
+              allAccessories, allArmor, allEquipment, allInventory, allEnderchest, allStorage, allWardrobe, allPersonalVault,
+            } = allItemsData || {};
+
+            const armor_embed = {
+              color: 0xffa600,
+              title: `Armor for ${username} on ${profilename}`,
+              URL: `https://sky.shiiyu.moe/stats/${name}`,
+              description: `Armor Value: **${addCommas(armor)}** (**${addNotation("oneLetters", armor)}**)\n\n${allArmor}`,
+              thumbnail: {
+                url: `https://api.mineatar.io/body/full/${name}`,
+              },
+            };
+            const equipment_embed = {
+              color: 0xffa600,
+              title: `Equipment for ${username} on ${profilename}`,
+              URL: `https://sky.shiiyu.moe/stats/${name}`,
+              description: `Equipment Value: **${addCommas(equipment)}** (**${addNotation("oneLetters", equipment)}**)\n\n${allEquipment}`,
+              thumbnail: {
+                url: `https://api.mineatar.io/body/full/${name}`,
+              },
+            };
+            const wardrobe_embed = {
+              color: 0xffa600,
+              title: `Wardrobe for ${username} on ${profilename}`,
+              URL: `https://sky.shiiyu.moe/stats/${name}`,
+              description: `Wardrobe Value: **${addCommas(wardrobe)}** (**${addNotation("oneLetters", wardrobe)}**)\n\n${allWardrobe}`,
+              thumbnail: {
+                url: `https://api.mineatar.io/body/full/${addCommas(wardrobe)}`,
+              },
+            };
+            const inventory_embed = {
+              color: 0xffa600,
+              title: `Inventory for ${username} on ${profilename}`,
+              URL: `https://sky.shiiyu.moe/stats/${name}`,
+              description: `Inventory Value: **${addCommas(inventory)}** (**${addNotation("oneLetters", inventory)}**)\n\n${allInventory}`,
+              thumbnail: {
+                url: `https://api.mineatar.io/body/full/${name}`,
+              },
+            };
+            const enderchest_embed = {
+              color: 0xffa600,
+              title: `Ender Chest for ${username} on ${profilename}`,
+              URL: `https://sky.shiiyu.moe/stats/${name}`,
+              description: `Ender Chest Value: **${addCommas(enderchest)}** (**${addNotation("oneLetters", enderchest)}**)\n\n${allEnderchest}`,
+              thumbnail: {
+                url: `https://api.mineatar.io/body/full/${name}`,
+              },
+            };
+            const storage_embed = {
+              color: 0xffa600,
+              title: `Storage for ${username} on ${profilename}`,
+              URL: `https://sky.shiiyu.moe/stats/${name}`,
+              description: `Storage Value: **${addCommas(storage)}** (**${addNotation("oneLetters", storage)}**)\n\n${allStorage}}`,
+              thumbnail: {
+                url: `https://api.mineatar.io/body/full/${name}`,
+              },
+            };
+            const pets = {
+              color: 0xffa600,
+              title: `Pets for ${username} on ${profilename}`,
+              URL: `https://sky.shiiyu.moe/stats/${name}`,
+              description: `Pets Value: **${addCommas(petValue)}** (**${addNotation("oneLetters", petValue)}**)\n\nm... nrn`,
+              thumbnail: {
+                url: `https://api.mineatar.io/body/full/${name}`,
+              },
+            };
+            const accessoriesBag = {
+              color: 0xffa600,
+              title: `Accessories Bag for ${username} on ${profilename}`,
+              URL: `https://sky.shiiyu.moe/stats/${name}`,
+              description: `Accessories Bag Value: **${addCommas(accessories)}** (**${addNotation("oneLetters", accessories)}**)\n\n${allAccessories}`,
+              thumbnail: {
+                url: `https://api.mineatar.io/body/full/${name}`,
+              },
+            };
+            const personalVault = {
+              color: 0xffa600,
+              title: `Personal Vault for ${username} on ${profilename}`,
+              URL: `https://sky.shiiyu.moe/stats/${name}`,
+              description: `Personal Vault Value: **${addCommas(pv)}** (**${addNotation("oneLetters", pv)}**)\n\n${allPersonalVault}`,
+              thumbnail: {
+              url: `https://api.mineatar.io/body/full/${name}`,
+              },
+
+              };
+
+            
 
             const embedplayer = {
                 color: 0xffa600,
@@ -145,11 +235,9 @@ module.exports = {
                         inline: false,
                     },
                     {
-                        name: `<:wheat:1059664236038590584> Misc (${addNotation("oneLetters", misc) ?? 0
+                        name: `<:wheat:1059664236038590584> Misc (${addNotation("oneLetters", misc + stats.sacks.total) ?? 0
                             })`,
-                        value: `→ Candy Bag (${addNotation("oneLetters", candy_inventory) ?? 0
-                            })\n→ Fishing Bag (${addNotation("oneLetters", fishing_bag) ?? 0
-                            })\n→ Potion Bag (${addNotation("oneLetters", potion_bag) ?? 0})`,
+                        value: `→ Candy Bag (**${addNotation("oneLetters", candy_inventory) ?? 0}**)\n→ Fishing Bag (**${addNotation("oneLetters", fishing_bag) ?? 0}**)\n→ Potion Bag (**${addNotation("oneLetters", potion_bag) ?? 0}**)\n→ Sacks (**${addNotation("oneLetters", stats.sacks.sacks) ?? 0}**)\n→ Essence (**${addNotation("oneLetters", stats.sacks.essence) ?? 0}**)`,
                         inline: false,
                     },
                 ],
@@ -159,8 +247,96 @@ module.exports = {
                     iconURL: `${messages.footer.icon}`,
                 },
             };
+            const row = new ActionRowBuilder()
+            .addComponents(
+              new StringSelectMenuBuilder()
+                .setCustomId('select')
+                .setPlaceholder('View all of your items')
+                .addOptions(
+                  {
+                    label: 'Armor',
+                    description: 'View all of your armor',
+                    value: 'first_option',
+                  },
+                  {
+                    label: 'Equipment',
+                    description: 'View all of your equipment',
+                    value: 'second_option',
+                  },
+                  {
+                    label: 'Wardrobe',
+                    description: 'View all of your wardrobe',
+                    value: 'third_option',
+                  },
+                  {
+                    label: 'Inventory',
+                    description: 'View all of your inventory',
+                    value: 'fourth_option',
+                  },
+                  {
+                    label: 'Ender Chest',
+                    description: 'View all of your ender chest',
+                    value: 'fifth_option',
+                  },
+                  {
+                    label: 'Storage',
+                    description: 'View all of your storage',
+                    value: 'sixth_option',
+                  },
+                  {
+                    label: 'Pets',
+                    description: 'View all of your pets',
+                    value: 'seventh_option',
+                  },
+                  {
+                    label: 'Accessories Bag',
+                    description: 'View all of your accessories bag',
+                    value: 'eighth_option',
+                  },
+                  {
+                    label: 'Personal Vault',
+                    description: 'View all of your personal vault',
+                    value: 'ninth_option',
+                  }
+                ),
+            );
+            client.on(Events.InteractionCreate, async interaction => {
+              if (interaction.isSelectMenu()) {
+                if (interaction.customId === 'select') {
+                if (interaction.values[0] === 'first_option') {
+                  await interaction.deferReply();
+                  await interaction.editReply({ embeds: [armor_embed], ephemeral: true});
+                } else if (interaction.values[0] === 'second_option') {
+                  await interaction.deferReply();
+                  await interaction.editReply({ embeds: [equipment_embed], ephemeral: true });
+                } else if (interaction.values[0] === 'third_option') {
+                  await interaction.deferReply();
+                  await interaction.editReply({ embeds: [wardrobe_embed], ephemeral: true });
+                } else if (interaction.values[0] === 'fourth_option') {
+                  await interaction.deferReply();
+                  await interaction.editReply({ embeds: [inventory_embed], ephemeral: true });
+                } else if (interaction.values[0] === 'fifth_option') {
+                  await interaction.deferReply();
+                  await interaction.editReply({ embeds: [enderchest_embed], ephemeral: true });
+                } else if (interaction.values[0] === 'sixth_option') {
+                  await interaction.deferReply();
+                  await interaction.editReply({ embeds: [storage_embed], ephemeral: true });
+                } else if (interaction.values[0] === 'seventh_option') {
+                  await interaction.deferReply();
+                  await interaction.editReply({ embeds: [pets], ephemeral: true });
+                } else if (interaction.values[0] === 'eighth_option') {
+                  await interaction.deferReply();
+                  await interaction.editReply({ embeds: [accessoriesBag], ephemeral: true });
+                } else if (interaction.values[0] === 'ninth_option') {
+                  await interaction.deferReply();
+                  await interaction.editReply({ embeds: [personalVault], ephemeral: true});
+                  
+                }}
+              }
+            }
+            );
 
-            await interaction.editReply({ embeds: [embedplayer] });
+            await interaction.editReply({ embeds: [embedplayer], components: [row] });
         } catch (error) {
             console.log(error);
             await interaction.editReply({
