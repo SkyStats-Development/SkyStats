@@ -34,28 +34,42 @@ async function getItems(uuid2, profileid) {
         if (!item) return '';
         
         const isRecombobulated = item.calculation.some((a) => a.id === 'RECOMBOBULATOR_3000');
-        const price = addNotation('oneLetters', item.price) || 0; // use || instead of ??
+        const price = addNotation('oneLetters', item.price) || 0; 
         
-        return `→ ${item.name}${isRecombobulated ? `${RECOMBOBULATOR_3000}` : ''} (**${price}**)`;
-      }
-      
-      const invItems = inventoryItems.slice(0, 5).map(createItemString);
-      const accItems = accessoritesItems.map(createItemString);
-      const arItems = armorItems.map(createItemString);
-      const ecItems = enderchestItems.map(createItemString);
-      const eqItems = equipmentItems.map(createItemString);
-      const pvItems = personalvaltItems.map(createItemString); // fix typo
-      const storageitems = storageItems.map(createItemString);
-      const wdItems = wardrobeItems.map(createItemString);
-      
-      const [inv1 = 'No items in inventory.', inv2 = '', inv3 = '', inv4 = '', inv5 = ''] = invItems;
-      const [acc1 = 'No Accessories.', acc2 = '', acc3 = '', acc4 = '', acc5 = ''] = accItems;
-      const [ar1 = 'No Armor.', ar2 = '', ar3 = '', ar4 = ''] = arItems;
-      const [ec1 = 'No items in enderchest.', ec2 = '', ec3 = '', ec4 = ``, ec5 = ''] = ecItems;
-      const [eq1 = 'No equipment.', eq2 = '', eq3 = '', eq4 = ''] = eqItems;
-      const [pv1 = 'No items in personal vault.', pv2 = 'This may be due to API issues.', pv3 = '', pv4 = ''] = pvItems;
-      const [storage1 = 'No items in storage.', storage2 = '', storage3 = '', storage4 = '', storage5 = ''] = storageitems;
-      const [wd1 = 'No items in wardrobe.', wd2 = '', wd3 = '', wd4 = '', wd5 = ''] = wdItems;
+        if (item.count >= 2) {
+            return `→ \`${item.count}x\` ${item.name}${isRecombobulated ? `${RECOMBOBULATOR_3000}` : ''} (**${price}**)`;
+        } else {
+            return `→ ${item.name}${isRecombobulated ? `${RECOMBOBULATOR_3000}` : ''} (**${price}**)`;
+        }
+    }
+    
+
+const createItemStrings = (items, maxItems = 5) => {
+    const itemStrings = items.slice(0, maxItems).map(createItemString);
+    if (items.length > maxItems) {
+    itemStrings[maxItems - 1] += `\n→ **And \`${items.length - maxItems}\` more...**`;
+    }
+    return itemStrings;
+};
+
+
+    const invItems = createItemStrings(inventoryItems);
+    const accItems = createItemStrings(accessoritesItems);
+    const arItems = createItemStrings(armorItems, 4);
+    const ecItems = createItemStrings(enderchestItems);
+    const eqItems = createItemStrings(equipmentItems, 4);
+    const pvItems = createItemStrings(personalvaltItems, 4);
+    const storageitems = createItemStrings(storageItems);
+    const wdItems = createItemStrings(wardrobeItems);
+
+    let [inv1 = 'No items in inventory.', inv2 = '', inv3 = '', inv4 = '', inv5 = ''] = invItems;
+    let [acc1 = 'No accessories in accessory bag.', acc2 = '', acc3 = '', acc4 = '', acc5 = ''] = accItems;
+    const [ar1 = 'No Armor.', ar2 = '', ar3 = '', ar4 = ''] = arItems;
+    let [ec1 = 'No items in enderchest.', ec2 = '', ec3 = '', ec4 = '', ec5 = ''] = ecItems;
+    const [eq1 = 'No equipment.', eq2 = '', eq3 = '', eq4 = ''] = eqItems;
+    const [pv1 = 'No items in personal vault.', pv2 = 'This may be due to API issues.', pv3 = '', pv4 = ''] = pvItems;
+    let [storage1 = 'No items in storage.', storage2 = '', storage3 = '', storage4 = '', storage5 = ''] = storageitems;
+    let [wd1 = 'No items in wardrobe.', wd2 = '', wd3 = '', wd4 = '', wd5 = ''] = wdItems;
 
 
 
