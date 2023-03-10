@@ -51,8 +51,11 @@ async function getPets(uuid2, profileid) {
     const { name: petName, price: petsPrice, candyUsed: petCandy, heldItem: petItem} = networthRaw.data.networth.types.pets.items[index] || {};
     const petCandyEmoji = uuid2 !== "833e1fe3ad644ae6aad9a30e04bd6417" && petCandy > 0 ? "<:carrot:1072129687427498012>" : "";
     const petItemEmoji = petItem ? (Object.keys(emojis).find(key => petItem.startsWith(key)) ? emojis[Object.keys(emojis).find(key => petItem.startsWith(key))] : "") : ""
-    const petPrice = addNotation("oneLetters", petsPrice) ;
-    return `→ ${index === 0 ? (petName ?? "No Items Found") : petName || ""} ${petCandyEmoji} ${petItemEmoji} (**${petPrice}**)`;
+    const petPrice = addNotation("oneLetters", petsPrice);
+    const formatted_petPrice = `(**${petPrice}**)`
+    
+    return `${index === 0 && (petName === null || petName === undefined) ? "No pets :(" : `${petName !== null && petName !== undefined ? "→ " : ""}${petName ?? ""}`} ${petCandyEmoji} ${petItemEmoji} ${formatted_petPrice !== `(**undefined**)` ? formatted_petPrice : ""}`;
+
   }
 
   const pet1 = getPetInfo(0);
