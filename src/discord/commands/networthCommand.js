@@ -4,7 +4,6 @@ const { addNotation, addCommas } = require("../../contracts/helperFunctions");
 const messages = require("../../../messages.json");
 const { default: axios } = require("axios");
 const config = require("../../../config.json");
-const { getCookiePrice } = require('../../../API/functions/getCookie')
 const { getSkyStats } = require('../../../API/functions/getSkystats')
 const { getPets } = require('../../../API/functions/networth/getPets')
 const { getItems } = require('../../../API/functions/networth/getItems')
@@ -300,41 +299,53 @@ module.exports = {
                   }
                 ),
             );
+            let selectedOption = null;
+
             client.on(Events.InteractionCreate, async interaction => {
               if (interaction.isSelectMenu()) {
                 if (interaction.customId === 'select') {
-                if (interaction.values[0] === 'first_option') {
-                  await interaction.deferReply();
-                  await interaction.editReply({ embeds: [armor_embed], ephemeral: true});
-                } else if (interaction.values[0] === 'second_option') {
-                  await interaction.deferReply();
-                  await interaction.editReply({ embeds: [equipment_embed], ephemeral: true });
-                } else if (interaction.values[0] === 'third_option') {
-                  await interaction.deferReply();
-                  await interaction.editReply({ embeds: [wardrobe_embed], ephemeral: true });
-                } else if (interaction.values[0] === 'fourth_option') {
-                  await interaction.deferReply();
-                  await interaction.editReply({ embeds: [inventory_embed], ephemeral: true });
-                } else if (interaction.values[0] === 'fifth_option') {
-                  await interaction.deferReply();
-                  await interaction.editReply({ embeds: [enderchest_embed], ephemeral: true });
-                } else if (interaction.values[0] === 'sixth_option') {
-                  await interaction.deferReply();
-                  await interaction.editReply({ embeds: [storage_embed], ephemeral: true });
-                } else if (interaction.values[0] === 'seventh_option') {
-                  await interaction.deferReply();
-                  await interaction.editReply({ embeds: [pets], ephemeral: true });
-                } else if (interaction.values[0] === 'eighth_option') {
-                  await interaction.deferReply();
-                  await interaction.editReply({ embeds: [accessoriesBag], ephemeral: true });
-                } else if (interaction.values[0] === 'ninth_option') {
-                  await interaction.deferReply();
-                  await interaction.editReply({ embeds: [personalVault], ephemeral: true});
-                  
-                }}
+                  if (!selectedOption) {
+                    selectedOption = interaction.values[0];
+                    await interaction.deferReply();
+                    switch (selectedOption) {
+                      case 'first_option':
+                        await interaction.editReply({ embeds: [armor_embed], ephemeral: true });
+                        break;
+                      case 'second_option':
+                        await interaction.editReply({ embeds: [equipment_embed], ephemeral: true });
+                        break;
+                      case 'third_option':
+                        await interaction.editReply({ embeds: [wardrobe_embed], ephemeral: true });
+                        break;
+                      case 'fourth_option':
+                        await interaction.editReply({ embeds: [inventory_embed], ephemeral: true });
+                        break;
+                      case 'fifth_option':
+                        await interaction.editReply({ embeds: [enderchest_embed], ephemeral: true });
+                        break;
+                      case 'sixth_option':
+                        await interaction.editReply({ embeds: [storage_embed], ephemeral: true });
+                        break;
+                      case 'seventh_option':
+                        await interaction.editReply({ embeds: [pets], ephemeral: true });
+                        break;
+                      case 'eighth_option':
+                        await interaction.editReply({ embeds: [accessoriesBag], ephemeral: true });
+                        break;
+                      case 'ninth_option':
+                        await interaction.editReply({ embeds: [personalVault], ephemeral: true });
+                        break;
+                      default:
+                        break;
+                    }
+                  } else if (interaction.values[0] === selectedOption) {
+                    await interaction.reply({ content: 'You have already selected this option.', ephemeral: true });
+                  } else {
+                    await interaction.reply({ content: 'You have already selected an option.', ephemeral: true });
+                  }
+                }
               }
-            }
-            );
+            });
 
             await interaction.editReply({ embeds: [embedplayer], components: [row] });
         } catch (error) {

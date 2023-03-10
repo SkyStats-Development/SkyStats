@@ -64,20 +64,8 @@ try {
         const kills = data.profileData.members[uuid2].stats.kills
         const kills_formatted = addCommas(kills)
         const highest_damage = player.data.misc.damage.highest_critical_damage
-        const highest_damage_formatted = addNotation("oneLetters", highest_damage);
-
-
-
-
-
-
-
-
-    
-
-
-
-
+        const highest_damage_formatted = addNotation("oneLetters", highest_damage)
+        
         const embed = {
             color: 0xffa600,
             title: `SkyBlock Stats For ${username} On ${profilename}`,

@@ -20,12 +20,15 @@ module.exports = {
     execute: async (interaction, client, InteractionCreate) => {
         let key = interaction.options.getString("key")
         //NOTE: this is a test command, it will be removed in the future
-        const keye = (await axios.get(`https://api.hypixel.net/key?key=${key}`)).data.record.key 
-        const owner = (await axios.get(`https://api.hypixel.net/key?key=${key}`)).data.record.owner
-        const limit = (await axios.get(`https://api.hypixel.net/key?key=${key}`)).data.record.limit
-        const queriesInPastMin = (await axios.get(`https://api.hypixel.net/key?key=${key}`)).data.record.queriesInPastMin
+        const response = await axios.get(`https://api.hypixel.net/key?key=${key}`);
+        const data = response.data.record;
+        const keye = data.key;
+        const owner = data.owner;
+        const limit = data.limit;
+        const queriesInPastMin = data.queriesInPastMin;
+        const totalQueries = data.totalQueries;
         const username = (await axios.get(`https://sessionserver.mojang.com/session/minecraft/profile/${owner}/`)).data.name
-        const totalQueries = (await axios.get(`https://api.hypixel.net/key?key=${key}`)).data.record.totalQueries
+
 
         const chat = {
             color: 0xffa600,
