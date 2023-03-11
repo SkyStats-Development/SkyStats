@@ -22,39 +22,37 @@ module.exports = {
         
       ],
       execute: async (interaction, client, InteractionCreate) => {
+        try{
         await interaction.deferReply();
-        await wait(100);
         const linked = require('../../../data/discordLinked.json')
         const uuid = linked?.[interaction?.user?.id]?.data[0]
         let name = interaction.options.getString("name") || uuid
-        const username = (
-            await axios.get(`https://playerdb.co/api/player/minecraft/${name}`)
-          ).data.data.player.username;
-          const uuid2 = (
-            await axios.get(`https://playerdb.co/api/player/minecraft/${name}`)
-          ).data.data.player.raw_id;
-        const profileraw = (await axios.get(`https://sky.shiiyu.moe/api/v2/profile/${uuid2}`)).data.profiles
-        let currentProfile;
-        for (var key of Object.keys(profileraw)) {
-            if (profileraw[key].current) currentProfile = key;
-        }
-        const profilename = (profileraw[currentProfile].cute_name) || `ERROR404`
-        const t1comp = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.none) || `0`
-        const t2comp = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.hot) || `0`
-        const t3comp = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.burning) || `0`
-        const t4comp = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.fiery) || `0`
-        const t5comp = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.infernal) || `0`
-        const t1wave = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.highest_wave_none) || `0`
-        const t2wave = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.highest_wave_hot) || `0`
-        const t3wave = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.highest_wave_burning) || `0`
-        const t4wave = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.highest_wave_fiery) || `0`
-        const t5wave = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_completed_tiers.highest_wave_infernal) || `0`
-        const pfmess = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_party_finder.group_builder.note) || `Paper`
-        const pft = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_party_finder.group_builder.tier) || `basic`
-        const pfreq = (profileraw[currentProfile].raw.nether_island_player_data.kuudra_party_finder.group_builder.combat_level_required) || `0`
+        const { data } = await axios.get(`https://playerdb.co/api/player/minecraft/${name}`)
+        const username = data.data.player.username;
+        const uuid2 = data.data.player.raw_id;
+        const { profiles } = (await axios.get(`https://sky.shiiyu.moe/api/v2/profile/${uuid2}`)).data
+        const currentProfile = Object.keys(profiles).find(key => profiles[key].current);
+        const { cute_name, raw } = profiles[currentProfile];
+        const { kuudra_completed_tiers } = raw.nether_island_player_data;
+        const tiers = ["none", "hot", "burning", "fiery", "infernal"];
+        const waves = ["highest_wave_none", "highest_wave_hot", "highest_wave_burning", "highest_wave_fiery", "highest_wave_infernal"];
+        const t1comp = kuudra_completed_tiers[tiers[0]] ?? "0";
+        const t2comp = kuudra_completed_tiers[tiers[1]] ?? "0";
+        const t3comp = kuudra_completed_tiers[tiers[2]] ?? "0";
+        const t4comp = kuudra_completed_tiers[tiers[3]] ?? "0";
+        const t5comp = kuudra_completed_tiers[tiers[4]] ?? "0";
+        const t1wave = kuudra_completed_tiers[waves[0]] ?? "0";
+        const t2wave = kuudra_completed_tiers[waves[1]] ?? "0";
+        const t3wave = kuudra_completed_tiers[waves[2]] ?? "0";
+        const t4wave = kuudra_completed_tiers[waves[3]] ?? "0";
+        const t5wave = kuudra_completed_tiers[waves[4]] ?? "0";
+        const pfmess = raw.nether_island_player_data.kuudra_party_finder.group_builder.note ?? "Paper";
+        const pft = raw.nether_island_player_data.kuudra_party_finder.group_builder.tier ?? "basic";
+        const pfreq = raw.nether_island_player_data.kuudra_party_finder.group_builder.combat_level_required ?? "0";
+
         const embed = {
             color: 0xffa600,
-            title: `Kuudra Data For ${username} On ${profilename}`,
+            title: `Kuudra Data For ${username} On ${cute_name}`,
             URL: `https://sky.shiiyu.moe/stats/${name}`,
             description: (`Party Finder Message: **${pfmess}**\nParty Finder Requirement: **${pfreq}**\nParty Finder Tier: **${toLower(pft)}**`),
       thumbnail: {
@@ -62,27 +60,27 @@ module.exports = {
             },
             fields: [
                 {
-                    name: "Kuudra Tier 1",
+                    name: "<:kuudra_t1:1070821104727367761> Kuudra Tier 1",
                     value: `Times Completed: \`${t1comp}\`\nHighest Wave: \`${t1wave}\``,
                     inline: false
                 },
                 {
-                    name: "Kuudra Tier 2",
+                    name: "<:kuudra_t2:1070821070497648660> Kuudra Tier 2",
                     value: `Times Completed: \`${t2comp}\`\nHighest Wave: \`${t2wave}\``,
                     inline: true
                 },
                 {
-                    name: "Kuudra Tier 3",
+                    name: "<:kuudra_t3:1070821045088551003> Kuudra Tier 3",
                     value: `Times Completed: \`${t3comp}\`\nHighest Wave: \`${t3wave}\``,
                     inline: false
                 },
                 {
-                    name: "Kuudra Tier 4",
+                    name: "<:kuudra_t4:1070821020296028181> Kuudra Tier 4",
                     value: `Times Completed: \`${t4comp}\`\nHighest Wave: \`${t4wave}\``,
                     inline: true
                 },
                 {
-                    name: "Kuudra Tier 5",
+                    name: "<:kuudra_t5:1070820991330160761> Kuudra Tier 5",
                     value: `Times Completed: \`${t5comp}\`\nHighest Wave: \`${t5wave}\``,
                     inline: false
                 },
@@ -94,5 +92,60 @@ module.exports = {
 
             await interaction.editReply({  embeds: [ embed ] })
 
+        } catch (error) {
+            if (error instanceof TypeError && error.message.includes("Cannot read properties of undefined (reading 'cute_name')")) {
+              console.error("Error: cute_name is undefined");
+              const errorembed = {
+                color: 0xff0000,
+                title: `Error`,
+                description: `An error with the hypixel api has occured. Please try again later.\nIf the error persists, please contact the bot developer.`,
+                timestamp: new Date().toISOString(),
+                footer: {
+                    text: `${messages.footer.default}`,
+                    iconURL: `${messages.footer.icon}`,
+                },
+              }
+              await interaction.editReply({ embeds: [errorembed] });
+            } else if (error instanceof AxiosError) {
+              console.error(`Error: ${error.message}`);
+              console.log(error.response.data);
+              const errorembed2 = {
+                color: 0xff0000,
+                title: `Error`,
+                description: `An error with validating the username provided has occured. Please try again later.\nIf the error persists, please contact the bot developer.\nIf your account is not linked, please link your account with \`/link\`.`,
+                timestamp: new Date().toISOString(),
+                footer: {
+                    text: `${messages.footer.default}`,
+                    iconURL: `${messages.footer.icon}`,
+                },
+              }
+              await interaction.editReply({ embeds: [errorembed2] });
+            } else if (error instanceof Error) {
+              if (error.stack) {
+                const matches = error.stack.match(/.*:(\d+):\d+\)/);
+                const line = matches ? matches[1] : "unknown";
+                console.error(`Error on line ${line}: ${error.message}`);
+                console.log(error.stack)
+                console.log(error)
+                const errorembed2m = {
+                  color: 0xff0000,
+                  title: `Error`,
+                  description: `An error has occurred. Please try again later.\nIf the error persists, please contact the bot developer.\n\nError: ${error.message}\nLine: ${line}`,
+                  timestamp: new Date().toISOString(),
+                  footer: {
+                      text: `${messages.footer.default}`,
+                      iconURL: `${messages.footer.icon}`,
+                  },
+                }
+                await interaction.editReply({ embeds: [errorembed2m] });
+              } else {
+                console.error(`Error: ${error.message}`);
+                await interaction.editReply({ content: `Error: ${error.message}` })
+              }
+            } else {
+              console.error(`Error: ${error}`);
+              await interaction.editReply({ content: `Oops! an unexpected error has happened!` })
+            }
+          }
     }
 };;

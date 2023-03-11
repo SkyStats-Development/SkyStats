@@ -2,12 +2,13 @@ const { EmbedBuilder, ActionRowBuilder, Events, StringSelectMenuBuilder, SelectM
 const { getLatestProfile } = require("../../../API/functions/getLatestProfile");
 const { addNotation, addCommas } = require("../../contracts/helperFunctions");
 const messages = require("../../../messages.json");
-const { default: axios } = require("axios");
+const { default: axios, AxiosError } = require("axios");
 const config = require("../../../config.json");
 const { getSkyStats } = require('../../../API/functions/getSkystats')
 const { getPets } = require('../../../API/functions/networth/getPets')
 const { getItems } = require('../../../API/functions/networth/getItems')
 const { getAllItems } = require('../../../API/functions/networth/getAllItems')
+
 
 const PURSE_ICON = '<:Purse:1059997956784279562>';
 const IRON_INGOT_ICON = '<:IRON_INGOT:1070126498616455328>';
@@ -153,7 +154,8 @@ module.exports = {
 
               };
 
-            
+
+
 
             const embedplayer = {
                 color: 0xffa600,
@@ -348,11 +350,60 @@ module.exports = {
             });
 
             await interaction.editReply({ embeds: [embedplayer], components: [row] });
-        } catch (error) {
-            console.log(error);
-            await interaction.editReply({
-                content: `Error in fetching data\n \`${error}\``,
-            });
-        }
+          } catch (error) {
+            if (error instanceof TypeError && error.message.includes("Cannot read properties of undefined (reading 'cute_name')")) {
+              console.error("Error: cute_name is undefined");
+              const errorembed = {
+                color: 0xff0000,
+                title: `Error`,
+                description: `An error with the hypixel api has occured. Please try again later.\nIf the error persists, please contact the bot developer.`,
+                timestamp: new Date().toISOString(),
+                footer: {
+                    text: `${messages.footer.default}`,
+                    iconURL: `${messages.footer.icon}`,
+                },
+              }
+              await interaction.editReply({ embeds: [errorembed] });
+            } else if (error instanceof AxiosError) {
+              console.error(`Error: ${error.message}`);
+              console.log(error.response.data);
+              const errorembed2 = {
+                color: 0xff0000,
+                title: `Error`,
+                description: `An error with validating the username provided has occured. Please try again later.\nIf the error persists, please contact the bot developer.\nIf your account is not linked, please link your account with \`/link\`.`,
+                timestamp: new Date().toISOString(),
+                footer: {
+                    text: `${messages.footer.default}`,
+                    iconURL: `${messages.footer.icon}`,
+                },
+              }
+              await interaction.editReply({ embeds: [errorembed2] });
+            } else if (error instanceof Error) {
+              if (error.stack) {
+                const matches = error.stack.match(/.*:(\d+):\d+\)/);
+                const line = matches ? matches[1] : "unknown";
+                console.error(`Error on line ${line}: ${error.message}`);
+                console.log(error.stack)
+                console.log(error)
+                const errorembed2m = {
+                  color: 0xff0000,
+                  title: `Error`,
+                  description: `An error has occurred. Please try again later.\nIf the error persists, please contact the bot developer.\n\nError: ${error.message}\nLine: ${line}`,
+                  timestamp: new Date().toISOString(),
+                  footer: {
+                      text: `${messages.footer.default}`,
+                      iconURL: `${messages.footer.icon}`,
+                  },
+                }
+                await interaction.editReply({ embeds: [errorembed2m] });
+              } else {
+                console.error(`Error: ${error.message}`);
+                await interaction.editReply({ content: `Error: ${error.message}` })
+              }
+            } else {
+              console.error(`Error: ${error}`);
+              await interaction.editReply({ content: `Oops! an unexpected error has happened!` })
+            }
+          }
     },
 };

@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\discord",
+    "\\src\\discord\\commands"
+  ],
+  "SelectedNode": "\\src\\discord\\commands\\networthCommand.js",
+  "PreviewInSolutionExplorer": false
+}
