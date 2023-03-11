@@ -9,8 +9,20 @@
   },
   "bin": "index.js",
   "pkg": {
-    "assets": [ "node_modules/**/*", "src/**/*", "API/", "data/**/*", "API/constants/maro_networth/*","API/.", "API/*", "API/**" ],
-    "targets": [ "node12-macos-x64", "node10-win-x64" ]
+    "assets": [
+      "node_modules/**/*",
+      "src/**/*",
+      "API/",
+      "data/**/*",
+      "API/constants/maro_networth/*",
+      "API/.",
+      "API/*",
+      "API/**"
+    ],
+    "targets": [
+      "node12-macos-x64",
+      "node10-win-x64"
+    ]
   },
   "keywords": [
     "discord",
@@ -58,6 +70,7 @@
     "lilyweight": "^2.7.0",
     "lodash": "^4.17.21",
     "luxon": "^3.2.1",
+    "memory-cache": "^0.2.0",
     "mineflayer": "4.7.0",
     "mkdirp": "^2.1.3",
     "moment": "^2.29.4",
