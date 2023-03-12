@@ -1,0 +1,35 @@
+{
+  "discord": {
+    "token": "DISCORD_BOT_TOKEN_HERE",
+    "clientID": "BOT_ID",
+    "serverID": "SUPPORT/MAIN_SERVER_ID",
+    "developmentRole": "ROLE_FOR_STUFF_LIKE_RELOAD"
+
+  },
+  "minecraft": {
+    "prefix": "unused",
+    "guildID": "unused",
+    "messageRepeatBypass": 2,
+    "messageRepeatBypassLength": 24
+  },
+  "api": {
+    "hypixelAPI": "https://api.hypixel.net",
+    "hypixelAPIkey": "RUN /API NEW INGAME",
+
+    "skyHelperAPI": "http://192.95.42.73:1924//v1",
+    "skyHelperKey": "DuckySoLucky",
+
+    "skyStatsAPI": "YOUR SELFHOSTED SKYHELPER API",
+    "skyStatsKey": "^^ KEY",
+
+    "antiSniperAPI": "https://api.antisniper.net",
+    "antiSniperKey": "3a55ea8f-9e85-4003-9912-6198122cd27f",
+
+    "skyShiiyuAPI": "https://sky.shiiyu.moe/api/v2",
+
+    "playerDBAPI": "https://playerdb.co/api/player/minecraft",
+
+    "imgurAPIkey": "98ea6fff6d0ce73"
+
+  }
+}
