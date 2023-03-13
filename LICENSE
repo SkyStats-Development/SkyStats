@@ -1,30 +1,16 @@
-MIT License
-
+MIT License with SkyStats Development License
 
 Copyright (c) 2023 SkyStats Development
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 SkyStats Development License
 
-Copyright (c) 2023 SkyStats Development and SkyStats 
+Copyright (c) 2023 SkyStats Development and SkyStats
 
 SkyStats and SkyStats Development are registered trademarks of SkyStats. Any use of the name SkyStats or SkyStats Development, or any confusingly similar name, must comply with the following terms and conditions:
 
@@ -37,3 +23,33 @@ You may not use the name SkyStats or SkyStats Development in any way that dispar
 The name SkyStats and SkyStats Development are protected by the MIT License, which governs the use of the software and associated documentation. Any use of the name SkyStats or SkyStats Development outside the scope of the MIT License is a violation of our trademark rights.
 
 By using the name SkyStats or SkyStats Development, you agree to be bound by these terms and conditions. SkyStats reserves the right to take legal action to protect its trademark rights in the name SkyStats and SkyStats Development.
+
+Contributors License Agreement
+
+By contributing to the development of SkyStats, you agree to the following terms and conditions:
+
+You warrant that you are the sole author of the contribution or that you have obtained all necessary permissions from the authors or copyright owners of any third-party materials included in the contribution.
+
+You grant SkyStats a perpetual, worldwide, non-exclusive, royalty-free, irrevocable license to use, reproduce, modify, publish, distribute, and sublicense the contribution and any related intellectual property rights, including any moral rights, for any purpose and without any restriction or obligation.
+
+You acknowledge that your contribution may be included in the SkyStats software and distributed under the terms of the MIT License.
+
+You agree that you have not modified the base intentions of the original code.
+
+Any copy of the software must include the above copyright notice and permission notice and may only be modified by the copyright holder. You agree that any code used in SkyStats shall not be used elsewhere without prior written consent of SkyStats.
+
+You agree that any product that includes any SkyStats code should not be used for development, commercial, or teaching use.
+
+You agree that SkyStats may modify these terms and conditions at any time and that your continued contributions to the project after such modification will constitute your acceptance of the modified terms.
+
+You agree that these terms and conditions will be governed by and construed in accordance with the laws of the state of California, without giving effect to any principles of conflicts of law.
+
+Any dispute arising under or in connection with these terms and conditions or the SkyStats project will be resolved exclusively through arbitration in accordance with the rules of the American Arbitration Association, and the arbitration will be held in San Francisco, California.
+
+These terms and conditions constitute the entire agreement between you and SkyStats with respect to the SkyStats project and supersede all prior or contemporaneous communications and proposals, whether oral or written, between you and SkyStats.
+
+If any provision of these terms and conditions is found to be invalid or unenforceable, the remaining provisions will remain in full force and effect.
+
+By contributing to the development of SkyStats, you acknowledge that you have read and understand these terms and conditions, and agree to be bound by them.
+
+The copyright for the year 2023, attributed to SkyStats Development and SkyStats, is provided under the MIT License to Shayne Duggan without any charge. SkyStats expressly reserves the right to take legal action to safeguard its trademark rights in the names SkyStats and SkyStats Development.
