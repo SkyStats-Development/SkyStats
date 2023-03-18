@@ -11,6 +11,21 @@ const { default: axios, AxiosError } = require("axios");
 const { addNotation, addCommas } = require("../../contracts/helperFunctions");
 const { Color } = require('hypixel-api-reborn');
 
+const { MongoClient } = require('mongodb');
+const uri = config.database.uri;
+const client = new MongoClient(uri, { useUnifiedTopology: true });
+const dbName = 'discordLinkedDB';
+
+client.connect();
+
+async function getLinkedAccount(discordId) {
+  const db = client.db(dbName);
+  const collection = db.collection('linkedAccounts');
+  const result = await collection.findOne({ discordId: discordId });
+  return result ? result.minecraftUuid : null;
+}
+
+
 registerFont(__dirname + '/MinecraftRegular.ttf', { family: 'Minecraft' });
 registerFont(__dirname + `/mcBold.otf`, {family: "MinecraftBOLD"})
 
@@ -73,9 +88,8 @@ module.exports = {
         const context = canvas.getContext('2d');
         backgroundImage.src = background;
         context.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-        const linked = require("../../../data/discordLinked.json");
-        const uuid = linked?.[interaction?.user?.id]?.data[0];
-        const name = interaction.options.getString("name") || uuid;
+        const minecraftUuid = await getLinkedAccount(interaction.user.id) || ``
+        const name = interaction.options.getString("name") || minecraftUuid;
         const { data: { data: { player } } } = await axios.get(`https://playerdb.co/api/player/minecraft/${name}`);
         const username = player.username;
         const uuid2 = player.raw_id;

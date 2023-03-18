@@ -7,6 +7,20 @@ const config = require('../../../config.json');
 const { toLower } = require('lodash');
 const { getUUID } = require('../../contracts/API/PlayerDBAPI')
 const wait = require('node:timers/promises').setTimeout;
+const { MongoClient } = require('mongodb');
+const uri = config.database.uri;
+const client = new MongoClient(uri, { useUnifiedTopology: true });
+const dbName = 'discordLinkedDB';
+
+client.connect();
+
+async function getLinkedAccount(discordId) {
+  const db = client.db(dbName);
+  const collection = db.collection('linkedAccounts');
+  const result = await collection.findOne({ discordId: discordId });
+  return result ? result.minecraftUuid : null;
+}
+
 
 module.exports = {
     name: 'kuudra',
@@ -24,9 +38,8 @@ module.exports = {
       execute: async (interaction, client, InteractionCreate) => {
         try{
         await interaction.deferReply();
-        const linked = require('../../../data/discordLinked.json')
-        const uuid = linked?.[interaction?.user?.id]?.data[0]
-        let name = interaction.options.getString("name") || uuid
+        const minecraftUuid = await getLinkedAccount(interaction.user.id) || ``
+        const name = interaction.options.getString("name") || minecraftUuid;
         const { data } = await axios.get(`https://playerdb.co/api/player/minecraft/${name}`)
         const username = data.data.player.username;
         const uuid2 = data.data.player.raw_id;
