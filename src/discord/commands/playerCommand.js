@@ -1,3 +1,16 @@
+/*
+
+#######################
+#  DEPRICATED #########
+#  #### SEE ###########
+#  hypixelCommand.js ##
+#######################
+
+
+
+
+
+
 const {
     EmbedBuilder,
     ActionRowBuilder,
@@ -174,3 +187,5 @@ module.exports = {
 	},
 
 };
+
+*/
