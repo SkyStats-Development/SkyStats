@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>on god</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400">
+    <script src= "app.js"></script>
+    <style>
+    
+    </style>
+</head>
+<body>
+    <nav class="topnavbar">
+        <a href="#home">
+            <img src="logo.png" alt="SkyStats Logo">
+        </a>
+        <div class="topnavlinks">
+            <a href="#">About</a>
+        </div>
+        <div class="topnavlinks">
+            <a href="/api.html">API</a>
+        </div>
+        <div class="topnavlinks">
+            <a href="https://discord.com/api/oauth2/authorize?client_id=1059645184272519260&permissions=8&scope=bot%20applications.commands">Invite The Bot</a>
+        </div>
+    </nav>
+    <div class="info">
+        <div class="header">🌹 SkyStats 🌹</div>
+        <div class="subheader">🌹 A comprehensive Skyblock Bot and Website 🌹</div>
+        <section class="username-input">
+            <form id="user-form">
+            <form action="./user.html?username=${username}"></form>
+              <input type="text" name="username" placeholder="Enter the player username">
+              <input type="submit" value="Go!">
+            </form>
+          </section>
+          <script>
+            const form = document.getElementById("user-form");
+            form.addEventListener("submit", function(event) {
+              event.preventDefault();
+              const username = form.elements.username.value;
+              window.location.href = "./SkyStats/user.html"
+            });
+          </script>
+      </div>
+</body>
+</html>
