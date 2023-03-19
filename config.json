@@ -1,9 +1,10 @@
 {
   "discord": {
-    "token": "MTA1OTY0NTE4NDI3MjUxOTI2MA.GdRo9j.-fLfmwHK_VqlEPg--eZ44c0W6hobE4RcyquOmw",
+    "token": "MTA1OTY0NTE4NDI3MjUxOTI2MA.GC6zdu.brfgVw5EfuIdG0t6WCs8mBnGQYH4iLRmRvWT-0",
     "clientID": "1059645184272519260",
     "serverID": "1058272411247714425",
     "developmentRole": "1058273514941075477"
+
   },
   "minecraft": {
     "prefix": "!",
@@ -13,12 +14,13 @@
   },
   "api": {
     "hypixelAPI": "https://api.hypixel.net",
-    "hypixelAPIkey": "de29f605-0d6e-4a2e-aaf1-d2b4e4e196b3",
+    "hypixelAPIkey": "6a21de01-e2ed-4d52-bb5b-52f1caeadc7f",
 
     "skyHelperAPI": "http://192.95.42.73:1924//v1",
     "skyHelperKey": "DuckySoLucky",
 
-    "skyStatsAPI": "http://104.128.65.165:3000",
+    "skyStatsAPI": "http://103.54.59.82:3000",
+    "skyStatsKey": "skystats-382752-de33-444d-23cn3fh3-dev",
 
     "antiSniperAPI": "https://api.antisniper.net",
     "antiSniperKey": "3a55ea8f-9e85-4003-9912-6198122cd27f",
@@ -28,5 +30,9 @@
     "playerDBAPI": "https://playerdb.co/api/player/minecraft",
 
     "imgurAPIkey": "98ea6fff6d0ce73"
-  }
+
+  },
+  "database":   {
+	  "uri": "mongodb+srv://hyperbolic:deesahd284@cluster0.o4mur.mongodb.net/?retryWrites=true&w=majority"
+    }
 }
