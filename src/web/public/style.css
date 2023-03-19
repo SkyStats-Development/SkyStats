@@ -5,10 +5,17 @@
     font-family: 'Montserrat', serif;
 }
 
+h2 {
+    color: #ff9613;
+    font-family: 'Climate Crisis';
+    font-size: 40px;
+}
+
 body {
     margin: 0;
-    background-image: url('bg.png');
     background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #141414;
 }
 
 
@@ -19,8 +26,9 @@ body {
     overflow: hidden;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: right;
     padding: 25px;
+    z-index: 2;
 }
 
 .topnavbar img {
@@ -28,14 +36,16 @@ body {
     height: 50px;
     background-color: #333333;
     margin-bottom: 0%;
+    z-index: inherit;
 }
 .topnavbar a {
     display: flex;
-    align-items: center;
+    align-items: right;
     background-color: #616161f3;
     border-bottom: 2px solid #ff9613;
     border-left: 2px solid #ff9613;
     border-radius: 24px;
+    z-index: inherit;
 }
 
 .topnavbar a:before {
@@ -48,7 +58,6 @@ body {
     background-color: #ff9613;
     transform: scaleX(0);
     transform-origin: right;
-
 }
 
 .topnavbar a:hover {
@@ -78,12 +87,12 @@ body {
     
 }
 .topnavlinks {
-    display: flex;
+  display: flex;
 }
 
 .topnavlinks a {
     color: #FFFFFF;
-    text-align: center;
+    text-align: right;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 18px;
@@ -97,6 +106,16 @@ body {
 }
 
 /* homepage styles */
+
+.parallax-effect {
+    background-image: url('bg.png');
+    min-height: 600px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+}
 
 .info {
     display: flex;
@@ -170,4 +189,30 @@ body {
     background-color: #ff9513d0;
 }
 
+.information-right {
+    text-align: right;
+    padding: 15% 20px 15% 55%;
+}
 
+.whitespace {
+    line-height: 150px;
+}
+
+/* nice animations*/
+
+.hidden {
+    opacity: 0;
+    transition: all 3s;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    text-align: right;
+    padding: 0 40px 10px 50%;
+}
+
+.show {
+    opacity: 1;
+    text-align: right;
+    filter: blur(0);
+    transform: translateX(0);
+    padding: 0 40px 10px 50%;
+}
