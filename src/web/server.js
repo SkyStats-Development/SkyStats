@@ -1,7 +1,9 @@
 const rateLimit = require('express-rate-limit');
 const express = require('express');
 const app = express();
+const chalk = require(`chalk`)
 const port = 3000;
+const logger = require(`../Logger.js`)
 
 
 process.on('uncaughtException', (error) => console.log(error));
@@ -27,5 +29,8 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.listen(port, () => {
-    console.log(`Now listening on port ${port}`);
+    logger.websiteMessage(
+        `Client Ready, Website listening to port:${port}` + ` DNS Online.`
+    )
+    
 });
