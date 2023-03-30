@@ -7,20 +7,12 @@ const config = require('../../../config.json');
 const { toLower } = require('lodash');
 const { getUUID } = require('../../contracts/API/PlayerDBAPI')
 const wait = require('node:timers/promises').setTimeout;
-const { MongoClient } = require('mongodb');
-const uri = config.database.uri;
-const client = new MongoClient(uri, { useUnifiedTopology: true });
-const dbName = 'discordLinkedDB';
-
-client.connect();
-
+const db = require('../../../API/functions/getDatabase');
 async function getLinkedAccount(discordId) {
-  const db = client.db(dbName);
-  const collection = db.collection('linkedAccounts');
+  const collection = db.getDb().collection('linkedAccounts');
   const result = await collection.findOne({ discordId: discordId });
   return result ? result.minecraftUuid : null;
 }
-
 
 module.exports = {
     name: 'kuudra',

@@ -2,25 +2,16 @@ const hypixel = require('../../contracts/API/HypixelRebornAPI')
 const config = require ('../../../config.json')
 const { EmbedBuilder } = require("discord.js")
 const { writeAt } = require('../../contracts/helperFunctions')
-const { MongoClient } = require('mongodb');
-
-const uri = config.database.uri;
-const client = new MongoClient(uri, { useUnifiedTopology: true });
-const dbName = 'discordLinkedDB';
-
-client.connect();
+const db = require('../../../API/functions/getDatabase');
 
 async function addLinkedAccounts(discordId, minecraftUuid) {
-    const db = client.db(dbName);
-    const collection = db.collection('linkedAccounts');
+  try {
+    const collection = db.getDb().collection('linkedAccounts');
     await collection.insertOne({ discordId: discordId, minecraftUuid: minecraftUuid });
-}
-
-async function getLinkedAccounts(discordId) {
-    const db = client.db(dbName);
-    const collection = db.collection('linkedAccounts');
-    const result = await collection.findOne({ discordId: discordId });
-    return result ? result.minecraftUuid : null;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 }
 
 module.exports = {

@@ -8,16 +8,9 @@ const { getSkyStats } = require('../../../API/functions/getSkystats')
 const { getPets } = require('../../../API/functions/networth/getPets')
 const { getItems } = require('../../../API/functions/networth/getItems')
 const { getAllItems } = require('../../../API/functions/networth/getAllItems')
-const { MongoClient } = require('mongodb');
-const uri = config.database.uri;
-const client = new MongoClient(uri, { useUnifiedTopology: true });
-const dbName = 'discordLinkedDB';
-
-client.connect();
-
+const db = require('../../../API/functions/getDatabase');
 async function getLinkedAccount(discordId) {
-  const db = client.db(dbName);
-  const collection = db.collection('linkedAccounts');
+  const collection = db.getDb().collection('linkedAccounts');
   const result = await collection.findOne({ discordId: discordId });
   return result ? result.minecraftUuid : null;
 }
@@ -45,6 +38,7 @@ module.exports = {
     async execute(interaction) {
         try {
             await interaction.deferReply();
+            await interaction.channel.sendTyping(3000);
             const minecraftUuid = await getLinkedAccount(interaction.user.id) || ``
             const name = interaction.options.getString("name") || minecraftUuid;
             const { data: { data: { player } } } = await axios.get(`https://playerdb.co/api/player/minecraft/${name}`);
@@ -361,7 +355,7 @@ module.exports = {
               }
             });
 
-            await interaction.editReply({ embeds: [embedplayer], components: [row] });
+            interaction.editReply({ embeds: [embedplayer], components: [row] });
           } catch (error) {
             if (error instanceof TypeError && error.message.includes("Cannot read properties of undefined (reading 'cute_name')")) {
               console.error("Error: cute_name is undefined");

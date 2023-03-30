@@ -7,7 +7,12 @@ const { default: axios, AxiosError } = require('axios');
 const wait = require('node:timers/promises').setTimeout;
 const { getUUID } = require('../../contracts/API/PlayerDBAPI')
 const { getAuctionData } = require('../../../API/functions/networth/getAuctionData');
-
+const db = require('../../../API/functions/getDatabase');
+async function getLinkedAccount(discordId) {
+  const collection = db.getDb().collection('linkedAccounts');
+  const result = await collection.findOne({ discordId: discordId });
+  return result ? result.minecraftUuid : null;
+}
 
 
 module.exports = {

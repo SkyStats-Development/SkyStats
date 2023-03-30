@@ -4,6 +4,8 @@ const config = require('./config.json');
 const packageJson = require('./package.json');
 const os = require('os');
 const webServer = require('./src/web/server.js'); 
+const db = require('./API/functions/getDatabase');
+db.connect();
 function sendStartupData() {
 
 
@@ -42,7 +44,7 @@ console.log(chalk.green(`Welcome to SkyStats v1.0.0 (Beta) Created by: Axle and 
 
 const currentBot = config.discord.clientID
 if (currentBot === `1089881692438794281`) {
-  console.log(chalk.cyan(`Warning!, it seems you are running on the development bot check token and clientID and try again!`))
+  console.log(chalk.cyan(`Warning, it seems you are running on the development bot check token and clientID and try again!`))
 }
 else if (currentBot === `1059645184272519260`) {
   console.log(chalk.cyan(`You have started the production enviroment\nmake sure you know what you are doing!`))

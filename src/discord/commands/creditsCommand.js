@@ -1,6 +1,11 @@
 const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
 const messages = require('../../../messages.json')
-
+const db = require('../../../API/functions/getDatabase');
+async function getLinkedAccount(discordId) {
+  const collection = db.getDb().collection('linkedAccounts');
+  const result = await collection.findOne({ discordId: discordId });
+  return result ? result.minecraftUuid : null;
+}
 
 module.exports = {
     name: 'credits',

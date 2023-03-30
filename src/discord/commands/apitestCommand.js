@@ -19,7 +19,7 @@ module.exports = {
       ],
     execute: async (interaction, client, InteractionCreate) => {
         let key = interaction.options.getString("key")
-        //NOTE: this is a test command, it will be removed in the future
+        //NOTE: this is a test command, it will be removed when hypixel changes their way of supplying api access (which is soon.)
         const response = await axios.get(`https://api.hypixel.net/key?key=${key}`);
         const data = response.data.record;
         const keye = data.key;

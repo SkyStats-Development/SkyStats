@@ -6,20 +6,12 @@ const { getUUID } = require('../../contracts/API/PlayerDBAPI')
 const { addNotation, addCommas } = require("../../contracts/helperFunctions");
 const messages = require('../../../messages.json')
 const { getLatestProfile } = require("../../../API/functions/getLatestProfile");
-const { MongoClient } = require('mongodb');
-const uri = config.database.uri;
-const client = new MongoClient(uri, { useUnifiedTopology: true });
-const dbName = 'discordLinkedDB';
-
-client.connect();
-
+const db = require('../../../API/functions/getDatabase');
 async function getLinkedAccount(discordId) {
-  const db = client.db(dbName);
-  const collection = db.collection('linkedAccounts');
+  const collection = db.getDb().collection('linkedAccounts');
   const result = await collection.findOne({ discordId: discordId });
   return result ? result.minecraftUuid : null;
 }
-
 
 module.exports = {
     name: 'skyblock',

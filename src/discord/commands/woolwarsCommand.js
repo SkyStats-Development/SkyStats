@@ -5,6 +5,12 @@ const messages = require('../../../messages.json')
 const { getUUID } = require('../../contracts/API/PlayerDBAPI')
 const {getWoolWarsStar } = require(`../../../API/SkyStats-apis/API/skystats/getWWStar`)
 const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
+const db = require('../../../API/functions/getDatabase');
+async function getLinkedAccount(discordId) {
+  const collection = db.getDb().collection('linkedAccounts');
+  const result = await collection.findOne({ discordId: discordId });
+  return result ? result.minecraftUuid : null;
+}
 
 
 module.exports = {

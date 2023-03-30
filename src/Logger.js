@@ -23,6 +23,13 @@ async function successfulMessage(message) {
       chalk.greenBright(message)
   );
 }
+async function databaseMessage(message) {
+  return console.log(
+    chalk.bgRedBright.black(`[${await getCurrentTime()}] Database >`) +
+      " " +
+      chalk.redBright(message)
+  );
+}
 async function websiteMessage(message) {
   return console.log(
     chalk.bgMagentaBright.black(`[${await getCurrentTime()}] Website >`) +
@@ -75,5 +82,6 @@ module.exports = {
   errorMessage,
   broadcastMessage,
   getCurrentTime,
+  databaseMessage,
   websiteMessage,
 };
