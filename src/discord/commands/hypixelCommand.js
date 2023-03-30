@@ -369,7 +369,7 @@ for (const [questName, quest] of Object.entries(quests)) {
         const errorembed2 = {
             color: 0xff0000,
             title: `Error`,
-            description: `An error with validating the username provided has occured. Please try again later.\nIf the error persists, please contact the bot developer.\nIf your account is not linked, please link your account with \`/link\`.`,
+            description: `An error with validating the username provided has occured. Please try again later.\nIf the error persists, please contact the bot developer.\nIf your account is not linked, please link your account with \`/verify\`.`,
             timestamp: new Date().toISOString(),
             footer: {
                 text: `${messages.footer.default}`,
