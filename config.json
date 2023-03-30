@@ -1,7 +1,7 @@
 {
   "discord": {
-    "token": "Depricated(not the whole file, this line), use a .env file with value TOKEN=what_you_would_put_here",
-    "clientID": "1089881692438794281",
+    "token": "Depricated(not the whole file, this line), use a .env file",
+    "clientID": "Depricated(not the whole file, this line), use a .env file",
     "serverID": "1058272411247714425",
     "developmentRole": "1058273514941075477"
 
