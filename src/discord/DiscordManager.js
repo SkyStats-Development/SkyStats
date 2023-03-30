@@ -9,6 +9,9 @@ const { kill } = require("node:process");
 const axios = require('axios');
 const packageJson = require('../../package.json');
 const os = require('os');
+require('dotenv').config();
+const token = process.env.TOKEN;
+
 
 function sendStartupData() {
   const data = {
@@ -48,7 +51,7 @@ class DiscordManager {
       });
       const client = global.client;
 
-      client.login(config.discord.token);
+      client.login(token);
       
 
       client.on("ready", () =>

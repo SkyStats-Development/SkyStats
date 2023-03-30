@@ -1,7 +1,7 @@
 {
   "discord": {
-    "token": "MTA1OTY0NTE4NDI3MjUxOTI2MA.GC6zdu.brfgVw5EfuIdG0t6WCs8mBnGQYH4iLRmRvWT-0",
-    "clientID": "1059645184272519260",
+    "token": "Depricated(not the whole file, this line), use a .env file with value TOKEN=what_you_would_put_here",
+    "clientID": "1089881692438794281",
     "serverID": "1058272411247714425",
     "developmentRole": "1058273514941075477"
 
@@ -14,7 +14,7 @@
   },
   "api": {
     "hypixelAPI": "https://api.hypixel.net",
-    "hypixelAPIkey": "6a21de01-e2ed-4d52-bb5b-52f1caeadc7f",
+    "hypixelAPIkey": "6e849ff4-c34e-4a6e-8915-2f1974d0a426",
 
     "skyHelperAPI": "http://192.95.42.73:1924//v1",
     "skyHelperKey": "DuckySoLucky",
