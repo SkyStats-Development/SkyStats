@@ -30,52 +30,58 @@ module.exports = {
             description: "Minecraft Username",
             type: 3,
             required: false,
-        },
+        }
     ],
 
     
 
     async execute(interaction) {
+      const minecraftUuid = await getLinkedAccount(interaction.user.id) || ``
+      const name = interaction.options.getString("name") || minecraftUuid;
         try {
-            await interaction.deferReply();
-            await interaction.channel.sendTyping(3000);
-            const minecraftUuid = await getLinkedAccount(interaction.user.id) || ``
-            const name = interaction.options.getString("name") || minecraftUuid;
-            const { data: { data: { player } } } = await axios.get(`https://playerdb.co/api/player/minecraft/${name}`);
-            const username = player.username;
-            const uuid2 = player.raw_id;
-            const data = await getLatestProfile(name);
-            const profilename = data.profileData.cute_name;
-            const proflieid = data.profileData.profile_id;
-            const stats = await getSkyStats(uuid2, proflieid);
-            const petData = await getPets(uuid2, proflieid);
-            const itemsData = await getItems(uuid2, proflieid);
-            const allItemsData = await getAllItems(uuid2, proflieid);
-            const {
-                networth: { formatted: networth, short: shortnetworth }, 
-                soulbound: { formatted: unsoulbound, short: shortbound }, 
-                irlnw, 
-                purse, 
-                bank: { formatted: bank }, 
-                sacks: { total: sackvalue }, 
-                misc: { total: misc, candy_inventory, potion_bag, fishing_bag } 
-            } = stats || {};
-            const {
-                inventory, inv1, inv2, inv3, inv4, inv5, 
-                equipment, eq1, eq2, eq3, eq4, 
-                armor, ar1, ar2, ar3, ar4, 
-                accessories, acc1, acc2, acc3, acc4, acc5, 
-                enderchest, ec1, ec2, ec3, ec4, ec5, 
-                pv, pv1, pv2, pv3, pv4, 
-                storage, storage1, storage2, storage3, storage4, storage5, 
-                wardrobe, wd1, wd2, wd3, wd4, wd5 
-            }= itemsData || {};
-            const {
-                petValue, pet1, pet2, pet3, pet4, pet5
-            } = petData || {};
-            const {
-              allAccessories, allArmor, allEquipment, allInventory, allEnderchest, allStorage, allWardrobe, allPersonalVault,
-            } = allItemsData || {};
+          await interaction.deferReply();
+          const { data: { data: { player } } } = await axios.get(`https://playerdb.co/api/player/minecraft/${name}`);
+          const username = player.username;
+          const uuid2 = player.raw_id;
+          const data = await getLatestProfile(name);
+          const profilename = data.profileData.cute_name;
+          const proflieid = data.profileData.profile_id;
+      
+          const [stats, petData, itemsData, allItemsData] = await Promise.all([
+              getSkyStats(uuid2, proflieid),
+              getPets(uuid2, proflieid),
+              getItems(uuid2, proflieid),
+              getAllItems(uuid2, proflieid)
+          ]);
+      
+          const {
+              networth: { formatted: networth, short: shortnetworth }, 
+              soulbound: { formatted: unsoulbound, short: shortbound }, 
+              irlnw, 
+              purse, 
+              bank: { formatted: bank }, 
+              sacks: { total: sackvalue }, 
+              misc: { total: misc, candy_inventory, potion_bag, fishing_bag } 
+          } = stats || {};
+      
+          const {
+              inventory, inv1, inv2, inv3, inv4, inv5, 
+              equipment, eq1, eq2, eq3, eq4, 
+              armor, ar1, ar2, ar3, ar4, 
+              accessories, acc1, acc2, acc3, acc4, acc5, 
+              enderchest, ec1, ec2, ec3, ec4, ec5, 
+              pv, pv1, pv2, pv3, pv4, 
+              storage, storage1, storage2, storage3, storage4, storage5, 
+              wardrobe, wd1, wd2, wd3, wd4, wd5 
+          }= itemsData || {};
+      
+          const {
+              petValue, pet1, pet2, pet3, pet4, pet5
+          } = petData || {};
+      
+          const {
+            allAccessories, allArmor, allEquipment, allInventory, allEnderchest, allStorage, allWardrobe, allPersonalVault,
+          } = allItemsData || {};
 
             const armor_embed = {
               color: 0xffa600,
