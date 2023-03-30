@@ -4,12 +4,15 @@ const axios = require('axios');
 const config = require('../../../config.json');
 const packageJson = require('../../../package.json');
 const os = require('os');
+require('dotenv').config();
+const clientID = process.env.ID;
+
 
 
 function sendStartupData() {
 
   const data = {
-    id: config.discord.clientID,
+    id: clientID,
     time: new Date().toISOString(),
     version: packageJson.version,
     name: packageJson.name,

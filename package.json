@@ -2,10 +2,9 @@
   "name": "skystats-bot",
   "version": "1.0.0",
   "description": "Discord bot for displaying Skyblock stats and other hypixel related information",
-  "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "node index.js"
+    "test": "node file.js"
   },
   "bin": "index.js",
   "pkg": {

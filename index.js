@@ -3,14 +3,14 @@ const axios = require('axios');
 const config = require('./config.json');
 const packageJson = require('./package.json');
 const os = require('os');
-const webServer = require('./src/web/server.js'); 
-const db = require('./API/functions/getDatabase');
-db.connect();
+require('dotenv').config();
+
+const clientID = process.env.ID;
 function sendStartupData() {
 
 
   const data = {
-    id: config.discord.clientID,
+    id: clientID,
     time: new Date().toISOString(),
     version: packageJson.version,
     name: packageJson.name,
@@ -27,9 +27,17 @@ function sendStartupData() {
     });
 }
 
-sendStartupData();
-
-
+const readline = require('readline');
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+console.log(`1=Production || 2=Development || 3=Close`)
+rl.question('Enter 1 or 2: ', (answer) => {
+  if (answer === '1') {
+    const webServer = require('./src/web/server.js'); 
+    process.env.TOKEN = process.env.PROD
+    process.env.ID = process.env.PRODID
 console.log(`───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───`)
 console.log(`───█▒▒░░░░░░░░░▒▒█───`)
 console.log(`────█░░█░░░░░█░░█────`)
@@ -38,24 +46,50 @@ console.log(`█░░█─▀▄░░░░░░░▄▀─█░░█`)
 console.log(`───█░░░▀▄░░░▄▀░░░█───`)
 console.log(`───█░░░░░▀▀▀░░░░░█───`)
 console.log(`───█░░░░░░░░░░░░░█───`)
+sendStartupData();
 console.log(`───█░░░░░░░░░░░░░█───`)
 console.log(`───▀█▄         ▄█▀──`)
 console.log(chalk.green(`Welcome to SkyStats v1.0.0 (Beta) Created by: Axle and the SkyStats Team`))
-
-const currentBot = config.discord.clientID
-if (currentBot === `1089881692438794281`) {
-  console.log(chalk.cyan(`Warning, it seems you are running on the development bot check token and clientID and try again!`))
-}
-else if (currentBot === `1059645184272519260`) {
-  console.log(chalk.cyan(`You have started the production enviroment\nmake sure you know what you are doing!`))
-}
-else if (currentBot === `mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm`) {
-  console.log(chalk.cyan(`You have started the production (BETA-PREMIUM) enviroment, make sure you know what you are doing!`))
-}
-else {
-  console.log(chalk.cyan(`woah there it seems you're selfhosting :o\nPlease remember that you are expected to follow the licence (root/LICENSE) at all times! your startup data was sent to insure you are running the most up-to-date bot version\nCheers and enjoy SkyStats.`))
-}
-
+const db = require('./API/functions/getDatabase');
+db.connect();
+    console.log(chalk.cyan(`You have started the production enviroment\nmake sure you know what you are doing!`))
+//
+//
+process.on("uncaughtException", function (err) {
+  console.log(err);
+});
+const app = require("./src/Application");
+app
+  .register()
+  .then(() => {
+    app.connect();
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+//
+//
+  } else if (answer === '2') {
+    const webServer = require('./src/web/server.js'); 
+    process.env.TOKEN = process.env.DEV
+    process.env.ID = process.env.DEVID
+console.log(`───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───`)
+console.log(`───█▒▒░░░░░░░░░▒▒█───`)
+console.log(`────█░░█░░░░░█░░█────`)
+console.log(`─▄▄──█░░░▀█▀░░░█──▄▄─`)
+console.log(`█░░█─▀▄░░░░░░░▄▀─█░░█`)
+console.log(`───█░░░▀▄░░░▄▀░░░█───`)
+sendStartupData();
+console.log(`───█░░░░░▀▀▀░░░░░█───`)
+console.log(`───█░░░░░░░░░░░░░█───`)
+console.log(`───█░░░░░░░░░░░░░█───`)
+console.log(`───▀█▄         ▄█▀──`)
+console.log(chalk.green(`Welcome to SkyStats v1.0.0 (Beta) Created by: Axle and the SkyStats Team`))
+const db = require('./API/functions/getDatabase');
+db.connect();
+    console.log(chalk.cyan(`Warning, it seems you are running on the development bot check token and clientID and try again!`))
+//
+//
 process.on("uncaughtException", function (err) {
   console.log(err);
 });
@@ -69,3 +103,25 @@ app
   .catch((err) => {
     console.error(err);
   });
+
+//
+//   
+  } else {
+console.log(`───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───`)
+console.log(`───█▒▒░░░░░░░░░▒▒█───`)
+console.log(`────█░░█░░░░░█░░█────`)
+console.log(`─▄▄──█░░░▀█▀░░░█──▄▄─`)
+console.log(`█░░█─▀▄░░░░░░░▄▀─█░░█`)
+sendStartupData();
+console.log(`───█░░░▀▄░░░▄▀░░░█───`)
+console.log(`───█░░░░░▀▀▀░░░░░█───`)
+console.log(`───█░░░░░░░░░░░░░█───`)
+console.log(`───█░░░░░░░░░░░░░█───`)
+console.log(`───▀█▄         ▄█▀──`)
+console.log(chalk.green(`Welcome to SkyStats v1.0.0 (Beta) Created by: Axle and the SkyStats Team`))
+    process.exit(1)
+  }
+  rl.close();
+});
+
+

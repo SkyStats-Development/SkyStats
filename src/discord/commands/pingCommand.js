@@ -7,6 +7,8 @@ const { exec } = require("child_process");
 const ping = require('ping');
 const axios = require(`axios`)
 const key = config.api.hypixelAPIkey
+require('dotenv').config();
+const clientID = process.env.ID;
 
 async function checkApiKey(key) {
     try {
@@ -32,7 +34,7 @@ module.exports = {
 
     execute: async (interaction, client) => {
         const heartBeat = ms(Date.now() - client.ws.shards.first().lastPingTimestamp, { long: true })
-        const current_bot = config.discord.clientID
+        const current_bot = clientID
         const latancy_to_discord = client.ws.ping
 
 

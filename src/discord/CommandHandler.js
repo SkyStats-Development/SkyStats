@@ -2,6 +2,9 @@ const { Routes } = require('discord-api-types/v9')
 const config = require('../../config.json')
 const { REST } = require('@discordjs/rest')
 const fs = require('fs')
+require('dotenv').config();
+const token = process.env.TOKEN;
+const clientID = process.env.ID;
 
 class CommandHandler {
   constructor(discord) {
@@ -16,9 +19,9 @@ class CommandHandler {
     }
 
 
-    const rest = new REST({ version: '10' }).setToken(config.discord.token)
+    const rest = new REST({ version: '10' }).setToken(token)
     
-    rest.put(Routes.applicationCommands(config.discord.clientID), { body: commands }).catch(console.error)
+    rest.put(Routes.applicationCommands(clientID), { body: commands }).catch(console.error)
   }
 }
 
