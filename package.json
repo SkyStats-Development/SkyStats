@@ -56,6 +56,7 @@
     "discord.js": "^14.7.1",
     "domhandler": "5.0.3",
     "dotenv": "^10.0.0",
+    "ejs": "^3.1.9",
     "entities": "4.4.0",
     "env": "^0.0.2",
     "express": "^4.18.2",

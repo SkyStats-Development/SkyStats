@@ -138,7 +138,7 @@ body {
     border: none;
     border-radius: 25px;
     padding: 10px 20px;
-    margin-left: 16px;
+    margin-left: 10px;
     cursor: pointer;
     font-size: 18px;
 }
@@ -188,3 +188,24 @@ footer {
     transform: translateX(0);
     padding: 50px 40px 50px 40px;
 }
+
+/* uwu error box */
+.error-box {
+    background-color: #ff951344;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-top: 16px;
+    display: none; 
+  }
+  .error-box:before {
+    content: "ERROR | "; 
+  }
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }

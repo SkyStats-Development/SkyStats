@@ -35,19 +35,62 @@
         <div class="header">🌹 SkyStats 🌹</div>
         <div class="subheader">🌹 A comprehensive Skyblock Bot and Website 🌹</div>
         <section class="username-input">
-            <form id="user-form">
-            <form action="./user.html?username=${username}"></form>
-              <input type="text" name="username" placeholder="Enter the player username">
+            <form id="user-form" onsubmit="submitForm(event)">
+              <input type="text" name="username" placeholder="Enter the player username or UUID">
               <input type="submit" value="Go!">
+              <div id="error-message" class="error-box"></div>
             </form>
-        </section>
+          </section>
           <script>
-            const form = document.getElementById("user-form");
-            form.addEventListener("submit", function(event) {
+            const config = {
+              API: {
+                hypixelAPIkey: '6e849ff4-c34e-4a6e-8915-2f1974d0a426'
+              }
+            };
+          
+            function submitForm(event) {
               event.preventDefault();
-              const username = form.elements.username.value;
-              window.location.href = "./SkyStats/user.html"
-            });
+              const inputElement = document.querySelector('input[name="username"]');
+              const inputValue = inputElement.value.trim();
+              fetch(`https://playerdb.co/api/player/minecraft/${inputValue}`)
+                .then(response => {
+                  if (response.ok) {
+                    return response.json();
+                  } else {
+                    throw new Error();
+                  }
+                })
+                .then(data => {
+                  const username = data.data.player.username;
+                  const uuid = data.data.player.id;
+                  return fetch(`https://api.hypixel.net/skyblock/profiles?key=${config.API.hypixelAPIkey}&uuid=${uuid}`)
+                    .then(response => {
+                      if (response.ok) {
+                        return response.json();
+                      } else {
+                        throw new Error();
+                      }
+                    })
+                    .then(profileRes => {
+                      if (profileRes.success) {
+                        window.location.href = `/stats/${encodeURIComponent(username)}`;
+                      } else {
+                        throw new Error('Player has no SkyBlock profiles or has never joined Hypixel!');
+                      }
+                    });
+                })
+                .catch(error => {
+                  const errorMessage = document.getElementById('error-message');
+                  errorMessage.textContent = error.message || `"${inputValue}" is not a valid username or UUID.`;
+                  errorMessage.style.display = 'block';
+                  errorMessage.style.animation = 'none';
+                  void errorMessage.offsetWidth;
+                  errorMessage.style.animation = null;
+                  setTimeout(() => {
+                    errorMessage.style.animation = 'fadeOut 2s forwards';
+                  }, 2000); // hide the error message after 2 seconds
+                });
+            }
           </script>
         <div class="whitespace">
             <br>
