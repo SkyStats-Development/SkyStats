@@ -4,7 +4,7 @@ const { getLatestProfile } = require('../../../API/functions/getLatestProfile');
 const { addNotation, addCommas } = require('../../contracts/helperFunctions')
 const { getNetworth, getPrices} = require('skyhelper-networth');
 const messages = require('../../../messages.json')
-const { default: axios } = require('axios');
+const { default: axios, AxiosError } = require('axios');
 const config = require(`../../../config.json`)
 const wait = require('node:timers/promises').setTimeout;
 const { getUUID } = require('../../contracts/API/PlayerDBAPI')
@@ -68,6 +68,7 @@ module.exports = {
         const secrets = (player.data.dungeons.secrets_found) || `0`
         const selectedclass = (player.data.dungeons.selected_class) || `DEFAULT`
         const classavrg = (player.data.dungeons.class_average) || `0`
+        console.log(classavrg)
         // f0
         const f0comp = (player.data.dungeons.catacombs.floors[`0`]?.stats?.tier_completions) || `0`
         const f0time = (player.data.dungeons.catacombs.floors[`0`]?.stats?.fastest_time) || `0`
@@ -204,15 +205,15 @@ module.exports = {
         const lividD = (player.data.dungeons.boss_collections.catacombs_5.floors.catacombs_5) || `0`
         const lividMM = (player.data.dungeons.boss_collections.catacombs_5.floors.master_catacombs_5) || `0`
         // SADAN NON L
-        const sadanT = (player.data.dungeons.boss_collections.catacombs_6.tier) || `0`
-        const sadanK = (player.data.dungeons.boss_collections.catacombs_6.killed) || `0`
-        const sadanD = (player.data.dungeons.boss_collections.catacombs_6.floors.catacombs_6) || `0`
-        const sadanMM = (player.data.dungeons.boss_collections.catacombs_6.floors.master_catacombs_6) || `0`
+        const sadanT = (player.data.dungeons.boss_collections?.catacombs_6?.tier) || `0`
+        const sadanK = (player.data.dungeons.boss_collections?.catacombs_6?.killed) || `0`
+        const sadanD = (player.data.dungeons.boss_collections?.catacombs_6?.floors.catacombs_6) || `0`
+        const sadanMM = (player.data.dungeons.boss_collections?.catacombs_6?.floors.master_catacombs_6) || `0`
         //Necron (uwu gimme ur stick pls I need 1 more for term :( )
-        const necronT = (player.data.dungeons.boss_collections.catacombs_7.tier) || `0`
-        const necronK = (player.data.dungeons.boss_collections.catacombs_7.killed) || `0`
-        const necronD = (player.data.dungeons.boss_collections.catacombs_7.floors.catacombs_7) || `0`
-        const necronMM = (player.data.dungeons.boss_collections.catacombs_7.floors.master_catacombs_7) || `0`
+        const necronT = (player.data.dungeons.boss_collections?.catacombs_7?.tier) || `0`
+        const necronK = (player.data.dungeons.boss_collections?.catacombs_7?.killed) || `0`
+        const necronD = (player.data.dungeons.boss_collections?.catacombs_7?.floors.catacombs_7) || `0`
+        const necronMM = (player.data.dungeons.boss_collections?.catacombs_7?.floors.master_catacombs_7) || `0`
 
 
 
