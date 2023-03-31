@@ -10,7 +10,7 @@
   
   .topnavbar img {
     width: 50px;
-    height: 16px;
+    height: 50px;
     margin-right: 10px;
   }
   
@@ -68,8 +68,8 @@
   .search-container input[type="text"] {
     border-radius: 25px;
     border: none;
-    padding: 8px 16px;
-    margin-left: 420px;
+    padding: 8px 20px;
+    margin-left: 310px;
     font-size: 18px;
     background-color: #ccc;
     color: #333;
@@ -81,8 +81,8 @@
     color: #fff;
     border: none;
     border-radius: 25px;
-    padding: 8px 16px;
-    margin-left: 0px;
+    padding: 10px 20px;
+    margin-left: 5px;
     cursor: pointer;
     font-size: 18px;
 }
@@ -108,9 +108,10 @@
     background-image: url('bg.png');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: fixed;
     height: calc(100vh - 73px);
     padding: 0;
+    z-index: 0;
 }
 body {
     margin: 0;
@@ -126,10 +127,13 @@ body {
     height: 100%; /* covers entire height */
     position: fixed;
     right: 0;
-    top: 73px; /* add the height of the navbar here */
+    top: 88px; /* add the height of the navbar here */
+    right: 15px;
     overflow: auto; /* allows infinite length */
     scrollbar-color: #434343 #ff9500; /* custom scrollbar colors */
     scrollbar-width: thin;
+    border-radius: 10px;
+    z-index: 100;
   }
   
   /* Style for scrollbar thumb */
@@ -148,6 +152,10 @@ body {
     border-radius: 5px 5px 0 0;
   }
   
+  * {
+    font-family: 'Montserrat';
+  }
+
   h1 {
     margin: 0;
     font-size: 28px;

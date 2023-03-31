@@ -139,6 +139,7 @@ body {
     border-radius: 25px;
     padding: 10px 20px;
     margin-left: 10px;
+    margin-top: 5px;
     cursor: pointer;
     font-size: 18px;
 }
