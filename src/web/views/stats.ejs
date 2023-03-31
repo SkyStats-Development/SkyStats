@@ -11,10 +11,15 @@
     <script defer src= "app.js"></script>
 </head>
 <body>
+  <div class="parallax-effect">
   <nav class="topnavbar">
     <div>
       <img src="../logo.png" alt="Logo" />
+    </div>
+    <div class="navlinks-container">
+      <a href="../index.html"><button class="api-btn">Home</button></a>
       <a href="gooogle.com"><button class="api-btn">API</button></a>
+      <a href="https://discord.com/api/oauth2/authorize?client_id=1059645184272519260&permissions=8&scope=bot%20applications.commands"><button class="api-btn">Invite</button></a>
     </div>
     <div class="search-container">
       <form onsubmit="submitForm(event)">
@@ -75,28 +80,26 @@
           });
       }
     </script>
-    <div class="navlinks-container">
-      <a href="https://discord.com/api/oauth2/authorize?client_id=1059645184272519260&permissions=8&scope=bot%20applications.commands"><button class="api-btn">Invite</button></a>
-      <a href="../index.html"><button class="api-btn">Home</button></a>
-    </div>
   </nav>
-  <div class="info, parallax-effect">
     <div class="whitespace">
         <br>
+        <br>
     </div>
-    <body>
-      <div class="background-overlay">
-        <header>
-          <h1>Stats for <%= username %> on Placeholder</h1>
-        </header>
-        <div class="buttons-section">
-          <button>Share!</button>
-          <button>Guild:</button>
-          <button>Planke</button>
-          <button>Copy UUID</button>
-          <button>Discord</button>
-          <button>Forums</button>
-        </div>
+  <div>
+    <div class="background-overlay">
+      <header>
+        <h1>Stats for <%= username %> on Placeholder</h1>
+      </header>
+      <div class="buttons-section">
+        <button>Share!</button>
+        <button>Guild:</button>
+        <button>Planke</button>
+        <button>Copy UUID</button>
+        <button>Discord</button>
+        <button>Forums</button>
       </div>
-    </body>
+    </div>
+  </div>
+  </div>
+</body>
 </html>
