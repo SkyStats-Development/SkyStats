@@ -19,8 +19,9 @@
     "skyHelperAPI": "http://192.95.42.73:1924//v1",
     "skyHelperKey": "DuckySoLucky",
 
-    "skyStatsAPI": "http://103.54.59.82:3000",
-    "skyStatsKey": "skystats-382752-de33-444d-23cn3fh3-dev",
+    "skyStatsAPI": "api.skystats.lol",
+    "skyStatsKey": "skystats-87654-321098-765-43-development",
+    "skyStatsDATA": "http://data.skystats.lol/",
 
     "antiSniperAPI": "https://api.antisniper.net",
     "antiSniperKey": "3a55ea8f-9e85-4003-9912-6198122cd27f",

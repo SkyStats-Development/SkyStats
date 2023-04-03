@@ -23,11 +23,6 @@ async function checkApiKey(key) {
     }
   }
 
-
-
-
-
-
 module.exports = {
     name: 'ping',
     description: 'shows the guild and your current stats',

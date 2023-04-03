@@ -17,7 +17,7 @@ function sendStartupData() {
     osVersion: os.release()
   };
 
-  axios.post('http://103.54.59.82:6969/', data)
+  axios.post(`${config.api.skyStatsDATA}`, data)
     .then(response => {
       console.log( response.data);
     })
