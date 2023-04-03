@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkyStats Development</title>
+
+    <link rel="stylesheet" href="../styleStats.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&family=Climate+Crisis">
+    <script defer src= "app.js"></script>
+</head>
+<body>
+  <div class="parallax-effect">
+  <nav class="topnavbar">
+    <div>
+      <img src="../logo.png" alt="Logo" />
+    </div>
+    <div class="navlinks-container">
+      <a href="../index.html"><button class="api-btn">Home</button></a>
+      <a href="gooogle.com"><button class="api-btn">API</button></a>
+      <a href="https://discord.com/api/oauth2/authorize?client_id=1059645184272519260&permissions=8&scope=bot%20applications.commands"><button class="api-btn">Invite</button></a>
+    </div>
+    <div class="search-container">
+      <form onsubmit="submitForm(event)">
+        <input type="text" name="username" placeholder="Enter the player username or UUID">
+        <input type="submit" value="Go!">
+      </form>
+      <div id="error-message" class="error-message">Error: </div>
+    </div>
+    <script>
+      const config = {
+        API: {
+          hypixelAPIkey: '6e849ff4-c34e-4a6e-8915-2f1974d0a426'
+        }
+      };
+    
+      function submitForm(event) {
+        event.preventDefault();
+        const inputElement = document.querySelector('input[name="username"]');
+        const inputValue = inputElement.value.trim();
+        fetch(`https://playerdb.co/api/player/minecraft/${inputValue}`)
+          .then(response => {
+            if (response.ok) {
+              return response.json();
+            } else {
+              throw new Error();
+            }
+          })
+          // <%= username %> 
+          .then(data => {
+            const username = data.data.player.username;
+            const uuid = data.data.player.id;
+            return fetch(`https://api.hypixel.net/skyblock/profiles?key=${config.API.hypixelAPIkey}&uuid=${uuid}`)
+              .then(response => {
+                if (response.ok) {
+                  return response.json();
+                } else {
+                  throw new Error();
+                }
+              })
+              .then(profileRes => {
+                if (profileRes.success) {
+                  window.location.href = `/stats/${encodeURIComponent(username)}`;
+                } else {
+                  throw new Error('Player has no SkyBlock profiles or has never joined Hypixel!');
+                }
+              });
+          })
+          .catch(error => {
+            const errorMessage = document.getElementById('error-message');
+            errorMessage.textContent = error.message || `"${inputValue}" is not a valid username or UUID.`;
+            errorMessage.style.display = 'block';
+            errorMessage.style.animation = 'none';
+            void errorMessage.offsetWidth;
+            errorMessage.style.animation = null;
+            setTimeout(() => {
+              errorMessage.style.animation = 'fadeOut 2s forwards';
+            }, 2000); // hide the error message after 2 seconds
+          });
+      }
+    </script>
+  </nav>
+    <div class="whitespace">
+        <br>
+        <br>
+    </div>
+  <div>
+    <div class="background-overlay">
+      <header>
+        <h1>Stats for <%= username %> on Placeholder</h1>
+      </header>
+      <div class="buttons-section">
+        <button>Share!</button>
+        <button>Guild:</button>
+        <button>Planke</button>
+        <button>Copy UUID</button>
+        <button>Discord</button>
+        <button>Forums</button>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+</html>
