@@ -1,6 +1,6 @@
 const { addNotation } = require("./../../../src/contracts/helperFunctions.js");
 const config = require("../../../config.json");
-const { getSkyStats } = require("../getSkyStats.js");
+const { getSkyStats } = require("../getSkyStats");
 const { default: axios } = require("axios");
 
 const RECOMBOBULATOR_3000 = "<:RECOMBOBULATOR_3000:1069185517511524362>";
@@ -8,7 +8,7 @@ const RECOMBOBULATOR_3000 = "<:RECOMBOBULATOR_3000:1069185517511524362>";
 async function getAllItems(uuid2, profileid) {
     const networthRaw = (
         await axios.get(
-            `http://103.54.59.82:3000/v2/profile/${uuid2}/${profileid}?key=${config.api.skyStatsKey}`
+            `http://api.skystats.lol/v2/profile/${uuid2}/${profileid}?key=${config.api.skyStatsKey}`
         )
     ).data;
 

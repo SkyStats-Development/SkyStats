@@ -6,7 +6,7 @@ const config = require("../../config.json");
 async function getSkyStats(uuid2, profileid) {
   const networthRaw = (
     await axios.get(
-      `http://103.54.59.82:3000/v2/profile/${uuid2}/${profileid}?key=${config.api.skyStatsKey}`
+      `http://api.skystats.lol/v2/profile/${uuid2}/${profileid}?key=${config.api.skyStatsKey}`
     )
   ).data;
 

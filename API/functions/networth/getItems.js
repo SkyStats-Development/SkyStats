@@ -8,7 +8,7 @@ const RECOMBOBULATOR_3000 = "<:RECOMBOBULATOR_3000:1069185517511524362>";
 async function getItems(uuid2, profileid) {
     const networthRaw = (
         await axios.get(
-            `http://103.54.59.82:3000/v2/profile/${uuid2}/${profileid}?key=${config.api.skyStatsKey}`
+            `http://api.skystats.lol/v2/profile/${uuid2}/${profileid}?key=${config.api.skyStatsKey}`
         )
     ).data;
 
