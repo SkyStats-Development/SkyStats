@@ -104,20 +104,24 @@
     font-weight: bold;
     justify-content: flex-end;
   }
-  .parallax-effect {
+
+body {
+    margin: 0;
     background-image: url('bg.png');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: fixed;
-    height: calc(100vh - 73px);
-    padding: 0;
-    z-index: 0;
-}
-body {
-    margin: 0;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-attachment: fixed;
     background-color: #141414;
+}
+
+.parallax-effect {
+  background-image: url('bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: calc(100vh - 73px);
+  padding: 0;
+  z-index: 0;
 }
   
 .background-overlay {
@@ -125,10 +129,9 @@ body {
     backdrop-filter: blur(6.9px);
     width: 69.6969%; /* 1/3 of the screen */
     height: 100%; /* covers entire height */
-    position: fixed;
-    right: 0;
     top: 88px; /* add the height of the navbar here */
     right: 15px;
+    position: absolute;
     overflow: auto; /* allows infinite length */
     scrollbar-color: #434343 #ff9500; /* custom scrollbar colors */
     scrollbar-width: thin;
@@ -167,3 +170,4 @@ body {
     align-items: center;
     height: 100px;
   }
+
