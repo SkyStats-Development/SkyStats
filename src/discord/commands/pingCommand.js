@@ -59,12 +59,6 @@ module.exports = {
               (async function() {
                 const validity = await checkApiKey(key);
 
-
-
-
-
-
-
         const stats = {
             color: 0xffa600,
             title: `Pinged in: ${interaction.guild.name}`,

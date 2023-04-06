@@ -365,6 +365,7 @@ module.exports = {
           } catch (error) {
             if (error instanceof TypeError && error.message.includes("Cannot read properties of undefined (reading 'cute_name')")) {
               console.error("Error: cute_name is undefined");
+              console.log(error)
               const errorembed = {
                 color: 0xff0000,
                 title: `Error`,
