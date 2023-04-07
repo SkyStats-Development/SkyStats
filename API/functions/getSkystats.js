@@ -73,4 +73,5 @@ async function getSkyStats(uuid2, profileid) {
   };
 }
 
+
 module.exports = { getSkyStats };

@@ -159,57 +159,57 @@ module.exports = {
         const m7times = (player.data.dungeons.master_catacombs.floors[`7`]?.stats?.fastest_time_s)|| `0`
         const m7timess = (player.data.dungeons.master_catacombs.floors[`7`]?.stats?.fastest_time_s_plus)|| `0` 
         const m7best_score = (player.data.dungeons.master_catacombs.floors[`7`]?.stats?.best_score) || `0`     
-        //Tank
+
         const tanklevelWithProgresss = (player.data.dungeons.classes.tank.levelWithProgress) || `0`
         const tanklevelp = Math.round((tanklevelWithProgresss) * 100) /100
         const tanklevel = (player.data.dungeons.classes.tank.level) || `0`
-        //Healer
+
         const heallevelWithProgresss = (player.data.dungeons.classes.healer.levelWithProgress) || `0`
         const heallevelp = Math.round((heallevelWithProgresss) * 100) /100
         const heallevel = (player.data.dungeons.classes.healer.level) || `0`
-        //Mage
+
         const magelevelWithProgresss = (player.data.dungeons.classes.mage.levelWithProgress) || `0`
         const magelevelp = Math.round((magelevelWithProgresss) * 100) /100
         const magelevel = (player.data.dungeons.classes.mage.level) || `0`
-        //Archer
+
         const archlevelWithProgresss = (player.data.dungeons.classes.archer.levelWithProgress) || `0`
         const archlevelp = Math.round((archlevelWithProgresss) * 100) /100
         const archlevel = (player.data.dungeons.classes.archer.level) || `0`
-        //Bers
+
         const berslevelWithProgresss = (player.data.dungeons.classes.berserk.levelWithProgress) || `0`
         const berslevelp = Math.round((berslevelWithProgresss) * 100) /100
         const berslevel = (player.data.dungeons.classes.berserk.level) || `0`
-        //bonzo
+
         const bonzoT = (player.data.dungeons.boss_collections.catacombs_1.tier) || `0`
         const bonzoK = (player.data.dungeons.boss_collections.catacombs_1.killed) || `0`
         const bonzoD = (player.data.dungeons.boss_collections.catacombs_1.floors.catacombs_1) || `0`
         const bonzoMM = (player.data.dungeons.boss_collections.catacombs_1.floors.master_catacombs_1) || `0`
-        //scarf
+
         const scarfT = (player.data.dungeons.boss_collections.catacombs_2.tier) || `0`
         const scarfK = (player.data.dungeons.boss_collections.catacombs_2.killed) || `0`
         const scarfD = (player.data.dungeons.boss_collections.catacombs_2.floors.catacombs_2) || `0`
         const scarfMM = (player.data.dungeons.boss_collections.catacombs_2.floors.master_catacombs_2) || `0`
-        //professer
+
         const profT = (player.data.dungeons.boss_collections.catacombs_3.tier) || `0`
         const profK = (player.data.dungeons.boss_collections.catacombs_3.killed) || `0`
         const profD = (player.data.dungeons.boss_collections.catacombs_3.floors.catacombs_3) || `0`
         const profMM = (player.data.dungeons.boss_collections.catacombs_3.floors.master_catacombs_3) || `0`
-        //thorn
+
         const thornT = (player.data.dungeons.boss_collections.catacombs_4.tier) || `0`
         const thornK = (player.data.dungeons.boss_collections.catacombs_4.killed) || `0`
         const thornD = (player.data.dungeons.boss_collections.catacombs_4.floors.catacombs_4) || `0`
         const thornMM = (player.data.dungeons.boss_collections.catacombs_4.floors.master_catacombs_4) || `0`
-        //livid
+
         const lividT = (player.data.dungeons.boss_collections.catacombs_5.tier) || `0`
         const lividK = (player.data.dungeons.boss_collections.catacombs_5.killed) || `0`
         const lividD = (player.data.dungeons.boss_collections.catacombs_5.floors.catacombs_5) || `0`
         const lividMM = (player.data.dungeons.boss_collections.catacombs_5.floors.master_catacombs_5) || `0`
-        // SADAN NON L
+
         const sadanT = (player.data.dungeons.boss_collections?.catacombs_6?.tier) || `0`
         const sadanK = (player.data.dungeons.boss_collections?.catacombs_6?.killed) || `0`
         const sadanD = (player.data.dungeons.boss_collections?.catacombs_6?.floors.catacombs_6) || `0`
         const sadanMM = (player.data.dungeons.boss_collections?.catacombs_6?.floors.master_catacombs_6) || `0`
-        //Necron (uwu gimme ur stick pls I need 1 more for term :( )
+
         const necronT = (player.data.dungeons.boss_collections?.catacombs_7?.tier) || `0`
         const necronK = (player.data.dungeons.boss_collections?.catacombs_7?.killed) || `0`
         const necronD = (player.data.dungeons.boss_collections?.catacombs_7?.floors.catacombs_7) || `0`
@@ -484,7 +484,7 @@ module.exports = {
 			)
 
 
-            await interaction.editReply({  embeds: [ chat ], components: [mmbutton, onlydungeon, classes, collections]})
+            await interaction.editReply({  embeds: [ mm, chat, coll, classs ], components: [mmbutton, onlydungeon, classes, collections]})
 
             collector.on('collect', async i => {
                 if (i.customId === 'mmm') {
