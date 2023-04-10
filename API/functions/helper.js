@@ -1,4 +1,7 @@
 const moment = require('moment');
+const nbt = require("prismarine-nbt");
+const util = require("util");
+const parseNbt = util.promisify(nbt.parse);
 
 const capitalize = function (str) {
   const words = str.replace(/_/g, ' ').toLowerCase().split(' ');
@@ -123,5 +126,34 @@ const parseTimestamp = function(text) {
   const dateMath = parseDateMath(mathString, time);
   return dateMath ? dateMath.valueOf() : undefined;
 }
+function getProgressBar(progress) {
+  let progress_string = "";
+  for (let i = 1; i < 11; i++) {
+    progress_string +=
+      progress > i / 11
+        ? "<:glass_lime:792337420103319593>"
+        : "<:glass_silver:792337420338724904>";
+  }
 
-module.exports = { capitalize, toTimestamp, parseTimestamp, nth };
+  return progress_string;
+}
+function formatNumber(number, decimals = 2) {
+  if (number === undefined || number === 0) return 0;
+
+  if (number < 100000) return parseInt(number).toLocaleString();
+
+  const abbrev = ["", "K", "M", "B", "T", "Q", "S", "O", "N", "D"];
+  const unformattedNumber = Math.abs(number);
+
+  const abbrevIndex = Math.floor(Math.log10(unformattedNumber) / 3);
+  const shortNumber = (
+    unformattedNumber / Math.pow(10, abbrevIndex * 3)
+  ).toFixed(decimals);
+  return `${shortNumber}${abbrev[abbrevIndex]}`;
+}
+
+
+
+
+
+module.exports = { capitalize, toTimestamp, parseTimestamp, nth, getProgressBar, formatNumber };

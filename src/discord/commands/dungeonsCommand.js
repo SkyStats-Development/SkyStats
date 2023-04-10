@@ -53,17 +53,14 @@ module.exports = {
           const uuid2 = (
             await axios.get(`https://playerdb.co/api/player/minecraft/${name}`)
           ).data.data.player.raw_id;   
+
+
         const profileraw = (await axios.get(`https://sky.shiiyu.moe/api/v2/profile/${uuid2}`)).data.profiles
         let currentProfile;
         for (var key of Object.keys(profileraw)) {
             if (profileraw[key]?.current) currentProfile = key;}
-        const data = await getLatestProfile(name)
-        const filter = i => i.user.id === (interaction.user.id);
-        const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
-        const profilename = (data.profileData.cute_name)
         const player = (profileraw[currentProfile])
-        // Ill be making this better soon but for now its just a mess of code :D
-        //discript
+
         const catalvl = (player.data.dungeons.catacombs.level.level) || `0`
         const secrets = (player.data.dungeons.secrets_found) || `0`
         const selectedclass = (player.data.dungeons.selected_class) || `DEFAULT`
@@ -210,10 +207,7 @@ module.exports = {
         const sadanD = (player.data.dungeons.boss_collections?.catacombs_6?.floors.catacombs_6) || `0`
         const sadanMM = (player.data.dungeons.boss_collections?.catacombs_6?.floors.master_catacombs_6) || `0`
 
-        const necronT = (player.data.dungeons.boss_collections?.catacombs_7?.tier) || `0`
-        const necronK = (player.data.dungeons.boss_collections?.catacombs_7?.killed) || `0`
-        const necronD = (player.data.dungeons.boss_collections?.catacombs_7?.floors.catacombs_7) || `0`
-        const necronMM = (player.data.dungeons.boss_collections?.catacombs_7?.floors.master_catacombs_7) || `0`
+
 
 
 
@@ -484,7 +478,7 @@ module.exports = {
 			)
 
 
-            await interaction.editReply({  embeds: [ mm, chat, coll, classs ], components: [mmbutton, onlydungeon, classes, collections]})
+            await interaction.editReply({  embeds: [ mm ], components: [mmbutton, onlydungeon, classes, collections]})
 
             collector.on('collect', async i => {
                 if (i.customId === 'mmm') {

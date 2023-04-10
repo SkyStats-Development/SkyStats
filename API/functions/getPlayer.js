@@ -1,7 +1,9 @@
 const { getLatestProfile } = require('../../API/functions/getLatestProfile');
 const db = require('../../API/functions/getDatabase');
 const axios = require('axios');
-const messages = require(`../../messages.json`)
+const messages = require(`../../messages.json`);
+const config = require(`../../config.json`)
+
 
 async function getPlayer(id, name) {
     const collection = db.getDb().collection('linkedAccounts');
@@ -30,12 +32,26 @@ async function getPlayer(id, name) {
 
     name = name || minecraftUuid;
 
+
+
     try {
         const { data: { data: { player } } } = await axios.get(`https://playerdb.co/api/player/minecraft/${name}`);
         const { username, raw_id: uuid2 } = player;
-        const { profileData: { cute_name: profilename, profile_id: profileid } } = await getLatestProfile(name);
-        return { uuid2, username, profilename, profileid };
+        const [ playerRes, profileRes ] = await Promise.all([
+          axios.get(`https://api.hypixel.net/player?key=${config.api.hypixelAPIkey}&uuid=${uuid2}`),
+          axios.get(`https://api.hypixel.net/skyblock/profiles?key=${config.api.hypixelAPIkey}&uuid=${uuid2}`)
+        ]);
+        if (playerRes.status !== 200 || profileRes.status !== 200) {
+          throw new Error(`Error getting player or profile data.`);
+        }
+        const playerData = playerRes.data;
+        const profileData = profileRes.data.profiles.find((a) => a.selected);
+        const profile = profileData.members[uuid2];
+        const { cute_name: profilename, profile_id: profileid } = profileData;
+        return { uuid2, username, profilename, profileid, playerData, profileData, profile };
+        
     } catch (error) {
+        console.log(error);
         return {
             error: {
                 color: 0xff0000,
@@ -48,6 +64,7 @@ async function getPlayer(id, name) {
                 },
             }
         };
+        
     }
 }
 
