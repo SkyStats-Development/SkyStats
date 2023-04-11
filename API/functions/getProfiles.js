@@ -1,6 +1,7 @@
 const { isUuid } = require('../utils/uuid');
 const config = require('../../config.json');
 const axios = require('axios')
+const key = process.env.KEY;
 
 async function getProfiles(uuid) {
     try {
@@ -15,8 +16,8 @@ async function getProfiles(uuid) {
             }
         }
 
-        const playerRes = await axios.get(`https://api.hypixel.net/player?key=${config.API.hypixelAPIkey}&uuid=${uuid}`);
-        const profileRes = await axios.get(`https://api.hypixel.net/skyblock/profiles?key=${config.API.hypixelAPIkey}&uuid=${uuid}`);
+        const playerRes = await axios.get(`https://api.hypixel.net/player?key=${key}&uuid=${uuid}`);
+        const profileRes = await axios.get(`https://api.hypixel.net/skyblock/profiles?key=${key}&uuid=${uuid}`);
 
         if (profileRes.data.hasOwnProperty('profiles') && profileRes.data.profiles == null) {
             res.status(404).json({ status: 404, reason: `Found no SkyBlock profiles for a user with a UUID of '${uuid}'.` });

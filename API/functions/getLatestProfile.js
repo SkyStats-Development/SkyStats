@@ -3,7 +3,7 @@ const config = require('../../config.json');
 const { parseHypixel } = require('../utils/hypixel');
 const axios = require('axios');
 const { getUUID } = require('../../src/contracts/API/PlayerDBAPI');
-
+const key = process.env.KEY;
 async function getLatestProfile(uuid) {
     try {
         if (!isUuid(uuid)) {
@@ -15,8 +15,8 @@ async function getLatestProfile(uuid) {
         }
 
         const [ playerRes, profileRes ] = await Promise.all([
-            axios.get(`https://api.hypixel.net/player?key=${config.api.hypixelAPIkey}&uuid=${uuid}`),
-            axios.get(`https://api.hypixel.net/skyblock/profiles?key=${config.api.hypixelAPIkey}&uuid=${uuid}`)
+            axios.get(`https://api.hypixel.net/player?key=${key}&uuid=${uuid}`),
+            axios.get(`https://api.hypixel.net/skyblock/profiles?key=${key}&uuid=${uuid}`)
         ]);
 
         const player = parseHypixel(playerRes, uuid);

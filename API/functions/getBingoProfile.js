@@ -3,7 +3,7 @@ const { isUuid } = require("../utils/uuid");
 const { parseBingoProfile } = require("../utils/hypixel");
 const config = require('../../config.json');
 const axios = require("axios");
-
+const key = process.env.KEY;
 async function getBingo(uuid) {
   if (!isUuid(uuid)) {
     const mojang_response = (await axios.get(`https://api.ashcon.app/mojang/v2/user/${uuid}`));
@@ -13,7 +13,7 @@ async function getBingo(uuid) {
   }
 
   const [profileRes, bingoRes] = await Promise.all([
-    await axios.get(`https://api.hypixel.net/skyblock/bingo?key=${config.api.hypixelAPIkey}&uuid=${uuid}`),
+    await axios.get(`https://api.hypixel.net/skyblock/bingo?key=${key}&uuid=${uuid}`),
     await axios.get(`https://api.hypixel.net/resources/skyblock/bingo`)
   ]);
 

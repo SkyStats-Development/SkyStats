@@ -11,7 +11,7 @@ async function getLinkedAccount(discordId) {
   const result = await collection.findOne({ discordId: discordId });
   return result ? result.minecraftUuid : null;
 }
-
+const key = process.env.KEY;
 
 module.exports = {
     name: 'woolwars',
@@ -29,7 +29,7 @@ module.exports = {
         try {
         let name = interaction.options.getString('player')
         const uuid = await getUUID(player)
-        const woolWars = (await axios.get(`https://api.hypixel.net/player?key=${config.api.hypixelAPIkey}&uuid=${uuid}`)).data.player.stats.WoolGames
+        const woolWars = (await axios.get(`https://api.hypixel.net/player?key=${key}&uuid=${uuid}`)).data.player.stats.WoolGames
         const level = getWoolWarsStar(woolWars.progression.experience)
         const kdrw = toFixed(woolWars.wool_wars.stats.kills) || `no kills GG`
         const deathss = toFixed(woolWars.wool_wars.stats.deaths) || `no deaths GG`

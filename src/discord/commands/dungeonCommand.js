@@ -1,4 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
+const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle, MessageFlags } = require('discord.js')
 const { getLatestProfile } = require('../../../API/functions/getLatestProfile');
 const { addNotation, addCommas } = require('../../contracts/helperFunctions')
 const { getNetworth, getPrices} = require('skyhelper-networth');
@@ -11,7 +11,7 @@ const { getPlayer } = require('../../../API/functions/getPlayer');
 const getDungeons = require("../../../API/functions/getDungeons.js");
 const { handleError } = require('../../../API/functions/getError');
 const { buttons, embeds } = require("../../..//src/discord/constants/defaultDungeons"); 
-// Credit to DuckySoLucky for this code (modified)
+// Credit to DuckySoLucky for this code (modi)
 module.exports = {
   name: "dungeon",
   description: "View dungeon stats",
@@ -30,7 +30,7 @@ module.exports = {
     if (error) {
       const errorembed = {
         color: 0xff0000,
-        title: error.message,
+        title: [error.message || `Error.`],
         description: error.description,
         timestamp: new Date().toISOString(),
       };
@@ -49,12 +49,14 @@ module.exports = {
 
 
       const calculated = getDungeons(playerData, profile);
-
       if (calculated.catacombs.highest_tier_completed == null) {
-        throw new SkyHelperError(
-          `\`${username}\` has never played dungeons before on \`${profile.cute_name}\``,
-          "/dungeons"
-        );
+        const errorembed = {
+          color: 0xff0000,
+          title: `Warning!`,
+          description: `This user has never played a dungeon!`,
+          timestamp: new Date().toISOString(),
+        };
+        await interaction.editReply({ embeds: [errorembed] });
       }
 
       let INTERACTION_MODE_BUTTON = buttons.mode.master;
@@ -147,13 +149,13 @@ module.exports = {
       collector.on("end", () => {
         interaction.editReply({
           components: [],
+          });
         });
-      });
-    } catch (error) {
-      const errorEmbed = handleError(error);
-      await interaction.reply({ embeds: [errorEmbed] });
-      console.log(error);
+      } catch (error) {
+        const errorEmbed = handleError(error);
+        await interaction.editReply({ embeds: [errorEmbed] });
+        console.log(error);
+      }
     }
-  }
   },
 };

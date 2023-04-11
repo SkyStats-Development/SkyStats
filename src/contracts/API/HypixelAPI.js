@@ -1,11 +1,11 @@
 const axios = require('axios')
 const config = require('../../../config.json')
 const PlayerDBAPI = require('./PlayerDBAPI')
-
+const key = process.env.KEY;
 async function getKeyData() {
     // https://api.hypixel.net/key?key=HYPIXEL_API_KEY
     try {
-        return (await axios.get(`${config.api.hypixelAPI}/?key=${config.api.hypixelAPIkey}`)).data
+        return (await axios.get(`${config.api.hypixelAPI}/?key=${key}`)).data
     } catch (error) {
         return error
     }
@@ -15,7 +15,7 @@ async function getPlayer(uuid) {
     // https://api.hypixel.net/player?key=HYPIXEL_API_KEY&uuid=PLAYER_UUID
     try {
         if (uuid.length.replaceAll('-', '') != 32) uuid = await PlayerDBAPI.getUUID(uuid)
-        return (await axios.get(`${config.api.hypixelAPI}/player?key=${config.api.hypixelAPIkey}&uuid=${uuid}`)).data
+        return (await axios.get(`${config.api.hypixelAPI}/player?key=${key}&uuid=${uuid}`)).data
     } catch (error) {
         return error
     }
@@ -23,13 +23,13 @@ async function getPlayer(uuid) {
 async function getFriends(uuid) {
     // https://api.hypixel.net/friends?key=HYPIXEL_API_KEY&uuid=PLAYER_UUID
     if (uuid.length.replaceAll('-', '') != 32) uuid = await PlayerDBAPI.getUUID(uuid)
-    return (await axios.get(`${config.api.hypixelAPI}/friends?key=${config.api.hypixelAPIkey}&uuid=${uuid}`)).data
+    return (await axios.get(`${config.api.hypixelAPI}/friends?key=${key}&uuid=${uuid}`)).data
 }
 async function getRecentGames(uuid) {
     // https://api.hypixel.net/recentgames?key=HYPIXEL_API_KEY&uuid=PLAYER_UUID
     try {
         if (uuid.length.replaceAll('-', '') != 32) uuid = await PlayerDBAPI.getUUID(uuid)
-        return (await axios.get(`${config.api.hypixelAPI}/recentgames?key=${config.api.hypixelAPIkey}&uuid=${uuid}`)).data
+        return (await axios.get(`${config.api.hypixelAPI}/recentgames?key=${key}&uuid=${uuid}`)).data
     } catch (error) {
         return error
     }
@@ -38,7 +38,7 @@ async function getPlayerStatus(uuid) {
     // https://api.hypixel.net/status?key=HYPIXEL_API_KEY&uuid=PLAYER_UUID
     try {
         if (uuid.length.replaceAll('-', '') != 32) uuid = await PlayerDBAPI.getUUID(uuid)
-        return (await axios.get(`${config.api.hypixelAPI}/status?key=${config.api.hypixelAPIkey}&uuid=${uuid}`)).data
+        return (await axios.get(`${config.api.hypixelAPI}/status?key=${key}&uuid=${uuid}`)).data
     } catch (error) {
         return error
     }
@@ -48,9 +48,9 @@ async function getGuildData(uuid) {
     // https://api.hypixel.net/guild?key=HYPIXEL_API_KEY&name=WristSpasm
     // https://api.hypixel.net/guild?key=HYPIXEL_API_KEY&id=60d744c18ea8c9d0f50e8815
     try {
-        if (uuid.length == 24) return (await axios.get(`${config.api.hypixelAPI}/guild?key=${config.api.hypixelAPIkey}&id=${uuid}`)).data
-        else if (uuid.length.replaceAll('-', '') == 32) return (await axios.get(`${config.api.hypixelAPI}/guild?key=${config.api.hypixelAPIkey}&player=${uuid}`)).data
-        else return (await axios.get(`${config.api.hypixelAPI}/guild?key=${config.api.hypixelAPIkey}&name=${uuid}`)).data
+        if (uuid.length == 24) return (await axios.get(`${config.api.hypixelAPI}/guild?key=${key}&id=${uuid}`)).data
+        else if (uuid.length.replaceAll('-', '') == 32) return (await axios.get(`${config.api.hypixelAPI}/guild?key=${key}&player=${uuid}`)).data
+        else return (await axios.get(`${config.api.hypixelAPI}/guild?key=${key}&name=${uuid}`)).data
     } catch (error) {
         return error
     }
@@ -98,7 +98,7 @@ async function getSkyblockBingoData() {
 async function getLatestSkyblockNews() {
     // https://api.hypixel.net/skyblock/news?key=HYPIXEL_API_KEY
     try {
-        return (await axios.get(`${config.api.hypixelAPI}/skyblock/news?key=${config.api.hypixelAPIkey}`)).data
+        return (await axios.get(`${config.api.hypixelAPI}/skyblock/news?key=${key}`)).data
     } catch (error) {
         return error
     }
@@ -138,7 +138,7 @@ async function getSkyblockAuctions() {
 async function getBoosters() {
     // https://api.hypixel.net/boosters?key=HYPIXEL_API_KEY
     try {
-        return (await axios.get(`${config.api.hypixelAPI}/boosters?key=${config.api.hypixelAPIkey}`)).data
+        return (await axios.get(`${config.api.hypixelAPI}/boosters?key=${key}`)).data
     } catch (error) {
         return error
     }
@@ -146,7 +146,7 @@ async function getBoosters() {
 async function getPlayerCount() {
     // https://api.hypixel.net/counts?key=HYPIXEL_API_KEY
     try {
-        return (await axios.get(`${config.api.hypixelAPI}/counts?key=${config.api.hypixelAPIkey}`)).data
+        return (await axios.get(`${config.api.hypixelAPI}/counts?key=${key}`)).data
     } catch (error) {
         return error
     }
@@ -154,7 +154,7 @@ async function getPlayerCount() {
 async function getWatchDogData(){
     // https://api.hypixel.net/punishmentstats?key=HYPIXEL_API_KEY
     try {
-        return (await axios.get(`${config.api.hypixelAPI}/punishmentstats?key=${config.api.hypixelAPIkey}`)).data
+        return (await axios.get(`${config.api.hypixelAPI}/punishmentstats?key=${key}`)).data
     } catch (error) {
         return error
     }

@@ -1,6 +1,7 @@
 const LilyWeight = require("lilyweight");
 const config = require("../../../config.json");
-const lily = new LilyWeight(config.api.hypixelAPIkey);
+const key = process.env.KEY;
+const lily = new LilyWeight(key);
 
 async function getLilyWeightUsername(username) {
   return await lily.getWeightFromUsername(username);

@@ -6,6 +6,8 @@ const {
 } = require("../../../API/functions/helper");
 const { catacombs } = require("../../../API/constants/xp_tables.js");
 const moment = require("moment");
+const messages = require (`../../../messages.json`)
+
 
 module.exports = {
   buttons: {
@@ -55,8 +57,7 @@ module.exports = {
       const description = data.getDescription();
       const fields = data.getFields();
 
-      const footer =
-        "by DuckySoLucky#5181 | Secrets can only be listed for all profiles combined";
+      const footer = messages.footer.defaultbetter;
       const title = `${username}'s Catacombs on ${cute_name}`;
 
       return this.generateEmbed(
@@ -73,7 +74,7 @@ module.exports = {
       const fields = data.getFields();
       const description = "";
 
-      const footer = "by DuckySoLucky#5181 | /suggest (suggestion)";
+      const footer = messages.footer.defaultbetter;
       const title = `${username}'s Best Catacombs Runs on ${cute_name}`;
 
       return this.generateEmbed(
@@ -91,7 +92,7 @@ module.exports = {
       const fields = data.getFields();
       const description = data.getDescription();
 
-      const footer = "by DuckySoLucky#5181 | /suggest (suggestion)";
+      const footer = messages.footer.defaultbetter;
       const title = `${username}'s Catacombs Classes on ${cute_name}`;
 
       return this.generateEmbed(
@@ -108,7 +109,7 @@ module.exports = {
       const fields = data.getFields();
       const description = "";
 
-      const footer = "by DuckySoLucky#5181 | /suggest (suggestion)";
+      const footer = messages.footer.defaultbetter;
       const title = `${username}'s Boss Collection on ${cute_name}`;
 
       return this.generateEmbed(
@@ -121,7 +122,7 @@ module.exports = {
         title,
         description = "",
         fields = [],
-        footer = "by DuckySoLucky#5181  | /suggest (suggestion)",
+        footer = messages.footer.defaultbetter
       },
       { username, uuid, cute_name }
     ) {

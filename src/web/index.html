@@ -63,7 +63,8 @@
                 .then(data => {
                   const username = data.data.player.username;
                   const uuid = data.data.player.id;
-                  return fetch(`https://api.hypixel.net/skyblock/profiles?key=${config.API.hypixelAPIkey}&uuid=${uuid}`)
+                  const key = process.env.KEY;
+                  return fetch(`https://api.hypixel.net/skyblock/profiles?key=${key}&uuid=${uuid}`)
                     .then(response => {
                       if (response.ok) {
                         return response.json();

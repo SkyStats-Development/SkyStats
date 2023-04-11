@@ -5,10 +5,35 @@ const packageJson = require('./package.json');
 const os = require('os');
 require('dotenv').config();
 
+const keys = process.env.KEYS.split(','); // assuming KEYS is a comma-separated list of keys in the .env file
+let keyIndex = 0;
+let workingKey = '';
+
+async function checkKeys() {
+  try {
+    for (let i = 0; i < keys.length; i++) {
+      const response = await axios.get(`https://api.hypixel.net/key?key=${keys[i]}`);
+      const data = response.data;
+      if (data.success && data.record && data.record.queriesInPastMin < 50) {
+        workingKey = keys[i];
+        break;
+      }
+    }
+    if (!workingKey) {
+      console.error('No working API key found!');
+      process.exit(1);
+    }
+    process.env.KEY = workingKey;
+  } catch (error) {
+    console.error('No working API key found!');
+    process.exit(1);
+  }
+}
+
+
+
 const clientID = process.env.ID;
 function sendStartupData() {
-
-
   const data = {
     id: clientID,
     time: new Date().toISOString(),
@@ -16,7 +41,6 @@ function sendStartupData() {
     name: packageJson.name,
     osVersion: os.release()
   };
-
   axios.post(`${config.api.skyStatsDATA}`, data)
     .then(response => {
       console.log( response.data);
@@ -26,7 +50,6 @@ function sendStartupData() {
       process.exit(1); 
     });
 }
-
 const readline = require('readline');
 const rl = readline.createInterface({
   input: process.stdin,
@@ -35,9 +58,11 @@ const rl = readline.createInterface({
 console.log(`1=Production || 2=Development || 3=Close`)
 rl.question('Enter 1 or 2: ', (answer) => {
   if (answer === '1') {
-    const webServer = require('./src/web/server.js'); 
+const db = require('./API/functions/getDatabase');
+db.connect();
     process.env.TOKEN = process.env.PROD
     process.env.ID = process.env.PRODID
+
 console.log(`───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───`)
 console.log(`───█▒▒░░░░░░░░░▒▒█───`)
 console.log(`────█░░█░░░░░█░░█────`)
@@ -50,8 +75,9 @@ sendStartupData();
 console.log(`───█░░░░░░░░░░░░░█───`)
 console.log(`───▀█▄         ▄█▀──`)
 console.log(chalk.green(`Welcome to SkyStats v1.0.0 (Beta) Created by: Axle and the SkyStats Team`))
-const db = require('./API/functions/getDatabase');
-db.connect();
+
+const webServer = require('./src/web/server.js'); 
+checkKeys();
     console.log(chalk.cyan(`You have started the production enviroment\nmake sure you know what you are doing!`))
 //
 //
@@ -70,7 +96,8 @@ app
 //
 //
   } else if (answer === '2') {
-    const webServer = require('./src/web/server.js'); 
+const db = require('./API/functions/getDatabase');
+    db.connect();
     process.env.TOKEN = process.env.DEV
     process.env.ID = process.env.DEVID
 console.log(`───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───`)
@@ -85,8 +112,8 @@ console.log(`───█░░░░░░░░░░░░░█───`)
 console.log(`───█░░░░░░░░░░░░░█───`)
 console.log(`───▀█▄         ▄█▀──`)
 console.log(chalk.green(`Welcome to SkyStats v1.0.0 (Beta) Created by: Axle and the SkyStats Team`))
-const db = require('./API/functions/getDatabase');
-db.connect();
+const webServer = require('./src/web/server.js'); 
+checkKeys();
     console.log(chalk.cyan(`Warning, it seems you are running on the development bot check token and clientID and try again!`))
 //
 //

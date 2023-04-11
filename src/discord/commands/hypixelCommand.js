@@ -10,7 +10,7 @@ const hypixel = require('../../contracts/API/HypixelRebornAPI')
 const { default: axios, AxiosError } = require("axios");
 const { addNotation, addCommas } = require("../../contracts/helperFunctions");
 const { Color } = require('hypixel-api-reborn');
-
+const key = process.env.KEY;
 const db = require('../../../API/functions/getDatabase');
 async function getLinkedAccount(discordId) {
   const collection = db.getDb().collection('linkedAccounts');
@@ -94,9 +94,9 @@ module.exports = {
         const statusm = Hypixel.isOnline
         const guild = await hypixel.getGuild("player", uuid2)
         const gname = guild?.name || `Unknown`
-        const hypixelPlayer = (await axios.get(`https://api.hypixel.net/player?uuid=${uuid2}&key=${config.api.hypixelAPIkey}`)).data.player
+        const hypixelPlayer = (await axios.get(`https://api.hypixel.net/player?uuid=${uuid2}&key=${key}`)).data.player
         const ranksGifted = hypixelPlayer?.giftingMeta?.ranksGiven || 0
-        const challenges = (await axios.get(`https://api.hypixel.net/player?uuid=${uuid2}&key=${config.api.hypixelAPIkey}`)).data.player.challenges.all_time;
+        const challenges = (await axios.get(`https://api.hypixel.net/player?uuid=${uuid2}&key=${key}`)).data.player.challenges.all_time;
 
         const sortedChallenges = Object.entries(challenges)
           .sort((a, b) => b[1] - a[1])

@@ -7,13 +7,10 @@ const config = require("../../../config.json");
 const { getSkyStats } = require('../../../API/functions/getSkystats')
 const { getPets } = require('../../../API/functions/networth/getPets')
 const { getItems } = require('../../../API/functions/networth/getItems')
+const { getPlayer } = require('../../../API/functions/getPlayer');
+const { handleError } = require('../../../API/functions/getError');
 const { getAllItems } = require('../../../API/functions/networth/getAllItems')
-const db = require('../../../API/functions/getDatabase');
-async function getLinkedAccount(discordId) {
-  const collection = db.getDb().collection('linkedAccounts');
-  const result = await collection.findOne({ discordId: discordId });
-  return result ? result.minecraftUuid : null;
-}
+
 
 
 const PURSE_ICON = '<:Purse:1059997956784279562>';
@@ -36,22 +33,24 @@ module.exports = {
     
 
     async execute(interaction) {
-      const minecraftUuid = await getLinkedAccount(interaction.user.id) || ``
-      const name = interaction.options.getString("name") || minecraftUuid;
+      const id = interaction.user.id;
+      const { uuid2, username, profilename, profileid, error } = await getPlayer(id, interaction.options.getString('name'));
+      if (error) {
+        const errorembed = {
+            color: 0xff0000,
+            title: error.message,
+            description: error.description,
+            timestamp: new Date().toISOString(),
+        };
+        await interaction.reply({ embeds: [errorembed] });
+    } else {
         try {
           await interaction.deferReply();
-          const { data: { data: { player } } } = await axios.get(`https://playerdb.co/api/player/minecraft/${name}`);
-          const username = player.username;
-          const uuid2 = player.raw_id;
-          const data = await getLatestProfile(name);
-          const profilename = data.profileData.cute_name;
-          const proflieid = data.profileData.profile_id;
-      
           const [stats, petData, itemsData, allItemsData] = await Promise.all([
-              getSkyStats(uuid2, proflieid),
-              getPets(uuid2, proflieid),
-              getItems(uuid2, proflieid),
-              getAllItems(uuid2, proflieid)
+              getSkyStats(uuid2, profileid),
+              getPets(uuid2, profileid),
+              getItems(uuid2, profileid),
+              getAllItems(uuid2, profileid)
           ]);
       
           const {
@@ -86,25 +85,25 @@ module.exports = {
             const armor_embed = {
               color: 0xffa600,
               title: `Armor for ${username} on ${profilename}`,
-              URL: `https://sky.shiiyu.moe/stats/${name}`,
+              URL: `https://sky.shiiyu.moe/stats/${uuid2}`,
               description: `Armor Value: **${addCommas(armor)}** (**${addNotation("oneLetters", armor)}**)\n\n${allArmor}`,
               thumbnail: {
-                url: `https://api.mineatar.io/body/full/${name}`,
+                url: `https://api.mineatar.io/body/full/${uuid2}`,
               },
             };
             const equipment_embed = {
               color: 0xffa600,
               title: `Equipment for ${username} on ${profilename}`,
-              URL: `https://sky.shiiyu.moe/stats/${name}`,
+              URL: `https://sky.shiiyu.moe/stats/${uuid2}`,
               description: `Equipment Value: **${addCommas(equipment)}** (**${addNotation("oneLetters", equipment)}**)\n\n${allEquipment}`,
               thumbnail: {
-                url: `https://api.mineatar.io/body/full/${name}`,
+                url: `https://api.mineatar.io/body/full/${uuid2}`,
               },
             };
             const wardrobe_embed = {
               color: 0xffa600,
               title: `Wardrobe for ${username} on ${profilename}`,
-              URL: `https://sky.shiiyu.moe/stats/${name}`,
+              URL: `https://sky.shiiyu.moe/stats/${uuid2}`,
               description: `Wardrobe Value: **${addCommas(wardrobe)}** (**${addNotation("oneLetters", wardrobe)}**)\n\n${allWardrobe}`,
               thumbnail: {
                 url: `https://api.mineatar.io/body/full/${addCommas(wardrobe)}`,
@@ -113,55 +112,55 @@ module.exports = {
             const inventory_embed = {
               color: 0xffa600,
               title: `Inventory for ${username} on ${profilename}`,
-              URL: `https://sky.shiiyu.moe/stats/${name}`,
+              URL: `https://sky.shiiyu.moe/stats/${uuid2}`,
               description: `Inventory Value: **${addCommas(inventory)}** (**${addNotation("oneLetters", inventory)}**)\n\n${allInventory}`,
               thumbnail: {
-                url: `https://api.mineatar.io/body/full/${name}`,
+                url: `https://api.mineatar.io/body/full/${uuid2}`,
               },
             };
             const enderchest_embed = {
               color: 0xffa600,
               title: `Ender Chest for ${username} on ${profilename}`,
-              URL: `https://sky.shiiyu.moe/stats/${name}`,
+              URL: `https://sky.shiiyu.moe/stats/${uuid2}`,
               description: `Ender Chest Value: **${addCommas(enderchest)}** (**${addNotation("oneLetters", enderchest)}**)\n\n${allEnderchest}`,
               thumbnail: {
-                url: `https://api.mineatar.io/body/full/${name}`,
+                url: `https://api.mineatar.io/body/full/${uuid2}`,
               },
             };
             const storage_embed = {
               color: 0xffa600,
               title: `Storage for ${username} on ${profilename}`,
-              URL: `https://sky.shiiyu.moe/stats/${name}`,
+              URL: `https://sky.shiiyu.moe/stats/${uuid2}`,
               description: `Storage Value: **${addCommas(storage)}** (**${addNotation("oneLetters", storage)}**)\n\n${allStorage}}`,
               thumbnail: {
-                url: `https://api.mineatar.io/body/full/${name}`,
+                url: `https://api.mineatar.io/body/full/${uuid2}`,
               },
             };
             const pets = {
               color: 0xffa600,
               title: `Pets for ${username} on ${profilename}`,
-              URL: `https://sky.shiiyu.moe/stats/${name}`,
+              URL: `https://sky.shiiyu.moe/stats/${uuid2}`,
               description: `Pets Value: **${addCommas(petValue)}** (**${addNotation("oneLetters", petValue)}**)\n\nm... nrn`,
               thumbnail: {
-                url: `https://api.mineatar.io/body/full/${name}`,
+                url: `https://api.mineatar.io/body/full/${uuid2}`,
               },
             };
             const accessoriesBag = {
               color: 0xffa600,
               title: `Accessories Bag for ${username} on ${profilename}`,
-              URL: `https://sky.shiiyu.moe/stats/${name}`,
+              URL: `https://sky.shiiyu.moe/stats/${uuid2}`,
               description: `Accessories Bag Value: **${addCommas(accessories)}** (**${addNotation("oneLetters", accessories)}**)\n\n${allAccessories}`,
               thumbnail: {
-                url: `https://api.mineatar.io/body/full/${name}`,
+                url: `https://api.mineatar.io/body/full/${uuid2}`,
               },
             };
             const personalVault = {
               color: 0xffa600,
               title: `Personal Vault for ${username} on ${profilename}`,
-              URL: `https://sky.shiiyu.moe/stats/${name}`,
+              URL: `https://sky.shiiyu.moe/stats/${uuid2}`,
               description: `Personal Vault Value: **${addCommas(pv)}** (**${addNotation("oneLetters", pv)}**)\n\n${allPersonalVault}`,
               thumbnail: {
-              url: `https://api.mineatar.io/body/full/${name}`,
+              url: `https://api.mineatar.io/body/full/${uuid2}`,
               },
 
               };
@@ -172,10 +171,10 @@ module.exports = {
             const embedplayer = {
                 color: 0xffa600,
                 title: `Networth For ${username} On ${profilename}`,
-                URL: `https://sky.shiiyu.moe/stats/${name}`,
+                URL: `https://sky.shiiyu.moe/stats/${uuid2}`,
                 description: `${PURSE_ICON} Networth: **${networth} (${shortnetworth})**\n${IRON_INGOT_ICON} Unsoulbound Networth: **${unsoulbound} (${shortbound})**\n${BOOSTER_COOKIE_ICON} IRL Value: **$${irlnw} USD**`,
                 thumbnail: {
-                    url: `https://api.mineatar.io/body/full/${name}`,
+                    url: `https://api.mineatar.io/body/full/${uuid2}`,
                 },
                 fields: [
                     {
@@ -362,61 +361,9 @@ module.exports = {
             });
 
             interaction.editReply({ embeds: [embedplayer], components: [row] });
-          } catch (error) {
-            if (error instanceof TypeError && error.message.includes("Cannot read properties of undefined (reading 'cute_name')")) {
-              console.error("Error: cute_name is undefined");
-              console.log(error)
-              const errorembed = {
-                color: 0xff0000,
-                title: `Error`,
-                description: `An error with the hypixel api has occured. Please try again later.\nIf the error persists, please contact the bot developer.`,
-                timestamp: new Date().toISOString(),
-                footer: {
-                    text: `${messages.footer.default}`,
-                    iconURL: `${messages.footer.icon}`,
-                },
-              }
-              await interaction.editReply({ embeds: [errorembed] });
-            } else if (error instanceof AxiosError) {
-              console.error(`Error: ${error.message}`);
-              console.log(error.response.data);
-              const errorembed2 = {
-                color: 0xff0000,
-                title: `Error`,
-                description: `An error with validating the username provided has occured. Please try again later.\nIf the error persists, please contact the bot developer.\nIf your account is not linked, please link your account with \`/verify\`.`,
-                timestamp: new Date().toISOString(),
-                footer: {
-                    text: `${messages.footer.default}`,
-                    iconURL: `${messages.footer.icon}`,
-                },
-              }
-              await interaction.editReply({ embeds: [errorembed2] });
-            } else if (error instanceof Error) {
-              if (error.stack) {
-                const matches = error.stack.match(/.*:(\d+):\d+\)/);
-                const line = matches ? matches[1] : "unknown";
-                console.error(`Error on line ${line}: ${error.message}`);
-                console.log(error.stack)
-                console.log(error)
-                const errorembed2m = {
-                  color: 0xff0000,
-                  title: `Error`,
-                  description: `An error has occurred. Please try again later.\nIf the error persists, please contact the bot developer.\n\nError: ${error.message}\nLine: ${line}`,
-                  timestamp: new Date().toISOString(),
-                  footer: {
-                      text: `${messages.footer.default}`,
-                      iconURL: `${messages.footer.icon}`,
-                  },
-                }
-                await interaction.editReply({ embeds: [errorembed2m] });
-              } else {
-                console.error(`Error: ${error.message}`);
-                await interaction.editReply({ content: `Error: ${error.message}` })
-              }
-            } else {
-              console.error(`Error: ${error}`);
-              await interaction.editReply({ content: `Oops! an unexpected error has happened!` })
-            }
-          }
+        } catch (error) {
+          const errorEmbed = handleError(error);
+          await interaction.editReply({ embeds: [errorEmbed] });
+        }}
     },
 };

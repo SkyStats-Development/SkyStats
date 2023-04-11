@@ -1,98 +1,98 @@
 const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
-const { getLatestProfile } = require('../../../API/functions/getLatestProfile');
-const { addNotation, addCommas } = require('../../contracts/helperFunctions')
-const { getNetworth, getPrices} = require('skyhelper-networth');
 const messages = require('../../../messages.json')
 const { default: axios, AxiosError } = require('axios');
-const wait = require('node:timers/promises').setTimeout;
-const { getUUID } = require('../../contracts/API/PlayerDBAPI')
-const { getAuctionData } = require('../../../API/functions/networth/getAuctionData');
-const db = require('../../../API/functions/getDatabase');
-async function getLinkedAccount(discordId) {
-  const collection = db.getDb().collection('linkedAccounts');
-  const result = await collection.findOne({ discordId: discordId });
-  return result ? result.minecraftUuid : null;
-}
+const config = require(`../../../config.json`)
+const { handleError } = require('../../../API/functions/getError');
+const { getAuctionData } = require('../../../API/functions/networth/getAuctionData.js');
+const { getSBID } = require('../../../API/functions/getSBID.js')
+
 
 
 module.exports = {
-    name: 'ah',
-    description: 'mm',
+    name: 'lowestbin',
+    description: 'Gets the lowest bin for an item',
     options: [
         {
             name: 'item',
-            description: 'item to search for',
+            description: 'The item you want to get the lowest bin for',
             type: 3,
-            required: false
+            required: true
         },
+        {
+          name: `number`,
+          description: 'The location of the item you want to get, higher the number the higher the price',
+          type: 10,
+          required: false
+        }
 
         
     ],
     execute: async (interaction, client, InteractionCreate) => {
-    try{
-        await interaction.deferReply();
-        const item = interaction.options.getString("item");
-        const formattedAuctions = await getAuctionData();
-        
-        const matchingAuctions = formattedAuctions.filter((auction) => {
-          // Convert item name to lowercase for case-insensitive comparison
-          const formattedItemName = auction.name.toLowerCase();
-          const formattedSearchTerm = item.toLowerCase();
-        
-          // Check if formatted item name starts with the search term
-          return formattedItemName.startsWith(formattedSearchTerm);
-        });
-        
-        // Do something with the matching auctions
-        console.log(matchingAuctions);
-        
-
-
-
-
-
+  try {
+    await interaction.deferReply();
+    const item = interaction.options.getString('item') 
+    const auctiondata = await getAuctionData(item)
+    const number = interaction.options.getNumber('number') || 1
+    const formattedName = await getSBID(auctiondata[number].name)
+    console.log(formattedName)
+    const image = `https://sky.shiiyu.moe/item/${formattedName}`
+    console.log(image)
     
-    await interaction.editReply({ content: `${matchingAuctions} m` });
-    } catch (error) {
-        if (error instanceof TypeError && error.message.includes("Cannot read properties of undefined (reading 'cute_name')")) {
-          console.error("Error: cute_name is undefined");
-          const errorembed = {
-            color: 0xff0000,
-            title: `Error`,
-            description: `An error with the hypixel api has occured. Please try again later.\nIf the error persists, please contact the bot developer.`,
-            timestamp: new Date().toISOString(),
-            footer: {
-                text: `${messages.footer.default}`,
-                iconURL: `${messages.footer.icon}`,
-            },
-          }
-          await interaction.editReply({ embeds: [errorembed] });
-        } else if (error instanceof Error) {
-          if (error.stack) {
-            const matches = error.stack.match(/.*:(\d+):\d+\)/);
-            const line = matches ? matches[1] : "unknown";
-            console.error(`Error on line ${line}: ${error.message}`);
-            console.log(error.stack)
-            console.log(error)
-            const errorembed2m = {
-              color: 0xff0000,
-              title: `Error`,
-              description: `An error has occurred. Please try again later.\nIf the error persists, please contact the bot developer.\n\nError: ${error.message}\nLine: ${line}`,
-              timestamp: new Date().toISOString(),
-              footer: {
-                  text: `${messages.footer.default}`,
-                  iconURL: `${messages.footer.icon}`,
-              },
-            }
-            await interaction.editReply({ embeds: [errorembed2m] });
-          } else {
-            console.error(`Error: ${error.message}`);
-            await interaction.editReply({ content: `Error: ${error.message}` })
-          }
-        } else {
-          console.error(`Error: ${error}`);
-          await interaction.editReply({ content: `Oops! an unexpected error has happened!` })
-        }
-      }
-    }
-}
+
+/*
+      name: auction.item_name,
+      price: auction.starting_bid,
+      tier: auction.tier,
+      id: auction.uuid,
+      category: auction.category,
+      end: auction.end,
+      bin: auction.bin,
+      extra: auction.extra,
+      */
+
+    const auctionHouseEmbed = {
+      title: `${auctiondata[number].name}`,
+      URL: `https://sky.coflnet.com/auction/${auctiondata[number].id}`,
+      description: (`**Basic Information**`),
+      fields: [
+        {
+          name: `Item`,
+          value: `${auctiondata[number].name}`,
+          inline: true
+        },
+        {
+          name: `Rarity`,
+          value: `${auctiondata[number].tier}`,
+          inline: true
+        },
+        {
+          name: `Price`,
+          value: `${auctiondata[number].price}`,
+          inline: true
+        },
+        {
+          name: `Ending Time`,
+          value: `<t:${auctiondata[number].end}:R>`,
+          inline: true
+        },
+        {
+          name: `Catagory`,
+          value: `${auctiondata[number].catagory}`,
+          inline: true
+        },
+      ], 
+      timestamp: new Date().toISOString(),
+      thumbnail: {
+        url: image,
+    },
+      footer: {text: `${messages.footer.defaultbetter}`, iconURL: `${messages.footer.icon}`},
+    };
+
+
+  await interaction.editReply({content: `**${auctiondata[number].price}**`, embeds: [auctionHouseEmbed], ephemeral: false})
+
+} catch (error) {
+  const errorEmbed = handleError(error);
+  await interaction.editReply({ embeds: [errorEmbed] });
+}}
+  }

@@ -6,7 +6,7 @@ const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, Button
 const { exec } = require("child_process");
 const ping = require('ping');
 const axios = require(`axios`)
-const key = config.api.hypixelAPIkey
+const key = process.env.KEY;
 require('dotenv').config();
 const clientID = process.env.ID;
 

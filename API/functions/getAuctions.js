@@ -3,6 +3,7 @@ const { isUuid } = require("../utils/uuid");
 const getActiveAuctions = require("../stats/auctions.js");
 const config = require('../../config.json');
 const axios = require("axios");
+const key = process.env.KEY;
 
 async function getAuctions(uuid) {
   if (!isUuid(uuid)) {
@@ -12,7 +13,7 @@ async function getAuctions(uuid) {
     }
   }
 
-  const auctionsRes = (await axios.get(`https://api.hypixel.net/skyblock/auction?key=${config.api.hypixelAPIkey}&player=${uuid}`)).data;
+  const auctionsRes = (await axios.get(`https://api.hypixel.net/skyblock/auction?key=${key}&player=${uuid}`)).data;
   const auctions = getActiveAuctions(auctionsRes);
 
   return { status: 200, data: auctions };

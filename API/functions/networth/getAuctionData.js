@@ -1,90 +1,28 @@
 const axios = require('axios');
 const fs = require('fs');
-const { Worker } = require('worker_threads');
-
 const config = require('../../../config.json');
-
-const CACHE_EXPIRATION_TIME = 5 * 60 * 1000; // 5 minutes
-
-let cachedData = null;
-let cacheExpirationTime = null;
-
-async function getAuctionData() {
-  if (cachedData && Date.now() < cacheExpirationTime) {
-    console.log('Using cached data');
-    return cachedData;
-  }
-
-  const totalPages = await getTotalPages();
-  console.log(`Total pages: ${totalPages}`);
-
-  const workers = [];
-  for (let i = 0; i < totalPages; i++) {
-    workers.push(new Worker('./auctionWorker.js', { workerData: i }));
-  }
-
-  const allAuctions = [];
-
-  for (const worker of workers) {
-    const auctions = await new Promise((resolve, reject) => {
-      worker.on('message', resolve);
-      worker.on('error', reject);
-    });
-    allAuctions.push(...auctions);
-  }
-
-  const filteredAuctions = allAuctions.filter((auction) => auction.bin === true);
-  const formattedAuctions = filteredAuctions.map((auction) => ({
-    name: formatItemName(auction.item_name),
-    starting_bid: auction.starting_bid,
-    start: auction.start,
-    end: auction.end,
-    stars: getStarsFromName(auction.item_name),
-    item_id: '',
-  }));
-
-  await addItemIdToAuctions(formattedAuctions);
-
-  cachedData = formattedAuctions;
-  cacheExpirationTime = Date.now() + CACHE_EXPIRATION_TIME;
-
-  console.log('Writing data to file');
-  fs.writeFileSync('auctionData.json', JSON.stringify(formattedAuctions));
-
-  return formattedAuctions;
-}
-
-async function getTotalPages() {
-  const response = await axios.get(`https://api.hypixel.net/skyblock/auctions?key=${config.api.hypixelAPIkey}`);
-  return response.data.totalPages;
-}
-
-function formatItemName(name) {
-  return name.replace(/\\u0027/g, "'");
-}
-
-function getStarsFromName(name) {
-  const starLevels = ['✪', '✪✪', '✪✪✪', '✪✪✪✪', '✪✪✪✪✪'];
-  for (const level of starLevels) {
-    if (name.includes(level)) {
-      return level;
-    }
-  }
-  return '';
-}
-
-async function addItemIdToAuctions(auctions) {
-  const itemsResponse = await axios.get(`https://api.hypixel.net/resources/skyblock/items?key=${config.api.hypixelAPIkey}`);
-  const items = itemsResponse.data.items;
-
-  for (const auction of auctions) {
-    const matchingItem = items.find((item) => auction.name.startsWith(item.name));
-    if (matchingItem) {
-      auction.item_id = matchingItem.id;
-    }
+// http://api.skystats.lol/v1/auctionhouse/?key=skystats-87654-321098-765-43-development&name=Crimson%20Chestplate&bin=true&lowestprice=true
+async function getAuctionData(item) {
+  try {
+    const response = await axios.get(`http://api.skystats.lol/v1/auctionhouse/?key=${config.api.skyStatsKey}&name=${item}&bin=true&lowest_price=0`);
+    const auctions = response.data.auctions;
+    const auctionData = auctions.map((auction) => ({
+      name: auction.item_name,
+      price: auction.starting_bid,
+      tier: auction.tier,
+      id: auction.uuid,
+      category: auction.category,
+      end: auction.end,
+      bin: auction.bin,
+      extra: auction.extra,
+    }));
+    const sortedAuctionData = auctionData.sort((a, b) => b.price - a.price);
+    return sortedAuctionData;
+  } catch (error) {
+    console.log(error);
+    return null;
   }
 }
-
 module.exports = {
   getAuctionData,
 };
