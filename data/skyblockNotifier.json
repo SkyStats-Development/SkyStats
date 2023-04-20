@@ -122,6 +122,11 @@
     "Hypixel Store Maintenance | Mar 13, 12:40 EDT | THIS IS A SCHEDULED EVENT Mar 14, 03:30 - 04:30 EDT",
     "Hypixel Store Maintenance | Completed - The scheduled maintenance has been completed. | Mar 14, 04:31 EDT",
     "Hypixel Store Maintenance | In progress - Scheduled maintenance is currently in progress. We will provide updates as necessary. | Mar 14, 03:31 EDT",
-    "Hypixel Store Maintenance | Scheduled - The Hypixel Store (store.hypixel.net) will be undergoing routine maintenance at the specified time for about 1 hour. The in-game store is unaffected. | Mar 13, 12:40 EDT"
+    "Hypixel Store Maintenance | Scheduled - The Hypixel Store (store.hypixel.net) will be undergoing routine maintenance at the specified time for about 1 hour. The in-game store is unaffected. | Mar 13, 12:40 EDT",
+    "Hypixel Forums Maintenance | Completed - The scheduled maintenance has been completed. | Apr 13, 09:05 EDT",
+    "Hypixel Forums Maintenance | In progress - Scheduled maintenance is currently in progress. We will provide updates as necessary. | Apr 13, 08:51 EDT",
+    "Hypixel Forums Maintenance | Scheduled - We will be undergoing routine maintenance during the specified duration. | Apr 13, 08:51 EDT",
+    "Hypixel Forums Unavailable | Resolved - This incident has been resolved. | Apr 12, 16:08 EDT",
+    "Hypixel Forums Unavailable | Investigating - We are currently investigating an issue with the Hypixel Forums being offline and unavailable | Apr 12, 16:01 EDT"
   ]
 }

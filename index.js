@@ -5,10 +5,8 @@ const packageJson = require('./package.json');
 const os = require('os');
 require('dotenv').config();
 
-const keys = process.env.KEYS.split(','); // assuming KEYS is a comma-separated list of keys in the .env file
-let keyIndex = 0;
+const keys = process.env.KEYS.split(",");
 let workingKey = '';
-
 async function checkKeys() {
   try {
     for (let i = 0; i < keys.length; i++) {
@@ -23,15 +21,13 @@ async function checkKeys() {
       console.error('No working API key found!');
       process.exit(1);
     }
-    process.env.KEY = workingKey;
+
   } catch (error) {
-    console.error('No working API key found!');
+    console.error('Error checking keys:', error);
     process.exit(1);
   }
 }
-
-
-
+checkKeys();
 const clientID = process.env.ID;
 function sendStartupData() {
   const data = {
@@ -50,6 +46,7 @@ function sendStartupData() {
       process.exit(1); 
     });
 }
+
 const readline = require('readline');
 const rl = readline.createInterface({
   input: process.stdin,
@@ -58,11 +55,12 @@ const rl = readline.createInterface({
 console.log(`1=Production || 2=Development || 3=Close`)
 rl.question('Enter 1 or 2: ', (answer) => {
   if (answer === '1') {
+    console.log(chalk.green(`Working API key: ${workingKey}`));
 const db = require('./API/functions/getDatabase');
 db.connect();
-    process.env.TOKEN = process.env.PROD
-    process.env.ID = process.env.PRODID
-
+process.env.KEY = workingKey;
+process.env.TOKEN = process.env.PROD
+process.env.ID = process.env.PRODID
 console.log(`───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───`)
 console.log(`───█▒▒░░░░░░░░░▒▒█───`)
 console.log(`────█░░█░░░░░█░░█────`)
@@ -75,12 +73,8 @@ sendStartupData();
 console.log(`───█░░░░░░░░░░░░░█───`)
 console.log(`───▀█▄         ▄█▀──`)
 console.log(chalk.green(`Welcome to SkyStats v1.0.0 (Beta) Created by: Axle and the SkyStats Team`))
-
 const webServer = require('./src/web/server.js'); 
-checkKeys();
-    console.log(chalk.cyan(`You have started the production enviroment\nmake sure you know what you are doing!`))
-//
-//
+console.log(chalk.cyan(`You have started the production enviroment\nmake sure you know what you are doing!`))
 process.on("uncaughtException", function (err) {
   console.log(err);
 });
@@ -93,11 +87,11 @@ app
   .catch((err) => {
     console.error(err);
   });
-//
-//
   } else if (answer === '2') {
+  console.log(chalk.green(`Working API key: ${workingKey}`));
 const db = require('./API/functions/getDatabase');
     db.connect();
+    process.env.KEY = workingKey;
     process.env.TOKEN = process.env.DEV
     process.env.ID = process.env.DEVID
 console.log(`───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───`)
@@ -113,7 +107,6 @@ console.log(`───█░░░░░░░░░░░░░█───`)
 console.log(`───▀█▄         ▄█▀──`)
 console.log(chalk.green(`Welcome to SkyStats v1.0.0 (Beta) Created by: Axle and the SkyStats Team`))
 const webServer = require('./src/web/server.js'); 
-checkKeys();
     console.log(chalk.cyan(`Warning, it seems you are running on the development bot check token and clientID and try again!`))
 //
 //

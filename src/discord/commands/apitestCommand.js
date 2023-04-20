@@ -29,7 +29,6 @@ module.exports = {
         const totalQueries = data.totalQueries;
         const username = (await axios.get(`https://sessionserver.mojang.com/session/minecraft/profile/${owner}/`)).data.name
 
-
         const chat = {
             color: 0xffa600,
             title: `Key Data`,

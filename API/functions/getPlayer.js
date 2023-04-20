@@ -1,9 +1,7 @@
-const { getLatestProfile } = require('../../API/functions/getLatestProfile');
 const db = require('../../API/functions/getDatabase');
 const axios = require('axios');
-const messages = require(`../../messages.json`);
-const config = require(`../../config.json`)
 const key = process.env.KEY;
+const {handleError, handlePlayer} = require('../../API/functions/getError');
 
 async function getPlayer(id, name) {
     const collection = db.getDb().collection('linkedAccounts');
@@ -16,24 +14,12 @@ async function getPlayer(id, name) {
             throw new Error('No linked account found');
         }
     } catch (error) {
+        const errorMessage = handlePlayer(unlinked)
         return {
-            error: {
-                color: 0xff0000,
-                title: `Error`,
-                description: 'You do not currently have an account verified with SkyStats, please verify your Minecraft account with `/verify`.',
-                timestamp: new Date().toISOString(),
-                footer: {
-                    text: `${messages.footer.default}`,
-                    iconURL: `${messages.footer.icon}`,
-                },
-            }
+            error: errorMessage
         };
     }
-
     name = name || minecraftUuid;
-
-
-
     try {
         const { data: { data: { player } } } = await axios.get(`https://playerdb.co/api/player/minecraft/${name}`);
         const { username, raw_id: uuid2 } = player;
@@ -52,21 +38,11 @@ async function getPlayer(id, name) {
         
     } catch (error) {
         console.log(error);
+        const errorMessage = handleError(error)
         return {
-            error: {
-                color: 0xff0000,
-                title: `Error`,
-                description: 'An error occurred while retrieving player data. Please check your input and try again later.',
-                timestamp: new Date().toISOString(),
-                footer: {
-                    text: `${messages.footer.default}`,
-                    iconURL: `${messages.footer.icon}`,
-                },
-            }
+            error: errorMessage
         };
         
     }
 }
-
-
 module.exports = { getPlayer };

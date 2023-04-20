@@ -11,8 +11,6 @@ const { getPlayer } = require('../../../API/functions/getPlayer');
 const { handleError } = require('../../../API/functions/getError');
 const { getAllItems } = require('../../../API/functions/networth/getAllItems')
 
-
-
 const PURSE_ICON = '<:Purse:1059997956784279562>';
 const IRON_INGOT_ICON = '<:IRON_INGOT:1070126498616455328>';
 const BOOSTER_COOKIE_ICON = '<:BOOSTER_COOKIE:1070126116846710865>';
@@ -33,19 +31,20 @@ module.exports = {
     
 
     async execute(interaction) {
+      await interaction.deferReply();
       const id = interaction.user.id;
       const { uuid2, username, profilename, profileid, error } = await getPlayer(id, interaction.options.getString('name'));
       if (error) {
+        console.log(error)
         const errorembed = {
             color: 0xff0000,
-            title: error.message,
+            title: `Error`,
             description: error.description,
             timestamp: new Date().toISOString(),
         };
-        await interaction.reply({ embeds: [errorembed] });
+        await interaction.editReply({ embeds: [errorembed] });
     } else {
         try {
-          await interaction.deferReply();
           const [stats, petData, itemsData, allItemsData] = await Promise.all([
               getSkyStats(uuid2, profileid),
               getPets(uuid2, profileid),
@@ -358,8 +357,8 @@ module.exports = {
                   }
                 }
               }
-            });
-
+            })
+            
             interaction.editReply({ embeds: [embedplayer], components: [row] });
         } catch (error) {
           const errorEmbed = handleError(error);
