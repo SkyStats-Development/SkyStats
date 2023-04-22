@@ -126,7 +126,7 @@ z-index: 0;
 
 .background-overlay {
   background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(6.9px);
+  backdrop-filter: blur(6.7px);
   width: 80%; /* 1/3 of the screen */
   height: 100%; /* covers entire height */
   top: 88px; /* add the height of the navbar here */
@@ -240,4 +240,63 @@ h1 {
 .show {
   display: contents;
   transform: translateX(0%);
+}
+
+/* NETWORTH SHIT */
+.networth-section {
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 1200px;
+  z-index: 101;
+  text-align: center;
+  border-radius: 1px; /* Increase border radius */
+  background: #33333368; /* Set dark gray background */
+  padding: 10px 8px 10px; /* Increase top/bottom padding */
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0.581); /* Add a box shadow */
+  border-style: solid; /* Set border style */
+  border-width: 0px 1px 1px 0px; /* Set thinner border width for bottom and left sides */
+  border-image: linear-gradient(135deg, #f73100, #ffb600) 1; /* Add gradient border */
+}
+
+.networth-text {
+  font-size: 24px;
+  margin: 0;
+  z-index: 101;
+  background: linear-gradient(90deg, #f73100, #ffb600);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.vars {
+  font-size: 18px;
+  margin: 0;
+  background: linear-gradient(90deg, #f73100, #ffb600);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: 101;
+}
+.left-text {
+  display: inline-block;
+  text-align: center;
+  float: left;
+  width: 50%;
+}
+
+.right-text {
+  display: inline-block;
+  text-align: center;
+  float: right;
+  width: 50%;
+}
+
+.line {
+  height: 1px;
+  background-image: linear-gradient(90deg, #f73100, #ffb600);
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

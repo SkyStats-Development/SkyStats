@@ -1,3 +1,7 @@
+<%
+
+%>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -33,7 +37,6 @@
           hypixelAPIkey: '6f451ef6-75d2-4f92-af70-5c8b3892f8ef'
         }
       };
-    
       function submitForm(event) {
         event.preventDefault();
         const inputElement = document.querySelector('input[name="username"]');
@@ -46,7 +49,6 @@
               throw new Error();
             }
           })
-          // <%= username %> 
           .then(data => {
             const username = data.data.player.username;
             const uuid = data.data.player.id;
@@ -88,7 +90,7 @@
     <div>
       <div class="background-overlay">
         <header>
-          <h1 class="title">Stats for <%= username %> on Placeholder</h1>
+          <h1 class="title">Stats for <%= username %> on <%= profilename %></h1>
         </header>
         <div class="button-section">
           <button class="share-btn">Share</button>
@@ -107,10 +109,24 @@
         const expandBtn = document.querySelector('.expand-btn');
         const extraBtns = document.querySelector('.extra-btns');
         expandBtn.addEventListener('click', () => {
+
           extraBtns.classList.toggle('show');
 });
+
       </script>
+      <div class="line"></div>
       </div>
-    </div>
+      <div class="networth-section">
+        <div class="left-text">
+          <p class="networth-text"><strong>Networth</strong></p>
+          <p></p>
+          <p class="vars"><strong><%= vars %> (<%= rawrs %>)</strong> </p>
+        </div>
+        <div class="right-text">
+          <p class="networth-text"><strong>Soulbound Networth</strong></p>
+          <p></p>
+          <p class="vars"><strong><%= bars %> (<%= rawrbars %>)</strong> </p>
+        </div>
+      </div>
 </body>
 </html>
