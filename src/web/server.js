@@ -5,7 +5,8 @@ const chalk = require(`chalk`)
 const port = 80;
 const logger = require(`../Logger.js`)
 app.set('view engine', 'ejs');
-
+const { getSkyStats } = require(`../../API/functions/getSkystats.js`);
+const { getPlayer2 } = require(`../../API/functions/getPlayer2.js`);
 
 process.on('uncaughtException', (error) => console.log(error));
 process.on('unhandledRejection', (error) => console.log(error));
@@ -14,11 +15,13 @@ process.on('unhandledRejection', (error) => console.log(error));
 app.use(express.static('stats'));
 app.set('views', `${__dirname + `/views`}`);
 // Define the route for /stats/:username
-app.get('/stats/:username/', (req, res) => {
+app.get('/stats/:username/', async (req, res) => {
   const username = req.params.username;
-  res.render('stats', { username });
+
+  res.render('stats', { username, getSkyStats: getSkyStats, getPlayer2: getPlayer2});
 });
 
+app.locals.require = require;
 app.use(express.static(__dirname + '/'));
 app.use(require('cors')());
 app.use(express.json({ limit: '15mb' }));
