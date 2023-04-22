@@ -96,19 +96,18 @@
             <button class="arrow-btn">&lt;&gt;</button>
           </div>
           <div class="extra-btns">
-            <button class="guild-btn">Guild:</button>
-            <button class="plancke-btn">Plancke</button>
-            <button class="uuid-btn">Copy UUID</button>
-            <button class="discord-btn">Discord</button>
-            <button class="forums-btn">Forums</button>
+            <button>Guild:</button>
+            <button>Plancke</button>
+            <button>Copy UUID</button>
+            <button>Discord</button>
+            <button>Forums</button>
           </div>
         </div>
       <script>
         const expandBtn = document.querySelector('.expand-btn');
-const extraBtns = document.querySelector('.extra-btns');
-
-expandBtn.addEventListener('click', () => {
-  extraBtns.classList.toggle('show');
+        const extraBtns = document.querySelector('.extra-btns');
+        expandBtn.addEventListener('click', () => {
+          extraBtns.classList.toggle('show');
 });
       </script>
       </div>
