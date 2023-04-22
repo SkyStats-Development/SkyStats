@@ -179,12 +179,10 @@ h1 {
   margin: 16px 0;
 }
 
-.buttons-section {
+.button-section {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
-  width: fit-content;
 }
 
 .share-btn {
@@ -202,7 +200,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  margin-left: 16px;
 }
 
 .arrow-btn {
@@ -213,34 +211,29 @@ h1 {
   font-size: 18px;
   font-weight: bold;
   padding: 8px;
-  margin-right: 16px;
 }
 
-.expand-btn-section {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  margin-top: 8px;
-  padding: 8px;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  display: flex;
-  flex-direction: row;
+.extra-btns {
+  display: none;
   justify-content: center;
-  align-items: center;
-  gap: 16px;
+  margin-top: 8px;
 }
 
-.expand-btn-section button {
+.extra-btns button {
+  background-color: #fff;
   border: none;
   color: #434343;
   font-size: 16px;
+  margin: 0 8px;
   padding: 8px;
   text-align: center;
-  cursor: pointer;
+  border-radius: 4px;
 }
 
-.expand-btn-section button:hover {
-  background-color: #eeeeee00;
+.extra-btns button:hover {
+  background-color: #f5f5f5;
+}
+
+.show {
+  display: flex;
 }

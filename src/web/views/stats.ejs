@@ -90,49 +90,26 @@
         <header>
           <h1 class="title">Stats for <%= username %> on Placeholder</h1>
         </header>
-        <div class="buttons-section">
-          <div class="share-expand-btns">
-            <button class="share-btn">Share</button>
-            <div class="expand-btn">
-              <button class="arrow-btn">&lt;&gt;</button>
-              <div class="expand-btn-section">
-                <button class="guild-btn">Guild:</button>
-                <button class="plancke-btn">Plancke</button>
-                <button class="uuid-btn">Copy UUID</button>
-                <button class="discord-btn">Discord</button>
-                <button class="forums-btn">Forums</button>
-              </div>
-            </div>
+        <div class="button-section">
+          <button class="share-btn">Share</button>
+          <div class="expand-btn">
+            <button class="arrow-btn">&lt;&gt;</button>
+          </div>
+          <div class="extra-btns">
+            <button class="guild-btn">Guild:</button>
+            <button class="plancke-btn">Plancke</button>
+            <button class="uuid-btn">Copy UUID</button>
+            <button class="discord-btn">Discord</button>
+            <button class="forums-btn">Forums</button>
           </div>
         </div>
       <script>
         const expandBtn = document.querySelector('.expand-btn');
-        const expandBtnSection = document.querySelector('.expand-btn-section');
-        const guildBtn = document.querySelector('.guild-btn');
-        const planckeBtn = document.querySelector('.plancke-btn');
-        const uuidBtn = document.querySelector('.uuid-btn');
-        const discordBtn = document.querySelector('.discord-btn');
-        const forumsBtn = document.querySelector('.forums-btn');
-      
-        let isExpanded = false;
-      
-        expandBtn.addEventListener('click', () => {
-          if (isExpanded) {
-            guildBtn.style.display = 'none';
-            planckeBtn.style.display = 'none';
-            uuidBtn.style.display = 'none';
-            discordBtn.style.display = 'none';
-            forumsBtn.style.display = 'none';
-            isExpanded = false;
-          } else {
-            guildBtn.style.display = 'block';
-            planckeBtn.style.display = 'block';
-            uuidBtn.style.display = 'block';
-            discordBtn.style.display = 'block';
-            forumsBtn.style.display = 'block';
-            isExpanded = true;
-          }
-        });
+const extraBtns = document.querySelector('.extra-btns');
+
+expandBtn.addEventListener('click', () => {
+  extraBtns.classList.toggle('show');
+});
       </script>
       </div>
     </div>
