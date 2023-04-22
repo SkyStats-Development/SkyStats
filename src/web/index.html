@@ -42,12 +42,7 @@
             </form>
           </section>
           <script>
-            const config = {
-              API: {
-                hypixelAPIkey: '6e849ff4-c34e-4a6e-8915-2f1974d0a426'
-              }
-            };
-          
+            const apiKey = `6f451ef6-75d2-4f92-af70-5c8b3892f8ef`
             function submitForm(event) {
               event.preventDefault();
               const inputElement = document.querySelector('input[name="username"]');
@@ -63,8 +58,7 @@
                 .then(data => {
                   const username = data.data.player.username;
                   const uuid = data.data.player.id;
-                  const key = process.env.KEY;
-                  return fetch(`https://api.hypixel.net/skyblock/profiles?key=${key}&uuid=${uuid}`)
+                  return fetch(`https://api.hypixel.net/skyblock/profiles?key=${apiKey}&uuid=${uuid}`)
                     .then(response => {
                       if (response.ok) {
                         return response.json();

@@ -30,7 +30,7 @@
     <script>
       const config = {
         API: {
-          hypixelAPIkey: '6e849ff4-c34e-4a6e-8915-2f1974d0a426'
+          hypixelAPIkey: '6f451ef6-75d2-4f92-af70-5c8b3892f8ef'
         }
       };
     
@@ -50,8 +50,8 @@
           .then(data => {
             const username = data.data.player.username;
             const uuid = data.data.player.id;
-            const key = process.env.KEY;
-            return fetch(`https://api.hypixel.net/skyblock/profiles?key=${key}&uuid=${uuid}`)
+            
+            return fetch(`https://api.hypixel.net/skyblock/profiles?key=${config.API.hypixelAPIkey}&uuid=${uuid}`)
               .then(response => {
                 if (response.ok) {
                   return response.json();
@@ -85,20 +85,56 @@
         <br>
         <br>
     </div>
-  <div>
-    <div class="background-overlay">
-      <header>
-        <h1>Stats for <%= username %> on Placeholder</h1>
-      </header>
-      <div class="buttons-section">
-        <button class="share-btn">Share!</button>
-        <button class="guild-btn">Guild:</button>
-        <button class="plancke-btn">Plancke</button>
-        <button class="uuid-btn">Copy UUID</button>
-        <button class="discord-btn">Discord</button>
-        <button class="forums-btn">Forums</button>
+    <div>
+      <div class="background-overlay">
+        <header>
+          <h1 class="title">Stats for <%= username %> on Placeholder</h1>
+        </header>
+        <div class="buttons-section">
+          <div class="share-expand-btns">
+            <button class="share-btn">Share</button>
+            <div class="expand-btn">
+              <button class="arrow-btn">&lt;&gt;</button>
+              <div class="expand-btn-section">
+                <button class="guild-btn">Guild:</button>
+                <button class="plancke-btn">Plancke</button>
+                <button class="uuid-btn">Copy UUID</button>
+                <button class="discord-btn">Discord</button>
+                <button class="forums-btn">Forums</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <script>
+        const expandBtn = document.querySelector('.expand-btn');
+        const expandBtnSection = document.querySelector('.expand-btn-section');
+        const guildBtn = document.querySelector('.guild-btn');
+        const planckeBtn = document.querySelector('.plancke-btn');
+        const uuidBtn = document.querySelector('.uuid-btn');
+        const discordBtn = document.querySelector('.discord-btn');
+        const forumsBtn = document.querySelector('.forums-btn');
+      
+        let isExpanded = false;
+      
+        expandBtn.addEventListener('click', () => {
+          if (isExpanded) {
+            guildBtn.style.display = 'none';
+            planckeBtn.style.display = 'none';
+            uuidBtn.style.display = 'none';
+            discordBtn.style.display = 'none';
+            forumsBtn.style.display = 'none';
+            isExpanded = false;
+          } else {
+            guildBtn.style.display = 'block';
+            planckeBtn.style.display = 'block';
+            uuidBtn.style.display = 'block';
+            discordBtn.style.display = 'block';
+            forumsBtn.style.display = 'block';
+            isExpanded = true;
+          }
+        });
+      </script>
       </div>
     </div>
-  </div>
 </body>
 </html>
