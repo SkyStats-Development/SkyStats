@@ -198,6 +198,7 @@ h1 {
 
 .expand-btn {
   display: flex;
+  transition: all 3s;
   align-items: center;
   justify-content: center;
   margin-left: 16px;
@@ -217,6 +218,8 @@ h1 {
   display: none;
   justify-content: center;
   margin-top: 8px;
+  transform: translateX(-100%);
+  transition: transform 3s, display 3s;
 }
 
 .extra-btns button {
@@ -235,5 +238,6 @@ h1 {
 }
 
 .show {
-  display: flex;
+  display: contents;
+  transform: translateX(0%);
 }
