@@ -1,9 +1,6 @@
 const hypixel = require("../../contracts/API/HypixelRebornAPI");
-const { addCommas } = require("../../contracts/helperFunctions");
 const messages = require("../../../messages.json");
-const { getUUID } = require("../../contracts/API/PlayerDBAPI");
 const axios = require("axios");
-const config = require(`../../../config.json`)
 const db = require('../../../API/functions/getDatabase');
 async function getLinkedAccount(discordId) {
   const collection = db.getDb().collection('linkedAccounts');

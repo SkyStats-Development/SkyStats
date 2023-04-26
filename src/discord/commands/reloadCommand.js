@@ -1,10 +1,5 @@
-const { InteractionCollector, CategoryChannel } = require('discord.js');
 const fs = require('fs');
-const path = require('path');
-const { REST } = require('@discordjs/rest')
 const config = require('../../../config.json')
-const { Routes } = require('discord-api-types/v9')
-const messages = require('../../../messages.json')
 
 
 

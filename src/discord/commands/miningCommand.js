@@ -1,18 +1,7 @@
-const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
-const { getLatestProfile } = require('../../../API/functions/getLatestProfile');
-const { addNotation, addCommas } = require('../../contracts/helperFunctions')
-const { getNetworth, getPrices} = require('skyhelper-networth');
+const { addCommas } = require('../../contracts/helperFunctions')
 const messages = require('../../../messages.json')
 const { default: axios } = require('axios');
-const wait = require('node:timers/promises').setTimeout;
-const { getUUID } = require('../../contracts/API/PlayerDBAPI')
-const db = require('../../../API/functions/getDatabase');
-async function getLinkedAccount(discordId) {
-  const collection = db.getDb().collection('linkedAccounts');
-  const result = await collection.findOne({ discordId: discordId });
-  return result ? result.minecraftUuid : null;
-}
-
+const { getPlayer } = require('../../../API/functions/getPlayer');
 
 module.exports = {
     name: 'mining',
@@ -27,24 +16,14 @@ module.exports = {
 
         
       ],
-    execute: async (interaction, client, InteractionCreate) => {
+    execute: async (interaction) => {
         try{
         await interaction.deferReply();
-        await wait(1);
-        const minecraftUuid = await getLinkedAccount(interaction.user.id) || ``
-        const name = interaction.options.getString("name") || minecraftUuid;
-        const username = (
-            await axios.get(`https://playerdb.co/api/player/minecraft/${name}`)
-          ).data.data.player.username;
-          const uuid2 = (
-            await axios.get(`https://playerdb.co/api/player/minecraft/${name}`)
-          ).data.data.player.raw_id;
+          const { uuid2, username, profilename, profileid, error } = await getPlayer(id, interaction.options.getString('name'));
         const profileraw = (await axios.get(`https://sky.shiiyu.moe/api/v2/profile/${uuid2}`)).data.profiles
         let currentProfile;
         for (var key of Object.keys(profileraw)) {
             if (profileraw[key].current) currentProfile = key;}
-        const data = await getLatestProfile(name)
-        const profilename = (data.profileData.cute_name)
         const player = (profileraw[currentProfile])
         const hotmlvl = (player.data.mining.core.tier.level)
         const xpForNext = (player.data.mining.core.tier.xp) || `0`
@@ -62,10 +41,10 @@ module.exports = {
         const chat = {
             color: 0xffa600,
             title: `${username}'s Mining Stats On ${profilename}`,
-            URL: `https://sky.shiiyu.moe/stats/${name}`,
+            URL: `https://sky.shiiyu.moe/stats/${uuid2}`,
             description: (``),
             thumbnail: {
-                url: `https://api.mineatar.io/body/full/${name}`,
+                url: `https://api.mineatar.io/body/full/${uuid2}`,
             },
             timestamp: new Date().toISOString(),
             fields: [

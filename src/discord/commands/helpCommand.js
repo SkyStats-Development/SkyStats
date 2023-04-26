@@ -1,5 +1,3 @@
-const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
-const config = require('../../../config.json')
 const messages = require('../../../messages.json')
 
 module.exports = {

@@ -1,31 +1,5 @@
-const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
-const { getLatestProfile } = require('../../../API/functions/getLatestProfile');
-const { addNotation, capitalize, addCommas } = require('../../contracts/helperFunctions')
-const { getNetworth, getPrices, getItemNetworth} = require('skyhelper-networth');
-const getWeight = require('../../../API/stats/weight');
 const messages = require('../../../messages.json')
-const { getUUID } = require('../../contracts/API/PlayerDBAPI')
-const wait = require('node:timers/promises').setTimeout;
-const axios = require('axios');
-const config = require(`../../../config.json`)
-const db = require('../../../API/functions/getDatabase');
-async function getLinkedAccount(discordId) {
-  const collection = db.getDb().collection('linkedAccounts');
-  const result = await collection.findOne({ discordId: discordId });
-  return result ? result.minecraftUuid : null;
-}
 
-
-let prices;
-    getPrices().then((data) => { 
-        prices = data
-    }
-)
-
-    setInterval(async () => {
-    prices = await getPrices();
-    }, 1000 * 60 * 5
-); 
 
 module.exports = {
     name: 'weight',
@@ -40,17 +14,15 @@ module.exports = {
       ],
     
   
-    execute: async (interaction, client) => {
+    execute: async (interaction) => {
         try{
         await interaction.deferReply();
+        /*
         const minecraftUuid = await getLinkedAccount(interaction.user.id) || ``
         const name = interaction.options.getString("name") || minecraftUuid;
         const username = (
             await axios.get(`https://playerdb.co/api/player/minecraft/${name}`)
           ).data.data.player.username;
-          const uuid2 = (
-            await axios.get(`https://playerdb.co/api/player/minecraft/${name}`)
-          ).data.data.player.raw_id;
         const data = await getLatestProfile(name)
         name = data.profileData?.game_mode ? `♲ ${name}` : name
         const profileweight = await getWeight(data.profile, data.uuid) 
@@ -94,6 +66,8 @@ module.exports = {
 
     
         await interaction.editReply({ embeds: [embedplayer] });
+        */
+        await interaction.editReply({content: `this command needs to be reformatted as it is out of date!`, ephemeral: true})
     } catch (error) {
         if (error instanceof TypeError && error.message.includes("Cannot read properties of undefined (reading 'cute_name')")) {
           console.error("Error: cute_name is undefined");

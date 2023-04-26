@@ -1,15 +1,11 @@
 // Credits to my UI and frontend designer, pandy!
 const { AttachmentBuilder, Client, Events, GatewayIntentBits, EmbedBuilder} = require('discord.js');
-const config = require("../../../config.json");
-const fs = require("fs");
 const messages = require("../../../messages.json");
 const {createCanvas, Image, registerFont} = require('canvas');
 const { readFile } = require('fs/promises');
-const { request } = require('undici');
 const hypixel = require('../../contracts/API/HypixelRebornAPI')
 const { default: axios, AxiosError } = require("axios");
 const { addNotation, addCommas } = require("../../contracts/helperFunctions");
-const { Color } = require('hypixel-api-reborn');
 const key = process.env.KEY;
 const db = require('../../../API/functions/getDatabase');
 async function getLinkedAccount(discordId) {

@@ -1,3 +1,11 @@
+const { getPlayer } = require('../../../API/functions/getPlayer');
+const { handleError } = require('../../../API/functions/getError');
+const config = require(`../../../config.json`)
+const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
+const { addNotation, addCommas } = require('../../contracts/helperFunctions')
+const messages = require('../../../messages.json')
+const { default: axios, AxiosError } = require('axios');
+
 module.exports = {
   name: '',
   description: '',
@@ -9,6 +17,42 @@ module.exports = {
   }],
 
   execute: async (interaction, client) => {
+    const id = interaction.user.id;
+    const { uuid2, username, profilename, profileid, error } = await getPlayer(id, interaction.options.getString('name'));
 
-  },
-};
+    if (error) {
+      const errorembed = {
+          color: 0xff0000,
+          title: error.message,
+          description: error.description,
+          timestamp: new Date().toISOString(),
+      };
+      await interaction.reply({ embeds: [errorembed] });
+  } else {
+    await interaction.deferReply();
+    try {
+
+
+      const embed1 = {
+        title: ``,
+        thumbnail: {url: `https://api.mineatar.io/body/full/${uuid2}`},
+        description: ``,
+        timestamp: new Date().toISOString(),
+        fields: [
+          {
+            name: ``,
+            value: ``,
+            inline: true,
+          },
+        ],
+        footer: {text: `${messages.footer.defaultbetter}`, iconURL: `${messages.footer.icon}`},
+      }
+    await interaction.editReply({embeds: [embed1], ephemeral: false})
+
+  
+  } catch (error) {
+    const errorEmbed = handleError(error);
+    await interaction.editReply({ embeds: [errorEmbed] });
+  }}
+}}
+

@@ -1,7 +1,4 @@
-const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
 const messages = require('../../../messages.json')
-const { default: axios, AxiosError } = require('axios');
-const config = require(`../../../config.json`)
 const { handleError } = require('../../../API/functions/getError');
 const { getAuctionData } = require('../../../API/functions/networth/getAuctionData.js');
 const { getSBID } = require('../../../API/functions/getSBID.js')

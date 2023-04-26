@@ -1,16 +1,8 @@
-const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle, MessageFlags } = require('discord.js')
-const { getLatestProfile } = require('../../../API/functions/getLatestProfile');
-const { addNotation, addCommas } = require('../../contracts/helperFunctions')
-const { getNetworth, getPrices} = require('skyhelper-networth');
-const messages = require('../../../messages.json')
-const { default: axios, AxiosError } = require('axios');
-const wait = require('node:timers/promises').setTimeout;
-const { getUUID } = require('../../contracts/API/PlayerDBAPI')
-const config = require(`../../../config.json`)
+const { ActionRowBuilder } = require('discord.js')
 const { getPlayer } = require('../../../API/functions/getPlayer');
 const getDungeons = require("../../../API/functions/getDungeons.js");
 const { handleError } = require('../../../API/functions/getError');
-const { buttons, embeds } = require("../../..//src/discord/constants/defaultDungeons"); 
+const { buttons, embeds } = require("../constants/defaultDungeons"); 
 // Credit to DuckySoLucky for this code (modi)
 module.exports = {
   name: "dungeon",
@@ -26,7 +18,7 @@ module.exports = {
 
   execute: async (interaction) => {
     const id = interaction.user.id;
-    const { uuid, username, profilename, profileid, error, playerData, profile, profileData } = await getPlayer(id, interaction.options.getString('name'));
+    const { uuid, username, error, playerData, profile, profileData } = await getPlayer(id, interaction.options.getString('name'));
     if (error) {
       const errorembed = {
         color: 0xff0000,

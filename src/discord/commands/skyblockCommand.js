@@ -1,17 +1,5 @@
 
-const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
-const axios = require('axios')
-const config = require('../../../config.json')
-const { getUUID } = require('../../contracts/API/PlayerDBAPI')
-const { addNotation, addCommas } = require("../../contracts/helperFunctions");
 const messages = require('../../../messages.json')
-const { getLatestProfile } = require("../../../API/functions/getLatestProfile");
-const db = require('../../../API/functions/getDatabase');
-async function getLinkedAccount(discordId) {
-  const collection = db.getDb().collection('linkedAccounts');
-  const result = await collection.findOne({ discordId: discordId });
-  return result ? result.minecraftUuid : null;
-}
 
 module.exports = {
     name: 'skyblock',
@@ -28,7 +16,9 @@ module.exports = {
 
   execute: async (interaction, client, InteractionCreate) => {
 try {
+    
     await interaction.deferReply();
+    /*
     const minecraftUuid = await getLinkedAccount(interaction.user.id) || ``
     const name = interaction.options.getString("name") || minecraftUuid;
     const username = (await axios.get(`https://playerdb.co/api/player/minecraft/${name}`)).data.data.player.username;
@@ -151,6 +141,8 @@ try {
         };
  
             await interaction.editReply({ embeds:[embed] })
+            */
+           await interaction.editReply({content: `this command needs to be reformatted as it is out of date!`, ephemeral: true})
         } catch (error) {
             if (error instanceof TypeError && error.message.includes("Cannot read properties of undefined (reading 'cute_name')")) {
               console.error("Error: cute_name is undefined");

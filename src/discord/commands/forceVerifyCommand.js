@@ -1,7 +1,5 @@
-const hypixel = require('../../contracts/API/HypixelRebornAPI')
 const config = require ('../../../config.json')
 const { EmbedBuilder } = require("discord.js")
-const { writeAt } = require('../../contracts/helperFunctions')
 const axios = require('axios')
 const db = require('../../../API/functions/getDatabase');
 const messages = require('../../../messages.json')

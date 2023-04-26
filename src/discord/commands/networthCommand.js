@@ -1,9 +1,6 @@
-const { EmbedBuilder, ActionRowBuilder, Events, StringSelectMenuBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle, SlashCommandBuilder, } = require("discord.js");
-const { getLatestProfile } = require("../../../API/functions/getLatestProfile");
+const { ActionRowBuilder, Events, StringSelectMenuBuilder } = require("discord.js");
 const { addNotation, addCommas } = require("../../contracts/helperFunctions");
 const messages = require("../../../messages.json");
-const { default: axios, AxiosError } = require("axios");
-const config = require("../../../config.json");
 const { getSkyStats } = require('../../../API/functions/getSkystats')
 const { getPets } = require('../../../API/functions/networth/getPets')
 const { getItems } = require('../../../API/functions/networth/getItems')

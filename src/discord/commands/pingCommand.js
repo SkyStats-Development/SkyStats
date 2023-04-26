@@ -1,9 +1,5 @@
-
-const config = require('../../../config.json')
 const ms = require('ms');
 const messages = require('../../../messages.json')
-const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle } = require('discord.js')
-const { exec } = require("child_process");
 const ping = require('ping');
 const axios = require(`axios`)
 const key = process.env.KEY;

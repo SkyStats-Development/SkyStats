@@ -1,14 +1,13 @@
 const { default: axios } = require('axios');
-const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const messages = require('../../../messages.json')
-const { addNotation, addCommas } = require('../../contracts/helperFunctions')
+const { addCommas } = require('../../contracts/helperFunctions')
 
 
 module.exports = {
     name: 'irl',
     description: 'info on how we SkyStats calculate your irl networth',
 
-    execute: async (interaction, client, InteractionCreate) => {
+    execute: async (interaction) => {
         const cookieprice = (await axios.get(`https://sky.shiiyu.moe/api/v2/bazaar`)).data.BOOSTER_COOKIE.sellPrice.toString().split(".")[0]
         const cookieprice_formatted = addCommas(cookieprice)
         const chat = {

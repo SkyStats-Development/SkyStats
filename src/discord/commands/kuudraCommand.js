@@ -1,12 +1,6 @@
 const { default: axios } = require('axios');
-const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const messages = require('../../../messages.json')
-const {getLatestProfile} = require('../../../API/functions/getLatestProfile');
-const {addNotation,capitalize,addCommas} = require('../../contracts/helperFunctions')
-const config = require('../../../config.json');
 const { toLower } = require('lodash');
-const { getUUID } = require('../../contracts/API/PlayerDBAPI')
-const wait = require('node:timers/promises').setTimeout;
 const db = require('../../../API/functions/getDatabase');
 async function getLinkedAccount(discordId) {
   const collection = db.getDb().collection('linkedAccounts');
@@ -27,7 +21,7 @@ module.exports = {
 
         
       ],
-      execute: async (interaction, client, InteractionCreate) => {
+      execute: async (interaction) => {
         try{
         await interaction.deferReply();
         const minecraftUuid = await getLinkedAccount(interaction.user.id) || ``

@@ -37,9 +37,6 @@ module.exports = {
   name: "interactionCreate",
   async execute(interaction) {
     if (interaction.isChatInputCommand()) {
-      // removed as it prevents ephemral commands from working
-     // await interaction.deferReply({ ephemeral: false }).catch(() => {}); 
-
       const command = interaction.client.commands.get(interaction.commandName);
       if (!command) return;
 

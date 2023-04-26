@@ -1,13 +1,9 @@
 const { EmbedBuilder } = require("discord.js");
-const config = require("../../../config.json");
+
 const fs = require("fs");
 const messages = require("../../../messages.json");
-const db = require('../../../API/functions/getDatabase');
-async function getLinkedAccount(discordId) {
-  const collection = db.getDb().collection('linkedAccounts');
-  const result = await collection.findOne({ discordId: discordId });
-  return result ? result.minecraftUuid : null;
-}
+
+
 
 module.exports = {
   name: "commands",

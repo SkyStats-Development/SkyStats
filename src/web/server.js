@@ -18,7 +18,9 @@ app.set('views', `${__dirname + `/views`}`);
 app.get('/stats/:username/', async (req, res) => {
   const username = req.params.username;
 
-  res.render('stats', { username, getSkyStats: getSkyStats, getPlayer2: getPlayer2});
+  
+
+  res.render('stats', { username, });
 });
 
 app.locals.require = require;
