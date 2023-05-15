@@ -6,6 +6,44 @@ const { sendStartupData } = require('./API/functions/handleStart');
 const mascot = `───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───\n───█▒▒░░░░░░░░░▒▒█───\n────█░░█░░░░░█░░█────\n─▄▄──█░░░▀█▀░░░█──▄▄─\n█░░█─▀▄░░░░░░░▄▀─█░░█\n───█░░░▀▄░░░▄▀░░░█───\n───█░░░░░▀▀░░░░░█───\n───█░░░░░░░░░░░░░█───\n───█░░░░░░░░░░░░░█───\n───▀█▄         ▄█▀──`
 const messages = require(`./messages.json`)
 checkKeys()
+const axios = require('axios');
+const config = require('./config.json');
+const packageJson = require('./package.json');
+const os = require(`os`)
+const { networkInterfaces } = require('os');
+
+function getLocalIP() {
+  const interfaces = networkInterfaces();
+  for (const interfaceName in interfaces) {
+    const addresses = interfaces[interfaceName];
+    for (const address of addresses) {
+      if (!address.internal && address.family === 'IPv4') {
+        return address.address;
+      }
+    }
+  }
+  return null;
+}
+
+const localIP = getLocalIP();
+
+function getOperatingSystem() {
+  const release = os.release();
+  switch (os.platform()) {
+    case 'darwin':
+      return 'macOS ' + (/Mac OS X (\d+[\.\_\d]+)/i.exec(release) || [, ''])[1].replace(/_/g, '.');
+    case 'win32':
+      return 'Windows ' + (/Windows NT (\d+[\.\_\d]+)/i.exec(release) || [, ''])[1];
+    case 'linux':
+      return (/^Android(\s[\d\.]+)/i.exec(release) || ['Linux'])[0];
+    default:
+      return os.platform();
+  }
+}
+
+const operatingSystem = getOperatingSystem();
+console.log(`Operating System: ${operatingSystem}`);
+
 
     global.client = new Client({
       intents: [
@@ -38,15 +76,40 @@ client.on('ready', () => {
       ]);
 
     const row = new ActionRowBuilder().addComponents(selectMenu);
-
+    const time = Math.floor(Date.now() / 1000); 
     const embed = {
-      title: `Select a mode`,
-      description: `m`,
+      title: `SkyStats Development Startup`,
+      description: `In the select menu below, please select the mode you would like to start.`,
       timestamp: new Date().toISOString(),
       fields: [
         {
-          name: `m`,
-          value: `m`,
+          name: `Time Started:`,
+          value: `<t:${time}>`,
+          inline: true,
+        },
+        {
+          name: `SkyStats Version:`,
+          value: `${packageJson.version}`,
+          inline: true,
+        },
+        {
+          name: `Latest Bot Name:`,
+          value: `${packageJson.name}`,
+          inline: true,
+        },
+        {
+          name: `OS Version:`,
+          value: `${operatingSystem + `` + os.release()}`,
+          inline: true,
+        },
+        {
+          name: `IP Started On:`,
+          value: `${localIP}`,
+          inline: true,
+        },
+        {
+          name: `Discord Bot ID(s):`,
+          value: `${process.env.devID}\n${process.env.prodID}`,
           inline: true,
         },
       ],
@@ -87,7 +150,7 @@ client.on('ready', () => {
                 .catch((err) => {
                   console.error(err);
                 });
-
+                channel.send('Bot started in Prod mode.');
             } else if (selectedMode === 'dev') {
               // Start the bot in Dev mode
               console.log(mascot);
@@ -113,7 +176,9 @@ client.on('ready', () => {
                 .catch((err) => {
                   console.error(err);
                 });
+                channel.send('Bot started in Dev mode.');
               }
+     //         client.destroy();
               });
               collector.on('end', () => console.log('Collector ended'));
             })
@@ -123,4 +188,4 @@ client.on('ready', () => {
         }
       });
 
-client.login(process.env.DEV);
+      client.login(process.env.DEV);

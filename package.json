@@ -1,6 +1,7 @@
 {
   "name": "skystats-bot",
   "version": "1.2.6",
+  "changelog": "",
   "description": "Discord bot for displaying Skyblock stats and other hypixel related information",
   "scripts": {
     "start": "node index.js",
@@ -10,6 +11,15 @@
     "discord",
     "bot",
     "skyblock",
+    "javascript",
+    "discord.js",
+    "discord.js-api",
+    "api",
+    "stats",
+    "sky block",
+    "sb",
+    "hypixel bedwars",
+    "JS",
     "hypixel"
   ],
   "repository": {
