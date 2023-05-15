@@ -1,6 +1,6 @@
 {
   "name": "skystats-bot",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "changelog": "",
   "description": "Discord bot for displaying Skyblock stats and other hypixel related information",
   "scripts": {
