@@ -21,7 +21,7 @@
 
     "skyStatsAPI": "api.skystats.lol",
     "skyStatsKey": "skystats-87654-321098-765-43-development",
-    "skyStatsDATA": "http://api.skystats.lol:443/",
+    "skyStatsDATA": "http://api.skystats.lol:443/API/v3/start",
 
     "antiSniperAPI": "https://api.antisniper.net",
     "antiSniperKey": "3a55ea8f-9e85-4003-9912-6198122cd27f",

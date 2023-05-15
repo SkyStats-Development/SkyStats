@@ -134,6 +134,9 @@
     "SkyBlock Profiles Maintenance | May 5, 15:23 EDT | THIS IS A SCHEDULED EVENT May 9, 05:00 - 17:00 EDT",
     "SkyBlock Profiles Maintenance | May 5, 15:23 EDT | THIS IS A SCHEDULED EVENT May 16, 05:00 - 17:00 EDT",
     "SkyBlock Profiles Maintenance | May 8, 17:11 EDT | THIS IS A SCHEDULED EVENT May 16, 05:00 - 17:00 EDT",
-    "SkyBlock Profiles Maintenance | May 5, 15:23 EDT | Update - Due to unforeseen issues, we are delaying this maintenance to next week to allow further validation of the changes."
+    "SkyBlock Profiles Maintenance | May 5, 15:23 EDT | Update - Due to unforeseen issues, we are delaying this maintenance to next week to allow further validation of the changes.",
+    "Increased Public API response times for SkyBlock profiles | Resolved - This incident has been resolved. | May 13, 12:14 EDT",
+    "Increased Public API response times for SkyBlock profiles | Monitoring - A fix has been implemented and we are monitoring the results. | May 13, 11:02 EDT",
+    "Increased Public API response times for SkyBlock profiles | Investigating - We are currently investigating an issue causing increased response times for SkyBlock profile requests on the Public API. | May 13, 09:53 EDT"
   ]
 }
