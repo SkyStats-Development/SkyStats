@@ -127,6 +127,13 @@
     "Hypixel Forums Maintenance | In progress - Scheduled maintenance is currently in progress. We will provide updates as necessary. | Apr 13, 08:51 EDT",
     "Hypixel Forums Maintenance | Scheduled - We will be undergoing routine maintenance during the specified duration. | Apr 13, 08:51 EDT",
     "Hypixel Forums Unavailable | Resolved - This incident has been resolved. | Apr 12, 16:08 EDT",
-    "Hypixel Forums Unavailable | Investigating - We are currently investigating an issue with the Hypixel Forums being offline and unavailable | Apr 12, 16:01 EDT"
+    "Hypixel Forums Unavailable | Investigating - We are currently investigating an issue with the Hypixel Forums being offline and unavailable | Apr 12, 16:01 EDT",
+    "SkyBlock Profiles API disabled | Resolved - This incident has been resolved. | Apr 29, 15:04 EDT",
+    "SkyBlock Profiles API disabled | Monitoring - We have re-enabled the SkyBlock profiles endpoints and are monitoring. | Apr 29, 12:13 EDT",
+    "SkyBlock Profiles API disabled | Investigating - We are currently investigating issues with the SkyBlock profiles API and as a result, we have disabled the profile endpoints. We do not currently have an ETA for when they will be enabled. | Apr 29, 10:31 EDT",
+    "SkyBlock Profiles Maintenance | May 5, 15:23 EDT | THIS IS A SCHEDULED EVENT May 9, 05:00 - 17:00 EDT",
+    "SkyBlock Profiles Maintenance | May 5, 15:23 EDT | THIS IS A SCHEDULED EVENT May 16, 05:00 - 17:00 EDT",
+    "SkyBlock Profiles Maintenance | May 8, 17:11 EDT | THIS IS A SCHEDULED EVENT May 16, 05:00 - 17:00 EDT",
+    "SkyBlock Profiles Maintenance | May 5, 15:23 EDT | Update - Due to unforeseen issues, we are delaying this maintenance to next week to allow further validation of the changes."
   ]
 }

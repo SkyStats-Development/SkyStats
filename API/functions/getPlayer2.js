@@ -1,6 +1,6 @@
 const axios = require('axios');
 const key = process.env.KEY;
-
+// ! no database connection player data, this requires a player name.
 async function getPlayer2(name) {
     try {
         const { data: { data: { player } } } = await axios.get(`https://playerdb.co/api/player/minecraft/${name}`);

@@ -5,5 +5,7 @@
     "githubPullRequests.ignoredPullRequestBranches": [
         "main",
         "main"
-    ]
+    ],
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/7fceeb2f-3db3-448a-8bef-580760db9f02/resourceGroups/skystatsdev_group/providers/Microsoft.Web/sites/skystatsDEV",
+    "appService.deploySubpath": "."
 }
