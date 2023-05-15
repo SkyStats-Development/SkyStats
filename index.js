@@ -40,11 +40,7 @@ function getOperatingSystem() {
       return os.platform();
   }
 }
-
 const operatingSystem = getOperatingSystem();
-console.log(`Operating System: ${operatingSystem}`);
-
-
     global.client = new Client({
       intents: [
         GatewayIntentBits.Guilds,
