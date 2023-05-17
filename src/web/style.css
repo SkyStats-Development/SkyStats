@@ -25,7 +25,7 @@ body {
     background-color: #333333d7;
     overflow: hidden;
     display: flex;
-    align-items: right;
+    align-items: flex-start;
     padding: 25px;
     z-index: 2;
 }
@@ -33,7 +33,7 @@ body {
 .topnavbar img {
     width: 50px;
     height: 50px;
-    background-color: #333333;
+    background-color: #333333d7;
     margin-bottom: 0%;
 }
 .topnavbar a {
@@ -41,12 +41,8 @@ body {
     z-index: inherit;
 }
 
-.topnavbar a:hover {
-    background-color: #616161f3;
-}
-
 .topnavlinks {
-  display: flex;
+  display: contents;
 }
 
 .topnavlinks a {
@@ -57,10 +53,12 @@ body {
     font-size: 18px;
     font-weight: bold;
     justify-content: flex-end;
+    background: linear-gradient(0deg, transparent, #333333d7) #333333d7;
+    transition: background-color 1s;
 }
 
 .topnavlinks a:hover {
-    background-color: #555555;
+    background-color: #ff9613;
 }
 
 /* homepage styles */
@@ -87,7 +85,12 @@ body {
     font-weight: bold;
     margin-top: 150px;
     color: #ff9613;
+    transition: 2s;
   }
+
+.header:hover {
+    text-shadow: 5px 5px 0px #ffffff94;
+}
   
   .subheader {
     font-size: 20px;
@@ -142,10 +145,11 @@ body {
     margin-top: 5px;
     cursor: pointer;
     font-size: 18px;
+    transition: 2s;
 }
 
 .username-input input[type="submit"]:hover {
-    background-color: #ff9513d0;
+    background: linear-gradient(0deg, #f35810f9, #ff9513f9);
 }
 
 .information-right {
@@ -163,8 +167,12 @@ footer {
     line-height: 150px;
 }
 
-.nounderline {
-    text-decoration-style: none;
+.discord-link {
+    text-decoration: none;
+}
+
+.discord-link:hover{
+    color: #ff9613;
 }
 
 .username-input {
@@ -210,3 +218,4 @@ footer {
       opacity: 0;
     }
   }
+
