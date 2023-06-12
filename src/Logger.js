@@ -7,7 +7,13 @@ async function discordMessage(message) {
       chalk.magenta(message)
   );
 }
-
+async function databaseMessage(message) {
+  return console.log(
+    chalk.bgMagentaBright.black(`[${await getCurrentTime()}] Database >`) +
+      " " +
+      chalk.magentaBright(message)
+  );
+}
 async function logoutMessage(message) {
   return console.log(
     chalk.bgRedBright.black(`[${await getCurrentTime()}] Discord >`) +
@@ -59,6 +65,7 @@ async function getCurrentTime() {
 module.exports = {
   discordMessage,
   successfulMessage,
+  databaseMessage,
   logoutMessage,
   warnMessage,
   errorMessage,

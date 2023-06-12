@@ -1,7 +1,7 @@
-const db = require('../../API/functions/getDatabase');
+const db = require('../handle/handleDatabase');
 const axios = require('axios');
 const key = process.env.KEY;
-const {handleError, handlePlayer} = require('../../API/functions/getError');
+const {handleError, handlePlayer} = require('../handle/handleError');
 
 async function getPlayer(id, name) {
     const collection = db.getDb().collection('linkedAccounts');

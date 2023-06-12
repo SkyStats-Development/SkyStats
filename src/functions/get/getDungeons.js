@@ -1,5 +1,5 @@
-const calcSkill = require("../../API/utils/calcSkills");
-const { capitalize } = require("../../API/functions/helper");
+const calcSkill = require("../utils/calcSkills");
+const { capitalize } = require("../helper");
 
 const getScoreName = (score) => {
   if (score >= 300) return "S+";

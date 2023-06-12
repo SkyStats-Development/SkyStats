@@ -7,7 +7,7 @@ const RECOMBOBULATOR_3000 = "<:RECOMBOBULATOR_3000:1069185517511524362>";
 async function getAllItems(uuid, profileid) {
     const networthRaw = (
         await axios.get(
-            `http://api.skystats.lol/v2/profile/${uuid}/${profileid}?key=${config.api.skyStatsKey}`
+            `http://api.skystats.lol/v2/profile/${uuid}/${profileid}?key=${config.api.skystats.KEY}`
         )
     ).data;
 
@@ -87,10 +87,10 @@ const allEquipment = `${eq1}\n${eq2}\n${eq3}\n${eq4}`;
 
 return { allInv, allArmor,allAccessories, allWardrobe, allEnderchest, allPersonalVault, allStorage, allEquipment}
     }
-    async function getItems(uuid2, profileid) {
+    async function getItems(uuid, profileid) {
         const networthRaw = (
             await axios.get(
-                `http://api.skystats.lol/v2/profile/${uuid2}/${profileid}?key=${config.api.skyStatsKey}`
+                `http://api.skystats.lol/v2/profile/${uuid}/${profileid}?key=${config.api.skystats.KEY}`
             )
         ).data;
     

@@ -1,12 +1,12 @@
 const axios = require("axios");
-const { getCookiePrice } = require("./getCookie");
+const { getCookiePrice } = require("../getCookie");
 const { addCommas, addNotation } = require("../../../contracts/helperFunctions");
 const config = require("../../../../config.json");
 
 async function getNetworth(uuid, profileid) {
   const networthRaw = (
     await axios.get(
-      `http://api.skystats.lol/v2/profile/${uuid}/${profileid}?key=${config.api.skyStatsKey}`
+      `http://api.skystats.lol/v2/profile/${uuid}/${profileid}?key=${config.api.skystats.KEY}`
     )
   ).data;
 

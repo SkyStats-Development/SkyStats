@@ -1,7 +1,7 @@
-const messages = require(`../../../config.json`)
+const config = require(`../../../config.json`)
+const messages = config.messages.discord
 const {Axios, AxiosError} = require(`axios`)
 
-kjfwwq 333 = 33
 function handleError(error) {
     if (error instanceof TypeError && error.message.includes("Cannot read properties of undefined (reading 'cute_name')")) {
       console.log(error)
@@ -11,8 +11,8 @@ function handleError(error) {
         description: `An error with the hypixel API(probably) has occured. Please try again later.\nIf the error persists, please contact the bot developer.\nNote: as of April 6th 2023, The hypixel api has been dying, we cannot do anything about this.`,
         timestamp: new Date().toISOString(),
         footer: {
-            text: `${messages.footer.default}`,
-            iconURL: `${messages.footer.icon}`,
+            text: `${messages.default}`,
+            iconURL: `${messages.icon}`,
         },
       };
     } else if (error instanceof AxiosError && error.response.status === 502){
@@ -23,8 +23,8 @@ function handleError(error) {
         description: `The Hypixel API is currently experiencing inconviniences. Please try again sometime in 3-5 minutes to days.`,
         timestamp: new Date().toISOString(),
         footer: {
-            text: `${messages.footer.default}`,
-            iconURL: `${messages.footer.icon}`,
+            text: `${messages.default}`,
+            iconURL: `${messages.icon}`,
         },
       };
     } else if (error instanceof AxiosError) {
@@ -35,8 +35,8 @@ function handleError(error) {
         description: `An error with fetching *something* has happened. Please contact the developers!`,
         timestamp: new Date().toISOString(),
         footer: {
-            text: `${messages.footer.default}`,
-            iconURL: `${messages.footer.icon}`,
+            text: `${messages.default}`,
+            iconURL: `${messages.icon}`,
         },
       };
     } else if (error instanceof Error) {
@@ -49,8 +49,8 @@ function handleError(error) {
           description: `An error has occurred. Please try again later.\nIf the error persists, please contact the bot developer.\n\nError: ${error.message}\nLine: ${line}`,
           timestamp: new Date().toISOString(),
           footer: {
-              text: `${messages.footer.default}`,
-              iconURL: `${messages.footer.icon}`,
+              text: `${messages.default}`,
+              iconURL: `${messages.icon}`,
           },
         };
       } else {
@@ -73,8 +73,8 @@ function handleError(error) {
         description: `You do not currently have an account verified with SkyStats, please verify your Minecraft account with \`/verify\`.`,
         timestamp: new Date().toISOString(),
         footer: {
-            text: `${messages.footer.default}`,
-            iconURL: `${messages.footer.icon}`,
+            text: `${messages.default}`,
+            iconURL: `${messages.icon}`,
         },
       };
     }
@@ -85,8 +85,8 @@ function handleError(error) {
         description: `The player you are looking for does not exist.`,
         timestamp: new Date().toISOString(),
         footer: {
-            text: `${messages.footer.default}`,
-            iconURL: `${messages.footer.icon}`,
+            text: `${messages.default}`,
+            iconURL: `${messages.icon}`,
         },
       };
     }
@@ -97,8 +97,8 @@ function handleError(error) {
         description: `An error has occurred. Please try again later.\nIf the error persists, please contact the bot developer.\nNote: as of April 6th 2023, The hypixel api has been dying, we cannot do anything about this.`,
         timestamp: new Date().toISOString(),
         footer: {
-            text: `${messages.footer.default}`,
-            iconURL: `${messages.footer.icon}`,
+            text: `${messages.default}`,
+            iconURL: `${messages.icon}`,
         },
       };
     }
