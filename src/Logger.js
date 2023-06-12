@@ -23,20 +23,6 @@ async function successfulMessage(message) {
       chalk.greenBright(message)
   );
 }
-async function databaseMessage(message) {
-  return console.log(
-    chalk.bgRedBright.black(`[${await getCurrentTime()}] Database >`) +
-      " " +
-      chalk.redBright(message)
-  );
-}
-async function websiteMessage(message) {
-  return console.log(
-    chalk.bgMagentaBright.black(`[${await getCurrentTime()}] Website >`) +
-      " " +
-      chalk.magentaBright(message)
-  );
-}
 
 async function warnMessage(message) {
   return console.log(
@@ -61,9 +47,6 @@ async function broadcastMessage(message, location) {
       message
   );
 }
-async function minecraftMessage(message) {
-  return console.log(chalk.bgGreenBright.black(`[${await getCurrentTime()}] Minecraft >`) + ' ' + chalk.greenBright(message));
-}
 
 async function getCurrentTime() {
   return new Date().toLocaleTimeString([], {
@@ -78,10 +61,7 @@ module.exports = {
   successfulMessage,
   logoutMessage,
   warnMessage,
-  minecraftMessage,
   errorMessage,
   broadcastMessage,
   getCurrentTime,
-  databaseMessage,
-  websiteMessage,
 };
