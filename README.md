@@ -55,7 +55,7 @@ SkyStats was greatly helped by
 
 ## Version
 
-V1.0 🚀
+V 1.2.8 🔁
 
 ## Licence
 
