@@ -1,38 +1,46 @@
 {
   "discord": {
-    "token": "Depricated(not the whole file, this line), use a .env file",
-    "clientID": "Depricated(not the whole file, this line), use a .env file",
+    "ActivityType": "Watching", 
+    "Status": "online",
+    "online, idle, dnd, invisible": "",
+    "Activity": "Happy Pride Month!!",
+    "issues": "",
     "serverID": "1058272411247714425",
     "developmentRole": "1058273514941075477"
-
-  },
-  "minecraft": {
-    "prefix": "!",
-    "guildID": "5f6f85ba8ea8c99dcdd194d0",
-    "messageRepeatBypass": false,
-    "messageRepeatBypassLength": 24
   },
   "api": {
-    "hypixelAPI": "https://api.hypixel.net",
-    "hypixelAPIkey": "cbbbb171-2698-43ae-b077-da1cc214c7a5",
+    "skystats": {
+      "API": "http://api.skystats.lol/",
+      "KEY": "skystats-87654-321098-765-43-development",
+      "MAIN": "http://skystats.lol/"
+    },
 
-    "skyHelperAPI": "http://192.95.42.73:1924//v1",
-    "skyHelperKey": "DuckySoLucky",
-
-    "skyStatsAPI": "api.skystats.lol",
-    "skyStatsKey": "skystats-87654-321098-765-43-development",
-    "skyStatsDATA": "http://api.skystats.lol:443/API/v3/start",
-
-    "antiSniperAPI": "https://api.antisniper.net",
-    "antiSniperKey": "3a55ea8f-9e85-4003-9912-6198122cd27f",
-
-    "skyShiiyuAPI": "https://sky.shiiyu.moe/api/v2",
-
-    "playerDBAPI": "https://playerdb.co/api/player/minecraft",
+    "hypixel": {
+      "API": "https://api.hypixel.net",
+      "KEY": "6f451ef6-75d2-4f92-af70-5c8b3892f8ef"
+    },
 
     "imgurAPIkey": "98ea6fff6d0ce73"
-
   },
+  "messages": {
+    "commandfailed": {
+      "error": "Command Failed somewhere... there should be an error code? please look for it <3",
+      "permsless": "You do not have permission to run this command.",
+      "bitchless": "You do not have permission to run this command. (get bitches)",
+      "serverless": "You do not have permission to run this command. or this command only works in the development server, https://discord.gg/Kuk7fUYtrT"
+  },
+  "discord": {
+    "default": "🌹 SkyStats 🌹 ~ Hypixel And SkyBlock Bot",
+    "support": "🌹 SkyStats 🌹 ~ Support",
+    "defaultbetter": "🌹 SkyStats 🌹 ~ run [/help] for help",
+    "owner": "🌹 Axle#9171 🌹",
+    "sogayowner": "🌹 Made with ❤️ by Axle#9171 🌹",
+    "private": "🌹 SkyStats 🌹 ~ Private Commands",
+    "icon": "https://i.imgur.com/hggczHP.png",
+    "discinvite": "https://discord.gg/Kuk7fUYtrT"
+}
+  },
+  
   "database":   {
     "uri": "mongodb+srv://hyperbolic:deesahd284@cluster0.o4mur.mongodb.net/?retryWrites=true&w=majority"
     }

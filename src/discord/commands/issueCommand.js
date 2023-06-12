@@ -1,4 +1,5 @@
-const messages = require('../../../messages.json')
+const config = require("../../../config.json");
+const messages = config.messages.discord
 
 module.exports = {
     name: 'issue',

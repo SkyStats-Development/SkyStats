@@ -1,12 +1,15 @@
 const { ActionRowBuilder, Events, StringSelectMenuBuilder } = require("discord.js");
 const { addNotation, addCommas } = require("../../contracts/helperFunctions");
-const messages = require("../../../messages.json");
-const { getSkyStats } = require('../../../API/functions/getSkystats')
-const { getPets } = require('../../../API/functions/networth/getPets')
-const { getItems } = require('../../../API/functions/networth/getItems')
-const { getPlayer } = require('../../../API/functions/getPlayer');
-const { handleError } = require('../../../API/functions/getError');
-const { getAllItems } = require('../../../API/functions/networth/getAllItems')
+const config = require("../../../config.json");
+const messages = config.messages.discord
+const { getNetworth} = require('../../functions/get/getNetworth/getNetworth')
+const { getPets } = require('../../functions/get/getNetworth/getPets')
+const { getItems, getAllItems } = require('../../functions/get/getNetworth/getItems')
+const { getPlayer } = require('../../functions/get/getPlayer');
+const { handleError } = require('../../functions/handle/handleError');
+
+
+
 
 const PURSE_ICON = '<:Purse:1059997956784279562>';
 const IRON_INGOT_ICON = '<:IRON_INGOT:1070126498616455328>';
@@ -43,7 +46,7 @@ module.exports = {
     } else {
         try {
           const [stats, petData, itemsData, allItemsData] = await Promise.all([
-              getSkyStats(uuid2, profileid),
+              getNetworth(uuid2, profileid),
               getPets(uuid2, profileid),
               getItems(uuid2, profileid),
               getAllItems(uuid2, profileid)
@@ -251,8 +254,8 @@ module.exports = {
                 ],
                 timestamp: new Date().toISOString(),
                 footer: {
-                    text: `${messages.footer.default}`,
-                    iconURL: `${messages.footer.icon}`,
+                    text: `${messages.default}`,
+                    iconURL: `${messages.icon}`,
                 },
             };
             const row = new ActionRowBuilder()
