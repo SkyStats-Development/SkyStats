@@ -2,6 +2,7 @@
   "name": "skystats",
   "version": "1.2.8",
   "description": "A Hypixel Skyblock Metrics Bot For Discord.",
+  "changelog": "",
   "main": "index.js",
   "scripts": {
     "start": "pm2 start --only SkyStatsPRODUCT",
