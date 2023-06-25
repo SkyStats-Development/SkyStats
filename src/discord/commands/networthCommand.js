@@ -39,7 +39,7 @@ module.exports = {
         const errorembed = {
             color: 0xff0000,
             title: `Error`,
-            description: error.description,
+            description: `Data: ` + error.description,
             timestamp: new Date().toISOString(),
         };
         await interaction.editReply({ embeds: [errorembed] });

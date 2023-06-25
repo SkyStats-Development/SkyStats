@@ -29,7 +29,9 @@
     "[March 21] SkyBlock Patch Notes | https://hypixel.net/threads/march-21-skyblock-patch-notes.5311515/",
     "[May 26] Repair Wizard Portal City Project | https://hypixel.net/threads/may-26-repair-wizard-portal-city-project.5376262/",
     "[June 7] SkyBlock Patch Notes | https://hypixel.net/threads/june-7-skyblock-patch-notes.5385735/",
-    "[June 14] SkyBlock Patch Notes | https://hypixel.net/threads/june-14-skyblock-patch-notes.5393862/"
+    "[June 14] SkyBlock Patch Notes | https://hypixel.net/threads/june-14-skyblock-patch-notes.5393862/",
+    "[June 21] Undead Patch | https://hypixel.net/threads/june-21-undead-patch.5401355/",
+    "[June 23] Rift Day 3 Patch | https://hypixel.net/threads/june-23-rift-day-3-patch.5404126/"
   ],
   "skyblockStatus": [
     "SkyBlock Dungeons Disabled | Update - We are continuing to work on bringing dungeons back online and have added additional potential fixes to the Alpha Network. | Aug 29, 14:05 EDT",
@@ -155,6 +157,9 @@
     "SkyBlock Profiles Maintenance | Verifying - We are now starting to allow some players into SkyBlock as we monitor the migration of profiles to the new system. Some features are disabled during this time, and the SkyBlock Profiles API is still currently unavailable. | May 16, 11:44 EDT",
     "SkyBlock Profiles Maintenance | In progress - Scheduled maintenance is currently in progress. We will provide updates as necessary. | May 16, 05:00 EDT",
     "SkyBlock Profiles Maintenance | Update - Due to unforeseen issues, we are delaying this maintenance to next week to allow further validation of the changes. | May 8, 17:11 EDT",
-    "SkyBlock Profiles Maintenance | Scheduled - SkyBlock will be undergoing maintenance to migrate profile data to a new system. During this time SkyBlock and related Public API endpoints will be unavailable. We are estimating this maintenance to take up to 12 hours, assuming no unforeseen issues occur. | May 5, 15:23 EDT"
+    "SkyBlock Profiles Maintenance | Scheduled - SkyBlock will be undergoing maintenance to migrate profile data to a new system. During this time SkyBlock and related Public API endpoints will be unavailable. We are estimating this maintenance to take up to 12 hours, assuming no unforeseen issues occur. | May 5, 15:23 EDT",
+    "SkyBlock Update 0.19 | Completed - The scheduled maintenance has been completed. | Jun 20, 14:54 EDT",
+    "SkyBlock Update 0.19 | In progress - Scheduled maintenance is currently in progress. We will provide updates as necessary. | Jun 20, 08:00 EDT",
+    "SkyBlock Update 0.19 | Scheduled - SkyBlock will be undergoing maintenance for the release of 0.19. | Jun 19, 12:19 EDT"
   ]
 }

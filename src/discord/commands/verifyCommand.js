@@ -1,6 +1,6 @@
 const hypixel = require('../../contracts/API/HypixelRebornAPI')
 const { EmbedBuilder } = require("discord.js")
-const db = require('../../../API/functions/getDatabase');
+const db = require('../../functions/handle/handleDatabase');
 
 async function addLinkedAccounts(discordId, minecraftUuid) {
     try {

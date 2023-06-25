@@ -30,9 +30,9 @@ async function getPlayer(id, name) {
         if (playerRes.status !== 200 || profileRes.status !== 200) {
           throw new Error(`Error getting player or profile data.`);
         }
-        const playerData = playerRes.data;
-        const profileData = profileRes.data.profiles.find((a) => a.selected);
-        const profile = profileData.members[uuid2];
+        const playerData = playerRes?.data;
+        const profileData = profileRes?.data?.profiles?.find((a) => a.selected);
+        const profile = profileData?.members[uuid2];
         const { cute_name: profilename, profile_id: profileid } = profileData;
         return { uuid2, username, profilename, profileid, playerData, profileData, profile };
         

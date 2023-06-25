@@ -1,8 +1,8 @@
 const config = require ('../../../config.json')
 const { EmbedBuilder } = require("discord.js")
 const axios = require('axios')
-const db = require('../../../API/functions/getDatabase');
-const messages = require('../../../messages.json')
+const db = require('../../functions/handle/handleDatabase');
+const messages = config.messages.discord
 async function addLinkedAccounts(discordId, minecraftUuid) {
     try {
       const collection = db.getDb().collection('linkedAccounts');
