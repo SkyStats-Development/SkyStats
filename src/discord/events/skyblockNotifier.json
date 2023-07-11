@@ -31,7 +31,11 @@
     "[June 7] SkyBlock Patch Notes | https://hypixel.net/threads/june-7-skyblock-patch-notes.5385735/",
     "[June 14] SkyBlock Patch Notes | https://hypixel.net/threads/june-14-skyblock-patch-notes.5393862/",
     "[June 21] Undead Patch | https://hypixel.net/threads/june-21-undead-patch.5401355/",
-    "[June 23] Rift Day 3 Patch | https://hypixel.net/threads/june-23-rift-day-3-patch.5404126/"
+    "[June 23] Rift Day 3 Patch | https://hypixel.net/threads/june-23-rift-day-3-patch.5404126/",
+    "[June 26] SkyBlock Patch Notes | https://hypixel.net/threads/june-26-skyblock-patch-notes.5406480/",
+    "[June 29] SkyBlock Patch Notes | https://hypixel.net/threads/june-29-skyblock-patch-notes.5410140/",
+    "Resolution to Rift Access (6/26/23) | https://hypixel.net/threads/resolution-to-rift-access-6-26-23.5407127/",
+    "[June 26] Rift Shen's Changes | https://hypixel.net/threads/june-26-rift-shens-changes.5406362/"
   ],
   "skyblockStatus": [
     "SkyBlock Dungeons Disabled | Update - We are continuing to work on bringing dungeons back online and have added additional potential fixes to the Alpha Network. | Aug 29, 14:05 EDT",
@@ -160,6 +164,12 @@
     "SkyBlock Profiles Maintenance | Scheduled - SkyBlock will be undergoing maintenance to migrate profile data to a new system. During this time SkyBlock and related Public API endpoints will be unavailable. We are estimating this maintenance to take up to 12 hours, assuming no unforeseen issues occur. | May 5, 15:23 EDT",
     "SkyBlock Update 0.19 | Completed - The scheduled maintenance has been completed. | Jun 20, 14:54 EDT",
     "SkyBlock Update 0.19 | In progress - Scheduled maintenance is currently in progress. We will provide updates as necessary. | Jun 20, 08:00 EDT",
-    "SkyBlock Update 0.19 | Scheduled - SkyBlock will be undergoing maintenance for the release of 0.19. | Jun 19, 12:19 EDT"
+    "SkyBlock Update 0.19 | Scheduled - SkyBlock will be undergoing maintenance for the release of 0.19. | Jun 19, 12:19 EDT",
+    "SkyBlock Rift Unavailable | Resolved - This incident has been resolved. | Jul 2, 15:34 EDT",
+    "SkyBlock Rift Unavailable | Monitoring - A fix has been implemented and we are monitoring the results. | Jun 26, 21:38 EDT",
+    "SkyBlock Rift Unavailable | Identified - We have identified issues regarding recent changes within the Rift island and as a result have temporarily disabled access to the Rift island while we work on a solution. | Jun 26, 08:01 EDT",
+    "Players unable to join due to authentication | Resolved - This incident has been resolved. | Jun 27, 12:39 EDT",
+    "Players unable to join due to authentication | Monitoring - A fix has been implemented and we are monitoring the results. | Jun 27, 12:32 EDT",
+    "Players unable to join due to authentication | Investigating - We are currently investigating an issue with an upstream provider causing player authentication to fail and resulting in some players being unable to join. | Jun 27, 12:28 EDT"
   ]
 }
