@@ -170,6 +170,12 @@
     "SkyBlock Rift Unavailable | Identified - We have identified issues regarding recent changes within the Rift island and as a result have temporarily disabled access to the Rift island while we work on a solution. | Jun 26, 08:01 EDT",
     "Players unable to join due to authentication | Resolved - This incident has been resolved. | Jun 27, 12:39 EDT",
     "Players unable to join due to authentication | Monitoring - A fix has been implemented and we are monitoring the results. | Jun 27, 12:32 EDT",
-    "Players unable to join due to authentication | Investigating - We are currently investigating an issue with an upstream provider causing player authentication to fail and resulting in some players being unable to join. | Jun 27, 12:28 EDT"
+    "Players unable to join due to authentication | Investigating - We are currently investigating an issue with an upstream provider causing player authentication to fail and resulting in some players being unable to join. | Jun 27, 12:28 EDT",
+    "SkyBlock Bazaar and Booster Cookies disabled | Resolved - This incident has been resolved. | Jul 12, 14:04 EDT",
+    "SkyBlock Bazaar and Booster Cookies disabled | Update - We have re-opened the Bazaar and enabled consuming Booster Cookies. Any players affected by the issue of cookies purchased that could not be consumed should have had them refunded as a delivery in Jerry. | Jul 12, 12:55 EDT",
+    "SkyBlock Bazaar and Booster Cookies disabled | Monitoring - We have re-opened the Bazaar and enabled consuming Booster Cookies. Any players affected by the issue of cookies purchased that could not be consumed should have them refunded as soon as possible. | Jul 12, 12:31 EDT",
+    "SkyBlock Bazaar and Booster Cookies disabled | Investigating - We are currently investigating an issue with booster cookies and the bazaar, and as a result, both of these systems are currently disabled. | Jul 12, 10:41 EDT",
+    "SMP Maintenance | In progress - Scheduled maintenance is currently in progress. We will provide updates as necessary. | Jul 11, 08:00 EDT",
+    "SMP Maintenance | Scheduled - SMP will be undergoing maintenance and will be unavailable. We aim to complete maintenance as soon as possible but we cannot guarantee an ETA. | Jul 10, 10:53 EDT"
   ]
 }
