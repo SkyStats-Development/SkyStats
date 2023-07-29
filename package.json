@@ -5,8 +5,8 @@
   "changelog": "Added museum value to `/networth` and changed backend functions!",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start --only SkyStatsPRODUCT",
-    "dev": "pm2 start --only SkyStatsDEV",
+    "start": "pm2 start --only SkyStats-Production",
+    "dev": "pm2 start --only SkyStats-Development",
     "build": "pnpm i"
   },
   "repository": {
