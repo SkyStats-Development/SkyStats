@@ -1,42 +1,4 @@
 {
-  "skyblockNews": [
-    "[August 27] Maddox is Mad | https://hypixel.net/threads/august-27-maddox-is-mad.5091190/",
-    "[August 27] Patch 0.14 Bug Fixes 3, Trilogy Complete | https://hypixel.net/threads/august-27-patch-0-14-bug-fixes-3-trilogy-complete.5090234/",
-    "[July 27] Bug fixes | https://hypixel.net/threads/july-27-bug-fixes.5027517/",
-    "[February 6] SkyBlock Patch Notes | https://hypixel.net/threads/february-6-skyblock-patch-notes.5266045/",
-    "[February 3] Autopet Changes | https://hypixel.net/threads/february-3-autopet-changes.5262861/",
-    "[February 2] Patch 0.17.3 Bug Fixes | https://hypixel.net/threads/february-2-patch-0-17-3-bug-fixes.5261361/",
-    "[January 10th] Some Bug Fixes | https://hypixel.net/threads/january-10th-some-bug-fixes.5233523/",
-    "[January 5th] Knockback Resistance changes | https://hypixel.net/threads/january-5th-knockback-resistance-changes.5227516/",
-    "[December 13] SkyBlock Patch Notes | https://hypixel.net/threads/december-13-skyblock-patch-notes.5199900/",
-    "[December 14] Winter Follow Up | https://hypixel.net/threads/december-14-winter-follow-up.5200757/",
-    "[November 23] SkyBlock Patch Notes | https://hypixel.net/threads/november-23-skyblock-patch-notes.5178848/",
-    "[November 30] SkyBlock Patch Notes | https://hypixel.net/threads/november-30-skyblock-patch-notes.5185776/",
-    "[December 8] SkyBlock Kuudra Infernal Follow-up Patch Notes 1 | https://hypixel.net/threads/december-8-skyblock-kuudra-infernal-follow-up-patch-notes-1.5193363/",
-    "[November 15] SkyBlock Patch Notes | https://hypixel.net/threads/november-15-skyblock-patch-notes.5171788/",
-    "[November 21] SkyBlock Patch Notes | https://hypixel.net/threads/november-21-skyblock-patch-notes.5177240/",
-    "[July 3] Random Damage Hotfix | https://hypixel.net/threads/july-3-random-damage-hotfix.3081457/",
-    "[September 8] Test Of Control - SkyBlock Dojo Challenge | https://hypixel.net/threads/september-8-test-of-control-skyblock-dojo-challenge.5104568/",
-    "[0.9.13] Catacombs Floor 7 | https://hypixel.net/threads/0-9-13-catacombs-floor-7.3543616/",
-    "[September 15] Temporary Minion Simulation Patch | https://hypixel.net/threads/september-15-temporary-minion-simulation-patch.5112401/",
-    "[September 6] Moby's Fishing Speed Chumpdate | https://hypixel.net/threads/september-6-mobys-fishing-speed-chumpdate.5103151/",
-    "[September 11] Profile Actions Cooldown | https://hypixel.net/threads/september-11-profile-actions-cooldown.5107971/",
-    "SkyBlock Patch 0.18.1 - Achievements & Bug Fixes | https://hypixel.net/threads/skyblock-patch-0-18-1-achievements-bug-fixes.5298274/",
-    "[February 22] SkyBlock Patch Notes | https://hypixel.net/threads/february-22-skyblock-patch-notes.5276871/",
-    "[February 28] SkyBlock Patch Notes | https://hypixel.net/threads/february-28-skyblock-patch-notes.5290534/",
-    "[February 16] Final Dungeon Journals | https://hypixel.net/threads/february-16-final-dungeon-journals.5276354/",
-    "[March 24] Various Grammatical Fixes | https://hypixel.net/threads/march-24-various-grammatical-fixes.5314082/",
-    "[March 21] SkyBlock Patch Notes | https://hypixel.net/threads/march-21-skyblock-patch-notes.5311515/",
-    "[May 26] Repair Wizard Portal City Project | https://hypixel.net/threads/may-26-repair-wizard-portal-city-project.5376262/",
-    "[June 7] SkyBlock Patch Notes | https://hypixel.net/threads/june-7-skyblock-patch-notes.5385735/",
-    "[June 14] SkyBlock Patch Notes | https://hypixel.net/threads/june-14-skyblock-patch-notes.5393862/",
-    "[June 21] Undead Patch | https://hypixel.net/threads/june-21-undead-patch.5401355/",
-    "[June 23] Rift Day 3 Patch | https://hypixel.net/threads/june-23-rift-day-3-patch.5404126/",
-    "[June 26] SkyBlock Patch Notes | https://hypixel.net/threads/june-26-skyblock-patch-notes.5406480/",
-    "[June 29] SkyBlock Patch Notes | https://hypixel.net/threads/june-29-skyblock-patch-notes.5410140/",
-    "Resolution to Rift Access (6/26/23) | https://hypixel.net/threads/resolution-to-rift-access-6-26-23.5407127/",
-    "[June 26] Rift Shen's Changes | https://hypixel.net/threads/june-26-rift-shens-changes.5406362/"
-  ],
   "skyblockStatus": [
     "SkyBlock Dungeons Disabled | Update - We are continuing to work on bringing dungeons back online and have added additional potential fixes to the Alpha Network. | Aug 29, 14:05 EDT",
     "SkyBlock Dungeons Disabled | Identified - We have identified the potential issue and have opened the Alpha Network for further testing and monitoring. | Aug 26, 14:12 EDT",
@@ -176,6 +138,8 @@
     "SkyBlock Bazaar and Booster Cookies disabled | Monitoring - We have re-opened the Bazaar and enabled consuming Booster Cookies. Any players affected by the issue of cookies purchased that could not be consumed should have them refunded as soon as possible. | Jul 12, 12:31 EDT",
     "SkyBlock Bazaar and Booster Cookies disabled | Investigating - We are currently investigating an issue with booster cookies and the bazaar, and as a result, both of these systems are currently disabled. | Jul 12, 10:41 EDT",
     "SMP Maintenance | In progress - Scheduled maintenance is currently in progress. We will provide updates as necessary. | Jul 11, 08:00 EDT",
-    "SMP Maintenance | Scheduled - SMP will be undergoing maintenance and will be unavailable. We aim to complete maintenance as soon as possible but we cannot guarantee an ETA. | Jul 10, 10:53 EDT"
+    "SMP Maintenance | Scheduled - SMP will be undergoing maintenance and will be unavailable. We aim to complete maintenance as soon as possible but we cannot guarantee an ETA. | Jul 10, 10:53 EDT",
+    "SMP Maintenance | Completed - The scheduled maintenance has been completed. | Jul 18, 14:09 EDT",
+    "SMP Maintenance | Verifying - We are now starting to allow players back into SMP while we monitor the results from the maintenance. | Jul 18, 12:21 EDT"
   ]
 }

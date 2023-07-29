@@ -6,8 +6,8 @@ const config = require("../../../config.json");
 const messages = config.messages.discord;
 const path = require('path');
 
-setInterval(checkForSkyblockUpdates, 10000);
-setInterval(checkForIncidents, 10000);
+//setInterval(checkForSkyblockUpdates, 10000);
+//setInterval(checkForIncidents, 10000);
 // funny shit below
 const eventsFolderPath = path.join(__dirname);
 const filePath = path.join(eventsFolderPath, 'skyblockNotifier.json');
