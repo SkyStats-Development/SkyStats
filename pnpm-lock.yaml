@@ -112,8 +112,8 @@ dependencies:
     specifier: ^3.12.0
     version: 3.12.0
   skyhelper-networth:
-    specifier: ^1.12.3
-    version: 1.12.3
+    specifier: github:Altpapier/SkyHelper-Networth#pull/23/head
+    version: github.com/Altpapier/SkyHelper-Networth/2a99b85451194afaa8a94e3cf7c65a9497912440
   util:
     specifier: ^0.12.5
     version: 0.12.5
@@ -1764,15 +1764,6 @@ packages:
       simple-concat: 1.0.1
     dev: false
 
-  /skyhelper-networth@1.12.3:
-    resolution: {integrity: sha512-yCkAHEUlVcFzDqCo/3UAOz4rLAvAZyMmlQ0dcNy043iiOr9Hy1o5xmhdk/VrryKxP7AGoET+v3a/McqSX8RPDg==}
-    dependencies:
-      axios: 0.27.2
-      prismarine-nbt: 2.2.1
-    transitivePeerDependencies:
-      - debug
-    dev: false
-
   /smart-buffer@4.2.0:
     resolution: {integrity: sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==}
     engines: {node: '>= 6.0.0', npm: '>= 3.0.0'}
@@ -2027,4 +2018,15 @@ packages:
 
   /yallist@4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
+    dev: false
+
+  github.com/Altpapier/SkyHelper-Networth/2a99b85451194afaa8a94e3cf7c65a9497912440:
+    resolution: {tarball: https://codeload.github.com/Altpapier/SkyHelper-Networth/tar.gz/2a99b85451194afaa8a94e3cf7c65a9497912440}
+    name: skyhelper-networth
+    version: 1.14.4
+    dependencies:
+      axios: 0.27.2
+      prismarine-nbt: 2.2.1
+    transitivePeerDependencies:
+      - debug
     dev: false

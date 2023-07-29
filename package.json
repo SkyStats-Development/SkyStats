@@ -56,7 +56,7 @@
     "prettier": "2.8.3",
     "prismarine-nbt": "^2.2.1",
     "rss-parser": "^3.12.0",
-    "skyhelper-networth": "^1.12.3",
+    "skyhelper-networth": "github:Altpapier/SkyHelper-Networth#pull/23/head",
     "util": "^0.12.5"
   }
 }
