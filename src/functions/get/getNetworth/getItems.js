@@ -1,25 +1,22 @@
 const { addNotation } = require("../../../contracts/helperFunctions");
 const config = require("../../../../config.json");
 const { default: axios } = require("axios");
+const { getSkyHelper } = require("./getSkyHelper")
 
 const RECOMBOBULATOR_3000 = "<:RECOMBOBULATOR_3000:1069185517511524362>";
 
 async function getAllItems(uuid, profileid) {
-    const networthRaw = (
-        await axios.get(
-            `http://api.skystats.lol/v2/profile/${uuid}/${profileid}?key=${config.api.skystats.KEY}`
-        )
-    ).data;
 
 
-    const inventoryItems = networthRaw.data.networth.types.inventory.items;
-    const equipmentItems = networthRaw.data.networth.types.equipment.items;
-    const enderchestItems = networthRaw.data.networth.types.enderchest.items;
-    const armorItems = networthRaw.data.networth.types.armor.items;
-    const accessoritesItems = networthRaw.data.networth.types.accessories.items;
-    const personalvaltItems = networthRaw.data.networth.types.personal_vault.items;
-    const storageItems = networthRaw.data.networth.types.storage.items;
-    const wardrobeItems = networthRaw.data.networth.types.wardrobe.items;
+    const networthRaw = await getSkyHelper(profileid, uuid)
+    const inventoryItems = networthRaw.networth.types.inventory.items;
+    const equipmentItems = networthRaw.networth.types.equipment.items;
+    const enderchestItems = networthRaw.networth.types.enderchest.items;
+    const armorItems = networthRaw.networth.types.armor.items;
+    const accessoritesItems = networthRaw.networth.types.accessories.items;
+    const personalvaltItems = networthRaw.networth.types.personal_vault.items;
+    const storageItems = networthRaw.networth.types.storage.items;
+    const wardrobeItems = networthRaw.networth.types.wardrobe.items;
 
 
     const createItemString = (item) => {
@@ -88,28 +85,27 @@ const allEquipment = `${eq1}\n${eq2}\n${eq3}\n${eq4}`;
 return { allInv, allArmor,allAccessories, allWardrobe, allEnderchest, allPersonalVault, allStorage, allEquipment}
     }
     async function getItems(uuid, profileid) {
-        const networthRaw = (
-            await axios.get(
-                `http://api.skystats.lol/v2/profile/${uuid}/${profileid}?key=${config.api.skystats.KEY}`
-            )
-        ).data;
+        const networthRaw = await getSkyHelper(profileid, uuid)
     
-        const inventory = networthRaw.data.networth.types.inventory.total;
-        const inventoryItems = networthRaw.data.networth.types.inventory.items;
-        const equipment = networthRaw.data.networth.types.equipment.total;
-        const equipmentItems = networthRaw.data.networth.types.equipment.items;
-        const enderchest = networthRaw.data.networth.types.enderchest.total;
-        const enderchestItems = networthRaw.data.networth.types.enderchest.items;
-        const armor = networthRaw.data.networth.types.armor.total;
-        const armorItems = networthRaw.data.networth.types.armor.items;
-        const accessories = networthRaw.data.networth.types.accessories.total;
-        const accessoritesItems = networthRaw.data.networth.types.accessories.items;
-        const pv = networthRaw.data.networth.types.personal_vault.total;
-        const personalvaltItems = networthRaw.data.networth.types.personal_vault.items;
-        const storage = networthRaw.data.networth.types.storage.total;
-        const storageItems = networthRaw.data.networth.types.storage.items;
-        const wardrobe = networthRaw.data.networth.types.wardrobe.total;
-        const wardrobeItems = networthRaw.data.networth.types.wardrobe.items;
+        const inventory = networthRaw.networth.types.inventory.total;
+        const inventoryItems = networthRaw.networth.types.inventory.items;
+        const equipment = networthRaw.networth.types.equipment.total;
+        const equipmentItems = networthRaw.networth.types.equipment.items;
+        const enderchest = networthRaw.networth.types.enderchest.total;
+        const enderchestItems = networthRaw.networth.types.enderchest.items;
+        const armor = networthRaw.networth.types.armor.total;
+        const armorItems = networthRaw.networth.types.armor.items;
+        const accessories = networthRaw.networth.types.accessories.total;
+        const accessoritesItems = networthRaw.networth.types.accessories.items;
+        const pv = networthRaw.networth.types.personal_vault.total;
+        const personalvaltItems = networthRaw.networth.types.personal_vault.items;
+        const storage = networthRaw.networth.types.storage.total;
+        const storageItems = networthRaw.networth.types.storage.items;
+        const wardrobe = networthRaw.networth.types.wardrobe.total;
+        const wardrobeItems = networthRaw.networth.types.wardrobe.items;
+        const museum = networthRaw.networth.types.museum.total;
+        const museumSpecial = networthRaw.networth.types.museum.unsoulboundTotal;
+        const museumItems = networthRaw.networth.types.museum.items;
     
     
         const createItemString = (item) => {
@@ -126,7 +122,7 @@ return { allInv, allArmor,allAccessories, allWardrobe, allEnderchest, allPersona
         }
         
     
-    const createItemStrings = (items, maxItems = 5) => {
+    const createItemStrings = (items, maxItems = 4) => {
         const itemStrings = items.slice(0, maxItems).map(createItemString);
         if (items.length > maxItems) {
         itemStrings[maxItems - 1] += `\n→ **And \`${items.length - maxItems}\` more...**`;
@@ -143,20 +139,22 @@ return { allInv, allArmor,allAccessories, allWardrobe, allEnderchest, allPersona
         const pvItems = createItemStrings(personalvaltItems, 4);
         const storageitems = createItemStrings(storageItems);
         const wdItems = createItemStrings(wardrobeItems);
+        const musItems = createItemStrings(museumItems);
     
         let [inv1 = 'No items in inventory.', inv2 = '', inv3 = '', inv4 = '', inv5 = ''] = invItems;
         let [acc1 = 'No accessories in accessory bag.', acc2 = '', acc3 = '', acc4 = '', acc5 = ''] = accItems;
         const [ar1 = 'No Armor.', ar2 = '', ar3 = '', ar4 = ''] = arItems;
         let [ec1 = 'No items in enderchest.', ec2 = '', ec3 = '', ec4 = '', ec5 = ''] = ecItems;
         const [eq1 = 'No equipment.', eq2 = '', eq3 = '', eq4 = ''] = eqItems;
-        const [pv1 = 'No items in personal vault.', pv2 = 'This may be due to API issues.', pv3 = '', pv4 = ''] = pvItems;
+        const [pv1 = 'No items in personal vault.\nThis may be due to API issues.', pv2 = '', pv3 = '', pv4 = ''] = pvItems;
         let [storage1 = 'No items in storage.', storage2 = '', storage3 = '', storage4 = '', storage5 = ''] = storageitems;
         let [wd1 = 'No items in wardrobe.', wd2 = '', wd3 = '', wd4 = '', wd5 = ''] = wdItems;
+        let [mus1 = 'No Museum Items\nTry checking your API !', mus2 = '', mus3 = '', mus4 = '', mus5 = '' ] = musItems;
+        
     
     
     
-    
-        return { inventory, inv1, inv2, inv3, inv4, inv5, equipment, eq1, eq2, eq3, eq4, armor, ar1, ar2, ar3, ar4, accessories, acc1, acc2, acc3, acc4, acc5, enderchest, ec1, ec2, ec3, ec4, ec5, pv, pv1, pv2, pv3, pv4, storage, storage1, storage2, storage3, storage4, storage5, wardrobe, wd1, wd2, wd3, wd4, wd5  };
+        return { inventory, inv1, inv2, inv3, inv4, inv5, equipment, eq1, eq2, eq3, eq4, armor, ar1, ar2, ar3, ar4, accessories, acc1, acc2, acc3, acc4, acc5, enderchest, ec1, ec2, ec3, ec4, ec5, pv, pv1, pv2, pv3, pv4, storage, storage1, storage2, storage3, storage4, storage5, wardrobe, wd1, wd2, wd3, wd4, wd5, museum, museumSpecial, mus1, mus2, mus3, mus4, mus5  };
     }
 
 module.exports = { getAllItems, getItems };

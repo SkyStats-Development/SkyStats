@@ -1,6 +1,8 @@
 const { addNotation } = require("../../../contracts/helperFunctions");
 const config = require("../../../../config.json");
 const { default: axios } = require("axios");
+const { getSkyHelper } = require
+("./getSkyHelper")
 
 const emojis = {
   PET_ITEM_LUCKY_CLOVER: "<a:Lucky_Clover:1072396488346456175>",
@@ -38,16 +40,11 @@ const emojis = {
 
 
 async function getPets(uuid, profileid) {
-  const networthRaw = (
-      await axios.get(
-          `http://api.skystats.lol/v2/profile/${uuid}/${profileid}?key=${config.api.skystats.KEY}`
-      )
-  ).data;
-
-  const petValue = networthRaw.data.networth.types.pets.total;
+  const networthRaw = await getSkyHelper(profileid, uuid)
+  const petValue = networthRaw.networth.types.pets.total;
 
   function getPetInfo(index) {
-    const { name: petName, price: petsPrice, candyUsed: petCandy, heldItem: petItem} = networthRaw.data.networth.types.pets.items[index] || {};
+    const { name: petName, price: petsPrice, candyUsed: petCandy, heldItem: petItem} = networthRaw.networth.types.pets.items[index] || {};
     const petCandyEmoji = uuid !== "833e1fe3ad644ae6aad9a30e04bd6417" && petCandy > 0 ? "<:carrot:1072129687427498012>" : "";
     const petItemEmoji = petItem ? (Object.keys(emojis).find(key => petItem.startsWith(key)) ? emojis[Object.keys(emojis).find(key => petItem.startsWith(key))] : "") : ""
     const petPrice = addNotation("oneLetters", petsPrice);
