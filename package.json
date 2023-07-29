@@ -1,8 +1,8 @@
 {
   "name": "skystats",
-  "version": "1.2.8",
+  "version": "1.3.0",
   "description": "A Hypixel Skyblock Metrics Bot For Discord.",
-  "changelog": "",
+  "changelog": "Added museum value to `/networth` and changed backend functions!",
   "main": "index.js",
   "scripts": {
     "start": "pm2 start --only SkyStatsPRODUCT",
