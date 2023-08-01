@@ -28,7 +28,7 @@ module.exports = {
         try {
             hypixel.getPlayer(username).then(async player => {
                 let found = false;
-                player.socialMedia.forEach(media => {if (media.link === interaction.user.tag) {found = true}})
+                player.socialMedia.forEach(media => {if (media.link === interaction.user.username ?? interaction.user.tag) {found = true}})
                 if (found) {
                     await addLinkedAccounts(interaction.user.id, player.uuid);
 
