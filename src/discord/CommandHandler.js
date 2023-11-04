@@ -1,5 +1,4 @@
 const { Routes } = require('discord-api-types/v9')
-const config = require('../../config.json')
 const { REST } = require('@discordjs/rest')
 const fs = require('fs')
 require('dotenv').config();

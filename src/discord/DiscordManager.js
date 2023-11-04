@@ -1,17 +1,12 @@
 const { Client, Collection, GatewayIntentBits } = require("discord.js");
 const CommandHandler = require("./CommandHandler");
-const config = require("../../config.json");
 const Logger = require("../Logger");
 const path = require("node:path");
 const fs = require("fs");
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const { kill } = require("node:process");
-const axios = require('axios');
-const packageJson = require('../../package.json');
-const os = require('os');
 require('dotenv').config();
 const token = process.env.TOKEN;
-const clientID = process.env.ID;
+
 
 
 class DiscordManager {

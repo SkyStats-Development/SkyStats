@@ -1,7 +1,5 @@
 require("dotenv").config();
 process.env.TOKEN = process.env.PROD;
-
-
 process.env.ID = process.env.PRODID;
 
 process.on("uncaughtException", function (err) {
