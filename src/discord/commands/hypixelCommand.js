@@ -2,57 +2,27 @@
 const { AttachmentBuilder, Client, Events, GatewayIntentBits, EmbedBuilder} = require('discord.js');
 const config = require(`../../../config.json`)
 const messages = config.messages.discord
+const { getPlayer } = require("../../functions/get/getPlayer");
+const { handleError } = require("../../functions/handle/handleError");
 const {createCanvas, Image, registerFont} = require('canvas');
 const { readFile } = require('fs/promises');
 const hypixel = require('../../contracts/API/HypixelRebornAPI')
 const { default: axios, AxiosError } = require("axios");
 const { addNotation, addCommas } = require("../../contracts/helperFunctions");
 const key = process.env.KEY;
-const db = require('../../functions/handle/handleDatabase');
-async function getLinkedAccount(discordId) {
-  const collection = db.getDb().collection('linkedAccounts');
-  const result = await collection.findOne({ discordId: discordId });
-  return result ? result.minecraftUuid : null;
-}
-
-
 registerFont(__dirname + '/Fonts/mc.ttf', { family: 'Minecraft' });
 registerFont(__dirname + `/Fonts/unifont.ttf`, { family: 'font'});
 registerFont(__dirname + `/Fonts/mc-bold.otf`, {family: "MinecraftBOLD"});
-
-
-function formatLoginDate(loginDate) {
-    const date = new Date(loginDate);
+  function formatDate(dateImput) {
+    const date = new Date(dateImput);
     const month = date.getMonth() + 1;
     const day = date.getDate();
     const year = date.getFullYear().toString().substring(2);
     let hour = date.getHours();
     let minute = date.getMinutes();
     const amPm = hour >= 12 ? 'PM' : 'AM';
-  
-    // Convert hour from 24-hour format to 12-hour format
     hour = hour % 12 || 12;
-  
-    // Add a leading zero to the minute if it's a single digit
     minute = minute < 10 ? '0' + minute : minute;
-  
-    return `${month}/${day}/${year}, ${hour}:${minute} ${amPm}`;
-  }
-  function formatLogoutDate(logoutDate) {
-    const date = new Date(logoutDate);
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const year = date.getFullYear().toString().substring(2);
-    let hour = date.getHours();
-    let minute = date.getMinutes();
-    const amPm = hour >= 12 ? 'PM' : 'AM';
-  
-    // Convert hour from 24-hour format to 12-hour format
-    hour = hour % 12 || 12;
-  
-    // Add a leading zero to the minute if it's a single digit
-    minute = minute < 10 ? '0' + minute : minute;
-  
     return `${month}/${day}/${year}, ${hour}:${minute} ${amPm}`;
   }
 
@@ -71,19 +41,29 @@ module.exports = {
         
       ],
     execute: async (interaction, client, InteractionCreate) => {
+      await interaction.deferReply();
+      const id = interaction.user.id;
+      const { uuid2, username, error } = await getPlayer(
+        id,
+        interaction.options.getString("name")
+      );
+      if (error) {
+        console.log(error);
+        const errorembed = {
+          color: 0xff0000,
+          title: `Error`,
+          description: `Data: ` + error.description,
+          timestamp: new Date().toISOString(),
+        };
+        await interaction.editReply({ embeds: [errorembed] });
+      } else {
         try{
-        await interaction.deferReply();
         const canvas = createCanvas(590, 352);
         const background = await readFile(__dirname + '/images/hypixelCommand.png');
         const backgroundImage = new Image();
         const context = canvas.getContext('2d');
         backgroundImage.src = background;
         context.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-        const minecraftUuid = await getLinkedAccount(interaction.user.id) || ``
-        const name = interaction.options.getString("name") || minecraftUuid;
-        const { data: { data: { player } } } = await axios.get(`https://playerdb.co/api/player/minecraft/${name}`);
-        const username = player.username;
-        const uuid2 = player.raw_id;
         const Hypixel = (await hypixel.getPlayer(uuid2))
         const firstlogin = Hypixel.firstLogin
         const lastlogin = Hypixel.lastLogin
@@ -95,38 +75,16 @@ module.exports = {
         const hypixelPlayer = (await axios.get(`https://api.hypixel.net/player?uuid=${uuid2}&key=${key}`)).data.player
         const ranksGifted = hypixelPlayer?.giftingMeta?.ranksGiven || 0
         const challenges = (await axios.get(`https://api.hypixel.net/player?uuid=${uuid2}&key=${key}`)).data.player.challenges.all_time;
-
-        const sortedChallenges = Object.entries(challenges)
-          .sort((a, b) => b[1] - a[1])
-          .reduce((obj, [challengeName, challengeCount]) => {
-            const [gameType, challengeType] = challengeName.split('__');
-            if (!obj[gameType]) {
-              obj[gameType] = {};
-            }
-            obj[gameType][challengeType] = challengeCount;
-            return obj;
-          }, {});
-        
         const totalChallange = Object.values(challenges).reduce((acc, val) => acc + val, 0);
-
-
         const quests = hypixelPlayer.quests;
-let completedqests = 0;
-
-for (const [questName, quest] of Object.entries(quests)) {
-  if (quest.completions && quest.completions.length > 0) {
-    completedqests += quest.completions.length;
-  }
-}
-
-        let status = "" 
-        if (statusm === `true`) {
-            status = `Online`
-        } else if (statusm === `false`) {
-            status = `Offline`
-        } else {
-            status = `Offline`
+        let completedqests = 0;
+        for (const [quest] of Object.entries(quests)) {
+          if (quest.completions && quest.completions.length > 0) {
+            completedqests += quest.completions.length;
+          }
         }
+        let status = "" 
+        if (statusm === `true`) {status = `Online`} else if (statusm === `false`) {status = `Offline`} else {status = `Offline`}
         const karma = Hypixel.karma || `1`
         const rewardStreak = Hypixel.rewardStreak || `0`
         const giftsSent = Hypixel.giftsSent || `0`
@@ -134,15 +92,10 @@ for (const [questName, quest] of Object.entries(quests)) {
         const formatted_ap = addCommas(ap)
         const loginDate = firstlogin.toUTCString()
         const logoutDate = lastlogin.toUTCString()
-        
-        const login = formatLoginDate(loginDate);
-        const logout = formatLogoutDate(logoutDate);
-
-
-
+        const login = formatDate(loginDate);
+        const logout = formatDate(logoutDate);
 
         const gradientowo = context.createLinearGradient(0, 0, canvas.width, 0);
-
         gradientowo.addColorStop(0, '#f73100'); // Left color
         gradientowo.addColorStop(1, '#ffb600'); // Right color
         context.fillStyle = gradientowo; // Set the fill style to the gradient
@@ -240,7 +193,6 @@ for (const [questName, quest] of Object.entries(quests)) {
         context.font = '32px Minecraft'; // Set the font size and family
         context.textAlign = 'center'; // Center the text horizontally
         context.fillText(`${rewardStreak}`, canvas.width/2 - 70, 295);
-//
         
         gradientowo9.addColorStop(0, '#f73100'); // Left color
         gradientowo9.addColorStop(1, '#ffb600'); // Right color
@@ -404,4 +356,4 @@ for (const [questName, quest] of Object.entries(quests)) {
             }
         }
     }
-}
+    }}
