@@ -16,8 +16,9 @@ async function getLinkedAccount(discordId) {
 }
 
 
-registerFont(__dirname + '/Fonts/mc-bold.otf', { family: 'Minecraft' });
-registerFont(__dirname + `/Fonts/mc.ttf`, {family: "MinecraftBOLD"})
+registerFont(__dirname + '/Fonts/mc.ttf', { family: 'Minecraft' });
+registerFont(__dirname + `/Fonts/unifont.ttf`, { family: 'font'});
+registerFont(__dirname + `/Fonts/mc-bold.otf`, {family: "MinecraftBOLD"});
 
 
 function formatLoginDate(loginDate) {
@@ -324,12 +325,13 @@ for (const [questName, quest] of Object.entries(quests)) {
         context.textAlign = 'left';
         context.fillText(bracket2+username, rankX + rankWidth + context.measureText(rankPlus).width, 35);
         const gtag = guild?.tag || ``;
+        console.log(gtag)
         const gTag = gtag ? `[${gtag}]` : ``;
         const gtagcolor = guild?.tagColor.toHex()
 
     
         context.fillStyle = gtagcolor;
-        context.font = '20px Minecraft';
+        context.font = '20px font';
         context.textAlign = 'left';
         context.fillText(gTag, rankX + rankWidth + context.measureText(rankPlus).width + context.measureText(username).width + 24, 35);
 
