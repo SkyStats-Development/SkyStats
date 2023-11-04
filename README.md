@@ -51,12 +51,12 @@ SkyStats was greatly helped by
 >
 > [ThePotatoKing](https://links.sperrer.ca "for all of my bugs")
 >
-> Pandy#8075
+> @pqndy
 
 ## Version
 
-V 1.2.8 🔁
+V 1.5.1 🔁
 
-## Licence
+## License
 
-MIT
+See license file :3
