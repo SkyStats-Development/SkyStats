@@ -121,7 +121,6 @@ module.exports = {
           mus4,
           mus5,
         } = itemsData || {};
-
         const { petValue, pet1, pet2, pet3, pet4, pet5 } = petData || {};
 
         const {
@@ -316,9 +315,7 @@ module.exports = {
               inline: false,
             },
             {
-              name: `<:LEATHER_CHESTPLATE:1134874048048935012> Museum  (${
-                addNotation("oneLetters", museum) ?? 0
-              })`,
+              name: `<:LEATHER_CHESTPLATE:1134874048048935012> Museum  (${addNotation("oneLetters", museum) ?? 0})\n<:LEATHER_CHESTPLATE:1134874048048935012> Specialty Museum (${addNotation("oneLetters", museumSpecial) ?? 0})`,
               value: `${mus1}\n${mus2}\n${mus3}\n${mus4}\n${mus5}`,
               inline: false,
             },
@@ -425,30 +422,9 @@ module.exports = {
 
         const row = new ActionRowBuilder().addComponents(select);
 
-        const response = await interaction.editReply({ embeds: [embedplayer], components: [row] });
+        await interaction.editReply({ embeds: [embedplayer] });
 
-        const collectorFilter = (i) => i.user.id === interaction.user.id;
-        try {
-          const confirmation = await response.awaitMessageComponent({
-            filter: collectorFilter,
-            time: 60_000,
-          });
 
-          if (confirmation.customId === "armor") {
-            await interaction.followUp({ embeds: [armor_embed] })
-          } else if (confirmation.customId === "equipment") {
-            await confirmation.update({
-              content: "Action cancelled",
-              components: [],
-            });
-          }
-        } catch (e) {
-          console.log(e)
-          await interaction.editReply({
-            embeds: [embedplayer],
-            components: [],
-          });
-        }
       } catch (error) {
         const errorEmbed = handleError(error);
         await interaction.editReply({ embeds: [errorEmbed] });

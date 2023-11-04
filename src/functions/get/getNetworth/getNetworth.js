@@ -26,9 +26,9 @@ async function getNetworth(uuid, profileid) {
   const irlnw = addNotation("numbers", addCommas(value));
   const banku = networthRaw.networth.bank;
   const formattedBank = addNotation("oneLetters", banku);
-
+  
   const purseu = networthRaw.networth.purse;
-
+  const purse = Math.round(purseu)
   const sack = networthRaw.networth.types.sacks.total;
   const essence = networthRaw.networth.types.essence.total;
   const sackValue = Math.round((sack + essence) * 100) / 100;
@@ -55,7 +55,7 @@ async function getNetworth(uuid, profileid) {
       total: banku,
       formatted: formattedBank,
     },
-    purse: purseu,
+    purse: purse,
     sacks: {
       total: sackValue,
       essence,

@@ -36,15 +36,35 @@ module.exports = {
           await interaction.editReply({ embeds: [errorembed] });
       } else {
           try {
-        const data = await getSkyHelper(profileid, uuid2)
-        console.log(data)
+            
             const embed1 = {
-
-                title: `More testing`,
-                description: `lol ` + data ,
+                title: `More testing\nLol\nLol`,
+                description: `lol ` ,
                 timestamp: new Date().toISOString(),
             };
-            await interaction.editReply({  embeds: [ embed1 ] })
+
+            const select = new StringSelectMenuBuilder()
+            .setCustomId('starter')
+            .setPlaceholder('Make a selection!')
+            .addOptions(
+              new StringSelectMenuOptionBuilder()
+                .setLabel('Bulbasaur')
+                .setDescription('The dual-type Grass/Poison Seed Pokémon.')
+                .setValue('bulbasaur'),
+              new StringSelectMenuOptionBuilder()
+                .setLabel('Charmander')
+                .setDescription('The Fire-type Lizard Pokémon.')
+                .setValue('charmander'),
+              new StringSelectMenuOptionBuilder()
+                .setLabel('Squirtle')
+                .setDescription('The Water-type Tiny Turtle Pokémon.')
+                .setValue('squirtle'),
+            );
+      
+          const row = new ActionRowBuilder()
+            .addComponents(select);
+      
+            await interaction.editReply({  embeds: [ embed1 ], components: [row] })
           } catch (error) {
             const errorEmbed = handleError(error);
             await interaction.editReply({ embeds: [errorEmbed] });
