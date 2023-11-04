@@ -3,25 +3,11 @@
     "ActivityType": "Watching", 
     "Status": "online",
     "online, idle, dnd, invisible": "",
-    "Activity": "Happy Pride Month!!",
+    "Activity": "/networth >.<",
     "issues": "",
     "releaseChannel": "1068058627568570368",
     "serverID": "1058272411247714425",
     "developmentRole": "1058273514941075477"
-  },
-  "api": {
-    "skystats": {
-      "API": "http://api.skystats.lol/",
-      "KEY": "skystats-87654-321098-765-43-development",
-      "MAIN": "http://skystats.lol/"
-    },
-
-    "hypixel": {
-      "API": "https://api.hypixel.net",
-      "KEY": "6f451ef6-75d2-4f92-af70-5c8b3892f8ef"
-    },
-
-    "imgurAPIkey": "98ea6fff6d0ce73"
   },
   "messages": {
     "commandfailed": {
@@ -43,6 +29,6 @@
   },
   
   "database":   {
-    "uri": "mongodb+srv://hyperbolic:deesahd284@cluster0.o4mur.mongodb.net/?retryWrites=true&w=majority"
+    "uri": ""
     }
 }
