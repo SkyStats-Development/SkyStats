@@ -39,29 +39,40 @@ const emojis = {
   PET_ITEM_ALL_SKILLS_BOOST: "<a:All_Skills_Exp_Boost:1072399662306316358>"
 };
 
-
 async function getPets(uuid, profileid) {
-  const networthRaw = await getSkyHelper(profileid, uuid)
-  const petValue = networthRaw.networth.types.pets.total;
+	const networthRaw = await getSkyHelper(profileid, uuid);
+	const { total: petTotal, items: petItems } = networthRaw.networth.types.pets;
 
-  function getPetInfo(index) {
-    const { name: petName, price: petsPrice, candyUsed: petCandy, heldItem: petItem} = networthRaw.networth.types.pets.items[index] || {};
-    const petCandyEmoji = uuid !== "833e1fe3ad644ae6aad9a30e04bd6417" && petCandy > 0 ? "<:carrot:1072129687427498012>" : "";
-    const petItemEmoji = petItem ? (Object.keys(emojis).find(key => petItem.startsWith(key)) ? emojis[Object.keys(emojis).find(key => petItem.startsWith(key))] : "") : ""
-    const petPrice = addNotation("oneLetters", petsPrice);
-    const formatted_petPrice = `(**${petPrice}**)`
-    
-    return `${index === 0 && (petName === null || petName === undefined) ? "No pets :(" : `${petName !== null && petName !== undefined ? "→ " : ""}${petName ?? ""}`} ${petCandyEmoji} ${petItemEmoji} ${formatted_petPrice !== `(**undefined**)` ? formatted_petPrice : ""}`;
+	const createPetString = (pet) => {
+			const { name: petName, price: petsPrice, candyUsed: petCandy, heldItem: petItem } = pet || {};
+			const petCandyEmoji = uuid !== "833e1fe3ad644ae6aad9a30e04bd6417" && petCandy > 0 ? "<:carrot:1072129687427498012>" : "";
+			const petItemEmoji = petItem ? (Object.keys(emojis).find((key) => petItem.startsWith(key)) ? emojis[Object.keys(emojis).find((key) => petItem.startsWith(key))] : "") : "";
+			const petPrice = addNotation("oneLetters", petsPrice) || 0;
 
-  }
+			if (petName === null || petName === undefined) {
+					return '';
+			}
 
-  const pet1 = getPetInfo(0);
-  const pet2 = getPetInfo(1);
-  const pet3 = getPetInfo(2);
-  const pet4 = getPetInfo(3);
-  const pet5 = getPetInfo(4);
+			return `→ ${petName} ${petCandyEmoji} ${petItemEmoji} (**${petPrice}**)`;
+	};
 
-  return {petValue, pet1, pet2, pet3, pet4, pet5};
+	const createPetStrings = (pets, maxPets = Infinity) => {
+			const petStrings = pets.slice(0, maxPets).map(createPetString);
+			if (pets.length > maxPets) {
+					petStrings[maxPets - 1] += `\n**And \`${pets.length - maxPets}\` more...**`;
+			}
+			return petStrings.join("\n");
+	};
+
+	const allPets = createPetStrings(petItems, 4);
+	const allLongPets = createPetStrings(petItems, 20);
+
+	console.log(allPets);
+	console.log(allLongPets);
+
+	return { petTotal, allPets, allLongPets };
 }
+
+
 
 module.exports = { getPets };

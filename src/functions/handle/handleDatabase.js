@@ -10,7 +10,7 @@ let db;
 
 async function connect() {
   if (!client) {
-    client = new MongoClient(uri, { useUnifiedTopology: true });
+    client = new MongoClient(uri);
     await client.connect();
     db = client.db(dbName);
     Logger.databaseMessage(

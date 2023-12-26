@@ -1,18 +1,10 @@
-const {
-  ActionRowBuilder,
-  Events,
-  StringSelectMenuBuilder,
-  StringSelectMenuOptionBuilder,
-} = require("discord.js");
+const { ActionRowBuilder, StringSelectMenuBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const { addNotation, addCommas } = require("../../contracts/helperFunctions");
 const config = require("../../../config.json");
 const messages = config.messages.discord;
 const { getNetworth } = require("../../functions/get/getNetworth/getNetworth");
 const { getPets } = require("../../functions/get/getNetworth/getPets");
-const {
-  getItems,
-  getAllItems,
-} = require("../../functions/get/getNetworth/getItems");
+const {getItems, getAllItems,} = require("../../functions/get/getNetworth/getItems");
 const { getPlayer } = require("../../functions/get/getPlayer");
 const { handleError } = require("../../functions/handle/handleError");
 
@@ -66,98 +58,176 @@ module.exports = {
           sacks: { total: sackvalue },
           misc: { total: misc, candy_inventory, potion_bag, fishing_bag },
         } = stats || {};
-
-        const {
-          inventory,
-          inv1,
-          inv2,
-          inv3,
-          inv4,
-          inv5,
-          equipment,
-          eq1,
-          eq2,
-          eq3,
-          eq4,
-          armor,
-          ar1,
-          ar2,
-          ar3,
-          ar4,
-          accessories,
-          acc1,
-          acc2,
-          acc3,
-          acc4,
-          acc5,
-          enderchest,
-          ec1,
-          ec2,
-          ec3,
-          ec4,
-          ec5,
-          pv,
-          pv1,
-          pv2,
-          pv3,
-          pv4,
-          storage,
-          storage1,
-          storage2,
-          storage3,
-          storage4,
-          storage5,
-          wardrobe,
-          wd1,
-          wd2,
-          wd3,
-          wd4,
-          wd5,
-          museum,
-          museumSpecial,
-          mus1,
-          mus2,
-          mus3,
-          mus4,
-          mus5,
-        } = itemsData || {};
-        const { petValue, pet1, pet2, pet3, pet4, pet5 } = petData || {};
+        
+        const { inventory, inv, equipment, eq, armor, ar, accessories, acc, enderchest, ec, pv, personalV, storage, storageL, wardrobe, wd, museum, museumSpecial, mus } = itemsData || {};
+        const { petValue, petTotal, allPets, allLongPets } = petData || {};
 
         const {
           allAccessories,
-          allArmor,
-          allEquipment,
-          allInventory,
+          allMuseum,
+          allInv,
           allEnderchest,
           allStorage,
           allWardrobe,
-          allPersonalVault,
         } = allItemsData || {};
 
-        const armor_embed = {
+        const selectMenu = new StringSelectMenuBuilder()
+        .setCustomId('selectmenu')
+        .setPlaceholder('Select A field...')
+        .addOptions([
+            {
+                label: 'Wardrobe',
+                value: 'id_armor',
+                // wardrobe_embed
+            },
+            {
+                label: 'Inventory',
+                value: 'id_inventory',
+                // inventory_embed
+            },
+          {
+            label: `Ender Chest`,
+            value: `id_ender_chest`,
+            // enderchest_embed
+          },
+          {
+            label: `Storage`,
+            value: `id_storage`,
+            // storage_embed
+          },
+          {
+            label: `Museum`,
+            value: `id_museum`,
+            // museum_embed
+          },
+          {
+            label: "Pets",
+            value: "id_pet_menu",
+            // pet_embed
+          },
+          {
+            label: "Accessory Bag",
+            value: "id_talisman_bag",
+            //talisman_bag_embed
+            
+          }
+        ]);
+        const row1 = new ActionRowBuilder().addComponents(selectMenu);
+
+        const embedplayer = {
           color: 0xffa600,
-          title: `Armor for ${username} on ${profilename}`,
+          title: `Networth For ${username} On ${profilename} `,
           URL: `https://sky.shiiyu.moe/stats/${uuid2}`,
-          description: `Armor Value: **${addCommas(armor)}** (**${addNotation(
-            "oneLetters",
-            armor
-          )}**)\n\n${allArmor}`,
+          description: `${PURSE_ICON} Networth: **${networth} (${shortnetworth})**\n${IRON_INGOT_ICON} Unsoulbound Networth: **${unsoulbound} (${shortbound})**\n${BOOSTER_COOKIE_ICON} IRL Value: **$${irlnw} USD**`,
           thumbnail: {
             url: `https://api.mineatar.io/body/full/${uuid2}`,
           },
-        };
-        const equipment_embed = {
-          color: 0xffa600,
-          title: `Equipment for ${username} on ${profilename}`,
-          URL: `https://sky.shiiyu.moe/stats/${uuid2}`,
-          description: `Equipment Value: **${addCommas(
-            equipment
-          )}** (**${addNotation(
-            "oneLetters",
-            equipment
-          )}**)\n\n${allEquipment}`,
-          thumbnail: {
-            url: `https://api.mineatar.io/body/full/${uuid2}`,
+          fields: [
+            {
+              name: "<:Purse:1059997956784279562> Purse",
+              value: `${addNotation("oneLetters", purse) ?? 0}`,
+              inline: true,
+            },
+            {
+              name: "<:Bank:1059664677606531173> Bank",
+              value: `${bank ?? 0}`,
+              inline: true,
+            },
+            {
+              name: "<:sacks:1059664698095710388> Sacks",
+              value: `${addNotation("oneLetters", sackvalue) ?? 0}`,
+              inline: true,
+            },
+            {
+              name: `<:DIAMOND_CHESTPLATE:1061454753357377586> Armor  (${
+                addNotation("oneLetters", armor) ?? 0
+              })`,
+              value: ar,
+              inline: false,
+            },
+            {
+              name: `<:Iron_Chestplate:1061454825839144970> Equipment  (${
+                addNotation("oneLetters", equipment) ?? 0
+              })`,
+              value: eq,
+              inline: false,
+            },
+            {
+              name: `<:ARMOR_STAND:1061454861071298620> Wardrobe  (${
+                addNotation("oneLetters", wardrobe) ?? 0
+              })`,
+              value: wd,
+              inline: false,
+            },
+            {
+              name: `<:CHEST:1061454902049656993> Inventory  (${
+                addNotation("oneLetters", inventory) ?? 0
+              })`,
+              value: inv,
+              inline: false,
+            },
+            {
+              name: `<:ENDER_CHEST:1061454947931140106> Ender Chest  (${
+                addNotation("oneLetters", enderchest) ?? 0
+              })`,
+              value: ec,
+              inline: false,
+            },
+            {
+              name: `<:storage:1059664802701656224> Storage  (${
+                addNotation("oneLetters", storage) ?? 0
+              })`,
+              value: storageL,
+              inline: false,
+            },
+            {
+              name: `<:LEATHER_CHESTPLATE:1134874048048935012> Museum  (${addNotation("oneLetters", museum) ?? 0})\n<:LEATHER_CHESTPLATE:1134874048048935012> Specialty Museum (${addNotation("oneLetters", museumSpecial) ?? 0})`,
+              value: mus,
+              inline: false,
+            },
+            {
+              name: `<:Spawn_Null:1061455273224577024> Pets  (${
+                addNotation("oneLetters", petTotal) ?? 0
+              })`,
+              value: allPets,
+              inline: false,
+            },
+            {
+              name: `<:HEGEMONY_ARTIFACT:1061455309983461486> Accessory Bag (${
+                addNotation("oneLetters", accessories) ?? 0
+              })`,
+              value: acc,
+              inline: false,
+            },
+            {
+              name: `<:item_2654:1061455349338615859> Personal Vault (${
+                addNotation("oneLetters", pv) ?? 0
+              })`,
+              value: personalV,
+              inline: false,
+            },
+            {
+              name: `<:wheat:1059664236038590584> Misc (${
+                addNotation("oneLetters", misc + stats.sacks.total) ?? 0
+              })`,
+              value: `→ Candy Bag (**${
+                addNotation("oneLetters", candy_inventory) ?? 0
+              }**)\n→ Fishing Bag (**${
+                addNotation("oneLetters", fishing_bag) ?? 0
+              }**)\n→ Potion Bag (**${
+                addNotation("oneLetters", potion_bag) ?? 0
+              }**)\n→ Sacks (**${
+                addNotation("oneLetters", stats.sacks.sacks) ?? 0
+              }**)\n→ Essence (**${
+                addNotation("oneLetters", stats.sacks.essence) ?? 0
+              }**)`,
+              inline: false,
+            },
+          ],
+          timestamp: new Date().toISOString(),
+          footer: {
+            text: `${messages.default}`,
+            iconURL: `${messages.icon}`,
           },
         };
         const wardrobe_embed = {
@@ -180,7 +250,7 @@ module.exports = {
           )}** (**${addNotation(
             "oneLetters",
             inventory
-          )}**)\n\n${allInventory}`,
+          )}**)\n\n${allInv}`,
           thumbnail: {
             url: `https://api.mineatar.io/body/full/${uuid2}`,
           },
@@ -210,19 +280,19 @@ module.exports = {
             url: `https://api.mineatar.io/body/full/${uuid2}`,
           },
         };
-        const pets = {
+        const pet_embed = {
           color: 0xffa600,
           title: `Pets for ${username} on ${profilename}`,
           URL: `https://sky.shiiyu.moe/stats/${uuid2}`,
-          description: `Pets Value: **${addCommas(petValue)}** (**${addNotation(
+          description: `Pets Value: **${addCommas(petTotal)}** (**${addNotation(
             "oneLetters",
             petValue
-          )}**)\n\nm... nrn`,
+          )}**)\n\n${allLongPets}`,
           thumbnail: {
             url: `https://api.mineatar.io/body/full/${uuid2}`,
           },
         };
-        const accessoriesBag = {
+        const talisman_bag_embed = {
           color: 0xffa600,
           title: `Accessories Bag for ${username} on ${profilename}`,
           URL: `https://sky.shiiyu.moe/stats/${uuid2}`,
@@ -236,194 +306,58 @@ module.exports = {
             url: `https://api.mineatar.io/body/full/${uuid2}`,
           },
         };
-        const personalVault = {
+        const museum_embed = {
           color: 0xffa600,
-          title: `Personal Vault for ${username} on ${profilename}`,
+          title: `Pets for ${username} on ${profilename}`,
           URL: `https://sky.shiiyu.moe/stats/${uuid2}`,
-          description: `Personal Vault Value: **${addCommas(
-            pv
-          )}** (**${addNotation("oneLetters", pv)}**)\n\n${allPersonalVault}`,
+          description: `Museum Value: **${addCommas(museum)}** (**${addNotation("oneLetters",museum)}**)\nSpecialty Museum (${addNotation("oneLetters", museumSpecial) ?? 0})\n\n${allMuseum}`,
           thumbnail: {
             url: `https://api.mineatar.io/body/full/${uuid2}`,
           },
         };
 
-        const embedplayer = {
-          color: 0xffa600,
-          title: `Networth For ${username} On ${profilename}`,
-          URL: `https://sky.shiiyu.moe/stats/${uuid2}`,
-          description: `${PURSE_ICON} Networth: **${networth} (${shortnetworth})**\n${IRON_INGOT_ICON} Unsoulbound Networth: **${unsoulbound} (${shortbound})**\n${BOOSTER_COOKIE_ICON} IRL Value: **$${irlnw} USD**`,
-          thumbnail: {
-            url: `https://api.mineatar.io/body/full/${uuid2}`,
-          },
-          fields: [
-            {
-              name: "<:Purse:1059997956784279562> Purse",
-              value: `${addNotation("oneLetters", purse) ?? 0}`,
-              inline: true,
-            },
-            {
-              name: "<:Bank:1059664677606531173> Bank",
-              value: `${bank ?? 0}`,
-              inline: true,
-            },
-            {
-              name: "<:sacks:1059664698095710388> Sacks",
-              value: `${addNotation("oneLetters", sackvalue) ?? 0}`,
-              inline: true,
-            },
-            {
-              name: `<:DIAMOND_CHESTPLATE:1061454753357377586> Armor  (${
-                addNotation("oneLetters", armor) ?? 0
-              })`,
-              value: `${ar1}\n${ar2}\n${ar3}\n${ar4}`,
-              inline: false,
-            },
-            {
-              name: `<:Iron_Chestplate:1061454825839144970> Equipment  (${
-                addNotation("oneLetters", equipment) ?? 0
-              })`,
-              value: `${eq1}\n${eq2}\n${eq3}\n${eq4}`,
-              inline: false,
-            },
-            {
-              name: `<:ARMOR_STAND:1061454861071298620> Wardrobe  (${
-                addNotation("oneLetters", wardrobe) ?? 0
-              })`,
-              value: `${wd1}\n${wd2}\n${wd3}\n${wd4}\n${wd5}`,
-              inline: false,
-            },
-            {
-              name: `<:CHEST:1061454902049656993> Inventory  (${
-                addNotation("oneLetters", inventory) ?? 0
-              })`,
-              value: `${inv1}\n${inv2}\n${inv3}\n${inv4}\n${inv5}`,
-              inline: false,
-            },
-            {
-              name: `<:ENDER_CHEST:1061454947931140106> Ender Chest  (${
-                addNotation("oneLetters", enderchest) ?? 0
-              })`,
-              value: `${ec1}\n${ec2}\n${ec3}\n${ec4}\n${ec5}`,
-              inline: false,
-            },
-            {
-              name: `<:storage:1059664802701656224> Storage  (${
-                addNotation("oneLetters", storage) ?? 0
-              })`,
-              value: `${storage1}\n${storage2}\n${storage3}\n${storage4}\n${storage5}`,
-              inline: false,
-            },
-            {
-              name: `<:LEATHER_CHESTPLATE:1134874048048935012> Museum  (${addNotation("oneLetters", museum) ?? 0})\n<:LEATHER_CHESTPLATE:1134874048048935012> Specialty Museum (${addNotation("oneLetters", museumSpecial) ?? 0})`,
-              value: `${mus1}\n${mus2}\n${mus3}\n${mus4}\n${mus5}`,
-              inline: false,
-            },
-            {
-              name: `<:Spawn_Null:1061455273224577024> Pets  (${
-                addNotation("oneLetters", petValue) ?? 0
-              })`,
-              value: `${pet1}\n${pet2}\n${pet3}\n${pet4}\n${pet5}`,
-              inline: false,
-            },
-            {
-              name: `<:HEGEMONY_ARTIFACT:1061455309983461486> Accessories Bag (${
-                addNotation("oneLetters", accessories) ?? 0
-              })`,
-              value: `${acc1}\n${acc2}\n${acc3}\n${acc4}\n${acc5}`,
-              inline: false,
-            },
-            {
-              name: `<:item_2654:1061455349338615859> Personal Vault (${
-                addNotation("oneLetters", pv) ?? 0
-              })`,
-              value: `${pv1}\n${pv2}\n${pv3}\n${pv4}`,
-              inline: false,
-            },
-            {
-              name: `<:wheat:1059664236038590584> Misc (${
-                addNotation("oneLetters", misc + stats.sacks.total) ?? 0
-              })`,
-              value: `→ Candy Bag (**${
-                addNotation("oneLetters", candy_inventory) ?? 0
-              }**)\n→ Fishing Bag (**${
-                addNotation("oneLetters", fishing_bag) ?? 0
-              }**)\n→ Potion Bag (**${
-                addNotation("oneLetters", potion_bag) ?? 0
-              }**)\n→ Sacks (**${
-                addNotation("oneLetters", stats.sacks.sacks) ?? 0
-              }**)\n→ Essence (**${
-                addNotation("oneLetters", stats.sacks.essence) ?? 0
-              }**)`,
-              inline: false,
-            },
-          ],
-          timestamp: new Date().toISOString(),
-          footer: {
-            text: `${messages.default}`,
-            iconURL: `${messages.icon}`,
-          },
-        };
 
-        const select = new StringSelectMenuBuilder()
-          .setCustomId("starter")
-          .setPlaceholder("View all your items!")
-          .addOptions(
-            new StringSelectMenuOptionBuilder()
-              .setLabel("Armor")
-              .setDescription("View all your armor")
-              .setValue("armor"),
 
-            new StringSelectMenuOptionBuilder()
-              .setLabel("Equipment")
-              .setDescription("The Fire-type Lizard Pokémon.")
-              .setValue("equipment"),
+        await interaction.editReply({ embeds: [embedplayer], components: [row1] });
 
-            new StringSelectMenuOptionBuilder()
-              .setLabel("Wardrobe")
-              .setDescription("A Skyblock Storage Area")
-              .setValue("wardrobe"),
+        client.on('interactionCreate', async (interaction) => {
+          if (!interaction.isStringSelectMenu()) return;
+  
+          // Check if the select menu is for this command
+          if (interaction.customId !== 'selectmenu') return;
+  
+          // Check if the user who interacted with the select menu is the one who used the command
+          if (interaction.user.id !== interaction.message.interaction.user.id) {
+              await interaction.reply({ content: 'You can\'t use this select menu.', ephemeral: true });
+              return;
+          }
+  
+          // Delete the select menu after 1 minute
+          setTimeout(async () => {
+              const filter = (i) => i.customId === 'selectmenu';
+              const collector = interaction.channel.createMessageComponentCollector({ filter, time: 60000 });
+              collector.on('collect', async (i) => {
+                  await i.update({ components: [] });
+              });
+          }, 60000);
 
-            new StringSelectMenuOptionBuilder()
-              .setLabel("Inventory")
-              .setDescription("A Skyblock Storage Area")
-              .setValue("inventory"),
-
-            new StringSelectMenuOptionBuilder()
-              .setLabel("Ender Chest")
-              .setDescription("A Skyblock Storage Area")
-              .setValue("enderchest"),
-
-            new StringSelectMenuOptionBuilder()
-              .setLabel("Storage")
-              .setDescription("A Skyblock Storage Area")
-              .setValue("storage"),
-
-            new StringSelectMenuOptionBuilder()
-              .setLabel("Museum")
-              .setDescription("A Skyblock Storage Area")
-              .setValue("museum"),
-
-            new StringSelectMenuOptionBuilder()
-              .setLabel("Pets")
-              .setDescription("A Skyblock Storage Area")
-              .setValue("pets"),
-
-            new StringSelectMenuOptionBuilder()
-              .setLabel("Accessories")
-              .setDescription("A Skyblock Storage Area")
-              .setValue("accessories"),
-
-            new StringSelectMenuOptionBuilder()
-              .setLabel("Personal Vault")
-              .setDescription("A Skyblock Storage Area")
-              .setValue("personalvault")
-          );
-
-        const row = new ActionRowBuilder().addComponents(select);
-
-        await interaction.editReply({ embeds: [embedplayer] });
-
+          // Return the selected option
+          if (interaction.values[0] === 'id_armor') {
+            await interaction.reply({ embeds: [wardrobe_embed], ephemeral: true });
+        } else if (interaction.values[0] === 'id_inventory') {
+            await interaction.reply({ embeds: [inventory_embed], ephemeral: true });
+        } else if (interaction.values[0] === 'id_ender_chest') {
+            await interaction.reply({ embeds: [enderchest_embed], ephemeral: true });
+        } else if (interaction.values[0] === 'id_storage') {
+            await interaction.reply({ embeds: [storage_embed], ephemeral: true });
+        } else if (interaction.values[0] === 'id_museum') {
+            await interaction.reply({ embeds: [museum_embed], ephemeral: true });
+        } else if (interaction.values[0] === 'id_pet_menu') {
+            await interaction.reply({ embeds: [pet_embed], ephemeral: true });
+        } else if (interaction.values[0] === 'id_talisman_bag') {
+            await interaction.reply({ embeds: [talisman_bag_embed], ephemeral: true });
+        }
+      });
 
       } catch (error) {
         const errorEmbed = handleError(error);

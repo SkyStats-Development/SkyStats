@@ -3,11 +3,20 @@
     "ActivityType": "Watching", 
     "Status": "online",
     "online, idle, dnd, invisible": "",
-    "Activity": "/networth >.<",
+    "Activity": "/networth",
     "issues": "",
     "releaseChannel": "1068058627568570368",
     "serverID": "1058272411247714425",
     "developmentRole": "1058273514941075477"
+  },
+  "api": {
+
+    "hypixel": {
+      "API": "https://api.hypixel.net",
+      "KEY": "0c5c17f6-805c-466b-8d9b-031c29519cd7"
+    },
+
+    "imgurAPIkey": "98ea6fff6d0ce73"
   },
   "messages": {
     "commandfailed": {
@@ -29,6 +38,6 @@
   },
   
   "database":   {
-    "uri": ""
+    "uri": "mongodb+srv://hyperbolic:deesahd284@cluster0.o4mur.mongodb.net/?retryWrites=true&w=majority"
     }
 }
