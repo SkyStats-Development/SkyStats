@@ -1,8 +1,8 @@
 {
   "name": "skystats",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "description": "A Hypixel Skyblock Metrics Bot For Discord.",
-  "changelog": "Fixed `/verify` command",
+  "changelog": "Bump packages\\nFix `/networth` fields after a year\\nFix multiple preformance issues with getPets() and getItems()\\nThe bot now works with the new api version!",
   "main": "index.js",
   "scripts": {
     "start": "pm2 start --only SkyStats-Production",
