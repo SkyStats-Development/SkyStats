@@ -9,31 +9,49 @@ let client;
 let db;
 
 async function connect() {
-  if (!client) {
+ if (!client) {
     client = new MongoClient(uri);
     await client.connect();
     db = client.db(dbName);
     Logger.databaseMessage(
         "Database Ready And Loaded!"
       )
-  }
+ }
 }
 
 function getDb() {
-  if (!db) {
+ if (!db) {
     throw new Error('Database connection not established.');
-  }
-  return db;
+ }
+ return db;
 }
 
 async function disconnect() {
-  if (client) {
+ if (client) {
     await client.close();
     client = null;
     db = null;
-  }
+ }
+}
+/* 
+async function logEverything() {
+ await connect();
+
+ const collections = await db.collections();
+
+ for (const collection of collections) {
+    const cursor = collection.find({});
+
+    await cursor.forEach(doc => {
+      console.log(doc);
+    });
+ }
+
+ await disconnect();
 }
 
+logEverything().catch(console.error);
+*/
 module.exports = {
   connect,
   getDb,

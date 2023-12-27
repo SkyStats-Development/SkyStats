@@ -55,7 +55,7 @@ const guild = await client.guilds.fetch('1058272411247714425');
     }
     }
     else {
-        interaction.reply({ content: `You do not have permission from the developers to use this command.`, ephemeral: true})
+        interaction.reply({ content: `You do not have permission from the developers`, ephemeral: true})
     }
 },
 };

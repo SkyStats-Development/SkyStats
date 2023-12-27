@@ -10,13 +10,11 @@ const fetchMuseumData = async (profile, uuid) => {
     const museumData = response.data.members[uuid];
 
     if (!museumData || !museumData.value) {
-      console.error('Museum data not found for the specified UUID:', response.data);
       return null;
     }
 
     return museumData;
  } catch (error) {
-    console.error('Error fetching museum data:', error);
     return null;
  }
 };
