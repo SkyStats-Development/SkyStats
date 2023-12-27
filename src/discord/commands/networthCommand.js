@@ -43,35 +43,6 @@ module.exports = {
       await interaction.editReply({ embeds: [errorembed] });
     } else {
       try {
-        const [stats, petData, itemsData, allItemsData] = await Promise.all([
-          getNetworth(uuid2, profileid),
-          getPets(uuid2, profileid),
-          getItems(uuid2, profileid),
-          getAllItems(uuid2, profileid),
-        ]);
-
-        const {
-          networth: { formatted: networth, short: shortnetworth },
-          soulbound: { formatted: unsoulbound, short: shortbound },
-          irlnw,
-          purse,
-          bank: { formatted: bank },
-          sacks: { total: sackvalue },
-          misc: { total: misc, candy_inventory, potion_bag, fishing_bag },
-        } = stats || {};
-        
-        const { inventory, inv, equipment, eq, armor, ar, accessories, acc, enderchest, ec, pv, personalV, storage, storageL, wardrobe, wd, museum, museumSpecial, mus } = itemsData || {};
-        const { petValue, petTotal, allPets, allLongPets } = petData || {};
-
-        const {
-          allAccessories,
-          allMuseum,
-          allInv,
-          allEnderchest,
-          allStorage,
-          allWardrobe,
-        } = allItemsData || {};
-
         const selectMenu = new StringSelectMenuBuilder()
         .setCustomId('selectmenu')
         .setPlaceholder('Select A field...')
