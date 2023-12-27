@@ -40,8 +40,8 @@ module.exports = {
           { name: "**Discord**: ", value: `${discordCommands}`, inline: true }
         )
         .setFooter({
-          text: `${messages.footer.defaultbetter}`,
-          iconURL: `${messages.footer.icon}`,
+          text: `${messages.defaultbetter}`,
+          iconURL: `${messages.icon}`,
         });
       await interaction.reply({ embeds: [helpMenu] });
     

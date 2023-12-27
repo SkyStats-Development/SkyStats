@@ -66,10 +66,6 @@ async function getPets(uuid, profileid) {
 
 	const allPets = createPetStrings(petItems, 4);
 	const allLongPets = createPetStrings(petItems, 20);
-
-	console.log(allPets);
-	console.log(allLongPets);
-
 	return { petTotal, allPets, allLongPets };
 }
 

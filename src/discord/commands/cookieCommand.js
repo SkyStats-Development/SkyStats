@@ -13,21 +13,33 @@ module.exports = {
   ],
 
   execute: async (interaction, client) => {
-    const cost = interaction.options.getString('cost');
-    const axios = require('axios');
-        const response = await axios.get('https://sky.shiiyu.moe/api/v2/bazaar');
-        const cookiePrice = response.data.BOOSTER_COOKIE.sellPrice;
-        const cookies = Math.round(cost / cookiePrice);
-        const value = Math.round(cookies * 2.27);
-
+    async function calculateCost(cost) {
+      try {
+          const response = await axios.get('https://sky.shiiyu.moe/api/v2/bazaar');
+          const cookiePrice = response.data.BOOSTER_COOKIE.sellPrice;
+          const cookies = Math.round(cost / cookiePrice);
+          const value = Math.round(cookies * 2.27);
+          return { value, cookies };
+      } catch (error) {
+          console.error(error);
+          return { error: 'Failed to fetch bazaar data' };
+      }
+  }
+  
+  const interactionCost = interaction.options.getString('cost');
+  const { value, cookies, error } = await calculateCost(interactionCost);
+  
+  if (error) {
+      interaction.reply({ content: error, ephemeral: true });
+  } else {
     const embed = {
       color: 0xffa600,
-      title: `How muchthing yeah i coded at 8am no sleep`,
+      title: `Cost ~_~`,
       description: `${value}`,
 
     };
+      interaction.reply({ embeds: [embed]});
+  }
 
-    // Send the embed as a reply to the interaction
-    return interaction.reply({ embeds: [embed] });
   },
 };

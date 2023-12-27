@@ -26,13 +26,11 @@ module.exports = {
             const user = interaction.user.id
             const guild = interaction.guild.name
             const messagelink = `https://discord.com/channels/${interaction.guild.id}/${interaction.channel.id}/${interaction.id}`
-
-
             const embed = {
                 title: `Issue Report`,
                 description: (`By: ${user}\nIn Server: **${guild}**\nCommand: **${command}**\nMessage: ${message}\n\n[Area where it happened](${messagelink})`),
                 timestamp: new Date().toISOString(),
-                footer: {text: `${messages.footer.defaultbetter}`, iconURL: `${messages.footer.icon}`},
+                footer: {text: `${messages.defaultbetter}`, iconURL: `${messages.icon}`},
                 };
                 
                 await channel.send({ embeds: [ embed ] })

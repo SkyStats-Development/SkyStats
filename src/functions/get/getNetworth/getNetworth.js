@@ -1,10 +1,21 @@
 const axios = require("axios");
-const { getCookiePrice } = require("../getCookie");
 const { addCommas, addNotation } = require("../../../contracts/helperFunctions");
 const config = require("../../../../config.json");
 const { getSkyHelper } = require("./getSkyHelper")
+require("dotenv").config();
+const apiKey = process.env.KEY;
 
-async function getNetworth(uuid, profileid) {
+  async function getCookiePrice() {
+  try {
+    const response = await axios.get(`https://api.hypixel.net/v2/skyblock/bazaar?key=${apiKey}`);
+    const cookiePrice = response.data.products.BOOSTER_COOKIE.quick_status.buyPrice;
+    return cookiePrice;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+ async function getNetworth(uuid, profileid) {
 
   const networthRaw = await getSkyHelper(profileid, uuid)
 

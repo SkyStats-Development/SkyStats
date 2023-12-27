@@ -30,7 +30,7 @@ module.exports = {
             await interaction.reply({content: "Success.", ephemeral: true})
         }
          else {
-            interaction.reply({ content: `${messages.commandfailed.serverless}`, ephemeral: true})
+            interaction.reply({ content: `You lack permissions!`, ephemeral: true})
             }
     }
 };;

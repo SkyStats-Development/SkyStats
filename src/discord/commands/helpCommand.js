@@ -33,7 +33,7 @@ module.exports = {
                 }
             ],
             timestamp: new Date().toISOString(),
-            footer: {text: `${messages.footer.defaultbetter}`, iconURL: `${messages.footer.icon}`},
+            footer: {text: `${messages.defaultbetter}`, iconURL: `${messages.icon}`},
             };
     
 

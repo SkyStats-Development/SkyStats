@@ -65,8 +65,8 @@ module.exports = {
               description: `An error has occurred. Please try again later.\nIf the error persists, please contact the bot developer.\n\nError: ${error.message}\nLine: ${line}`,
               timestamp: new Date().toISOString(),
               footer: {
-                  text: `${messages.footer.default}`,
-                  iconURL: `${messages.footer.icon}`,
+                  text: `${messages.default}`,
+                  iconURL: `${messages.icon}`,
               },
             }
             await interaction.editReply({ embeds: [errorembed2m] });
@@ -76,7 +76,7 @@ module.exports = {
           }
         } else {
           console.error(`Error: ${error}`);
-          await interaction.editReply({ content: `Oops! an unexpected error has happened!` })
+          await interaction.editReply({ content: `Oops! an unexpected error has happened!\n\n${error}` })
         }
       }    
 

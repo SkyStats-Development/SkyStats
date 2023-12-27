@@ -1,9 +1,8 @@
 // Credits to my UI and frontend designer, pandy!
-const { AttachmentBuilder, Client, Events, GatewayIntentBits, EmbedBuilder} = require('discord.js');
+const { AttachmentBuilder} = require('discord.js');
 const config = require(`../../../config.json`)
 const messages = config.messages.discord
 const { getPlayer } = require("../../functions/get/getPlayer");
-const { handleError } = require("../../functions/handle/handleError");
 const {createCanvas, Image, registerFont} = require('canvas');
 const { readFile } = require('fs/promises');
 const hypixel = require('../../contracts/API/HypixelRebornAPI')
@@ -13,19 +12,29 @@ const key = process.env.KEY;
 registerFont(__dirname + '/Fonts/mc.ttf', { family: 'Minecraft' });
 registerFont(__dirname + `/Fonts/unifont.ttf`, { family: 'font'});
 registerFont(__dirname + `/Fonts/mc-bold.otf`, {family: "MinecraftBOLD"});
-  function formatDate(dateImput) {
-    const date = new Date(dateImput);
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const year = date.getFullYear().toString().substring(2);
-    let hour = date.getHours();
-    let minute = date.getMinutes();
-    const amPm = hour >= 12 ? 'PM' : 'AM';
-    hour = hour % 12 || 12;
-    minute = minute < 10 ? '0' + minute : minute;
-    return `${month}/${day}/${year}, ${hour}:${minute} ${amPm}`;
-  }
 
+function formatDate(dateImput) {
+  const date = new Date(dateImput);
+  const formattedDate = formatFormDate(date);
+  const formattedTime = formatFormTime(date);
+  return `${formattedDate}, ${formattedTime}`;
+ }
+ 
+ function formatFormDate(date) {
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const year = date.getFullYear().toString().substring(2);
+  return `${month}/${day}/${year}`;
+ }
+ 
+ function formatFormTime(date) {
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+  const amPm = hour >= 12 ? 'PM' : 'AM';
+  const formattedHour = hour % 12 || 12;
+  const formattedMinute = minute < 10 ? '0' + minute : minute;
+  return `${formattedHour}:${formattedMinute} ${amPm}`;
+ }
 
 module.exports = {
     name: 'player',
