@@ -1,6 +1,4 @@
 const { addNotation } = require("../../../contracts/helperFunctions");
-const config = require("../../../../config.json");
-const { default: axios } = require("axios");
 const { getSkyHelper } = require
 ("./getSkyHelper")
 

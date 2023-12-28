@@ -1,16 +1,7 @@
-const { ActionRowBuilder, StringSelectMenuBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
-const { addNotation, addCommas } = require("../../contracts/helperFunctions");
-const config = require("../../../config.json");
-const messages = config.messages.discord;
-const { getNetworth } = require("../../functions/get/getNetworth/getNetworth");
-const { getPets } = require("../../functions/get/getNetworth/getPets");
-const {getItems, getAllItems,} = require("../../functions/get/getNetworth/getItems");
+const { ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js');
 const { getPlayer } = require("../../functions/get/getPlayer");
 const { networthEmbed } = require("./embeds/networthEmbed.js")
 const { handleError } = require("../../functions/handle/handleError");
-const PURSE_ICON = "<:Purse:1059997956784279562>";
-const IRON_INGOT_ICON = "<:IRON_INGOT:1070126498616455328>";
-const BOOSTER_COOKIE_ICON = "<:BOOSTER_COOKIE:1070126116846710865>";
 
 
 module.exports = {
