@@ -19,6 +19,7 @@ const fetchMuseumData = async (profile, uuid) => {
  }
 };
 
+
 const fetchProfileData = async (uuid) => {
  const url = `https://api.hypixel.net/v2/skyblock/profiles?key=${apiKey}&uuid=${uuid}`;
  try {
@@ -48,7 +49,7 @@ const getSkyHelper = async (profile, uuid) => {
  const { memberData, bankBalance } = await fetchProfileData(uuid);
  const museumData = await fetchMuseumData(profile, uuid);
 
- const networth = await getNetworth(memberData, bankBalance, {v2Endpoint: true, museumData });
+ const networth = await getNetworth(memberData, bankBalance, { v2Endpoint: true, museumData });
 
  return { networth };
 };

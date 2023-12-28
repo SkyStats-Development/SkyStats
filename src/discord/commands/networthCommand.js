@@ -1,6 +1,6 @@
 const { ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js');
 const { getPlayer } = require("../../functions/get/getPlayer");
-const { networthEmbed } = require("./embeds/networthEmbed.js")
+const { networthEmbed } = require("./embeds/networthEmbed.js");
 const { handleError } = require("../../functions/handle/handleError");
 
 
