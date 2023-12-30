@@ -66,7 +66,7 @@ function handleError(error) {
   }
   
   async function handlePlayer(error) {
-    if (error === unlinked) {
+    if (error === "unlinked") {
       return {
         color: 0xff0000,
         title: `Error`,
@@ -78,7 +78,7 @@ function handleError(error) {
         },
       };
     }
-    else if (error === playerNotFound) {
+    else if (error === "playerNotFound") {
       return {
         color: 0xff0000,
         title: `Error`,

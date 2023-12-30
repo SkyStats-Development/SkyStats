@@ -131,7 +131,7 @@ const createItemStrings = (items, maxItems = Infinity) => {
         short: shortUnsoulbound,
       },
       bank: {
-        formatted: formattedBank,
+        formatted: formattedBank.toString().split(".")[0],
         purse: purse,
       },
       total: {

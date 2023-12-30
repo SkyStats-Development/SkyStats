@@ -14,7 +14,7 @@ async function getPlayer(id, name) {
             throw new Error('No linked account found');
         }
     } catch (error) {
-        const errorMessage = handlePlayer(unlinked)
+        const errorMessage = handlePlayer("unlinked")
         return {
             error: errorMessage
         };
