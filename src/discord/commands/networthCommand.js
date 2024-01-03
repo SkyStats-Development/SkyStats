@@ -25,12 +25,7 @@ module.exports = {
     );
     if (error) {
       console.log(error);
-      const errorembed = {
-        color: 0xff0000,
-        title: `Error`,
-        description: `Data: ` + error.description,
-        timestamp: new Date().toISOString(),
-      };
+      const errorembed = error
       await interaction.editReply({ embeds: [errorembed] });
     } else {
       try {

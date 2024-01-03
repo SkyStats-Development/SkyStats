@@ -18,20 +18,9 @@ module.exports = {
       ],
       
     execute: async (interaction, client, InteractionCreate) => {
-        const guild = await client.guilds.fetch('1058272411247714425');
-        if (guild.members.cache.get(interaction.user.id)?.roles.cache.has(config.discord.developmentRole)) {
         let message = interaction.options.getString('message').replaceAll('\\n', '\n')
             await interaction.channel.send(`${message}`);
             await interaction.reply({content: "Success.", ephemeral: true})
-        }
-        else if (interaction.user.id === `790736254714642453`) {
-            let message = interaction.options.getString('message').replaceAll('\\n', '\n')
-            await interaction.channel.send(`${message}`);
-            await interaction.reply({content: "Success.", ephemeral: true})
-        }
-         else {
-            interaction.reply({ content: `You lack permissions!`, ephemeral: true})
-            }
     }
 };;
 
