@@ -2,7 +2,7 @@ const axios = require('axios');
 const { getNetworth } = require('skyhelper-networth');
 require("dotenv").config();
 const apiKey = process.env.KEY;
-const fs = require(`fs`)
+
 
 
 const fetchMuseumData = async (profile, uuid) => {

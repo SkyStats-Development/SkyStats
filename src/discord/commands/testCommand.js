@@ -23,7 +23,6 @@ module.exports = {
             description: (`${message}`),
             timestamp: new Date().toISOString(),
             };
-            
             await channel.send({ embeds: [ embed ] })
             await interaction.reply({content: "Your report has been shared with the developers, do not delete this message.", ephemeral: false})
 

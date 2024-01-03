@@ -1,5 +1,4 @@
 const config = require("../../../config.json");
-const { getPlayer } = require("../../functions/get/getPlayer");
 const { handleError } = require("../../functions/handle/handleError");
 const messages = config.messages.discord
 
