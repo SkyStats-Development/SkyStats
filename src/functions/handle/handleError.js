@@ -15,6 +15,39 @@ function handleError(error) {
             iconURL: `${messages.icon}`,
         },
       };
+    } else if (error instanceof AxiosError && error.response.data.code === "minecraft.invalid_username") {
+      return {
+        color: 0xff0000,
+        title: error.response.data.message,
+        description: `The username you have entered does not currently own minecraft java edition`,
+        timestamp: new Date().toISOString(),
+        footer: {
+            text: `${messages.default}`,
+            iconURL: `${messages.icon}`,
+        },
+      };
+    } else if (error instanceof AxiosError && error.response.data.code === "api.unknown_error") {
+      return {
+        color: 0xff0000,
+        title: error.response.data.message,
+        description: `An unknown error with searching your username has happened, please double check and try again!`,
+        timestamp: new Date().toISOString(),
+        footer: {
+            text: `${messages.default}`,
+            iconURL: `${messages.icon}`,
+        },
+      };
+    } else if (error instanceof AxiosError && error.response.data.code === "minecraft.api_failure") {
+      return {
+        color: 0xff0000,
+        title: error.response.data.message,
+        description: `You either entered an invalid username *or* Mojang is down!`,
+        timestamp: new Date().toISOString(),
+        footer: {
+            text: `${messages.default}`,
+            iconURL: `${messages.icon}`,
+        },
+      };
     } else if (error instanceof AxiosError && error.response.status === 502){
       console.log(error)
       return {
@@ -28,11 +61,10 @@ function handleError(error) {
         },
       };
     } else if (error instanceof AxiosError) {
-      console.log(error)
       return {
         color: 0xff0000,
-        title: `Error`,
-        description: `An error with fetching *something* has happened. Please contact the developers!`,
+        title: `Error :: `,
+        description: `An error with fetching *something* has happened. Please contact the developers! with the below data!\n\n\`\`\`${error?.response?.data}\`\`\``,
         timestamp: new Date().toISOString(),
         footer: {
             text: `${messages.default}`,
@@ -70,7 +102,7 @@ function handleError(error) {
       return {
         color: 0xff0000,
         title: `Error`,
-        description: `You do not currently have an account verified with SkyStats, please verify your Minecraft account with \`/verify\`.`,
+        description: `You do not currently have an account verified with SkyStats, please link your discord account with \`/verify\`.`,
         timestamp: new Date().toISOString(),
         footer: {
             text: `${messages.default}`,

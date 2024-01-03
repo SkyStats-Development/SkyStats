@@ -37,7 +37,6 @@ async function getPlayer(id, name) {
         return { uuid2, username, profilename, profileid, playerData, profileData, profile };
         
     } catch (error) {
-        console.log(error);
         const errorMessage = handleError(error)
         return {
             error: errorMessage

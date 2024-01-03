@@ -99,12 +99,13 @@ const createItemString = (item) => {
     }
 }
 
-const createItemStrings = (items, maxItems = Infinity) => {
-    if (!items || !Array.isArray(items)) {
-        return "No items\nTry Checking your Hypixel API settings!";
-    }
+const createItemStrings = (items, maxItems) => {
     const itemStrings = items.slice(0, maxItems).map(createItemString);
-    
+/*
+    if (items.length) {
+      return "No items\nTry Checking your Hypixel API settings!";
+  }
+  */
     if (items.length > maxItems) {
         itemStrings[maxItems - 1] += `\n→ **And \`${items.length - maxItems}\` more...**`;
     }

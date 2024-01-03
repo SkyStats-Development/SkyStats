@@ -2,6 +2,8 @@ const axios = require('axios');
 const { getNetworth } = require('skyhelper-networth');
 require("dotenv").config();
 const apiKey = process.env.KEY;
+const fs = require(`fs`)
+
 
 const fetchMuseumData = async (profile, uuid) => {
  const url = `https://api.hypixel.net/v2/skyblock/museum?key=${apiKey}&profile=${profile}`;
@@ -46,12 +48,11 @@ const fetchProfileData = async (uuid) => {
 };
 
 const getSkyHelper = async (profile, uuid) => {
- const { memberData, bankBalance } = await fetchProfileData(uuid);
- const museumData = await fetchMuseumData(profile, uuid);
+   const { memberData, bankBalance } = await fetchProfileData(uuid);
+   const museumData = await fetchMuseumData(profile, uuid);
 
- const networth = await getNetworth(memberData, bankBalance, { v2Endpoint: true, museumData });
-
- return { networth };
-};
+   const networth = await getNetworth(memberData, bankBalance, { v2Endpoint: true, museumData });
+   return { networth };
+}
 
 module.exports = { getSkyHelper };

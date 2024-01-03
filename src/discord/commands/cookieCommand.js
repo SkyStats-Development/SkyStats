@@ -17,8 +17,8 @@ module.exports = {
       try {
           const response = await axios.get('https://sky.shiiyu.moe/api/v2/bazaar');
           const cookiePrice = response.data.BOOSTER_COOKIE.sellPrice;
-          const cookies = Math.round(cost / cookiePrice);
-          const value = Math.round(cookies * 2.27);
+          const cookies = (cost / cookiePrice);
+          const value = (cookies * 2.27);
           return { value, cookies };
       } catch (error) {
           console.error(error);
@@ -35,7 +35,7 @@ module.exports = {
     const embed = {
       color: 0xffa600,
       title: `Cost ~_~`,
-      description: `${value}`,
+      description: `${value}\n${cookies}`,
 
     };
       interaction.reply({ embeds: [embed]});
