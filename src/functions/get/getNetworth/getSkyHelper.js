@@ -8,7 +8,7 @@ const apiKey = process.env.KEY;
 const fetchMuseumData = async (profile, uuid) => {
  const url = `https://api.hypixel.net/v2/skyblock/museum?key=${apiKey}&profile=${profile}`;
  try {
-    const response = await axios.get(url);
+    const response = await axios.get(url)
     const museumData = response.data.members[uuid];
 
     if (!museumData || !museumData.value) {

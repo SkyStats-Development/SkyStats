@@ -2,7 +2,7 @@ const { ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js');
 const { getPlayer } = require("../../functions/get/getPlayer");
 const { networthEmbed } = require("./embeds/networthEmbed.js");
 const { handleError } = require("../../functions/handle/handleError");
-
+const { getNetworth } = require(`../../functions/get/getNetworth/getNetworth`);
 
 module.exports = {
   name: "networth",
@@ -71,27 +71,28 @@ module.exports = {
           }
         ]);
         const row1 = new ActionRowBuilder().addComponents(selectMenu);
-        function networthEmbeds(uuid, profileId, username, profileName) {
+        async function networthEmbeds(uuid, profileId, username, profileName, networth) {
           const embedData = {
-              "totals_embed": "Totals",
-              "wardrobe_embed": "Wardrobe",
-              "inventory_embed": "Inventory",
-              "enderchest_embed": "Enderchest",
-              "storage_embed": "Storage",
-              "pet_embed": "Pet",
-              "talisman_bag_embed": "Talisman Bag",
-              "museum_embed": "Museum"
+               "totals_embed": "Totals",
+               "wardrobe_embed": "Wardrobe",
+               "inventory_embed": "Inventory",
+               "enderchest_embed": "Enderchest",
+               "storage_embed": "Storage",
+               "pet_embed": "Pet",
+               "talisman_bag_embed": "Talisman Bag",
+               "museum_embed": "Museum"
           };
           const embedPromises = [];
           for (const [key, value] of Object.entries(embedData)) {
-              embedPromises.push(networthEmbed(key, uuid, profileId, username, profileName, value));
+               embedPromises.push(networthEmbed(key, uuid, profileId, username, profileName, networth, value));
           }
           const embeds = Promise.all(embedPromises);
           return embeds;
-      }
-      const [totals_embed, wardrobe_embed, inventory_embed, enderchest_embed, storage_embed, pet_embed, talisman_bag_embed, museum_embed] = await networthEmbeds(uuid2, profileid, username, profilename);
-
-
+         }
+         
+         const networth = await getNetworth(uuid2, profileid) || {};
+         const embeds = await networthEmbeds(uuid2, profileid, username, profilename, networth);
+         const [totals_embed, wardrobe_embed, inventory_embed, enderchest_embed, storage_embed, pet_embed, talisman_bag_embed, museum_embed] = embeds;
         await interaction.editReply({ embeds: [totals_embed], components: [row1] });
 
         client.on('interactionCreate', async (interaction) => {

@@ -49,11 +49,17 @@ async function getCookiePrice() {
     console.error(error);
   }
 }
-
+function handleSplits(value) {
+  if (value === 0 || value === NaN || value === undefined || value === Infinity /* (yeah infinity happened once we dont talk about it) */) {
+    return value;
+  } else {
+    return Math.round(value.toString());
+  }
+}
 
 async function getNetworth(uuid, profileid) {
   const cookiePrice = await getCookiePrice();
-  const networthRaw = await getSkyHelper(profileid, uuid)
+  const networthRaw = await getSkyHelper(profileid, uuid);
   const { total: petTotal, items: petItems } = networthRaw.networth.types.pets;
 
 	const createPetString = (pet) => {
@@ -90,7 +96,7 @@ const createItemString = (item) => {
     if (!item) return '';
 
     const isRecombobulated = item.calculation.some((a) => a.id === 'RECOMBOBULATOR_3000');
-    const price = addNotation('oneLetters', item.price) || 0; 
+    const price = addNotation('oneLetters', handleSplits(item.price)) || 0; 
 
     if (item.count >= 2) {
         return `→ \`${item.count}x\` ${item.name}${isRecombobulated ? `${RECOMBOBULATOR_3000}` : ''} (**${price}**)`;
@@ -98,7 +104,6 @@ const createItemString = (item) => {
         return `→ ${item.name}${isRecombobulated ? `${RECOMBOBULATOR_3000}` : ''} (**${price}**)`;
     }
 }
-
 const createItemStrings = (items, maxItems) => {
     const itemStrings = items.slice(0, maxItems).map(createItemString);
 /*
@@ -112,47 +117,34 @@ const createItemStrings = (items, maxItems) => {
     
     return itemStrings.join('\n');
 };
-  const formattedNetworth = addNotation("numbers", addCommas(networthRaw.networth.networth.toString().split(".")[0]));
-  const shortNetworth = addNotation("oneLetters", networthRaw.networth.networth);
-  const formattedSoulbound = addNotation("numbers", addCommas(networthRaw.networth.unsoulboundNetworth.toString().split(".")[0]));
-  const shortUnsoulbound = addNotation("oneLetters", networthRaw.networth.unsoulboundNetworth);
-  const cookies = Math.round(networthRaw.networth.networth / cookiePrice)
-  const value = addNotation("numbers", addCommas(Math.round(cookies * 2.27)));
-  const formattedBank = addNotation("oneLetters", networthRaw.networth.bank);
-  const purse = Math.round(networthRaw.networth.purse);
-  const sack = networthRaw.networth.types.sacks.total;
-  const essence = networthRaw.networth.types.essence.total;
-  const fishingBag = networthRaw.networth.types.fishing_bag.total;
-  const sackValue = Math.round((sack + essence + fishingBag) * 100) / 100;
-
   return {
     networth: {
       soulbound: {
-        formatted: formattedSoulbound,
-        short: shortUnsoulbound,
+        formatted: addNotation("numbers", addCommas(networthRaw.networth.unsoulboundNetworth.toString().split(".")[0])),
+        short: addNotation("oneLetters", networthRaw.networth.unsoulboundNetworth),
       },
       bank: {
-        formatted: formattedBank.toString().split(".")[0],
-        purse: purse,
+        formatted: addNotation("oneLetters", handleSplits(networthRaw.networth.bank)),
+        purse: Math.round(networthRaw.networth.purse),
       },
       total: {
-        irl_value: value,
-        total_networth: formattedNetworth,
-        short_networth: shortNetworth,
+        irl_value: addNotation("numbers", addCommas(Math.round(Math.round(networthRaw.networth.networth / cookiePrice) * 2.27))),
+        total_networth: addNotation("numbers", addCommas(networthRaw.networth.networth.toString().split(".")[0])),
+        short_networth: addNotation("oneLetters", networthRaw.networth.networth),
         items_total: {
           museum: {
-            museum_value: museum.toString().split(".")[0],
-            special_museum_value: museumSpecial.toString().split(".")[0],
+            museum_value: handleSplits(museum),
+            special_museum_value: handleSplits(museumSpecial),
           },
-          inventory_value: inventory.toString().split(".")[0],
-          talisman_bag_value: accessories.toString().split(".")[0],
-          armor_value: armor.toString().split(".")[0],
-          enderchest_value: enderchest.toString().split(".")[0],
-          wardrobe_value: wardrobe.toString().split(".")[0],
-          equipment_value: equipment.toString().split(".")[0],
-          personal_vault_value: personal_vault.toString().split(".")[0],
-          storage_value: storage.toString().split(".")[0],
-          pet_value: petTotal.toString().split(".")[0],
+          inventory_value: handleSplits(inventory),
+          talisman_bag_value: handleSplits(accessories),
+          armor_value: handleSplits(armor),
+          enderchest_value: handleSplits(enderchest),
+          wardrobe_value: handleSplits(wardrobe),
+          equipment_value: handleSplits(equipment),
+          personal_vault_value: handleSplits(personal_vault),
+          storage_value: handleSplits(storage),
+          pet_value: handleSplits(petTotal),
         },
       }
     },
@@ -180,10 +172,10 @@ const createItemStrings = (items, maxItems) => {
       },
     },
     sacks: {
-      total: sackValue,
-      fishing_bag: fishingBag,
-      essence: essence,
-      sacks: sack,
+      total: Math.round((networthRaw.networth.types.sacks.total + networthRaw.networth.types.essence.total + networthRaw.networth.types.fishing_bag.total) * 100) / 100,
+      fishing_bag: networthRaw.networth.types.fishing_bag.total,
+      essence: networthRaw.networth.types.essence.total,
+      sacks: networthRaw.networth.types.sacks.total,
     },
   };
 }

@@ -1,8 +1,8 @@
 {
   "name": "skystats",
-  "version": "1.4.0",
+  "version": "1.4.5",
   "description": "A Hypixel Skyblock Metrics Bot For Discord.",
-  "changelog": "Bump packages\\nFix `/networth` fields after a year\\nFix multiple preformance issues with getPets() and getItems()\\nThe bot now works with the new api version!",
+  "changelog": "SkyStats Nightly Build minor changes to how getNetworth() is called, and backend changes to getSkyHelper(), networthEmbed(), networthCommand",
   "main": "index.js",
   "scripts": {
     "start": "pm2 start --only SkyStats-Production",
