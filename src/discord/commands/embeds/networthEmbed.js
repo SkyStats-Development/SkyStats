@@ -20,7 +20,7 @@ const EMOJIS = {
   PERSONAL_VAULT_ICON: `<:item_2654:1061455349338615859>`,
   MISC_ICON: `<:wheat:1059664236038590584>`,
 }
-async function networthEmbed(embed_ID, uuid, username, profilename, networth) {
+async function networthEmbed(embed_ID, uuid, profileid, username, profilename, networth) {
       if (embed_ID === `totals_embed`) {
         return {
             color: 0xffa600,
