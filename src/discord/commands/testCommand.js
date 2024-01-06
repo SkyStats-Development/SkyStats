@@ -1,30 +1,39 @@
 const { ActionRowBuilder, StringSelectMenuBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
-
+const { handleError } = require("../../functions/handle/handleError");
+const { farmingWeight } = require("../../functions/get/getWeight")
+const { senitherWeight } = require("../../functions/get/getWeight")
+const { farmingWeight_Embed } = require('./embeds/weightEmbed')
+const { calculateTotalSenitherWeight } = require('../../functions/constants/senitherWeight')
+const { getPlayer } = require("../../functions/get/getPlayer")
 module.exports = {
     name: 'test',
     description: 'bot credits',
     options: [
         {
-            name: 'message',
+            name: 'name',
             description: 'message to send',
             type: 3,
-            required: true
+            required: false
         },
 
         
       ],
 
-    execute: async (interaction, client) => {
-        const message = interaction.options.getString('message').replaceAll('\\n', '\n')
-        const channel = client.channels.cache.get(`1113587258117861378`);
-        const embed = {
-            title: `Wtf`,
-            color: 0xffa600,
-            description: (`${message}`),
-            timestamp: new Date().toISOString(),
-            };
-            await channel.send({ embeds: [ embed ] })
-            await interaction.reply({content: "Your report has been shared with the developers, do not delete this message.", ephemeral: false})
+      execute: async (interaction, client, InteractionCreate) => {
+        const id = interaction.user.id;
+        const { uuid2, username, profilename, profileid, playerData, profileData, profile, error } = await getPlayer(
+          id,
+          interaction.options.getString("name")
+        );
+     //   console.log(await calculateTotalSenitherWeight(profile))
+        console.log(await senitherWeight(profile))
+        await interaction.deferReply();
 
-    },
-};
+            try {
+                await interaction.editReply({content: "Success."})
+            } catch (error) {
+                const errorEmbed = handleError(error);
+                await interaction.editReply({ embeds: [errorEmbed] });
+            }
+        }
+    }

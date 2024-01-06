@@ -25,7 +25,7 @@ module.exports = {
     execute: async (interaction, client) => {
     const oldVersion = packageJson.version;
       const guild = await client.guilds.fetch('1058272411247714425');
-      const changelogValue = interaction.options.getString('changelog');
+      const changelogValue = interaction.options.getString('changelog').replaceAll('\\n', '\n');
       const versionValue = interaction.options.getString('version');
       if (guild.members.cache.get(interaction.user.id)?.roles.cache.has(config.discord.developmentRole)) {
 

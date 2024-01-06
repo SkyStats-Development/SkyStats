@@ -27,6 +27,7 @@
   },
   "discord": {
     "default": "🌹 SkyStats 🌹 ~ Hypixel And SkyBlock Bot",
+    "farming_weight": "🌹 SkyStats 🌹 ~ Elite Farmers Weight Calculation",
     "support": "🌹 SkyStats 🌹 ~ Support",
     "defaultbetter": "🌹 SkyStats 🌹 ~ run [/help] for help",
     "owner": "🌹 Axle#9171 🌹",

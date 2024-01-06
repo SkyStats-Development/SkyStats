@@ -4,6 +4,7 @@ module.exports = {
       name: "SkyStats-Production",
       script: "./start/production_start.js",
       instances: 1,
+      mode: "fork",
       autorestart: true,
       watch: true,
       max_memory_restart: "4G",

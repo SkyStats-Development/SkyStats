@@ -107,13 +107,12 @@ async function calculateTotalSenitherWeight(profile) {
         },
         dungeons: {
             catacombs: await calculateSenitherWeight('catacombs', (calcSkill('dungeoneering', profile.dungeons?.dungeon_types?.catacombs?.experience || 0)).levelWithProgress, profile.dungeons?.dungeon_types?.catacombs?.experience  || 0),
-            classes: {
-                healer: await calculateSenitherWeight('healer', (calcSkill('dungeoneering', profile.dungeons?.player_classes?.healer?.experience || 0)).levelWithProgress, profile.dungeons?.player_classes?.healer?.experience || 0),
-                mage: await calculateSenitherWeight('mage', (calcSkill('dungeoneering', profile.dungeons?.player_classes?.mage?.experience || 0)).levelWithProgress, profile.dungeons?.player_classes?.mage?.experience || 0),
-                berserk: await calculateSenitherWeight('berserk', (calcSkill('dungeoneering', profile.dungeons?.player_classes?.berserk?.experience || 0)).levelWithProgress, profile.dungeons?.player_classes?.berserk?.experience || 0),
-                archer: await calculateSenitherWeight('archer', (calcSkill('dungeoneering', profile.dungeons?.player_classes?.archer?.experience || 0)).levelWithProgress, profile.dungeons?.player_classes?.archer?.experience || 0),
-                tank: await calculateSenitherWeight('tank', (calcSkill('dungeoneering', profile.dungeons?.player_classes?.tank?.experience || 0)).levelWithProgress, profile.dungeons?.player_classes?.tank?.experience || 0),
-            }
+            healer: await calculateSenitherWeight('healer', (calcSkill('dungeoneering', profile.dungeons?.player_classes?.healer?.experience || 0)).levelWithProgress, profile.dungeons?.player_classes?.healer?.experience || 0),
+            mage: await calculateSenitherWeight('mage', (calcSkill('dungeoneering', profile.dungeons?.player_classes?.mage?.experience || 0)).levelWithProgress, profile.dungeons?.player_classes?.mage?.experience || 0),
+            berserk: await calculateSenitherWeight('berserk', (calcSkill('dungeoneering', profile.dungeons?.player_classes?.berserk?.experience || 0)).levelWithProgress, profile.dungeons?.player_classes?.berserk?.experience || 0),
+            archer: await calculateSenitherWeight('archer', (calcSkill('dungeoneering', profile.dungeons?.player_classes?.archer?.experience || 0)).levelWithProgress, profile.dungeons?.player_classes?.archer?.experience || 0),
+            tank: await calculateSenitherWeight('tank', (calcSkill('dungeoneering', profile.dungeons?.player_classes?.tank?.experience || 0)).levelWithProgress, profile.dungeons?.player_classes?.tank?.experience || 0),
+            
         }
     }
     return weight
