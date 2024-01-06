@@ -106,15 +106,12 @@ const createItemString = (item) => {
 }
 const createItemStrings = (items, maxItems) => {
     const itemStrings = items.slice(0, maxItems).map(createItemString);
-/*
-    if (items.length) {
-      return "No items\nTry Checking your Hypixel API settings!";
-  }
-  */
     if (items.length > maxItems) {
         itemStrings[maxItems - 1] += `\n→ **And \`${items.length - maxItems}\` more...**`;
     }
-    
+    if (itemStrings.length === 0) {
+      return "No items or API off";
+  }
     return itemStrings.join('\n');
 };
   return {

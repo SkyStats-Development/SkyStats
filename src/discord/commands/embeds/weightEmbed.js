@@ -52,5 +52,9 @@ async function farmingWeight_Embed(uuid, username, profilename) {
     }
     }
 
+  async function SenitherWeight_Embed(profile, username, profilename) {
+    
+  }
 
-module.exports = { farmingWeight_Embed };
+
+module.exports = { farmingWeight_Embed, SenitherWeight_Embed };

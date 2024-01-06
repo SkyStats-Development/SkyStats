@@ -1,8 +1,8 @@
 {
   "name": "skystats",
-  "version": "1.4.6.1",
+  "version": "1.4.7",
   "description": "A Hypixel Skyblock Metrics Bot For Discord.",
-  "changelog": "SkyStats Nightly\n1.4.6.1 Weight command beta\n+farmingWeight()\n+senitherWeight()\n+Sanitization for both\n+weightCommand.js\nNote that weight command is not finished and this is only the framework\n**TODO** Buttons and switching\nFix an error in 1.4.6 that caused networth to die",
+  "changelog": "SkyStats Nightly\nTiny update + fixes for getNetworth() to handle 0 items",
   "main": "index.js",
   "scripts": {
     "start": "pm2 start --only SkyStats-Production",
@@ -50,7 +50,7 @@
     "prismarine-nbt": "^2.4.0",
     "rss-parser": "^3.13.0",
     "senitherweight": "^1.0.8",
-    "skyhelper-networth": "^1.18.0",
+    "skyhelper-networth": "^1.18.1",
     "util": "^0.12.5"
   }
 }
