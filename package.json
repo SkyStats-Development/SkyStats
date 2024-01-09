@@ -1,8 +1,8 @@
 {
   "name": "skystats",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "description": "A Hypixel Skyblock Metrics Bot For Discord.",
-  "changelog": "SkyStats Nightly\nTiny update + fixes for getNetworth() to handle 0 items",
+  "changelog": "Changes to 2 events\nbump license\nFix publish command throwing pm2",
   "main": "index.js",
   "scripts": {
     "start": "pm2 start --only SkyStats-Production",

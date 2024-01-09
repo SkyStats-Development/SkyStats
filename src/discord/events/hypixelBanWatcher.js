@@ -14,7 +14,7 @@ async function banTracker() {
       `https://api.hypixel.net/punishmentstats?key=${config.api.hypixel.KEY}`
     );
 
-    const channel = client.channels.cache.get(`1129086757405737091`);
+    const channel = client.channels.cache.get(config.discord.ban_log_channel);
     const embed1 = {
       title: `🔨 Hypixel Ban Statistics 🔨`,
       description: `Hypixel ban statistics are updated every 10 secounds`,

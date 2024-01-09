@@ -66,6 +66,7 @@ module.exports = {
           const response = await interaction.channel.awaitMessageComponent({ filter: collectorFilter, time: 60000 });
           const confirmation = response;
           if (confirmation.customId === 'confirm') {
+            await releaseCreate(oldVersion, versionValue, changelogValue)
             fs.readFile('package.json', 'utf8', (err, data) => {
                 if (err) {
                   console.error(err);
@@ -93,7 +94,6 @@ module.exports = {
 
 
             await confirmation.update({ content: 'Changelog Published to discord!', components: [] });
-            await releaseCreate(oldVersion, versionValue, changelogValue)
           } else if (confirmation.customId === 'cancel') {
             await confirmation.update({ content: 'Action cancelled', components: [] });
           }
