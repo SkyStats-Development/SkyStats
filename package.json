@@ -1,12 +1,13 @@
 {
   "name": "skystats",
-  "version": "1.4.8",
+  "version": "1.4.9",
   "description": "A Hypixel Skyblock Metrics Bot For Discord.",
-  "changelog": "Changes to 2 events\nbump license\nFix publish command throwing pm2",
+  "changelog": "SkyStats Nightly\nCreated an Update script and function (same as the skyhelper api for now!)",
   "main": "index.js",
   "scripts": {
     "start": "pm2 start --only SkyStats-Production",
     "dev": "pm2 start --only SkyStats-Development",
+    "update": "node ./start/update_script.js",
     "build": "pnpm i"
   },
   "repository": {

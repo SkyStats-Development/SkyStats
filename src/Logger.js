@@ -46,6 +46,22 @@ async function errorMessage(message) {
   );
 }
 
+async function updateGoodMessage(message) {
+  return console.log(
+    chalk.bgGreenBright.black(`[${await getCurrentTime()}] Update Checker >`) +
+      " " +
+      chalk.greenBright(message)
+  );
+}
+
+async function updateUpdatingMessage(message) {
+  return console.log(
+    chalk.bgRedBright.black(`[${await getCurrentTime()}] Update Checker >`) +
+      " " +
+      chalk.redBright(message)
+  );
+}
+
 async function broadcastMessage(message, location) {
   return console.log(
     chalk.inverse(`[${await getCurrentTime()}] ${location} Broadcast >`) +
@@ -69,6 +85,8 @@ module.exports = {
   logoutMessage,
   warnMessage,
   errorMessage,
+  updateUpdatingMessage,
+  updateGoodMessage,
   broadcastMessage,
   getCurrentTime,
 };
