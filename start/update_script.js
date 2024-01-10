@@ -1,2 +1,3 @@
-console.log("Hello World!");
-console.log("Bonjour le monde");
+const { handleUpdates } = require("../src/functions/handle/handleUpdates");
+
+handleUpdates()
