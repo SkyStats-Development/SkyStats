@@ -94,10 +94,8 @@ async function getNetworth(uuid, profileid) {
 
 const createItemString = (item) => {
     if (!item) return '';
-
     const isRecombobulated = item.calculation.some((a) => a.id === 'RECOMBOBULATOR_3000');
     const price = addNotation('oneLetters', handleSplits(item.price)) || 0; 
-
     if (item.count >= 2) {
         return `→ \`${item.count}x\` ${item.name}${isRecombobulated ? `${RECOMBOBULATOR_3000}` : ''} (**${price}**)`;
     } else {
