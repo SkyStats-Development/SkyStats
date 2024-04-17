@@ -3,7 +3,7 @@
     "ActivityType": "Watching", 
     "Status": "online",
     "online, idle, dnd, invisible": "",
-    "Activity": "/networth",
+    "Activity": "/networth lol",
     "issues": "",
     "releaseChannel": "1068058627568570368",
     "serverID": "1058272411247714425",
@@ -14,7 +14,7 @@
 
     "hypixel": {
       "API": "https://api.hypixel.net",
-      "KEY": "6c550512-360a-4ef3-9d02-39eee86aba51"
+      "KEY": "a98617fc-0348-4c7a-abf1-10b7235f7aac"
     },
 
     "imgurAPIkey": "98ea6fff6d0ce73"
