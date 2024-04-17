@@ -37,6 +37,17 @@ function handleError(error) {
             iconURL: `${messages.icon}`,
         },
       };
+    } else if (error instanceof AxiosError && error.response.data.cause === "This endpoint is currently disabled") {
+      return {
+        color: 0xff0000,
+        title: "Error reaching the hypixel api",
+        description: `The endpoint(s) that skystats uses to communicate with the hypixel api are currently down \n yes this is a thing - im 20km away from home on a chromebook RDP'ed into the dev enviroment and i got it! lol :B`,
+        timestamp: new Date().toISOString(),
+        footer: {
+            text: `${messages.default}`,
+            iconURL: `${messages.icon}`,
+        },
+      };
     } else if (error instanceof AxiosError && error.response.data.code === "minecraft.api_failure") {
       return {
         color: 0xff0000,
@@ -61,6 +72,7 @@ function handleError(error) {
         },
       };
     } else if (error instanceof AxiosError) {
+      console.log(error)
       return {
         color: 0xff0000,
         title: `Error :: `,
