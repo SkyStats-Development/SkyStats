@@ -1,7 +1,7 @@
 const config = require("../../../config.json");
 const { handleError } = require("../../functions/handle/handleError");
 const { farmingWeight } = require("../../functions/get/getWeight")
-const { farmingWeight_Embed } = require('./embeds/weightEmbed')
+const { farmingWeight_Embed, SenitherWeight_Embed } = require('./embeds/weightEmbed')
 const { getPlayer } = require("../../functions/get/getPlayer")
 const messages = config.messages.discord
 
@@ -18,14 +18,17 @@ module.exports = {
     ],
     execute: async (interaction, client, InteractionCreate) => {
         const id = interaction.user.id;
-        const { uuid2, username, profilename, profileid, error } = await getPlayer(
+        const { uuid2, username, profilename, profileid, playerData, profileData, profile, error } = await getPlayer(
           id,
           interaction.options.getString("name")
         );
-        const farming_weight_embed = await farmingWeight_Embed(uuid2, username, profilename)
-        await interaction.deferReply();
+
             try {
-                await interaction.editReply({   embeds: [farming_weight_embed ]   })
+                await interaction.deferReply();
+                const farming_weight_embed = await farmingWeight_Embed(uuid2, username, profilename)
+                const senither_weight_embed = await SenitherWeight_Embed(profile, username, profilename, uuid2)
+        
+                await interaction.editReply({   embeds: [senither_weight_embed, farming_weight_embed ]   })
             } catch (error) {
                 const errorEmbed = handleError(error);
                 await interaction.editReply({ embeds: [errorEmbed] });

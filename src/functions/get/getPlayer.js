@@ -24,8 +24,8 @@ async function getPlayer(id, name) {
         const { data: { data: { player } } } = await axios.get(`https://playerdb.co/api/player/minecraft/${name}`);
         const { username, raw_id: uuid2 } = player;
         const [ playerRes, profileRes ] = await Promise.all([
-          axios.get(`https://api.hypixel.net/v2/player?key=${key}&uuid=${uuid2}`),
-          axios.get(`https://api.hypixel.net/v2/skyblock/profiles?key=${key}&uuid=${uuid2}`)
+          axios.get(`https://api.hypixel.net/player?key=${key}&uuid=${uuid2}`),
+          axios.get(`https://api.hypixel.net/skyblock/profiles?key=${key}&uuid=${uuid2}`)
         ]);
         if (playerRes.status !== 200 || profileRes.status !== 200) {
           throw new Error(`Error getting player or profile data.`);

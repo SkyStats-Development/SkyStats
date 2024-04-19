@@ -1,7 +1,7 @@
 const config = require(`../../../../config.json`);
 const { addNotation, addCommas } = require(`../../../contracts/helperFunctions`);
 const messages = config.messages.discord;
-const { farmingWeight } = require("../../../functions/get/getWeight")
+const { farmingWeight, senitherWeight } = require("../../../functions/get/getWeight")
 const EMOJIS = {
     PURSE_ICON: `<:Purse:1059997956784279562>`,
     BOOSTER_COOKIE_ICON: `<:BOOSTER_COOKIE:1070126116846710865>`,
@@ -52,8 +52,50 @@ async function farmingWeight_Embed(uuid, username, profilename) {
     }
     }
 
-  async function SenitherWeight_Embed(profile, username, profilename) {
+  async function SenitherWeight_Embed(profile, username, profilename, uuid) {
+    try {
+      const weight = await senitherWeight(profile);
+      return { 
+        color: 0xffa600,
+        title: `BBC Weight for ${username} on ${profilename}`,
+        URL: `https://sky.shiiyu.moe/stats/${uuid}`,
+        description: `${EMOJIS.SWORD_ICON} Total Weight: **${weight.total_weight}** + ${weight.totalOverflow}`,
+        fields: [
+            {
+              name: `${EMOJIS.MISC_ICON} Skills`,
+              value: weight.skills,
+              inline: false,
+            },
+            {
+              name: `${EMOJIS.BONUS_ICON} slayers`,
+              value: weight.slayers,
+              inline: false,
+            },
+            {
+              name: `${EMOJIS.BONUS_ICON} dungeons`,
+              value: weight.dungeons,
+              inline: false,
+            },
+        ],
+        thumbnail: {
+          url: `https://api.mineatar.io/body/full/${uuid}`
+        },
+        footer: {
+            text: `${messages.farming_weight}`,
+            iconURL: `${messages.icon}`,
+          },
+    }
+    } catch (error) {
+      return {
+        color: 0xFF0000,
+        title: `An error occured while building this embed`,
+        description: `${EMOJIS.SWORD_ICON} ${error?.toString()}`,
+        
+
+      }
+    }
     
+ 
   }
 
 
