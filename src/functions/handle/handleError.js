@@ -3,112 +3,110 @@ const messages = config.messages.discord
 const {Axios, AxiosError} = require(`axios`)
 
 function handleError(error) {
-    if (error instanceof TypeError && error.message.includes("Cannot read properties of undefined (reading 'cute_name')")) {
-      console.log(error)
-      return {
-        color: 0xff0000,
-        title: `Error`,
-        description: `An error with the hypixel API(probably) has occured. Please try again later.\nIf the error persists, please contact the bot developer.\nNote: as of April 6th 2023, The hypixel api has been dying, we cannot do anything about this.`,
-        timestamp: new Date().toISOString(),
-        footer: {
-            text: `${messages.default}`,
-            iconURL: `${messages.icon}`,
-        },
-      };
-    } else if (error instanceof AxiosError && error.response.data.code === "minecraft.invalid_username") {
-      return {
-        color: 0xff0000,
-        title: error.response.data.message,
-        description: `The username you have entered does not currently own minecraft java edition`,
-        timestamp: new Date().toISOString(),
-        footer: {
-            text: `${messages.default}`,
-            iconURL: `${messages.icon}`,
-        },
-      };
-    } else if (error instanceof AxiosError && error.response.data.code === "api.unknown_error") {
-      return {
-        color: 0xff0000,
-        title: error.response.data.message,
-        description: `An unknown error with searching your username has happened, please double check and try again!`,
-        timestamp: new Date().toISOString(),
-        footer: {
-            text: `${messages.default}`,
-            iconURL: `${messages.icon}`,
-        },
-      };
-    } else if (error instanceof AxiosError && error.response.data.cause === "This endpoint is currently disabled") {
-      return {
-        color: 0xff0000,
-        title: "Error reaching the hypixel api",
-        description: `The endpoint(s) that skystats uses to communicate with the hypixel api are currently down \n yes this is a thing - im 20km away from home on a chromebook RDP'ed into the dev enviroment and i got it! lol :B`,
-        timestamp: new Date().toISOString(),
-        footer: {
-            text: `${messages.default}`,
-            iconURL: `${messages.icon}`,
-        },
-      };
-    } else if (error instanceof AxiosError && error.response.data.code === "minecraft.api_failure") {
-      return {
-        color: 0xff0000,
-        title: error.response.data.message,
-        description: `You either entered an invalid username *or* Mojang is down!`,
-        timestamp: new Date().toISOString(),
-        footer: {
-            text: `${messages.default}`,
-            iconURL: `${messages.icon}`,
-        },
-      };
-    } else if (error instanceof AxiosError && error.response.status === 502){
-      console.log(error)
-      return {
-        color: 0xff0000,
-        title: `Error`,
-        description: `The Hypixel API is currently experiencing inconviniences. Please try again sometime in 3-5 minutes to days.`,
-        timestamp: new Date().toISOString(),
-        footer: {
-            text: `${messages.default}`,
-            iconURL: `${messages.icon}`,
-        },
-      };
-    } else if (error instanceof AxiosError) {
-      console.log(error)
-      return {
-        color: 0xff0000,
-        title: `Error :: `,
-        description: `An error with fetching *something* has happened. Please contact the developers! with the below data!\n\n\`\`\`${error?.response?.data}\`\`\``,
-        timestamp: new Date().toISOString(),
-        footer: {
-            text: `${messages.default}`,
-            iconURL: `${messages.icon}`,
-        },
-      };
-    } else if (error instanceof Error) {
-      if (error.stack) {
-        const matches = error.stack.match(/.*:(\d+):\d+\)/);
-        const line = matches ? matches[1] : "unknown";
+
+  if (error instanceof TypeError || error instanceof TypeError) {
+    switch (error) {
+      case error.message.includes("Cannot read properties of undefined (reading 'cute_name')"):
         return {
           color: 0xff0000,
           title: `Error`,
-          description: `An error has occurred. Please try again later.\nIf the error persists, please contact the bot developer.\n\nError: ${error.message}\nLine: ${line}`,
+          description: `An occurred while fetching your SkyBlock profile stats\nCheck your imputted username and try again.`,
           timestamp: new Date().toISOString(),
           footer: {
               text: `${messages.default}`,
               iconURL: `${messages.icon}`,
           },
         };
-      } else {
+      case error.response.data.code === "minecraft.invalid_username":
         return {
-          content: `Error: ${error.message}`,
+          color: 0xff0000,
+          title: error.response.data.message || "Error",
+          description: `The username you have entered does not currently own minecraft java edition`,
+          timestamp: new Date().toISOString(),
+          footer: {
+              text: `${messages.default}`,
+              iconURL: `${messages.icon}`,
+          },
         };
-      }
-    } else {
-      return {
-        content: `Oops! an unexpected error has happened! (HOW?? WHY?? WHAT DID YOU DO!!!!!!!)`,
-      };
-    }
+      case error.response.data.code === "api.unknown_error":
+        return {
+          color: 0xff0000,
+          title: error.response.data.message || "Error",
+          description: `An error with searching your username has happened, please double check and try again!`,
+          timestamp: new Date().toISOString(),
+          footer: {
+              text: `${messages.default}`,
+              iconURL: `${messages.icon}`,
+          },
+        };
+      case error.response.data.cause === "This endpoint is currently disabled":
+        return {
+          color: 0xff0000,
+          title: "An error has occurred while trying to reach the Hypixel API",
+          description: `The endpoint(s) that SkyStats uses to communicate with the hypixel api are currently down\nThis has automatically been reported to developers.`,
+          timestamp: new Date().toISOString(),
+          footer: {
+              text: `${messages.default}`,
+              iconURL: `${messages.icon}`,
+          },
+        };
+      case error.response.data.code === "minecraft.api_failure":
+        return {
+          color: 0xff0000,
+          title: error.response.data.message || "Error",
+          description: `The mojang API has returned an invalid response.`,
+          timestamp: new Date().toISOString(),
+          footer: {
+              text: `${messages.default}`,
+              iconURL: `${messages.icon}`,
+          },
+        };
+        
+      case error.response.status === 502:
+        return {
+          color: 0xff0000,
+          title: `Error`,
+          description: `\`error response 502\` An error has occurred and your request cannot be completed.  Try again later`,
+          timestamp: new Date().toISOString(),
+          footer: {
+              text: `${messages.default}`,
+              iconURL: `${messages.icon}`,
+          },
+        };
+      default:
+        console.log(error)
+        return {
+          color: 0xff0000,
+          title: `Error`,
+          description: `An error with fetching *something* has happened. Please contact the developers! with the below data!\n\n\`\`\`${error?.response?.data}\`\`\``,
+          timestamp: new Date().toISOString(),
+          footer: {
+              text: `${messages.default}`,
+              iconURL: `${messages.icon}`,
+          },
+        };
+    };
   }
-  
+  if (error instanceof AxiosError) {
+
+  }
+  if (error instanceof Error) {
+    const matches = error.stack.match(/.*:(\d+):\d+\)/);
+    const line = matches ? matches[1] : "unknown";
+    return {
+      color: 0xff0000,
+      title: `Error`,
+      description: `An error has occurred. Please try again later.\nIf the error persists, please contact the bot developer.\n\nError: ${error.message}\nLine: ${line}`,
+      timestamp: new Date().toISOString(),
+      footer: {
+          text: `${messages.default}`,
+          iconURL: `${messages.icon}`,
+      },
+    };
+  }
+
+}
+
   async function handlePlayer(error) {
     if (error === "unlinked") {
       return {
