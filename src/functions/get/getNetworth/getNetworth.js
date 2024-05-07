@@ -51,6 +51,7 @@ async function getCookiePrice() {
 }
 function handleSplits(value) {
   if (value === 0 || value === NaN || value === undefined || value === Infinity /* (yeah infinity happened once we dont talk about it) */) {
+    console.log(value + " :: value was not a number or 0")
     return value;
   } else {
     return Math.round(value.toString());
