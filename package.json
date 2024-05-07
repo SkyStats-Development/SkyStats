@@ -51,7 +51,7 @@
     "prismarine-nbt": "^2.4.0",
     "rss-parser": "^3.13.0",
     "senitherweight": "^1.0.8",
-    "skyhelper-networth": "^1.18.1",
+    "skyhelper-networth": "^1.18.7",
     "util": "^0.12.5"
   }
 }
