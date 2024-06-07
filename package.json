@@ -32,7 +32,7 @@
     "cheerio-select": "2.1.0",
     "common-tags": "^1.8.2",
     "cors": "^2.8.5",
-    "discord-api-types": "^0.37.66",
+    "discord-api-types": "^0.37.84",
     "discord.js": "^14.14.1",
     "dotenv": "^16.3.1",
     "fetch": "^1.1.0",
