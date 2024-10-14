@@ -1,45 +1,44 @@
 {
-  "discord": {
-    "ActivityType": "Watching", 
-    "Status": "online",
-    "online, idle, dnd, invisible": "",
-    "Activity": "/networth lol",
-    "issues": "",
-    "releaseChannel": "1068058627568570368",
-    "serverID": "1058272411247714425",
-    "developmentRole": "1058273514941075477",
-    "ban_log_channel": "1194087292999053383"
-  },
-  "api": {
+	"discord": {
+		"ActivityType": "Watching",
+		"Status": "online",
+		"online, idle, dnd, invisible": "",
+		"Activity": "Zillions of coins.",
+		"issues": "",
+		"releaseChannel": "1068058627568570368",
+		"serverID": "1058272411247714425",
+		"developmentRole": "1058273514941075477",
+		"ban_log_channel": "1194087292999053383"
+	},
+	"api": {
+		"hypixel": {
+			"API": "https://api.hypixel.net",
+			"KEY": "7ce56c4f-ea02-4379-a8d0-1d720fb8dd9e"
+		},
 
-    "hypixel": {
-      "API": "https://api.hypixel.net",
-      "KEY": "a98617fc-0348-4c7a-abf1-10b7235f7aac"
-    },
+		"imgurAPIkey": "98ea6fff6d0ce73"
+	},
+	"messages": {
+		"commandfailed": {
+			"error": "Command Failed somewhere... there should be an error code? please look for it <3",
+			"permsless": "You do not have permission to run this command.",
+			"bitchless": "You do not have permission to run this command. (get bitches)",
+			"serverless": "You do not have permission to run this command. or this command only works in the development server, https://discord.gg/Kuk7fUYtrT"
+		},
+		"discord": {
+			"default": "🌹 SkyStats 🌹 ~ Hypixel And SkyBlock Bot",
+			"farming_weight": "🌹 SkyStats 🌹 ~ Elite Farmers Weight Calculation",
+			"support": "🌹 SkyStats 🌹 ~ Support",
+			"defaultbetter": "🌹 SkyStats 🌹 ~ run [/help] for help",
+			"owner": "🌹 Axle#9171 🌹",
+			"sogayowner": "🌹 Made with ❤️ by Axle#9171 🌹",
+			"private": "🌹 SkyStats 🌹 ~ Private Commands",
+			"icon": "https://i.imgur.com/hggczHP.png",
+			"discinvite": "https://discord.gg/Kuk7fUYtrT"
+		}
+	},
 
-    "imgurAPIkey": "98ea6fff6d0ce73"
-  },
-  "messages": {
-    "commandfailed": {
-      "error": "Command Failed somewhere... there should be an error code? please look for it <3",
-      "permsless": "You do not have permission to run this command.",
-      "bitchless": "You do not have permission to run this command. (get bitches)",
-      "serverless": "You do not have permission to run this command. or this command only works in the development server, https://discord.gg/Kuk7fUYtrT"
-  },
-  "discord": {
-    "default": "🌹 SkyStats 🌹 ~ Hypixel And SkyBlock Bot",
-    "farming_weight": "🌹 SkyStats 🌹 ~ Elite Farmers Weight Calculation",
-    "support": "🌹 SkyStats 🌹 ~ Support",
-    "defaultbetter": "🌹 SkyStats 🌹 ~ run [/help] for help",
-    "owner": "🌹 Axle#9171 🌹",
-    "sogayowner": "🌹 Made with ❤️ by Axle#9171 🌹",
-    "private": "🌹 SkyStats 🌹 ~ Private Commands",
-    "icon": "https://i.imgur.com/hggczHP.png",
-    "discinvite": "https://discord.gg/Kuk7fUYtrT"
-}
-  },
-  
-  "database":   {
-    "uri": "mongodb+srv://hyperbolic:deesahd284@cluster0.o4mur.mongodb.net/?retryWrites=true&w=majority"
-    }
+	"database": {
+		"uri": "mongodb+srv://hyperbolic:deesahd284@cluster0.o4mur.mongodb.net/?retryWrites=true&w=majority"
+	}
 }
