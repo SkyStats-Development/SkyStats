@@ -1,6 +1,7 @@
 const config = require("../../../config.json");
 const messages = config.messages.discord;
 const axios = require(`axios`);
+const key = process.env.KEY;
 const { addNotation, addCommas } = require("../../contracts/helperFunctions");
 
 let messageId;
@@ -10,7 +11,7 @@ setInterval(banTracker, 30000);
 async function banTracker() {
   try {
     const data = await axios.get(
-      `https://api.hypixel.net/punishmentstats?key=${config.api.hypixel.KEY}`
+      `https://api.hypixel.net/punishmentstats?key=${key}`
     );
 
     const channel = client.channels.cache.get(config.discord.ban_log_channel);

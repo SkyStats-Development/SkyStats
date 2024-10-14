@@ -1,21 +1,21 @@
-const calculateElement = (index, multiplier) => {
-  const isEvenIndex = index % 2 === 0;
-  const power = isEvenIndex ? 1 : index;
+const chalk = require("chalk")
 
-  return Math.sin(index / multiplier) * Math.pow(multiplier, power);
-};
+Logger()
 
-const generateArray = (size, multiplier, elementCalculator) => {
-  return Array.from({ length: size }, (_, index) => elementCalculator(index + 1, multiplier));
-};
 
-const mainFunction = (outerSize, innerSize, innerMultiplier) => {
-  const outerArray = generateArray(outerSize, innerSize, (index, multiplier) => {
-    return generateArray(index, multiplier, calculateElement);
-  });
-
-  return outerArray;
-};
-
-const result = mainFunction(3, 4, 2);
-console.log(result);
+function Logger(message){
+  let space = chalk.bgBlack.black(" ")
+  let color_bars = {
+    error: chalk.bgBlack.red.bold("[ERROR]"),
+    broadcast: chalk.bgBlack.bold.blue("[BRODCAST]"),
+    internal: chalk.bgBlack.green.bold("[Internal]"),
+    debug: chalk.bgBlack.gray.bold("[DEBUG]"),
+    warn: chalk.bgBlack.yellow.bold("[WARN]")
+  }
+    Object.keys(color_bars).forEach(key => {
+      console.log(color_bars[key]);
+    });
+  }
+  let skystatsColor = chalk.hex("ffa600");
+  return console.log(skystatsColor.bold.bgBlack(`[SkyStats | 10:43:33]`)
+  )

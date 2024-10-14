@@ -1,5 +1,7 @@
 const chalk = require("chalk");
 
+
+
 async function discordMessage(message) {
   return console.log(
     chalk.bgMagenta.black(`[${await getCurrentTime()}] Discord >`) +
