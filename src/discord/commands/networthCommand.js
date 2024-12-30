@@ -21,7 +21,7 @@ module.exports = {
 	async execute(interaction) {
 		await interaction.deferReply();
 		const id = interaction.user.id;
-		const { uuid2, username, profilename, profileid, error } =
+		const { uuid2, username, profilename, profileid, profile, bankBalance, profileRes, error } =
 			await getPlayer(id, interaction.options.getString('name'));
 		if (error) {
 			console.log(error);
@@ -105,7 +105,7 @@ module.exports = {
 					return embeds;
 				}
 
-				const networth = (await getNetworth(uuid2, profileid)) || {};
+				const networth = (await getNetworth(uuid2, profileid, profileRes)) || {};
 				const embeds = await networthEmbeds(
 					uuid2,
 					profileid,
