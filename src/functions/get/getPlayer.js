@@ -2,24 +2,24 @@ const db = require('../handle/handleDatabase');
 const axios = require('axios');
 const key = process.env.KEY;
 const { handleError, handlePlayer } = require('../handle/handleError');
+const { errorMessage } = require('../../Logger');
 
-async function getPlayer(id, name) {
+async function getPlayer(id, name, flag) {
 	const collection = db.getDb().collection('linkedAccounts');
 	let minecraftUuid = '';
 	try {
 		const result = await collection.findOne({ discordId: id });
 		if (result) {
 			minecraftUuid = result.minecraftUuid;
-		} else if (!name) {
+		} else if (!name || name === undefined) {
 			throw new Error('No linked account found');
 		}
 	} catch (error) {
 		const errorMessage = handlePlayer('unlinked');
-		return {
-			error: errorMessage,
-		};
+		return errorMessage;
 	}
 	name = name || minecraftUuid;
+
 	try {
 		const {
 			data: {
@@ -41,7 +41,24 @@ async function getPlayer(id, name) {
 		const playerData = playerRes?.data;
 		const profileData = profileRes?.data?.profiles?.find((a) => a.selected);
 		const profile = profileData?.members[uuid2];
+		const first_join = profileData?.members[uuid2]?.profile?.first_join;
 		const { cute_name: profilename, profile_id: profileid } = profileData;
+		const profile_type = profileData?.game_mode || "normal";
+		const bankBalance = profileData?.banking?.balance || null;
+		let profile_members = [];
+		if (flag === "PROFILE_ONLY" || flag === "CHECK_MEMBERS") {
+			const memberIds = Object.keys(profileData.members);
+			profile_members = await Promise.all(memberIds.map(async (memberId) => {
+				const memberResponse = await axios.get(`https://playerdb.co/api/player/minecraft/${memberId}`);
+				const { username, raw_id: uuid } = memberResponse.data.data.player;
+				const memberProfile = profileData.members[memberId];
+				const deleted = memberProfile.profile?.deletion_notice ? true : false;
+				return { username, uuid, deleted };
+			}));
+
+			//console.log(profile_members);
+		}
+
 		return {
 			uuid2,
 			username,
@@ -50,6 +67,11 @@ async function getPlayer(id, name) {
 			playerData,
 			profileData,
 			profile,
+			first_join,
+			profile_type,
+			bankBalance,
+			profileRes,
+			...(flag === "PROFILE_ONLY" || flag === "CHECK_MEMBERS" ? { profile_members } : {}),
 		};
 	} catch (error) {
 		const errorMessage = handleError(error);

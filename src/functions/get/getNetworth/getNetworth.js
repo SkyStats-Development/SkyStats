@@ -61,7 +61,7 @@ function handleSplits(value) {
 		value === NaN ||
 		value === undefined ||
 		value ===
-			Infinity /* (yeah infinity happened once we dont talk about it) */
+		Infinity /* (yeah infinity happened once we dont talk about it) */
 	) {
 		return value;
 	} else {
@@ -69,9 +69,9 @@ function handleSplits(value) {
 	}
 }
 
-async function getNetworth(uuid, profileid) {
+async function getNetworth(uuid, profileid, profileRes) {
 	const cookiePrice = await getCookiePrice();
-	const networthRaw = await getSkyHelper(profileid, uuid);
+	const networthRaw = await getSkyHelper(profileid, uuid, profileRes);
 	const { total: petTotal, items: petItems } =
 		networthRaw.networth.types.pets;
 
@@ -89,10 +89,10 @@ async function getNetworth(uuid, profileid) {
 		const petItemEmoji = petItem
 			? Object.keys(emojis).find((key) => petItem.startsWith(key))
 				? emojis[
-						Object.keys(emojis).find((key) =>
-							petItem.startsWith(key)
-						)
-				  ]
+				Object.keys(emojis).find((key) =>
+					petItem.startsWith(key)
+				)
+				]
 				: ''
 			: '';
 		const petPrice = addNotation('oneLetters', petsPrice) || 0;
@@ -105,9 +105,8 @@ async function getNetworth(uuid, profileid) {
 	const createPetStrings = (pets, maxPets = Infinity) => {
 		const petStrings = pets.slice(0, maxPets).map(createPetString);
 		if (pets.length > maxPets) {
-			petStrings[maxPets - 1] += `\n**And \`${
-				pets.length - maxPets
-			}\` more...**`;
+			petStrings[maxPets - 1] += `\n**And \`${pets.length - maxPets
+				}\` more...**`;
 		}
 		return petStrings.join('\n');
 	};
@@ -134,21 +133,18 @@ async function getNetworth(uuid, profileid) {
 		);
 		const price = addNotation('oneLetters', handleSplits(item.price)) || 0;
 		if (item.count >= 2) {
-			return `→ \`${item.count}x\` ${item.name}${
-				isRecombobulated ? `${RECOMBOBULATOR_3000}` : ''
-			} (**${price}**)`;
+			return `→ \`${item.count}x\` ${item.name}${isRecombobulated ? `${RECOMBOBULATOR_3000}` : ''
+				} (**${price}**)`;
 		} else {
-			return `→ ${item.name}${
-				isRecombobulated ? `${RECOMBOBULATOR_3000}` : ''
-			} (**${price}**)`;
+			return `→ ${item.name}${isRecombobulated ? `${RECOMBOBULATOR_3000}` : ''
+				} (**${price}**)`;
 		}
 	};
 	const createItemStrings = (items, maxItems) => {
 		const itemStrings = items.slice(0, maxItems).map(createItemString);
 		if (items.length > maxItems) {
-			itemStrings[maxItems - 1] += `\n-# → **And \`${
-				items.length - maxItems
-			}\` more...**`;
+			itemStrings[maxItems - 1] += `\n-# → **And \`${items.length - maxItems
+				}\` more...**`;
 		}
 		if (itemStrings.length === 0) {
 			return 'No items or API off';
@@ -245,7 +241,7 @@ async function getNetworth(uuid, profileid) {
 					(networthRaw.networth.types.sacks.total +
 						networthRaw.networth.types.essence.total +
 						networthRaw.networth.types.fishing_bag.total) *
-						100
+					100
 				) / 100,
 			fishing_bag: networthRaw.networth.types.fishing_bag.total,
 			essence: networthRaw.networth.types.essence.total,
