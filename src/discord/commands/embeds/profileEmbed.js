@@ -1,4 +1,19 @@
 const config = require(`../../../../config.json`);
+function parse_profile_members(array) {
+    if (!Array.isArray(array)) {
+        return [];
+    }
+    let parsed_members = [];
+    array.sort((a, b) => a.deleted - b.deleted);
+    array.forEach(member => {
+        if (member.deleted) {
+            parsed_members.push(`**~~${member.username}~~**`);
+        } else {
+            parsed_members.push(`**${member.username}**`);
+        }
+    });
+    return parsed_members;
+}
 const { addNotation, addCommas, capitalize } = require(`../../../contracts/helperFunctions`);
 const EMOJIS = {
     PURSE_ICON: `<:Purse:1059997956784279562>`,
@@ -32,25 +47,12 @@ const EMOJIS = {
 const messages = config.messages.discord;
 
 
-async function profileEmbed(uuid, username, cute_name, profile_id, first_join, profile_members, profile_type) {
-    console.log(profile_members)
-    function parse_profile_members(array) {
-        if (!Array.isArray(array)) {
-            return [];
-        }
-        let parsed_members = [];
-        array.sort((a, b) => a.deleted - b.deleted);
-        array.forEach(member => {
-            if (member.deleted) {
-                parsed_members.push(`**~~${member.username}~~**`);
-            } else {
-                parsed_members.push(`**${member.username}**`);
-            }
-        });
-        return parsed_members;
-    }
-
+async function profileEmbed(uuid, username, cute_name, profile_id, first_join, profile_members, profile_type, profile_data) {
     const members = parse_profile_members(profile_members);
+    function generateSlayerString(obj) {
+        const slayers = ['zombie', 'spider', 'wolf', 'enderman', 'blaze', 'vampire'];
+        return slayers.map(slayer => obj[slayer].level).join('/');
+    };
     return {
         color: 0xffa600,
         title: `${username}'s Profile on ${cute_name}`,
@@ -62,39 +64,39 @@ async function profileEmbed(uuid, username, cute_name, profile_id, first_join, p
         fields: [
             {
                 name: EMOJIS.SKYBLOCK_XP + ` Skyblock Level`,
-                value: `441`,
+                value: `${profile_data.skyblock_level.toFixed(0)}`,
                 inline: true
             },
             {
                 name: EMOJIS.SKILL_AVERAGE + ` Skill Average`,
-                value: `11`,
+                value: `${profile_data.skill_average.toFixed(2)}`,
                 inline: true
             },
             {
                 name: EMOJIS.DUNGEONS + ` Catacombs`,
-                value: `44.3`,
+                value: `${profile_data.catacombs_level.toFixed(2)}`,
                 inline: true
             },
             // =================================================================================
             {
                 name: EMOJIS.NETWORTH_ICON + ` Networth`,
-                value: `441b | 33b`,
+                value: `${addNotation(`oneLetters`, profile_data.networth.total_networth.toFixed(1)) ?? 0} || ${addNotation(`oneLetters`, profile_data.networth.unsoulbound_networth.toFixed(1)) ?? 0}`,
                 inline: true
             },
             {
                 name: EMOJIS.PURSE_ICON + ` Purse`,
-                value: `11.8`,
+                value: `${addNotation(`oneLetters`, profile_data.networth.purse.toFixed(1)) ?? 0}`,
                 inline: true
             },
             {
                 name: EMOJIS.BANK_ICON + ` Bank`,
-                value: `33.3b | 11b`,
+                value: `${addNotation(`oneLetters`, profile_data.networth.bank.toFixed(1)) ?? 0} || ${addNotation(`oneLetters`, profile_data.networth.personal_bank.toFixed(1)) ?? 0}`,
                 inline: true
             },
             // =================================================================================
             {
                 name: EMOJIS.SLAYER + ` Slayers`,
-                value: `4/4/1/9/2/4`,
+                value: `${generateSlayerString(profile_data.slayer_data)}`,
                 inline: true
             },
             {

@@ -1,6 +1,7 @@
 const { ActionRowBuilder, StringSelectMenuBuilder } = require('discord.js');
 const { getPlayer } = require('../../functions/get/getPlayer');
 const { handleError } = require('../../functions/handle/handleError');
+const { handleProfile } = require('../../functions/handle/handleProfile');
 const { getNetworth } = require(`../../functions/get/getNetworth/getNetworth`);
 const { profileEmbed } = require('./embeds/profileEmbed')
 module.exports = {
@@ -20,7 +21,7 @@ module.exports = {
     async execute(interaction) {
         await interaction.deferReply();
         const id = interaction.user.id;
-        const { uuid2, username, profilename, profileid, first_join, profile, profile_members, profile_type, error } =
+        const { uuid2, username, profilename, profileid, first_join, profile, profile_members, profile_type, profileRes, error } =
             await getPlayer(id, interaction.options.getString('name'), 'PROFILE_ONLY');
         //console.log(await getPlayer(id, interaction.options.getString('name'), 'PROFILE_ONLY'));
         if (error) {
@@ -29,7 +30,9 @@ module.exports = {
             await interaction.editReply({ embeds: [errorembed] });
         } else {
             try {
-                const profile_embed = await profileEmbed(uuid2, username, profilename, profileid, first_join, profile_members, profile_type);
+                const profile_data = await handleProfile(uuid2, profile, profileid, profileRes);
+                console.log(profile_data)
+                const profile_embed = await profileEmbed(uuid2, username, profilename, profileid, first_join, profile_members, profile_type, profile_data);
 
                 await interaction.editReply({ embeds: [profile_embed] })
             } catch (error) {
