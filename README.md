@@ -52,6 +52,8 @@ SkyStats was greatly helped by
 > [ThePotatoKing](https://links.sperrer.ca "for all of my bugs")
 >
 > @pqndy
+>
+> @gutenight (gute nacht 💚)
 
 ## Version
 
