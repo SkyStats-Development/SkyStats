@@ -71,6 +71,30 @@ function handleError(error) {
         iconURL: `${messages.icon}`,
       },
     };
+  }
+  else if (error instanceof AxiosError && error.response.data.cause === "Daily developer key throttle") {
+    return {
+      color: 0xff0000,
+      title: `Error`,
+      description: `The Hypixel API has been rate limited due to the developer key being used too much today. Please try again tomorrow.`,
+      timestamp: new Date().toISOString(),
+      footer: {
+        text: `${messages.default}`,
+        iconURL: `${messages.icon}`,
+      },
+    }
+  }
+  else if (error instanceof AxiosError && error.response.data.throttle === true) {
+    return {
+      color: 0xff0000,
+      title: `Error`,
+      description: `Our access to the Hypixel API has been rate limited. Please try again in a few minutes. If the error persists, please contact @axle.coffee`,
+      timestamp: new Date().toISOString(),
+      footer: {
+        text: `${messages.default}`,
+        iconURL: `${messages.icon}`,
+      },
+    }
   } else if (error instanceof AxiosError) {
     console.log(error)
     return {
