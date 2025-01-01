@@ -7,12 +7,12 @@ const { addNotation, addCommas } = require("../../contracts/helperFunctions");
 let messageSent = false;
 let messageId;
 
-setInterval(banTracker, 30000);
+//setInterval(banTracker, 30000);
 
 async function banTracker() {
   try {
     const data = await axios.get(
-      `https://api.hypixel.net/punishmentstats?key=${key}`
+      `https://api.hypixel.net/punishmentstats`
     );
 
     const channel = client.channels.cache.get(config.discord.ban_log_channel);
@@ -22,8 +22,8 @@ async function banTracker() {
       timestamp: new Date().toISOString(),
       fields: [
         {
-            name: `🔨 Total Statistics 🔨`,
-            value: `🚓 **Staff Total**: ${addCommas(data.data.staff_total)}\n<a:doge:1129093360733388880> **Watchdog Total**: ${addCommas(data.data.watchdog_total)}`
+          name: `🔨 Total Statistics 🔨`,
+          value: `🚓 **Staff Total**: ${addCommas(data.data.staff_total)}\n<a:doge:1129093360733388880> **Watchdog Total**: ${addCommas(data.data.watchdog_total)}`
         },
         {
           name: `🔃 Rolling Daily Ban Statistics 🔃`,
