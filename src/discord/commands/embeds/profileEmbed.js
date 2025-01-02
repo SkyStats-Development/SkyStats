@@ -50,6 +50,9 @@ const messages = config.messages.discord;
 async function profileEmbed(uuid, username, cute_name, profile_id, first_join, profile_members, profile_type, profile_data) {
     const members = parse_profile_members(profile_members);
     function generateSlayerString(obj) {
+        if (!obj) {
+            return "0/0/0/0/0/0";
+        }
         const slayers = ['zombie', 'spider', 'wolf', 'enderman', 'blaze', 'vampire'];
         return slayers.map(slayer => obj[slayer].level).join('/');
     };
@@ -101,28 +104,28 @@ async function profileEmbed(uuid, username, cute_name, profile_id, first_join, p
             },
             {
                 name: EMOJIS.HOTM + ` HoTM`,
-                value: `11`,
+                value: `${profile_data.hotm_data.levelWithProgress.toFixed(1)}`,
                 inline: true
             },
             {
                 name: EMOJIS.GARDEN + ` Garden`,
-                value: `15`,
+                value: `${profile_data.garden_data.levelWithProgress.toFixed(1)}`,
                 inline: true
             },
             // =================================================================================
             {
                 name: EMOJIS.NETHER_GRASS + ` Senither Weight`,
-                value: `15,434`,
+                value: `${addCommas(profile_data.senither_weight.toFixed(0))}`,
                 inline: true
             },
             {
                 name: EMOJIS.RIFT_TIMECHARMS + ` Rift Timecharms`,
-                value: `43.3`,
+                value: `${profile_data.time_charms}/8`,
                 inline: true
             },
             {
                 name: EMOJIS.HOPPITY_COLLECTION + ` Chcolate Factory`,
-                value: `Level 4/6`,
+                value: `${profile_data.hoppity_prestige}/6`,
                 inline: true
             },
 

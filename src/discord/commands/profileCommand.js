@@ -31,6 +31,7 @@ module.exports = {
         } else {
             try {
                 const profile_data = await handleProfile(uuid2, profile, profileid, profileRes);
+                console.log("START >>>>>>>>>>>>>>>>>")
                 console.log(profile_data)
                 const profile_embed = await profileEmbed(uuid2, username, profilename, profileid, first_join, profile_members, profile_type, profile_data);
 

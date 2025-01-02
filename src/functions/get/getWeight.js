@@ -6,32 +6,32 @@ const { addCommas, addNotation } = require("../../contracts/helperFunctions");
 const { calculateTotalSenitherWeight } = require('../../functions/constants/senitherWeight')
 
 async function farmingWeight(uuid) {
-const response = await axios.get(`https://api.elitebot.dev/Weight/${uuid}/selected`);
-function sanitizeCropWeight(obj) {
-    let sanitized = '';
-    let crops = [];
-    for (let crop in obj.cropWeight) {
-        let weight = obj.cropWeight[crop];
-        weight = weight.toFixed(1);
-        crops.push({ name: crop, weight: weight });
+    const response = await axios.get(`https://api.elitebot.dev/Weight/${uuid}/selected`);
+    function sanitizeCropWeight(obj) {
+        let sanitized = '';
+        let crops = [];
+        for (let crop in obj.cropWeight) {
+            let weight = obj.cropWeight[crop];
+            weight = weight.toFixed(1);
+            crops.push({ name: crop, weight: weight });
+        }
+        crops.sort((a, b) => b.weight - a.weight);
+        for (let crop of crops) {
+            sanitized += `→ ${crop.name}: **${addCommas(crop.weight)}**\n`;
+        }
+        return sanitized;
     }
-    crops.sort((a, b) => b.weight - a.weight);
-    for (let crop of crops) {
-        sanitized += `→ ${crop.name}: **${addCommas(crop.weight)}**\n`;
-    }
-    return sanitized;
-}
-function sanitizeBonusWeight(obj) {
-    let sanitized = '';
+    function sanitizeBonusWeight(obj) {
+        let sanitized = '';
 
-    for (let crop in obj.bonusWeight) {
-        let weight = obj.bonusWeight[crop];
-        weight = weight.toFixed(1);
-        sanitized += `→ ${crop}: **${addCommas(weight)}**\n`;
-    }
+        for (let crop in obj.bonusWeight) {
+            let weight = obj.bonusWeight[crop];
+            weight = weight.toFixed(1);
+            sanitized += `→ ${crop}: **${addCommas(weight)}**\n`;
+        }
 
-    return sanitized;
-}
+        return sanitized;
+    }
     return {
         total_weight: addCommas(response.data.totalWeight.toFixed(1)),
         items: {
@@ -54,21 +54,22 @@ async function senitherWeight(profile) {
             totalWeight += skills[skill].weight;
             totalOverflow += skills[skill].weight_overflow;
         }
-    
+
         for (let slayer in slayers) {
             totalWeight += slayers[slayer].weight;
             totalOverflow += slayers[slayer].weight_overflow;
         }
 
         for (let dungeon in dungeons) {
-                totalWeight += dungeons[dungeon].weight;
-                totalOverflow += dungeons[dungeon].weight_overflow;
+            totalWeight += dungeons[dungeon].weight;
+            totalOverflow += dungeons[dungeon].weight_overflow;
         }
 
         // Sanitize data
         let sanitizedObj = {
-            totalWeight: totalWeight.toFixed(1),
-            totalOverflow: totalOverflow.toFixed(1),
+            total: totalWeight + totalOverflow,
+            totalWeight: totalWeight,
+            totalOverflow: totalOverflow,
             skills: formatData(skills),
             slayers: formatData(slayers),
             dungeons: formatData(dungeons)
@@ -90,8 +91,8 @@ async function senitherWeight(profile) {
         }
         return formattedData;
     }
-const data = sanitizeData(weight)
-    
+    const data = sanitizeData(weight)
+
     return data;
 }
 

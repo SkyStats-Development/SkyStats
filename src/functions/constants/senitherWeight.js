@@ -90,29 +90,29 @@ async function calculateSenitherWeight(type, level = null, experience) {
 async function calculateTotalSenitherWeight(profile) {
     const weight = {
         skills: {
-            farming: await calculateSenitherWeight('farming', (calcSkill('farming', profile?.experience_skill_farming || 0)).levelWithProgress, profile?.experience_skill_farming || 0),
-            mining: await calculateSenitherWeight('mining', (calcSkill('mining', profile?.experience_skill_mining || 0)).levelWithProgress, profile?.experience_skill_mining || 0),
-            combat: await calculateSenitherWeight('combat', (calcSkill('combat', profile?.experience_skill_combat || 0)).levelWithProgress, profile?.experience_skill_combat || 0),
-            foraging: await calculateSenitherWeight('foraging', (calcSkill('foraging', profile?.experience_skill_foraging || 0)).levelWithProgress, profile?.experience_skill_foraging || 0),
-            fishing: await calculateSenitherWeight('fishing', (calcSkill('fishing', profile?.experience_skill_fishing || 0)).levelWithProgress, profile?.experience_skill_fishing || 0),
-            enchanting: await calculateSenitherWeight('enchanting', (calcSkill('enchanting', profile?.experience_skill_enchanting || 0)).levelWithProgress, profile?.experience_skill_enchanting || 0),
-            alchemy: await calculateSenitherWeight('alchemy', (calcSkill('alchemy', profile?.experience_skill_alchemy || 0)).levelWithProgress, profile?.experience_skill_alchemy || 0),
-            taming: await calculateSenitherWeight('taming', (calcSkill('taming', profile?.experience_skill_taming || 0)).levelWithProgress, profile?.experience_skill_taming || 0)
+            farming: await calculateSenitherWeight('farming', (calcSkill('farming', profile?.player_data.experience.SKILL_FARMING || 0)).levelWithProgress, profile?.player_data.experience.SKILL_FARMING || 0),
+            mining: await calculateSenitherWeight('mining', (calcSkill('mining', profile?.player_data.experience.SKILL_MINING || 0)).levelWithProgress, profile?.player_data.experience.SKILL_MINING || 0),
+            combat: await calculateSenitherWeight('combat', (calcSkill('combat', profile?.player_data.experience.SKILL_COMBAT || 0)).levelWithProgress, profile?.player_data.experience.SKILL_COMBAT || 0),
+            foraging: await calculateSenitherWeight('foraging', (calcSkill('foraging', profile?.player_data.experience.SKILL_FORAGING || 0)).levelWithProgress, profile?.player_data.experience.SKILL_FORAGING || 0),
+            fishing: await calculateSenitherWeight('fishing', (calcSkill('fishing', profile?.player_data.experience.SKILL_FISHING || 0)).levelWithProgress, profile?.player_data.experience.SKILL_FISHING || 0),
+            enchanting: await calculateSenitherWeight('enchanting', (calcSkill('enchanting', profile?.player_data.experience.SKILL_ENCHANTING || 0)).levelWithProgress, profile?.player_data.experience.SKILL_ENCHANTING || 0),
+            alchemy: await calculateSenitherWeight('alchemy', (calcSkill('alchemy', profile?.player_data.experience.SKILL_ALCHEMY || 0)).levelWithProgress, profile?.player_data.experience.SKILL_ALCHEMY || 0),
+            taming: await calculateSenitherWeight('taming', (calcSkill('taming', profile?.player_data.experience.SKILL_TAMING || 0)).levelWithProgress, profile?.player_data.experience.SKILL_TAMING || 0)
         },
         slayer: {
-            revenant: await calculateSenitherWeight('revenant', null, profile.slayer_bosses?.zombie?.xp || 0),
-            tarantula: await calculateSenitherWeight('tarantula', null, profile.slayer_bosses?.spider?.xp || 0),
-            sven: await calculateSenitherWeight('sven', null, profile.slayer_bosses?.wolf?.xp || 0),
-            enderman: await calculateSenitherWeight('enderman', null, profile.slayer_bosses?.enderman?.xp || 0)
+            revenant: await calculateSenitherWeight('revenant', null, profile.slayer?.slayer_bosses?.zombie?.xp || 0),
+            tarantula: await calculateSenitherWeight('tarantula', null, profile.slayer?.slayer_bosses?.spider?.xp || 0),
+            sven: await calculateSenitherWeight('sven', null, profile.slayer?.slayer_bosses?.wolf?.xp || 0),
+            enderman: await calculateSenitherWeight('enderman', null, profile.slayer?.slayer_bosses?.enderman?.xp || 0)
         },
         dungeons: {
-            catacombs: await calculateSenitherWeight('catacombs', (calcSkill('dungeoneering', profile.dungeons?.dungeon_types?.catacombs?.experience || 0)).levelWithProgress, profile.dungeons?.dungeon_types?.catacombs?.experience  || 0),
+            catacombs: await calculateSenitherWeight('catacombs', (calcSkill('dungeoneering', profile.dungeons?.dungeon_types?.catacombs?.experience || 0)).levelWithProgress, profile.dungeons?.dungeon_types?.catacombs?.experience || 0),
             healer: await calculateSenitherWeight('healer', (calcSkill('dungeoneering', profile.dungeons?.player_classes?.healer?.experience || 0)).levelWithProgress, profile.dungeons?.player_classes?.healer?.experience || 0),
             mage: await calculateSenitherWeight('mage', (calcSkill('dungeoneering', profile.dungeons?.player_classes?.mage?.experience || 0)).levelWithProgress, profile.dungeons?.player_classes?.mage?.experience || 0),
             berserk: await calculateSenitherWeight('berserk', (calcSkill('dungeoneering', profile.dungeons?.player_classes?.berserk?.experience || 0)).levelWithProgress, profile.dungeons?.player_classes?.berserk?.experience || 0),
             archer: await calculateSenitherWeight('archer', (calcSkill('dungeoneering', profile.dungeons?.player_classes?.archer?.experience || 0)).levelWithProgress, profile.dungeons?.player_classes?.archer?.experience || 0),
             tank: await calculateSenitherWeight('tank', (calcSkill('dungeoneering', profile.dungeons?.player_classes?.tank?.experience || 0)).levelWithProgress, profile.dungeons?.player_classes?.tank?.experience || 0),
-            
+
         }
     }
     return weight

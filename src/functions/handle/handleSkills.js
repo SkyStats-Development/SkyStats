@@ -101,6 +101,9 @@ function handleSlayers(profile) {
     const slayers = ["zombie", "spider", "wolf", "enderman", "blaze", "vampire"];
     const slayerXP = levelingData.slayer_xp;
     const slayerData = profile.slayer_bosses;
+    if (!slayerData) {
+        return;
+    }
 
     let slayerLevels = {};
     console.log(slayers)
@@ -124,5 +127,89 @@ function handleSlayers(profile) {
     return slayerLevels;
 }
 
-module.exports = { handleSkills, handleCatacombsLevel, handleSlayers };
 
+function handleHoTMXP(experience) {
+    const xpTable = levelingData.HOTM;
+    if (experience === 0) {
+        return {
+            level: 0,
+            levelWithProgress: 0,
+            experience
+        }
+    }
+    let level = 0;
+    let xpNeeded = 0;
+    for (let i = 0; i < xpTable.length; i++) {
+        xpNeeded += xpTable[i];
+        if (experience < xpNeeded) {
+            return {
+                level,
+                levelWithProgress: level + (experience - (xpNeeded - xpTable[i])) / xpTable[i],
+                total_experience: experience
+            };
+        }
+        level++;
+    }
+
+    return {
+        level,
+        levelWithProgress: level + (experience - xpNeeded),
+        total_experience: experience
+    };
+
+}
+
+
+function handleGardenXP(experience) {
+    const xpTable = levelingData.garden_exp;
+    const maxLevel = 15;
+
+    if (experience === 0) {
+        return {
+            level: 0,
+            levelWithProgress: 0,
+            experience
+        }
+    }
+
+    let level = 0;
+    let xpNeeded = 0;
+
+    for (let i = 0; i < xpTable.length; i++) {
+        xpNeeded += xpTable[i];
+        if (experience < xpNeeded) {
+            let levelWithProgress = level + (experience - (xpNeeded - xpTable[i])) / xpTable[i];
+            if (levelWithProgress > maxLevel) {
+                levelWithProgress = maxLevel;
+            }
+            return {
+                level,
+                levelWithProgress,
+                total_experience: experience
+            };
+        }
+        level++;
+    }
+
+    let levelWithProgress = level + (experience - xpNeeded);
+    if (levelWithProgress > maxLevel) {
+        levelWithProgress = maxLevel;
+    }
+
+    return {
+        level,
+        levelWithProgress,
+        total_experience: experience
+    };
+}
+
+
+function calcTimeCharms(profile) {
+    const count = profile?.rift?.gallery?.secured_trophies?.length;
+    if (count === NaN) {
+        return 0;
+    }
+    return Math.min(Math.max(count, 0), 8);
+}
+
+module.exports = { handleSkills, handleCatacombsLevel, handleSlayers, handleHoTMXP, handleGardenXP, calcTimeCharms };
