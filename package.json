@@ -1,6 +1,6 @@
 {
 	"name": "skystats",
-	"version": "1.5.2",
+	"version": "1.5.4",
 	"description": "A Hypixel Skyblock Metrics Bot For Discord.",
 	"changelog": "SkyStats Nightly\nCreated an Update script and function (same as the skyhelper api for now!)",
 	"main": "index.js",
