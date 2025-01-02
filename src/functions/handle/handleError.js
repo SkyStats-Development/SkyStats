@@ -95,6 +95,17 @@ function handleError(error) {
         iconURL: `${messages.icon}`,
       },
     }
+  } else if (error instanceof AxiosError && error.response.data.cause === "Invalid API key") {
+    return {
+      color: 0xff0000,
+      title: `Error`,
+      description: `The Hypixel API key is invalid. Please contact the bot developer to fix this issue.`,
+      timestamp: new Date().toISOString(),
+      footer: {
+        text: `${messages.default}`,
+        iconURL: `${messages.icon}`,
+      },
+    }
   } else if (error instanceof AxiosError) {
     console.log(error)
     return {
@@ -123,6 +134,7 @@ function handleError(error) {
     if (error.stack) {
       const matches = error.stack.match(/.*:(\d+):\d+\)/);
       const line = matches ? matches[1] : "unknown";
+      console.log(error)
       return {
         color: 0xff0000,
         title: `Error`,
