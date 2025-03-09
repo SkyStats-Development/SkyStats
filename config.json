@@ -3,7 +3,7 @@
 		"ActivityType": "Watching",
 		"Status": "online",
 		"online, idle, dnd, invisible": "",
-		"Activity": "Zillions of coins.",
+		"Activity": "my braincells float away...",
 		"issues": "",
 		"releaseChannel": "1068058627568570368",
 		"serverID": "1058272411247714425",
@@ -13,7 +13,7 @@
 	"api": {
 		"hypixel": {
 			"API": "https://api.hypixel.net",
-			"KEY": "7ce56c4f-ea02-4379-a8d0-1d720fb8dd9e"
+			"KEY": "131fd1e0-6f87-475a-96d2-cb4bdbb08940"
 		},
 
 		"imgurAPIkey": "98ea6fff6d0ce73"
@@ -31,7 +31,7 @@
 			"support": "🌹 SkyStats 🌹 ~ Support",
 			"defaultbetter": "🌹 SkyStats 🌹 ~ run [/help] for help",
 			"owner": "🌹 Axle#9171 🌹",
-			"sogayowner": "🌹 Made with ❤️ by Axle#9171 🌹",
+			"sogayowner": "🌹 Made with ❤️ by axle.coffee 🌹",
 			"private": "🌹 SkyStats 🌹 ~ Private Commands",
 			"icon": "https://i.imgur.com/hggczHP.png",
 			"discinvite": "https://discord.gg/Kuk7fUYtrT"
