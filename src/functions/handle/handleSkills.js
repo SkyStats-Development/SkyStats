@@ -16,10 +16,10 @@ function getSkillLevel(experience, xpTable) {
 function handleSkills(profile) {
     const skills = ["SKILL_FISHING", "SKILL_ALCHEMY", "SKILL_MINING", "SKILL_FARMING", "SKILL_ENCHANTING", "SKILL_TAMING", "SKILL_FORAGING", "SKILL_CARPENTRY", "SKILL_COMBAT", "SKILL_RUNECRAFTING", "SKILL_SOCIAL"];
     const excludedSkills = ["SKILL_RUNECRAFTING", "SKILL_SOCIAL"];
-    const skillCaps = levelingData.leveling_caps;
-    const skillXP = levelingData.leveling_xp;
-    const runecraftingXP = levelingData.runecrafting_xp;
-    const skillData = profile.experience;
+    const skillCaps = levelingData?.leveling_caps;
+    const skillXP = levelingData?.leveling_xp;
+    const runecraftingXP = levelingData?.runecrafting_xp;
+    const skillData = profile?.experience;
 
     let totalLevels = 0;
     let skillCount = 0;
@@ -29,7 +29,7 @@ function handleSkills(profile) {
     skills.forEach(skill => {
         const xp = skillData[skill] || 0;
         totalExperience += xp;
-        const cap = skillCaps[skill.toLowerCase().replace('skill_', '')] || 50;
+        const cap = skillCaps[skill?.toLowerCase()?.replace('skill_', '')] || 50;
         const xpTable = skill === "SKILL_RUNECRAFTING" ? runecraftingXP : skillXP;
         const { level, progress, xpTillNextLevel } = getSkillLevel(xp, xpTable.slice(0, cap));
         skillLevels[skill.toLowerCase().replace('skill_', '')] = {
