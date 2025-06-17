@@ -1,0 +1,619 @@
+{
+  "totalWeight": 14357.735051556108,
+  "cropWeight": {
+    "Melon": 1462.8499548395175,
+    "Wheat": 1235.52407,
+    "Cactus": 1299.6008798714715,
+    "Carrot": 1195.42965,
+    "Potato": 1342.6913087020914,
+    "Pumpkin": 1494.8210691832774,
+    "Mushroom": 1304.6749662853335,
+    "Sugar Cane": 2151.342911208437,
+    "Cocoa Beans": 840.144807057325,
+    "Nether Wart": 1464.905434408655
+  },
+  "bonusWeight": {
+    "Anita": 30,
+    "Contest Medals": 235.75,
+    "Farming Minions": 50,
+    "Farming Level 60": 250
+  },
+  "uncountedCrops": {
+    "Melon": 383092,
+    "Wheat": 0,
+    "Cactus": 1095663,
+    "Carrot": 1018051,
+    "Potato": 1598294,
+    "Pumpkin": 39453,
+    "Mushroom": 559437,
+    "Sugar Cane": 31151,
+    "Cocoa Beans": 321783,
+    "Nether Wart": 1882602
+  },
+  "pests": {
+    "beetle": 970,
+    "cricket": 842,
+    "fly": 877,
+    "locust": 1061,
+    "mite": 1127,
+    "mosquito": 728,
+    "moth": 600,
+    "rat": 1129,
+    "slug": 1284,
+    "earthworm": 818,
+    "mouse": 309
+  },
+  "inventory": {
+    "armor": [
+      {
+        "id": 397,
+        "count": 1,
+        "skyblockId": "FERMENTO_HELMET",
+        "uuid": "d0d4a3ba-7e27-4c7c-9b51-25f443467845",
+        "name": "§dMossy Fermento Helmet §d✦",
+        "lore": [
+          "§7§8Bloom Skin",
+          "",
+          "§7Health: §a+130",
+          "§7Defense: §a+40",
+          "§7Speed: §a+12 §9(+7)",
+          "§7Bonus Pest Chance: §a+6%",
+          "§7Farming Fortune: §a+92 §9(+30) §d(+20)",
+          " §6[§2☘§6] §6[§2☘§6]",
+          "",
+          "§9Aqua Affinity I",
+          "§7Increases your underwater mining",
+          "§7rate.",
+          "§9Pesterminator VI",
+          "§7Grants §6+12☘ Farming Fortune §7and",
+          "§7§2+6ൠ Bonus Pest Chance§7, which",
+          "§7increases your chance to spawn",
+          "§7bonus §2Pests §7on §aThe Garden§7.",
+          "§9Respiration III",
+          "§7Extends your underwater breathing",
+          "§7time by §a45s§7.",
+          "",
+          "§8Tiered Bonus: Feast (0/4)",
+          "§7Combines the Tiered Bonuses of",
+          "§7wearing §a0 pieces §7of the Melon Armor,",
+          "§7Cropie Armor, and Squash Armor.",
+          "§7§7Grants §60☘ Farming Fortune§7.",
+          "",
+          "§8§l* §8Co-op Soulbound §8§l*",
+          "§d§l§ka§r §d§lMYTHIC HELMET §d§l§ka"
+        ],
+        "enchantments": {
+          "respiration": 3,
+          "aqua_affinity": 1,
+          "pesterminator": 6
+        },
+        "attributes": {
+          "skin": "FERMENTO_BLOOM",
+          "modifier": "mossy",
+          "timestamp": "1676408940000",
+          "donated_museum": "True",
+          "rarity_upgrades": "1"
+        },
+        "gems": {
+          "PERIDOT_0": "PERFECT",
+          "PERIDOT_1": "PERFECT"
+        }
+      },
+      {
+        "id": 299,
+        "count": 1,
+        "skyblockId": "FERMENTO_CHESTPLATE",
+        "uuid": "1c848f9d-7e8b-4d61-91fe-76a6b31ac861",
+        "name": "§dMossy Fermento Chestplate",
+        "lore": [
+          "§7Health: §a+195",
+          "§7Defense: §a+40",
+          "§7Speed: §a+13 §9(+7)",
+          "§7Bonus Pest Chance: §a+6%",
+          "§7Farming Fortune: §a+97 §9(+30) §d(+20)",
+          " §6[§2☘§6] §6[§2☘§6]",
+          "",
+          "§9Pesterminator VI",
+          "§7Grants §6+12☘ Farming Fortune §7and",
+          "§7§2+6ൠ Bonus Pest Chance§7, which",
+          "§7increases your chance to spawn",
+          "§7bonus §2Pests §7on §aThe Garden§7.",
+          "",
+          "§8Tiered Bonus: Feast (0/4)",
+          "§7Combines the Tiered Bonuses of",
+          "§7wearing §a0 pieces §7of the Melon Armor,",
+          "§7Cropie Armor, and Squash Armor.",
+          "§7§7Grants §60☘ Farming Fortune§7.",
+          "",
+          "§8§l* §8Co-op Soulbound §8§l*",
+          "§d§l§ka§r §d§lMYTHIC CHESTPLATE §d§l§ka"
+        ],
+        "enchantments": {
+          "pesterminator": 6
+        },
+        "attributes": {
+          "modifier": "mossy",
+          "timestamp": "1676408940000",
+          "donated_museum": "True",
+          "rarity_upgrades": "1"
+        },
+        "gems": {
+          "PERIDOT_0": "PERFECT",
+          "PERIDOT_1": "PERFECT"
+        }
+      },
+      {
+        "id": 300,
+        "count": 1,
+        "skyblockId": "FERMENTO_LEGGINGS",
+        "uuid": "ca772e02-868f-44d1-8b42-ebec73d9212d",
+        "name": "§dMossy Fermento Leggings",
+        "lore": [
+          "§7Health: §a+195",
+          "§7Defense: §a+40",
+          "§7Speed: §a+13 §9(+7)",
+          "§7Bonus Pest Chance: §a+6%",
+          "§7Farming Fortune: §a+97 §9(+30) §d(+20)",
+          " §6[§2☘§6] §6[§2☘§6]",
+          "",
+          "§9Pesterminator VI",
+          "§7Grants §6+12☘ Farming Fortune §7and",
+          "§7§2+6ൠ Bonus Pest Chance§7, which",
+          "§7increases your chance to spawn",
+          "§7bonus §2Pests §7on §aThe Garden§7.",
+          "",
+          "§8Tiered Bonus: Feast (0/4)",
+          "§7Combines the Tiered Bonuses of",
+          "§7wearing §a0 pieces §7of the Melon Armor,",
+          "§7Cropie Armor, and Squash Armor.",
+          "§7§7Grants §60☘ Farming Fortune§7.",
+          "",
+          "§8§l* §8Co-op Soulbound §8§l*",
+          "§d§l§ka§r §d§lMYTHIC LEGGINGS §d§l§ka"
+        ],
+        "enchantments": {
+          "pesterminator": 6
+        },
+        "attributes": {
+          "modifier": "mossy",
+          "timestamp": "1676408940000",
+          "donated_museum": "True",
+          "rarity_upgrades": "1"
+        },
+        "gems": {
+          "PERIDOT_0": "PERFECT",
+          "PERIDOT_1": "PERFECT"
+        }
+      },
+      {
+        "id": 301,
+        "count": 1,
+        "skyblockId": "RANCHERS_BOOTS",
+        "uuid": "47e8eaeb-e813-4425-98e0-c2722abff523",
+        "name": "§6Mossy Rancher's Boots",
+        "lore": [
+          "§7Health: §a+250 §e(+60)",
+          "§7Defense: §a+245 §e(+30)",
+          "§7Speed: §a+303 §9(+7)",
+          "§7Bonus Pest Chance: §a+6%",
+          "§7Farming Fortune: §a+53 §9(+25) §d(+16)",
+          "§7Health Regen: §a+10",
+          " §6[§2☘§6] §6[§2☘§6]",
+          "",
+          "§9§d§lLegion V",
+          "§9Depth Strider III",
+          "§9Feather Falling X",
+          "§9Growth VI",
+          "§9Pesterminator VI",
+          "§9Protection VI",
+          "§9Rejuvenate V",
+          "§9Sugar Rush III",
+          "",
+          "§7These boots gain §a+2❈ Defense §7and",
+          "§7§f+4✦ Speed§7 for every Farming Skill",
+          "§7level you have. While on §aThe Garden§7,",
+          "§7these boots also gain §6+1☘ Farming",
+          "§6Fortune §7for every Farming Skill level.",
+          "",
+          "§6Ability: Farmer's Speed  §e§lLEFT CLICK",
+          "§7Set a maximum amount of §f✦ Speed§7.",
+          "",
+          "§6Ability: Farmer's Grace ",
+          "§7Grants immunity to trampling crops.",
+          "",
+          "§7Bonus Defense: §a120",
+          "§7Bonus Speed: §a240",
+          "§7Bonus Farming Fortune: §a60",
+          "",
+          "§7Current Speed Cap: §a§a400",
+          "",
+          "§8§l* §8Co-op Soulbound §8§l*",
+          "§6§l§ka§r §6§lLEGENDARY BOOTS §6§l§ka"
+        ],
+        "enchantments": {
+          "growth": 6,
+          "protection": 6,
+          "rejuvenate": 5,
+          "sugar_rush": 3,
+          "depth_strider": 3,
+          "pesterminator": 6,
+          "feather_falling": 10,
+          "ultimate_legion": 5
+        },
+        "attributes": {
+          "color": "25:25:25",
+          "modifier": "mossy",
+          "originTag": "RANCHERS_BOOTS",
+          "timestamp": "1573228800000",
+          "anvil_uses": "1",
+          "donated_museum": "True",
+          "ranchers_speed": "400",
+          "rarity_upgrades": "1",
+          "hot_potato_count": "15"
+        },
+        "gems": {
+          "PERIDOT_0": "PERFECT",
+          "PERIDOT_1": "PERFECT"
+        }
+      }
+    ],
+    "tools": [
+      {
+        "id": 294,
+        "count": 1,
+        "skyblockId": "HOE_OF_NO_TILLING",
+        "uuid": "e48d3403-c600-45d3-a7e8-c02dd225932d",
+        "name": "§aHoe of No Tilling",
+        "lore": [
+          "§7Untills farmland!",
+          "§7",
+          "§7§8§oMathematically proven to be more",
+          "§8§oefficient than jumping on it!",
+          "",
+          "§7§8This item can be reforged!",
+          "§a§lUNCOMMON HOE"
+        ],
+        "enchantments": null,
+        "attributes": {
+          "bid": "16",
+          "date": "1727675734982",
+          "price": "810000000",
+          "player": "§c[§fYOUTUBE§c] DeathStreeks§f",
+          "auction": "13",
+          "timestamp": "1727675734983"
+        }
+      }
+    ],
+    "equipment": [
+      {
+        "id": 397,
+        "count": 1,
+        "skyblockId": "ZORROS_CAPE",
+        "uuid": "56ec4d26-d638-4452-af74-8ce542ff6144",
+        "name": "§dRooted Zorro's Cape",
+        "lore": [
+          "§7Strength: §c+10",
+          "§7Health: §a+17 §9(+17)",
+          "§7Ferocity: §a+2",
+          "§7Farming Fortune: §a+52 §9(+21)",
+          "§7Farming Wisdom: §a+1",
+          "",
+          "§9Green Thumb V",
+          "§7Grants §60.25☘ Farming Fortune §7per",
+          "§7unique visitor served.",
+          "",
+          "§7The stats of this Cape §adouble §7",
+          "§7§7during §eJacob's Farming Contest§7.",
+          "§7Additionally, you have a §a20% §7chance",
+          "§7to obtain an extra medal from",
+          "§7contests.",
+          "",
+          "§7§8§oNot all Rabbits wear capes.",
+          "",
+          "§8§l* §8Co-op Soulbound §8§l*",
+          "§d§l§ka§r §d§lMYTHIC CLOAK §d§l§ka"
+        ],
+        "enchantments": {
+          "green_thumb": 5
+        },
+        "attributes": {
+          "modifier": "rooted",
+          "timestamp": "1723779408016",
+          "donated_museum": "True",
+          "rarity_upgrades": "1"
+        }
+      },
+      {
+        "id": 397,
+        "count": 1,
+        "skyblockId": "LOTUS_NECKLACE",
+        "uuid": "21ca1e59-f862-4caf-b91b-500da5229dfe",
+        "name": "§5Rooted Lotus Necklace",
+        "lore": [
+          "§7Strength: §c+15.4",
+          "§7Health: §a+98 §9(+11)",
+          "§7Farming Fortune: §a+41 §9(+15)",
+          "§7Foraging Wisdom: §a+2",
+          "",
+          "§9§d§lThe One V",
+          "§7Grants §c+1❤ Health §7and §c+0.2❁",
+          "§cStrength §7per maxed out collection.",
+          "§7You have §a77 collections §7maxed.",
+          "§9Green Thumb V",
+          "§7Grants §60.25☘ Farming Fortune §7per",
+          "§7unique visitor served.",
+          "§9Quantum V",
+          "§7Grants §4+4♨ Vitality §7on weekdays and",
+          "§7§3+2☯ §7of a random §3Wisdom §7stat on",
+          "§7weekends.",
+          "",
+          "§6Piece Bonus: Salesperson",
+          "§7Complete §aGarden Visitor Offers §7to",
+          "§7gain §6☘ Farming Fortune§7.",
+          "",
+          "§7Piece Bonus: §6+15☘",
+          "§a§lMAXED OUT! NICE!",
+          "",
+          "§7Garden Visitors Served: §c10,267",
+          "",
+          "§8§l* §8Co-op Soulbound §8§l*",
+          "§5§l§ka§r §5§lEPIC NECKLACE §5§l§ka"
+        ],
+        "enchantments": {
+          "quantum": 5,
+          "green_thumb": 5,
+          "ultimate_the_one": 5
+        },
+        "attributes": {
+          "modifier": "rooted",
+          "timestamp": "1676409240000",
+          "donated_museum": "True",
+          "rarity_upgrades": "1"
+        }
+      },
+      {
+        "id": 397,
+        "count": 1,
+        "skyblockId": "LOTUS_BELT",
+        "uuid": "3cc42345-55f8-42ea-b586-04334a235929",
+        "name": "§5Rooted Lotus Belt",
+        "lore": [
+          "§7Health: §a+21 §9(+11)",
+          "§7Farming Fortune: §a+41 §9(+15)",
+          "",
+          "§9Green Thumb V",
+          "§7Grants §60.25☘ Farming Fortune §7per",
+          "§7unique visitor served.",
+          "",
+          "§6Piece Bonus: Salesperson",
+          "§7Complete §aGarden Visitor Offers §7to",
+          "§7gain §6☘ Farming Fortune§7.",
+          "",
+          "§7Piece Bonus: §6+15☘",
+          "§a§lMAXED OUT! NICE!",
+          "",
+          "§7Garden Visitors Served: §c10,267",
+          "",
+          "§8§l* §8Co-op Soulbound §8§l*",
+          "§5§l§ka§r §5§lEPIC BELT §5§l§ka"
+        ],
+        "enchantments": {
+          "green_thumb": 5
+        },
+        "attributes": {
+          "modifier": "rooted",
+          "timestamp": "1676409240000",
+          "donated_museum": "True",
+          "rarity_upgrades": "1"
+        }
+      },
+      {
+        "id": 397,
+        "count": 1,
+        "skyblockId": "LOTUS_BRACELET",
+        "uuid": "11c7886f-7a5a-48f1-91d9-b5d2dd6f8f75",
+        "name": "§5Rooted Lotus Bracelet",
+        "lore": [
+          "§7Health: §a+21 §9(+11)",
+          "§7Farming Fortune: §a+41 §9(+15)",
+          "",
+          "§9Green Thumb V",
+          "§7Grants §60.25☘ Farming Fortune §7per",
+          "§7unique visitor served.",
+          "",
+          "§6Piece Bonus: Salesperson",
+          "§7Complete §aGarden Visitor Offers §7to",
+          "§7gain §6☘ Farming Fortune§7.",
+          "",
+          "§7Piece Bonus: §6+15☘",
+          "§a§lMAXED OUT! NICE!",
+          "",
+          "§7Garden Visitors Served: §c10,267",
+          "",
+          "§8§l* §8Co-op Soulbound §8§l*",
+          "§5§l§ka§r §5§lEPIC BRACELET §5§l§ka"
+        ],
+        "enchantments": {
+          "green_thumb": 5
+        },
+        "attributes": {
+          "modifier": "rooted",
+          "timestamp": "1676409060000",
+          "donated_museum": "True",
+          "rarity_upgrades": "1"
+        }
+      },
+      {
+        "id": 397,
+        "count": 1,
+        "skyblockId": "PEST_VEST",
+        "uuid": "0ded3a43-109f-4254-a7be-83a515093a81",
+        "name": "§6Squeaky Pest Vest",
+        "lore": [
+          "§7Bonus Pest Chance: §a+12% §9(+2%)",
+          "§7Farming Fortune: §a+10 §9(+10)",
+          "",
+          "§7Decreases the spawn cooldown of",
+          "§7§2Pests §7by §a15%§7.",
+          "",
+          "§9Squeaky Bonus",
+          "§7Decreases the spawn cooldown of",
+          "§7§2Pests §7by §a2.5%§7.",
+          "",
+          "§8§l* §8Co-op Soulbound §8§l*",
+          "§6§l§ka§r §6§lLEGENDARY CLOAK §6§l§ka"
+        ],
+        "enchantments": null,
+        "attributes": {
+          "modifier": "squeaky",
+          "timestamp": "1723775184516",
+          "donated_museum": "True",
+          "rarity_upgrades": "1"
+        }
+      },
+      {
+        "id": 397,
+        "count": 1,
+        "skyblockId": "PESTHUNTERS_GLOVES",
+        "uuid": "317021de-f817-41e2-a707-fe780f275093",
+        "name": "§5Squeaky Pesthunter's Gloves",
+        "lore": [
+          "§7Bonus Pest Chance: §a+6.5% §9(+1.5%)",
+          "§7Farming Fortune: §a+8 §9(+8)",
+          "",
+          "§7Decreases the spawn cooldown of",
+          "§7§2Pests §7by §a10%§7.",
+          "",
+          "§8Tiered Bonus: Eradicator (0/4)",
+          "§7Grants §6+0☘ Farming Fortune §7when",
+          "§7vacuuming up §2Pests",
+          "",
+          "§9Squeaky Bonus",
+          "§7Decreases the spawn cooldown of",
+          "§7§2Pests §7by §a2.5%§7.",
+          "",
+          "§8§l* §8Co-op Soulbound §8§l*",
+          "§5§l§ka§r §5§lEPIC GLOVES §5§l§ka"
+        ],
+        "enchantments": null,
+        "attributes": {
+          "modifier": "squeaky",
+          "timestamp": "1732028748326",
+          "donated_museum": "True",
+          "rarity_upgrades": "1"
+        }
+      },
+      {
+        "id": 397,
+        "count": 1,
+        "skyblockId": "LOTUS_CLOAK",
+        "uuid": "a7c23841-c477-4ae6-a001-a5576a4727d6",
+        "name": "§5Rooted Lotus Cloak",
+        "lore": [
+          "§7Health: §a+21 §9(+11)",
+          "§7Farming Fortune: §a+41 §9(+15)",
+          "",
+          "§9Green Thumb V",
+          "§7Grants §60.25☘ Farming Fortune §7per",
+          "§7unique visitor served.",
+          "",
+          "§6Piece Bonus: Salesperson",
+          "§7Complete §aGarden Visitor Offers §7to",
+          "§7gain §6☘ Farming Fortune§7.",
+          "",
+          "§7Piece Bonus: §6+15☘",
+          "§a§lMAXED OUT! NICE!",
+          "",
+          "§7Garden Visitors Served: §c10,267",
+          "",
+          "§8§l* §8Co-op Soulbound §8§l*",
+          "§5§l§ka§r §5§lEPIC CLOAK §5§l§ka"
+        ],
+        "enchantments": {
+          "green_thumb": 5
+        },
+        "attributes": {
+          "modifier": "rooted",
+          "timestamp": "1676408760000",
+          "donated_museum": "True",
+          "rarity_upgrades": "1"
+        }
+      }
+    ],
+    "accessories": [
+      {
+        "id": 397,
+        "count": 1,
+        "skyblockId": "FERMENTO_ARTIFACT",
+        "uuid": "9a19c07d-52a4-486a-9c1f-a80c05d765d9",
+        "name": "§5Fermento Artifact",
+        "lore": [
+          "§7Farming Fortune: §a+30",
+          "",
+          "§5§l§ka§r §5§lEPIC ACCESSORY §5§l§ka"
+        ],
+        "enchantments": null,
+        "attributes": {
+          "timestamp": "1680031200000",
+          "rarity_upgrades": "1"
+        }
+      },
+      {
+        "id": 397,
+        "count": 1,
+        "skyblockId": "POWER_RELIC",
+        "uuid": "613cdfb2-2e59-45b0-ae9e-9cbbc3895285",
+        "name": "§dRelic of Power",
+        "lore": [
+          "§7§8Enriched with Magic Find",
+          "",
+          "§7Strength: §c+8 §d(+8)",
+          "§7Crit Damage: §c+6% §d(+6%)",
+          "§7Health: §a+15 §d(+15)",
+          "§7Defense: §a+15 §d(+15)",
+          "§7Intelligence: §a+15 §d(+15)",
+          "§7Magic Find: §a+0.5",
+          "§7True Defense: §a+6.5 §d(+6.5)",
+          "§7Fishing Speed: §a+2.5 §d(+2.5)",
+          "§7Mining Speed: §a+50 §d(+50)",
+          "§7Pristine: §a+1 §d(+1)",
+          "§7Mining Fortune: §a+25 §d(+25)",
+          "§7Foraging Fortune: §a+5 §d(+5)",
+          "§7Farming Fortune: §a+5 §d(+5)",
+          " §6[§a☘§6] §6[§6⸕§6] §6[§e✧§6] §6[§b✎§6] §6[§5❈§6]",
+          " §6[§d❁§6] §6[§c❤§6] §6[§f❂§6] §6[§8☠§6] §6[§2☘§6]",
+          " §6[§4☘§6] §6[§3☂§6]",
+          "",
+          "§7Allows you to harness the power of",
+          "§7§a12§7 Gemstones, although only half of",
+          "§7the normal power can be harnessed!",
+          "",
+          "§d§l§ka§r §d§lMYTHIC ACCESSORY §d§l§ka"
+        ],
+        "enchantments": null,
+        "attributes": {
+          "modifier": "none",
+          "originTag": "POWER_ARTIFACT",
+          "timestamp": "1626553380000",
+          "rarity_upgrades": "1",
+          "talisman_enrichment": "magic_find"
+        },
+        "gems": {
+          "JADE_0": "PERFECT",
+          "ONYX_0": "PERFECT",
+          "OPAL_0": "PERFECT",
+          "RUBY_0": "PERFECT",
+          "AMBER_0": "PERFECT",
+          "TOPAZ_0": "PERFECT",
+          "JASPER_0": "PERFECT",
+          "CITRINE_0": "PERFECT",
+          "PERIDOT_0": "PERFECT",
+          "AMETHYST_0": "PERFECT",
+          "SAPPHIRE_0": "PERFECT",
+          "AQUAMARINE_0": "PERFECT"
+        }
+      }
+    ]
+  },
+  "lastUpdated": 1750110254
+}
