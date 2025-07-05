@@ -8,7 +8,7 @@ export const functions = {
 	titleCase(str: string, replaceUnderscore = false): string | null {
 		try {
 			if (replaceUnderscore) str = str.replace(/_/g, ' ');
-			let splitStr = str.toLowerCase().split(' ');
+			const splitStr = str.toLowerCase().split(' ');
 			for (let i = 0; i < splitStr.length; i++) {
 				splitStr[i] = splitStr[i][0].toUpperCase() + splitStr[i].substr(1);
 			}
@@ -55,7 +55,7 @@ export const functions = {
 	renderLore(text: string): string {
 		let output = '';
 		const formats = new Set<string>();
-		for (let part of text.match(/(§[0-9a-fk-or])*[^§]*/g) || []) {
+		for (const part of text.match(/(§[0-9a-fk-or])*[^§]*/g) || []) {
 			if (part.length === 0) continue;
 			output += '';
 			if (formats.size > 0) {
@@ -132,7 +132,7 @@ export const functions = {
 			if (+arr[1] + scale > 0) {
 				sig = '+';
 			}
-			return +(Math.round(+arr[0] + 'e' + sig + (+arr[1] + scale)) + 'e-' + scale);
+			return +(Math.round(Number(arr[0] + 'e' + sig + (+arr[1] + scale))) + 'e-' + scale);
 		}
 	},
 };

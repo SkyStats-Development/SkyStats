@@ -18,7 +18,9 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 		const errorembed = new EmbedBuilder()
 			.setColor(0xff0000)
 			.setTitle('Error')
-			.setDescription(`Data: ${error.description}`)
+			.setDescription(
+				`Data: ${typeof error === 'object' && error && 'description' in error ? error.description : 'An error occurred'}`,
+			)
 			.setTimestamp(new Date());
 		await interaction.editReply({ embeds: [errorembed] });
 		return;

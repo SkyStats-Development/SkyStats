@@ -1,8 +1,9 @@
 import { SlashCommandBuilder, ChatInputCommandInteraction } from 'discord.js';
+import { buildProfileEmbed } from '../embeds/profileEmbed';
+import { SkyblockProfile } from '../models/SkyblockProfilesResponse';
 import { getPlayer } from '../services/getPlayer';
 import { handleError } from '../services/handleError';
 import { handleProfile } from '../services/handleProfile';
-import { buildProfileEmbed } from '../embeds/profileEmbed';
 
 /**
  * /profile slash command - fetches and displays a user's Skyblock profile
@@ -33,14 +34,14 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 			await interaction.editReply({ embeds: [error] });
 			return;
 		}
-		const profileData = await handleProfile(uuid2, profile, profileid, profileRes);
+		const profileData = await handleProfile(uuid2, profile as SkyblockProfile, profileid, profileRes);
 		const profileEmbed = await buildProfileEmbed(
 			uuid2,
 			username,
 			profilename,
 			profileid,
-			first_join,
-			profile_members,
+			first_join || 0,
+			profile_members || [],
 			profile_type,
 			profileData,
 		);

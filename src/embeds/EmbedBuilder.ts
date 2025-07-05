@@ -16,6 +16,11 @@ export class EmbedBuilder {
 		return this;
 	}
 
+	addField(name: string, value: string, inline?: boolean): this {
+		this.base.addFields([{ name, value, inline }]);
+		return this;
+	}
+
 	setDescription(description: string): this {
 		this.base.setDescription(description);
 		return this;

@@ -6,10 +6,10 @@ import {
 	ComponentType,
 	StringSelectMenuInteraction,
 } from 'discord.js';
+import { buildNetworthEmbed } from '../embeds/networthEmbed';
 import { getNetworth } from '../services/getNetworth';
 import { getPlayer } from '../services/getPlayer';
 import { handleError } from '../services/handleError';
-import { buildNetworthEmbed } from '../embeds/networthEmbed';
 
 /**
  * /networth slash command - fetches and displays a user's Skyblock networth breakdown
@@ -41,6 +41,8 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 			{ key: 'totals_embed', label: 'Totals' },
 			{ key: 'wardrobe_embed', label: 'Wardrobe' },
 			{ key: 'inventory_embed', label: 'Inventory' },
+			{ key: 'armor_embed', label: 'Armor' },
+			{ key: 'equipment_embed', label: 'Equipment' },
 			{ key: 'enderchest_embed', label: 'Enderchest' },
 			{ key: 'storage_embed', label: 'Storage' },
 			{ key: 'pet_embed', label: 'Pets' },
@@ -75,6 +77,7 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 			const selectInteraction = i as StringSelectMenuInteraction;
 			if (selectInteraction.user.id !== interaction.user.id) {
 				await selectInteraction.reply({
+					// eslint-disable-next-line quotes
 					content: "You can't use this select menu.",
 					ephemeral: true,
 				});
@@ -91,7 +94,9 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 		collector?.on('end', async () => {
 			try {
 				await interaction.editReply({ components: [] });
-			} catch {}
+			} catch (error) {
+				// Silently ignore edit errors (e.g., interaction expired)
+			}
 		});
 	} catch (err) {
 		const errorEmbed = handleError(err);

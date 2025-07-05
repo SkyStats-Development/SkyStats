@@ -1,7 +1,7 @@
 import { SlashCommandBuilder, ChatInputCommandInteraction } from 'discord.js';
 import { getPlayer } from '../services/getPlayer';
-import { senitherWeight } from '../services/getWeight';
 import { handleError } from '../services/handleError';
+import { senitherWeight } from '../utils/senitherWeight';
 
 /**
  * /test slash command - For testing weight calculation
@@ -17,7 +17,7 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 	const { profile, error } = await getPlayer(id, name);
 	try {
 		if (profile) {
-			const result = await senitherWeight(profile);
+			const result = await senitherWeight(profile as Record<string, unknown>);
 			await interaction.reply({
 				content: `Success.\n${JSON.stringify(result)}`,
 			});

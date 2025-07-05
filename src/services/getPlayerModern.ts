@@ -1,9 +1,8 @@
 import axios from 'axios';
-import { handleError } from '../services/handleError';
-import { DatabaseHandler } from '../services/DatabaseHandler';
-import { CacheService, CacheKeys } from './CacheService';
 import { DefaultCacheTTL } from '../config/ConfigTypes';
 import { APIError, DatabaseError, NotFoundError } from '../errors';
+import { DatabaseHandler } from '../services/DatabaseHandler';
+import { CacheService, CacheKeys } from './CacheService';
 
 export interface PlayerFlags {
 	PROFILE_ONLY?: boolean;
@@ -29,17 +28,15 @@ interface PlayerResponse {
 	profile_type: string;
 	bankBalance: number | null;
 	profileRes: unknown;
-	first_join?: number;
 	profile_members?: ProfileMember[];
 	bazaar?: unknown;
 	museum?: unknown;
-	error?: unknown; // For backward compatibility
 }
 
 /**
  * Get player and profile data with caching and proper error handling
  */
-export async function getPlayer(id: string, name?: string, flags: PlayerFlags = {}): Promise<PlayerResponse> {
+export async function getPlayerModern(id: string, name?: string, flags: PlayerFlags = {}): Promise<PlayerResponse> {
 	const cache = CacheService.getInstance();
 	const cacheKey = CacheKeys.player(`${id}-${name}-${JSON.stringify(flags)}`);
 
@@ -111,9 +108,7 @@ export async function getPlayer(id: string, name?: string, flags: PlayerFlags = 
 		const profile = selectedProfile.members[uuid2];
 		const { cute_name: profilename, profile_id: profileid } = selectedProfile;
 		const profile_type = selectedProfile.game_mode || 'normal';
-		console.log(selectedProfile.banking);
 		const bankBalance = selectedProfile.banking?.balance || null;
-		const first_join = profile?.first_join || null;
 
 		// Handle profile members if needed
 		let profile_members: ProfileMember[] = [];
@@ -140,7 +135,6 @@ export async function getPlayer(id: string, name?: string, flags: PlayerFlags = 
 			profile_type,
 			bankBalance,
 			profileRes: profilesRes,
-			first_join,
 			...(flags.PROFILE_ONLY || flags.CHECK_MEMBERS ? { profile_members } : {}),
 			...(flags.INCLUDE_NETWORTH && bazaarRes ? { bazaar: bazaarRes.data } : {}),
 			...(flags.INCLUDE_MUSEUM && museumRes ? { museum: museumRes.data } : {}),
@@ -151,12 +145,12 @@ export async function getPlayer(id: string, name?: string, flags: PlayerFlags = 
 
 		return responseData;
 	} catch (error) {
-		// For backward compatibility, return legacy error format
+		// Re-throw structured errors
 		if (error instanceof APIError || error instanceof DatabaseError || error instanceof NotFoundError) {
-			return { error: handleError(error) } as PlayerResponse;
+			throw error;
 		}
 
-		// Handle legacy error format for backward compatibility
-		return { error: handleError(error) } as PlayerResponse;
+		// Convert unknown errors to APIError
+		throw new APIError('Unexpected error occurred', 'Unknown', error as Error);
 	}
 }

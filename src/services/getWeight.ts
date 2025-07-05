@@ -36,51 +36,24 @@ export async function farmingWeight(uuid: string): Promise<{
  * @returns Raw Senither weight data (no formatting)
  * @throws Error if calculation fails or input is invalid
  */
-export async function senitherWeight(profile: any): Promise<{
+export async function senitherWeight(profile: Record<string, unknown>): Promise<{
 	total: number;
 	totalWeight: number;
 	totalOverflow: number;
-	skills: Record<string, { weight: number; overflow: number }>;
-	slayers: Record<string, { weight: number; overflow: number }>;
-	dungeons: Record<string, { weight: number; overflow: number }>;
+	skills: Record<string, { weight: number; weight_overflow: number }>;
+	slayer: Record<string, { weight: number; weight_overflow: number }>;
+	dungeons: Record<string, { weight: number; weight_overflow: number }>;
 }> {
 	if (!profile || typeof profile !== 'object') throw new Error('Invalid profile');
 	const weight = await calculateTotalSenitherWeight(profile);
-	let totalWeight = 0;
-	let totalOverflow = 0;
-	const skills: Record<string, { weight: number; overflow: number }> = {};
-	const slayers: Record<string, { weight: number; overflow: number }> = {};
-	const dungeons: Record<string, { weight: number; overflow: number }> = {};
-	for (const skill in weight.skills) {
-		totalWeight += weight.skills[skill].weight;
-		totalOverflow += weight.skills[skill].weight_overflow;
-		skills[skill] = {
-			weight: weight.skills[skill].weight,
-			overflow: weight.skills[skill].weight_overflow,
-		};
-	}
-	for (const slayer in weight.slayer) {
-		totalWeight += weight.slayer[slayer].weight;
-		totalOverflow += weight.slayer[slayer].weight_overflow;
-		slayers[slayer] = {
-			weight: weight.slayer[slayer].weight,
-			overflow: weight.slayer[slayer].weight_overflow,
-		};
-	}
-	for (const dungeon in weight.dungeons) {
-		totalWeight += weight.dungeons[dungeon].weight;
-		totalOverflow += weight.dungeons[dungeon].weight_overflow;
-		dungeons[dungeon] = {
-			weight: weight.dungeons[dungeon].weight,
-			overflow: weight.dungeons[dungeon].weight_overflow,
-		};
-	}
+
+	// Convert to the expected format with overflow information
 	return {
-		total: totalWeight + totalOverflow,
-		totalWeight,
-		totalOverflow,
-		skills,
-		slayers,
-		dungeons,
+		total: weight.total,
+		totalWeight: weight.totalWeight,
+		totalOverflow: weight.totalOverflow,
+		skills: weight.skills,
+		slayer: weight.slayer,
+		dungeons: weight.dungeons,
 	};
 }

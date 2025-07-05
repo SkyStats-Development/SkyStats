@@ -9,6 +9,7 @@ import { buildFarmingWeightEmbed, buildSenitherWeightEmbed } from '../embeds/wei
  */
 export const data = new SlashCommandBuilder()
 	.setName('weight')
+	// eslint-disable-next-line quotes
 	.setDescription("Shows a player's weight")
 	.addStringOption((option) => option.setName('name').setDescription('Minecraft Username').setRequired(false));
 
@@ -20,7 +21,7 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 		const { uuid2, username, profilename, profile } = await getPlayer(id, name);
 
 		const farming = await farmingWeight(uuid2);
-		const senither = await senitherWeight(profile);
+		const senither = await senitherWeight(profile as Record<string, unknown>);
 
 		const farmingEmbed = await buildFarmingWeightEmbed(uuid2, username, profilename, farming);
 		const senitherEmbed = await buildSenitherWeightEmbed(profile, username, profilename, uuid2, senither);

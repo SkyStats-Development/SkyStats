@@ -10,6 +10,75 @@ import {
 	calcTimeCharms,
 } from './handleSkills';
 
+// Type definitions for handleProfile return data
+interface SkillData {
+	skills: {
+		skill_average: number;
+		total_experience: number;
+		[key: string]:
+			| number
+			| {
+					level: number;
+					xp: number;
+					levelWithProgress: number;
+					xpTillNextLevel: number;
+			  };
+	};
+}
+
+interface SlayerData {
+	[key: string]: {
+		level: number;
+		experience: number;
+	};
+}
+
+interface HoTMData {
+	level: number;
+	levelWithProgress: number;
+	experience?: number;
+	total_experience?: number;
+}
+
+interface GardenData {
+	level: number;
+	levelWithProgress: number;
+	experience?: number;
+	total_experience?: number;
+}
+
+interface SkyblockProfile {
+	leveling?: {
+		experience: number;
+	};
+	player_data?: unknown;
+	slayer?: unknown;
+	mining_core?: {
+		experience: number;
+	};
+	dungeons?: {
+		dungeon_types?: {
+			catacombs?: {
+				experience: number;
+			};
+		};
+	};
+	events?: {
+		easter?: {
+			chocolate_level: number;
+		};
+	};
+	banking?: {
+		balance?: number;
+		personal_bank?: number;
+	};
+	currencies?: {
+		coin_purse?: number;
+		personal_bank?: number;
+	};
+	museum?: unknown;
+}
+
 /**
  * Handle and aggregate Skyblock profile data for a user.
  * @param uuid - The Minecraft UUID
@@ -21,18 +90,19 @@ import {
  */
 export async function handleProfile(
 	uuid: string,
-	profile: any,
+	profile: SkyblockProfile,
 	profileID: string,
-	profileRes: any,
+	_profileRes?: unknown,
 ): Promise<{
 	skyblock_level: number | null;
 	senither_weight: number | null;
 	time_charms: number;
 	hoppity_prestige: number;
 	skill_average: number | null;
-	slayer_data: any;
-	hotm_data: any;
-	garden_data: any;
+	skill_data: SkillData | null;
+	slayer_data: SlayerData | null;
+	hotm_data: HoTMData | null;
+	garden_data: GardenData | null;
 	catacombs_level: number | null;
 	networth: {
 		purse: number | null;
@@ -46,14 +116,21 @@ export async function handleProfile(
 	if (!profile || typeof profile !== 'object') throw new Error('Invalid profile');
 	if (!profileID || typeof profileID !== 'string') throw new Error('Invalid profileID');
 	try {
+		const bankBalance = profile?.banking?.balance ?? 0;
 		const [networth_obj, garden_obj, weight_data] = await Promise.all([
-			getSkyHelper(profile, profile?.banking?.balance ?? 0, profile?.museum),
+			getSkyHelper(profile, bankBalance, profile?.museum),
 			getGarden(profileID, uuid),
-			senitherWeight(profile),
+			senitherWeight(profile as Record<string, unknown>),
 		]);
 
 		// Check if garden_obj is an error object (handleError returns an object with 'title' or 'content')
-		const gardenXP = (garden_obj && 'gardenXP' in garden_obj && typeof (garden_obj as any).gardenXP === 'number') ? (garden_obj as any).gardenXP : 0;
+		const gardenXP =
+			garden_obj &&
+			typeof garden_obj === 'object' &&
+			'gardenXP' in garden_obj &&
+			typeof garden_obj.gardenXP === 'number'
+				? garden_obj.gardenXP
+				: 0;
 		const garden_data = handleGardenXP(gardenXP);
 		const hotm_data = handleHoTMXP(profile?.mining_core?.experience || 0);
 		const skill_data = handleSkills(profile?.player_data || 0);
@@ -66,6 +143,7 @@ export async function handleProfile(
 			time_charms: calcTimeCharms(profile) || 0,
 			hoppity_prestige: profile?.events?.easter?.chocolate_level || 0,
 			skill_average: skill_data?.skills?.skill_average ?? null,
+			skill_data,
 			slayer_data,
 			hotm_data,
 			garden_data,
@@ -73,7 +151,7 @@ export async function handleProfile(
 			networth: {
 				purse: networth_obj?.networth.purse ?? null,
 				bank: networth_obj?.networth.bank ?? null,
-				personal_bank: profile?.banking?.personal_bank ?? null,
+				personal_bank: profile?.banking?.personal_bank ?? profile?.currencies?.personal_bank ?? null,
 				total_networth: networth_obj?.networth.networth ?? null,
 				unsoulbound_networth: networth_obj?.networth.unsoulboundNetworth ?? null,
 			},

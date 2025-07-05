@@ -17,14 +17,14 @@ export const fetchurItems: Record<number, FetchurItem> = {
 		quantity: 50,
 		text: '50x Red Wool',
 		image: 'https://sky.shiiyu.moe/item/WOOL:14',
-		description: 'This item can be purchased from the Wool Merchant at the Builder\'s House in the Hub',
+		description: "This item can be purchased from the Wool Merchant at the Builder's House in the Hub",
 	},
 	1: {
 		name: 'Yellow Stained Glass',
 		quantity: 20,
 		text: '20x Yellow Stained Glass',
 		image: 'https://sky.shiiyu.moe/item/STAINED_GLASS:4',
-		description: 'This item can be purchased from the Builder at the Builder\'s House in the Hub',
+		description: "This item can be purchased from the Builder at the Builder's House in the Hub",
 	},
 	2: {
 		name: 'Compass',
@@ -62,9 +62,9 @@ export const fetchurItems: Record<number, FetchurItem> = {
 		description: 'This item can be crafted using 6 Wood planks',
 	},
 	7: {
-		name: 'Rabbit\'s Foot',
+		name: "Rabbit's Foot",
 		quantity: 3,
-		text: '3x Rabbit\'s Feet',
+		text: "3x Rabbit's Feet",
 		image: 'https://sky.shiiyu.moe/item/RABBIT_FOOT',
 		description: 'This item can be dropped when killing an Rabbit or buying it from the Bazaar.',
 	},
@@ -101,7 +101,7 @@ export const fetchurItems: Record<number, FetchurItem> = {
 		quantity: 50,
 		text: '50x Red Wool',
 		image: 'https://sky.shiiyu.moe/item/WOOL:14',
-		description: 'This item can be purchased from the Wool Merchant at the Builder\'s House in the Hub',
+		description: "This item can be purchased from the Wool Merchant at the Builder's House in the Hub",
 	},
 };
 
