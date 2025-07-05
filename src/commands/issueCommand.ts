@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, ChatInputCommandInteraction, EmbedBuilder } from 'discord.js';
+import { SlashCommandBuilder, ChatInputCommandInteraction, EmbedBuilder, TextChannel } from 'discord.js';
 import config from '../config/config.json';
 
 const messages = config.messages.discord;
@@ -34,7 +34,7 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 		.setTimestamp(new Date())
 		.setFooter({ text: messages.defaultbetter, iconURL: messages.icon });
 	if (channel?.isTextBased()) {
-		await (channel as any).send({ embeds: [embed] });
+		await (channel as TextChannel).send({ embeds: [embed] });
 	}
 	await interaction.reply({
 		content: 'Your report has been shared with the developers, do not delete this message.',
