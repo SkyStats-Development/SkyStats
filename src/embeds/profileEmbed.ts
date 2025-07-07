@@ -123,7 +123,7 @@ export async function buildProfileEmbed(
 	profileData: ProfileData,
 ) {
 	const members = parseProfileMembers(profileMembers);
-	console.log(profileData);
+	//console.log(profileData);
 	const builder = new EmbedBuilder()
 		.setColor(0xffa600)
 		.setTitle(`Profile for ${username} on ${cuteName}`)

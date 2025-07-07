@@ -120,7 +120,7 @@ export function handleSlayers(profile: any) {
 	}
 
 	let slayerLevels: any = {};
-	console.log(slayers);
+	//console.log(slayers);
 	slayers.forEach((slayer) => {
 		const xp = slayerData[slayer]?.xp || 0;
 		const xpTable = slayerXP[slayer] || [];

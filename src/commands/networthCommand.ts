@@ -33,8 +33,6 @@ export async function execute(interaction: ChatInputCommandInteraction) {
 			await interaction.editReply({ embeds: [error] });
 			return;
 		}
-
-		// You may need to fetch cookie price from a utility or cache, here assumed as 0 for placeholder
 		const cookiePrice = 0;
 		const networth = await getNetworth(uuid2, profileid, profile, bankBalance, museum, cookiePrice);
 		const embedSections = [

@@ -111,7 +111,7 @@ export async function getPlayer(id: string, name?: string, flags: PlayerFlags = 
 		const profile = selectedProfile.members[uuid2];
 		const { cute_name: profilename, profile_id: profileid } = selectedProfile;
 		const profile_type = selectedProfile.game_mode || 'normal';
-		console.log(selectedProfile.banking);
+		//console.log(selectedProfile.banking);
 		const bankBalance = selectedProfile.banking?.balance || null;
 		const first_join = profile?.first_join || null;
 
